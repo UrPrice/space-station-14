@@ -67,8 +67,8 @@
         endValue: 6.0
         property: Energy
         isLooped: true
-#  - type: Visibility
-#    layer: 2 #ghost vis layer
+  - type: Visibility
+    layer: 2 #ghost vis layer
   - type: Eye
     drawFov: false
     visMask:
