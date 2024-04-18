@@ -18,6 +18,7 @@ using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
+using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
@@ -114,6 +115,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         SubscribeLocalEvent<NukeOperativeComponent, EntityZombifiedEvent>(OnOperativeZombified);
 
         SubscribeLocalEvent<ConsoleFTLAttemptEvent>(OnShuttleFTLAttempt);
+        SubscribeLocalEvent<ControlShuttleEvent>(OnShuttleControlAttempt);
         SubscribeLocalEvent<WarDeclaredEvent>(OnWarDeclared);
         SubscribeLocalEvent<CommunicationConsoleCallShuttleAttemptEvent>(OnShuttleCallAttempt);
     }
@@ -371,6 +373,30 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                     ev.Cancelled = true;
                     ev.Reason = Loc.GetString("war-ops-infiltrator-unavailable",
                         ("time", timeRemain.ToString("mm\\:ss")));
+                    continue;
+                }
+            }
+
+            nukeops.LeftOutpost = true;
+        }
+    }
+
+    private void OnShuttleControlAttempt(ref ControlShuttleEvent ev)
+    {
+        var query = EntityQueryEnumerator<GameRuleComponent, NukeopsRuleComponent>(); // SS220 Lone-Ops-War
+        while (query.MoveNext(out _, out _, out var nukeops))
+        {
+            //if (!HasComp<ShuttleConsoleComponent>(ev.Uid))  // badcode?
+            ///   continue;
+
+            if (nukeops.WarDeclaredTime != null)
+            {
+                var timeAfterDeclaration = Timing.CurTime.Subtract(nukeops.WarDeclaredTime.Value);
+                var timeRemain = nukeops.WarNukieArriveDelay.Subtract(timeAfterDeclaration);
+                if (timeRemain > TimeSpan.Zero)
+                {
+                    ev.Cancelled = true;
+                    ev.Reason = Loc.GetString("ОШИБКА: Обнаружен ионный шторм. Управление недоступно.");
                     continue;
                 }
             }
