@@ -8,8 +8,12 @@
       collection: MaleScreams
     Laugh:
       collection: MaleLaugh
-    Giggle:
-      collection: MaleLaugh
+#   Giggle:
+#     collection: MaleLaugh
+    Giggle: # SS220 Giggle emote
+      collection: MaleGiggle
+      params:
+        volume: 2
     Sneeze:
       collection: MaleSneezes
     Cough:
@@ -58,8 +62,12 @@
       collection: FemaleScreams
     Laugh:
       collection: FemaleLaugh
-    Giggle:
-      collection: FemaleLaugh
+#   Giggle:
+#     collection: FemaleLaugh
+    Giggle: # SS220 Giggle emote
+      collection: FemaleGiggle
+      params:
+        volume: 2
     Sneeze:
       collection: FemaleSneezes
     Cough:
@@ -455,6 +463,24 @@
     Weh:
       collection: Weh
 
+- type: emoteSounds
+  id: UnisexSilicon
+  params:
+    variation: 0.05
+  sounds:
+    Beep:
+      path: /Audio/Machines/twobeep.ogg
+    Chime:
+      path: /Audio/Machines/chime.ogg
+    Buzz:
+      path: /Audio/Machines/buzz-sigh.ogg
+    Buzz-Two:
+      path: /Audio/Machines/buzz-two.ogg
+    Honk:
+      path: /Audio/Items/bikehorn.ogg
+    Ping:
+      path: /Audio/Effects/Cargo/ping.ogg
+
 # body emotes
 - type: emoteSounds
   id: GeneralBodyEmotes
@@ -537,3 +563,10 @@
   sounds:
     Chirp:
       path: /Audio/Animals/nymph_chirp.ogg
+
+- type: emoteSounds
+  id: Parrot
+  sound:
+    path: /Audio/Animals/parrot_raught.ogg
+    params:
+      variation: 0.125

@@ -55,8 +55,7 @@
 - type: startingGear
   id: BlueShieldGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitClown
-    back: ClothingBackpackFilled
+    jumpsuit: ClothingUniformJumpsuitBlueShield
     shoes: ClothingShoesBootsCombatFilled
     eyes: ClothingEyesGlassesBlueShield
     head: ClothingHeadHatBeretNavyBlue
@@ -66,5 +65,3 @@
     pocket1: WeaponAdvancedRevolver
     belt: ClothingBeltSecurityFilled
     gloves: ClothingHandsGlovesCombat
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled
