@@ -59,6 +59,7 @@
   - ChefJumpsuit
   - CommonBackpack
   - ChefOuterClothing
+  - ChefBeltApron #SS220 Chef Resprite
   - Glasses
   - Trinkets
 
@@ -75,7 +76,7 @@
   groups:
   - LawyerNeck
   - LawyerJumpsuit
-  - CommonBackpack
+  - LawyerBackpack
   - Glasses
   - Trinkets
 
@@ -258,7 +259,7 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
-  - SecurityBelt
+#  - SecurityBelt #SS220-TweakSecurityWebbing
   - HeadofSecurityOuterClothing
   - SecurityShoes
   - Trinkets
@@ -269,7 +270,7 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
-  - SecurityBelt
+#  - SecurityBelt #SS220-TweakSecurityWebbing
   - WardenOuterClothing
   - SecurityShoes
   - Trinkets
@@ -283,7 +284,7 @@
   - SecurityOuterClothing
   - SecurityShoes
   - SecurityPDA
-  - SecurityBelt
+#  - SecurityBelt #SS220-TweakSecurityWebbing
   - Trinkets
 
 - type: roleLoadout
