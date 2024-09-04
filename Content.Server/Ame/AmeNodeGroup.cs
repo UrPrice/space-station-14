@@ -141,7 +141,7 @@ public sealed class AmeNodeGroup : BaseNodeGroup
         var fuzz = _random.Next(-1, 2); // -1 to 1
         instability += fuzz; // fuzz the values a tiny bit.
 
-        // SS220 safeoverload edited (AME powerup) - begin
+        // SS220 safeoverload edited (AME powerup) - begin | PR #1744
         if (fuel == safeFuelLimit + 2) // checkout 1 more grade higher than safe for safeoverload
             if (_random.Prob(0.75f))
                 instability = 1;
@@ -150,7 +150,7 @@ public sealed class AmeNodeGroup : BaseNodeGroup
 
         if (fuel <= safeFuelLimit) // safe regress overload
             instability = -1;
-        // SS220 safeoverload edited (AME powerup)- end
+        // SS220 safeoverload edited (AME powerup)- end | PR #1744
 
         overloading = true;
         var integrityCheck = 100;
