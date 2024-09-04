@@ -188,7 +188,7 @@ public sealed class AmeNodeGroup : BaseNodeGroup
 
         // The adjustment for cores make it so that a 1 core AME at 2 injections is better than a 2 core AME at 2 injections.
         // However, for the relative amounts for each (1 core at 2 and 2 core at 4), more cores has more output.
-        float ss220AMEmod = 1.4f; // SS220 special modifier for AME to powerup AME
+        var ss220AMEmod = 1.4f; // SS220 special modifier for AME to powerup AME
         return 200000f * MathF.Log10(fuel * fuel) * ss220AMEmod * MathF.Pow(0.8f, cores - 1); // SS220 AME powerup
     }
 
