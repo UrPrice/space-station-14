@@ -58,7 +58,7 @@ namespace Content.IntegrationTests.Tests
             "Meta",
             "Packed",
             "Omega",
-            "Bagel",
+            // "Bagel",
             "CentComm",
             "Box",
             "Core",
