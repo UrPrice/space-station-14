@@ -25,4 +25,4 @@
   name: salvage shuttle console board
   sprite:
     sprite: Objects/Misc/module.rsi
-    state: cpuboards
+    state: cpuboard
