@@ -1,4 +1,6 @@
 using Content.Shared.Actions;
+using Content.Shared.Buckle;
+using Content.Shared.Buckle.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Gravity;
@@ -25,6 +27,7 @@ public abstract class SharedJetpackSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly InventorySystem _inventory = default!; //SS220 Magboots with jet fix
+    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
 
     public override void Initialize()
     {
@@ -119,17 +122,29 @@ public abstract class SharedJetpackSystem : EntitySystem
         if (args.Handled)
             return;
 
+        //ss220 magboots with jet on gravity fix start
+        if (!TryComp(uid, out TransformComponent? xform))
+            return;
+        //ss220 magboots with jet on gravity fix end
+
         //SS220 Magboots with jet fix begin
         var slotEnumerator = _inventory.GetSlotEnumerator(args.Performer);
         while (slotEnumerator.NextItem(out var item))
         {
             if (HasComp<MagbootsComponent>(item) &&
                 TryComp<ItemToggleComponent>(item, out var itemToggle) &&
-                itemToggle.Activated)
+                itemToggle.Activated && !CanEnableOnGrid(xform.GridUid))
             {
-                _popup.PopupClient(Loc.GetString("jetpack-no-magboots"), uid, args.Performer);
+                _popup.PopupClient(Loc.GetString("jetpack-no-magboots-on-gravity"), uid, args.Performer);
                 return;
             }
+
+            // SS220 FIX JETPACK CAMERA START (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1746)
+            if (TryComp<BuckleComponent>(args.Performer, out var buckleComponent) && buckleComponent.BuckledTo != null)
+            {
+                _buckle.TryUnbuckle(args.Performer, args.Performer, buckleComponent);
+            }
+            // SS220 FIX JETPACK CAMERA END
 
             //SS220 Moonboots with jet fix begin
             if (HasComp<AntiGravityClothingComponent>(item))
@@ -141,12 +156,14 @@ public abstract class SharedJetpackSystem : EntitySystem
         }
         //SS220 Magboots with jet fix end
 
-        if (TryComp(uid, out TransformComponent? xform) && !CanEnableOnGrid(xform.GridUid))
+        //ss220 magboots with jet on gravity fix start
+        if (!CanEnableOnGrid(xform.GridUid))
         {
             _popup.PopupClient(Loc.GetString("jetpack-no-station"), uid, args.Performer);
 
             return;
         }
+        //ss220 magboots with jet on gravity fix end
 
         SetEnabled(uid, component, !IsEnabled(uid));
     }

@@ -120,6 +120,7 @@
     staticRecipes:
       - ClothingEyesGlassesMeson #SS220 Craftable-Welding-Mask
       - ClothingWristWatch #SS220 Wrist Watch
+      - DeviceCalculator #SS220 Calculator
       - Wirecutter
       - Igniter
       - Signaller
@@ -139,8 +140,6 @@
       - AirTank
       - GasAnalyzer
       - UtilityBelt
-      - Fulton
-      - FultonBeacon
       - Pickaxe
       - ModularReceiver
       - AppraisalTool
@@ -203,11 +202,12 @@
       - ClothingHeadHatWelding
       - WetFloorSign
       - ClothingHeadHatCone
-
+      - FreezerElectronics
+      - CassetteTape # SS220 Tape Recorder #32234 early merge
+      - TapeRecorder # SS220 Tape Recorder #32234 early merge
   - type: EmagLatheRecipes
     emagStaticRecipes:
       - BoxLethalshot
-      - BoxShotgunFlare
       - BoxShotgunSlug
       - CombatKnife
       - MagazineBoxLightRifle
@@ -329,6 +329,8 @@
       - PowerCellHigh
       - WeaponPistolCHIMP
       - ClothingMaskWeldingGas
+      - MineralScannerEmpty
+      - AdvancedMineralScannerEmpty
       - WeaponGauntletGorilla
       - SynthesizerInstrument
       - ClothingShoesBootsMagSci
@@ -342,7 +344,6 @@
       - WeaponLaserSvalinn
       - WeaponProtoKineticAccelerator
       - WeaponTetherGun
-      - WeaponGrapplingGun
       - ClothingBackpackHolding
       - ClothingBackpackSatchelHolding
       - ClothingBackpackDuffelHolding
@@ -355,8 +356,9 @@
       - FauxTileAstroSnow
       - FauxTileAstroSand #SS220-beachCraftng
       - OreBagOfHolding
-      - DeviceQuantumSpinInverter
+      #- DeviceQuantumSpinInverter #SS220 - Until better times
       - ThermalVisorRND # SS220 Thermals
+      - ClothingEyesHudSupply #ss220 hud cargo add
   - type: EmagLatheRecipes
     emagDynamicRecipes:
       - BoxBeanbag
@@ -441,6 +443,7 @@
     - ProtolatheMachineCircuitboard
     - AutolatheMachineCircuitboard
     - CircuitImprinterMachineCircuitboard
+    - BiogeneratorMachineCircuitboard
     - OreProcessorMachineCircuitboard
     - ElectrolysisUnitMachineCircuitboard
     - CentrifugeMachineCircuitboard
@@ -454,7 +457,10 @@
     - TilePurpleCircuit
     - TileYellowCircuit
     - TileOrangeCircuit
-    - TileRedCircuit #SS220-sheetifier-rework-end
+    - TileRedCircuit
+    # - FloorGreenCircuit
+    # - FloorBlueCircuit
+    # - FloorRedCircuit SS220-sheetifier-rework-end
     - MicrowaveMachineCircuitboard
     - ReagentGrinderMachineCircuitboard
     - ElectricGrillMachineCircuitboard
@@ -462,6 +468,8 @@
     - SodaDispenserMachineCircuitboard
     - SpaceHeaterMachineCircuitBoard
     - CutterMachineCircuitboard
+    - StationAnchorCircuitboard
+    - SalvageMagnetMachineCircuitboard
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
       - HellfireFreezerMachineCircuitBoard
@@ -485,6 +493,7 @@
       - SolarTrackerElectronics
       - TurboItemRechargerCircuitboard
       - PowerComputerCircuitboard
+      - SuperMatterObserverCircuitboard  # SS220 superMatter-crystal
       - AutolatheHyperConvectionMachineCircuitboard
       - ProtolatheHyperConvectionMachineCircuitboard
       - CircuitImprinterHyperConvectionMachineCircuitboard
@@ -746,7 +755,6 @@
     runningState: icon
     staticRecipes:
       - BoxLethalshot
-      - BoxShotgunFlare
       - BoxShotgunPractice
       - BoxShotgunSlug
       - ClothingEyesHudSecurity
@@ -756,28 +764,37 @@
       - Handcuffs
       - MagazineBoxLightRifle
       - MagazineBoxLightRiflePractice
+      - MagazineBoxLightRifleRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - MagazineBoxMagnum
       - MagazineBoxMagnumPractice
+      - MagazineBoxMagnumRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - MagazineBoxPistol
       - MagazineBoxPistolPractice
+      - MagazineBoxPistolRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - MagazineBoxRifle
       - MagazineBoxRiflePractice
+      - MagazineBoxRifleRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - MagazineLightRifle
       - MagazineLightRifleEmpty
+      - MagazineLightRifleRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - MagazinePistol
       - MagazinePistolEmpty
+      - MagazinePistolRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - MagazinePistolSubMachineGun
+      - MagazinePistolSubMachineGunRubber #SS220 missing rubber fix
       - MagazinePistolSubMachineGunEmpty
       - MagazinePistolSubMachineGunTopMounted
       - MagazinePistolSubMachineGunTopMountedEmpty
       - MagazineRifle
       - MagazineRifleEmpty
+      - MagazineRifleRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - MagazineShotgun
       - MagazineShotgunEmpty
       - MagazineShotgunSlug
       - RiotShield
       - SpeedLoaderMagnum
       - SpeedLoaderMagnumEmpty
+      - SpeedLoaderMagnumRubber #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
       - Stunbaton
       - TargetClown
       - TargetHuman
@@ -873,24 +890,38 @@
       runningState: icon
       staticRecipes:
         - BoxLethalshot
-        - BoxShotgunFlare
         - BoxShotgunSlug
        #  - BoxShellTranquilizer
         - MagazineBoxLightRifle
+        - MagazineBoxLightRifleRubber #SS220 missing rubber fix
         - MagazineBoxMagnum
+        - MagazineBoxMagnumRubber #SS220 missing rubber fix
         - MagazineBoxPistol
+        - MagazineBoxPistolRubber #SS220 missing rubber fix
         - MagazineBoxRifle
+        - MagazineBoxRifleRubber #SS220 missing rubber fix
         - MagazineLightRifle
+        - MagazineLightRifleRubber #SS220 missing rubber fix
         - MagazineLightRifleEmpty
         - MagazinePistol
+        - MagazinePistolRubber #SS220 missing rubber fix
         - MagazinePistolEmpty
+        #SS220 forgotten mags add begin
+        - MagazinePistolSubMachineGun
+        - MagazinePistolSubMachineGunRubber #SS220 missing rubber fix
+        - MagazinePistolSubMachineGunEmpty
+        - MagazinePistolSubMachineGunTopMounted
+        - MagazinePistolSubMachineGunTopMountedEmpty
+        #SS220 forgotten mags add end
         - MagazineRifle
+        - MagazineRifleRubber #SS220 missing rubber fix
         - MagazineRifleEmpty
         - MagazineShotgun
         - MagazineShotgunEmpty
         - MagazineShotgunSlug
         # - ShellTranquilizer # SS220 No-Tranquilizer
         - SpeedLoaderMagnum
+        - SpeedLoaderMagnumRubber #SS220 missing rubber fix
         - SpeedLoaderMagnumEmpty
     - type: MaterialStorage
       whitelist:
@@ -1188,6 +1219,68 @@
         - Ingot
 
 - type: entity
+  id: Biogenerator
+  parent: BaseLathe
+  name: biogenerator
+  description: Converts plants into biomass, which can be used to construct useful items.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/biofabricator.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: BiogeneratorMachineCircuitboard
+  - type: MaterialStorage
+  - type: ProduceMaterialExtractor
+  - type: ItemSlots
+    slots:
+      beaker_slot:
+        name: lathe-component-output-slot-beaker-name
+        whitelist:
+          components:
+          - FitsInDispenser
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      beaker_slot: !type:ContainerSlot
+  - type: Lathe
+    reagentOutputSlotId: beaker_slot
+    idleState: icon
+    runningState: building
+    staticRecipes:
+    - BioGenMilk
+    - BioGenMilkSoy
+    - BioGenEthanol
+    - BioGenCream
+    - BioGenBlackpepper
+    - BioGenEnzyme
+    - BioGenFlour
+    - BioGenSugar
+    - BioGenMonkeyCube
+    - BioGenKoboldCube
+    - BioGenMaterialCloth1
+    - BioGenMaterialCardboard1
+    - BioGenPaper
+    - BioGenPaperRolling1
+    - BioGenCandle
+    - BioGenPlantBGone
+    - BioGenWeedKiller
+    - BioGenPestKiller
+    - BioGenLeft4Zed
+    - BioGenEZNutrient
+    - BioGenRobustHarvest
+
+- type: entity
   parent: BaseLathe
   id: OreProcessor
   name: ore processor
@@ -1240,7 +1333,7 @@
   - type: Machine
     board: OreProcessorIndustrialMachineCircuitboard
   - type: Lathe
-    materialUseMultiplier: 0.75
+    materialUseMultiplier: 0.5 #ss220 oreprocessor balance
     timeMultiplier: 0.5
     staticRecipes:
       - SheetSteel

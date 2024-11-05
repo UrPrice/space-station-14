@@ -71,6 +71,7 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.OpenInventoryMenu);
             human.AddFunction(ContentKeyFunctions.SmartEquipBackpack);
             human.AddFunction(ContentKeyFunctions.SmartEquipBelt);
+            human.AddFunction(ContentKeyFunctions.SmartEquipNeck); //#SS220-SmartEquipNeck
             human.AddFunction(ContentKeyFunctions.OpenBackpack);
             human.AddFunction(ContentKeyFunctions.OpenBelt);
             human.AddFunction(ContentKeyFunctions.MouseMiddle);
@@ -84,6 +85,8 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.Arcade1);
             human.AddFunction(ContentKeyFunctions.Arcade2);
             human.AddFunction(ContentKeyFunctions.Arcade3);
+
+            Shared.SS220.Input.KeyFunctions220.AddCalculatorKeys(human); // SS220 Calculator
 
             // actions should be common (for ghosts, mobs, etc)
             common.AddFunction(ContentKeyFunctions.OpenActionsMenu);

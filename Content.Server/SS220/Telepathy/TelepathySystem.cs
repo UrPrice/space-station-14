@@ -1,4 +1,4 @@
-﻿// © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
+// © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
 
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat;
@@ -24,6 +24,12 @@ public sealed class TelepathySystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<TelepathyComponent, TelepathySendEvent>(OnTelepathySend);
+        SubscribeLocalEvent<TelepathyComponent, TelepathyAnnouncementSendEvent>(OnTelepathyAnnouncementSend);
+    }
+
+    private void OnTelepathyAnnouncementSend(Entity<TelepathyComponent> ent, ref TelepathyAnnouncementSendEvent args)
+    {
+        SendMessageToEveryoneWithRightChannel(args.TelepathyChannel, args.Message, null);
     }
 
     private void OnTelepathySend(Entity<TelepathyComponent> ent, ref TelepathySendEvent args)
@@ -80,7 +86,7 @@ public sealed class TelepathySystem : EntitySystem
     {
         var nameEv = new TransformSpeakerNameEvent(senderUid!.Value, Name(senderUid.Value));
         RaiseLocalEvent(senderUid.Value, nameEv);
-        var name = nameEv.Name;
+        var name = Name(nameEv.Sender);
         return name;
     }
 }

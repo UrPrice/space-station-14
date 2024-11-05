@@ -17,7 +17,7 @@
 
 #Syndicate EVA
 - type: entity
-  parent: [ ClothingOuterEVASuitBase, BaseSyndicateContraband ]
+  parent: [ ClothingOuterEVASuitBase]
   id: ClothingOuterHardsuitSyndicate # TODO: rename to ClothingOuterEVASuitSyndicate
   name: syndicate EVA suit
   description: "Has a tag on the back that reads: 'Totally not property of an enemy corporation, honest!'"
@@ -56,7 +56,8 @@
     sprintModifier: 0.7
   - type: HeldSpeedModifier
   - type: TemperatureProtection
-    coefficient: 0.5
+    heatingCoefficient: 0.75
+    coolingCoefficient: 0.5
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetEVALarge
     slot: head
@@ -117,7 +118,8 @@
     sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: TemperatureProtection
-    coefficient: 0.1
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
   - type: Armor
     modifiers:
       coefficients:

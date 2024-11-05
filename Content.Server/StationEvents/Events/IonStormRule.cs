@@ -61,6 +61,10 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
     private const string Drinks = "IonStormDrinks";
     [ValidatePrototypeId<DatasetPrototype>]
     private const string Foods = "IonStormFoods";
+    // SS220 IonStrom Laws rework start
+    [ValidatePrototypeId<DatasetPrototype>]
+    private const string BrickedLaw = "IonStormBrickedLaws";
+    // SS220 IonStrom Laws rework end
 
     protected override void Started(EntityUid uid, IonStormRuleComponent comp, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -124,7 +128,10 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
             }
 
             // generate a new law...
-            var newLaw = GenerateLaw();
+            // SS220 IonStrom Laws rework start
+            // var newLaw = GenerateLaw();
+            var newLaw = Pick(BrickedLaw);
+            // SS220 IonStrom Laws rework end
 
             // see if the law we add will replace a random existing law or be a new glitched order one
             if (laws.Laws.Count > 0 && RobustRandom.Prob(target.ReplaceChance))
@@ -203,7 +210,8 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
         {
             0 => threats,
             1 => crew1,
-            2 => objects
+            2 => objects,
+            _ => throw new IndexOutOfRangeException(),
         };
         var crewAll = RobustRandom.Prob(0.5f) ? crew2 : Loc.GetString("ion-storm-crew");
         var objectsThreats = RobustRandom.Prob(0.5f) ? objects : threats;
@@ -238,6 +246,8 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
 
         if (plural) feeling = feelingPlural;
 
+        var subjects = RobustRandom.Prob(0.5f) ? objectsThreats : Loc.GetString("ion-storm-people");
+
         // message logic!!!
         return RobustRandom.Next(0, 37) switch
         {
@@ -269,7 +279,7 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
             26 => Loc.GetString("ion-storm-law-crew-must-go", ("who", crewAll), ("area", area)),
             27 => Loc.GetString("ion-storm-law-crew-only-1", ("who", crew1), ("part", part)),
             28 => Loc.GetString("ion-storm-law-crew-only-2", ("who", crew1), ("other", crew2), ("part", part)),
-            29 => Loc.GetString("ion-storm-law-crew-only-subjects", ("adjective", adjective), ("subjects", RobustRandom.Prob(0.5f) ? objectsThreats : "PEOPLE"), ("part", part)),
+            29 => Loc.GetString("ion-storm-law-crew-only-subjects", ("adjective", adjective), ("subjects", subjects), ("part", part)),
             30 => Loc.GetString("ion-storm-law-crew-only-species", ("species", species), ("part", part)),
             31 => Loc.GetString("ion-storm-law-crew-must-do", ("must", must), ("part", part)),
             32 => Loc.GetString("ion-storm-law-crew-must-have", ("adjective", adjective), ("objects", objects), ("part", part)),

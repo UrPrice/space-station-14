@@ -194,6 +194,23 @@
       Plasma: 5
 
 - type: entity
+  id: BiogeneratorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: biogenerator machine board
+  description: A machine printed circuit board for a biogenerator.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: Biogenerator
+    stackRequirements:
+      MatterBin: 2
+    tagRequirements:
+      GlassBeaker:
+        amount: 1
+        defaultPrototype: Beaker
+
+- type: entity
   id: UniformPrinterMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: uniform printer machine board
@@ -1063,6 +1080,12 @@
         Capacitor: 2
         CableHV: 5
         Glass: 2
+    # SS220 SuperMatter-begin
+    - type: Construction
+      graph: SuperMatterEmitterBoard
+      deconstructionTarget: null
+      node: emitter
+    # SS220 SuperMatter-end
 
 - type: entity
   id: SurveillanceCameraRouterCircuitboard
@@ -1191,6 +1214,8 @@
   name: salvage magnet machine board
   description: A machine printed circuit board for a salvage magnet.
   components:
+  - type: Sprite
+    state: supply
   - type: MachineBoard
     prototype: SalvageMagnet
     stackRequirements:
@@ -1225,6 +1250,22 @@
       stackRequirements:
         Steel: 1
         Cable: 2
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: StationAnchorCircuitboard
+  name: station anchor machine board
+  description: A machine printed circuit board for a station anchor.
+  components:
+  - type: MachineBoard
+    prototype: StationAnchor
+    stackRequirements:
+      Capacitor: 4
+      MatterBin: 3
+      Steel: 10
+      Glass: 5
+      CableHV: 8
+      Uranium: 2
 
 - type: entity
   parent: BaseMachineCircuitboard

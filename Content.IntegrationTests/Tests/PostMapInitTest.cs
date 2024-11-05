@@ -73,7 +73,9 @@ namespace Content.IntegrationTests.Tests
             // SS220 Maps
             "Frankenstein",
             //"Nox",
+            "Astro",
             "Axioma",
+			"Donuts",
             "Eclipse",
             "SS220_syndicate",
             "SS220_CentComm",
@@ -82,6 +84,9 @@ namespace Content.IntegrationTests.Tests
             "Snout",
             "VoidZone",
             "NTvsSSSP",
+
+            // SS220 Test Maps
+            // "TestSM"
         };
 
         /// <summary>
