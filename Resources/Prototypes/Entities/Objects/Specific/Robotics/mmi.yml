@@ -53,6 +53,13 @@
     whitelist:
       components:
       - SecretStash
+  # SS220-Add-Languages begin
+  - type: Language
+    learnedLanguages:
+    - Galactic
+    - Binary
+    - Universal
+  # SS220-Add-Languages end
 
 - type: entity
   parent: MMI
@@ -101,6 +108,11 @@
     - type: IntrinsicRadioTransmitter
       channels:
       - Binary
+    - type: Language
+      learnedLanguages:
+      - Galactic
+      - Binary
+      - Universal
     - type: ActiveRadio
       channels:
       - Binary
