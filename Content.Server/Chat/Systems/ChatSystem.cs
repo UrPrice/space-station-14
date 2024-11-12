@@ -468,13 +468,13 @@ public sealed partial class ChatSystem : SharedChatSystem
     #region Private API
 
     private void SendEntitySpeak(
-     EntityUid source,
-     string originalMessage,
-     ChatTransmitRange range,
-     string? nameOverride,
-     bool hideLog = false,
-     bool ignoreActionBlocker = false
- )
+        EntityUid source,
+        string originalMessage,
+        ChatTransmitRange range,
+        string? nameOverride,
+        bool hideLog = false,
+        bool ignoreActionBlocker = false
+        )
     {
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
             return;
@@ -606,10 +606,13 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
             ("entityName", name), ("message", message /*SS220-Add-Languages*/));
+
         var wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
             ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+
         var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
             ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+
 
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
@@ -656,6 +659,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             else
                 _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage, wrappedUnknownScrambledMessage /*SS220-Add-Languages*/, source, false, session.Channel);
         }
+        
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
 
         var ev = new EntitySpokeEvent(source, message, originalMessage, channel, obfuscatedMessage);

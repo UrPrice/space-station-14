@@ -112,10 +112,3 @@ public abstract class SharedLanguageSystem : EntitySystem
         return message;
     }
 }
-
-
-
-
-
-
-

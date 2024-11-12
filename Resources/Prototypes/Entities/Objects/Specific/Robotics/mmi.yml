@@ -108,11 +108,13 @@
     - type: IntrinsicRadioTransmitter
       channels:
       - Binary
+    # SS220-Add-Languages begin
     - type: Language
       learnedLanguages:
       - Galactic
       - Binary
       - Universal
+    # SS220-Add-Languages end
     - type: ActiveRadio
       channels:
       - Binary
