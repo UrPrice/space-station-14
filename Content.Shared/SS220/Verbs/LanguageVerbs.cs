@@ -1,9 +1,11 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
+using Content.Shared.SS220.Language;
 using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 
-namespace Content.Shared.SS220.Language;
+namespace Content.Shared.SS220.Verbs;
 
 /// <summary>
 ///     I was bored and lazy to understand the UI,
@@ -29,7 +31,8 @@ public sealed partial class LanguageVerbs : EntitySystem
         if (!args.CanAccess)
             return;
 
-        var verbs = CreateVerbs(ent, comp.LearnedLanguages);
+        var learnedLanguages = comp.LearnedLanguages.Select(lang => lang.ToString()).ToList();
+        var verbs = CreateVerbs(ent, learnedLanguages);
         foreach (var verb in verbs)
         {
             args.Verbs.Add(verb);
@@ -45,7 +48,7 @@ public sealed partial class LanguageVerbs : EntitySystem
 
         foreach (string language in languages)
         {
-            if (language == "Universal") // no verb for a universal language is created
+            if (language == LanguagesPrototype.Universal) // no verb for a universal language is created
                 continue;
 
             verbs.Add(new Verb

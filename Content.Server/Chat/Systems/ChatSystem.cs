@@ -533,7 +533,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             _chatManager.ChatMessageToOne(ChatChannel.Local, currentMessage, wrappedMessage, source, false, session.Channel); //SS220-Add-Languages
         }
-
+        //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range); //SS220-Add-Languages
         var ev = new EntitySpokeEvent(source, message, originalMessage, null, null);
         RaiseLocalEvent(source, ev, true);
 
@@ -616,12 +616,13 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
+            EntityUid listener;
+
             if (session.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
+            listener = session.AttachedEntity.Value;
+
             // SS220-Add-Languages begin
-
-            var listener = session.AttachedEntity.Value;
-
             var scrambledMessage = message;
             var obfuscatedScrambledMessage = obfuscatedMessage;
             var wrappedScrambledMessage = wrappedMessage;

@@ -1,4 +1,4 @@
-# Sources: https://wiki.ss220.club/index.php/%D0%AF%D0%B7%D1%8B%D0%BA%D0%B8 and https://wiki14.ss220.club/index.php?title=%D0%9B%D0%BE%D1%80
+# Sources: https://wiki.ss220.club/index.php/Языки and https://wiki14.ss220.club/index.php?title=Лор
 
 # Galactic common languages
 language-galacticcommon-desc = Дружелюбный для иных рас язык, введёный правительством ТСФ в связи с насплывом сектор иммигрантов представляющие многочисленное количества рас.

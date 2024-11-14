@@ -41,13 +41,13 @@ public abstract class SharedLanguageSystem : EntitySystem
         if (HasComp<GhostComponent>(ent))
             return true;
 
-        if (!TryComp<LanguageComponent>(ent, out var comp) && _proto.TryIndex<LanguagesPrototype>("Universal", out _))
+        if (!TryComp<LanguageComponent>(ent, out var comp))
             return true;
 
-        if (comp != null && comp.CurrentLanguage == "Universal")
+        if (comp != null && comp.CurrentLanguage == LanguagesPrototype.Universal)
             return true;
 
-        if (comp != null && comp.LearnedLanguages.Contains("Universal"))
+        if (comp != null && comp.LearnedLanguages.Contains(LanguagesPrototype.Universal))
             return true;
 
         return false;
@@ -61,11 +61,11 @@ public abstract class SharedLanguageSystem : EntitySystem
     {
         if (!TryComp<LanguageComponent>(ent, out var comp))
         {
-            if (_proto.TryIndex<LanguagesPrototype>("Universal", out var universalProto))
+            if (_proto.TryIndex<LanguagesPrototype>(LanguagesPrototype.Universal, out var universalProto))
                 return universalProto;
         }
 
-        var languageID = GetLanguage(ent);
+        var languageID = GetCurrentLanguage(ent);
 
         if (languageID == null)
             return null;
@@ -76,7 +76,7 @@ public abstract class SharedLanguageSystem : EntitySystem
         return null;
     }
 
-    public string? GetLanguage(EntityUid ent)
+    public string? GetCurrentLanguage(EntityUid ent)
     {
         if (!TryComp<LanguageComponent>(ent, out var comp))
             return null;

@@ -4,7 +4,7 @@ using Robust.Shared.Console;
 using Content.Shared.SS220.Language;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Administration.Commands;
+namespace Content.Server.Administration.Commands; // If I change namespace in SS220 the AdminCommand attribute is no longer located....
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class AddLanguageCommand : IConsoleCommand

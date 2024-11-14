@@ -7,6 +7,9 @@ namespace Content.Shared.SS220.Language;
 [Prototype("languages")]
 public sealed partial class LanguagesPrototype : IPrototype
 {
+    public const string Universal = "Universal";
+    public const string Galactic = "Galactic";
+
     [ViewVariables, IdDataField]
     public string ID { get; private set; } = default!;
 

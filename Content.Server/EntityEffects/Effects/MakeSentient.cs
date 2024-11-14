@@ -27,7 +27,7 @@ public sealed partial class MakeSentient : EntityEffect
         if (!entityManager.HasComponent<LanguageComponent>(uid))
         {
             var language = entityManager.AddComponent<LanguageComponent>(uid);
-            language.LearnedLanguages.Add("Galactic");
+            language.LearnedLanguages.Add(LanguagesPrototype.Galactic);
             language.CurrentLanguage = language.LearnedLanguages[0];
         }
         // SS220-Add-Languages end

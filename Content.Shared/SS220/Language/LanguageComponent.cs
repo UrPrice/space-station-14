@@ -1,6 +1,6 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
+using Robust.Shared.Prototypes;
 
 
 namespace Content.Shared.SS220.Language;
@@ -23,7 +23,6 @@ public sealed partial class LanguageComponent : Component
     /// <summary>
     ///  List of languages that the Entity speaks and understands.
     /// </summary>
-    [DataField("learnedLanguages", customTypeSerializer: typeof(PrototypeIdListSerializer<LanguagesPrototype>))]
-    [AutoNetworkedField]
-    public List<string> LearnedLanguages { get; set; } = new();
+    [DataField("learnedLanguages"), AutoNetworkedField]
+    public List<ProtoId<LanguagesPrototype>> LearnedLanguages { get; set; } = new();
 }

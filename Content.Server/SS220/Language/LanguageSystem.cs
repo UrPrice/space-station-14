@@ -36,7 +36,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
     private void OnMapInit(Entity<LanguageComponent> ent, ref MapInitEvent args)
     {
         if (ent.Comp.CurrentLanguage == null)
-            ent.Comp.CurrentLanguage = ent.Comp.LearnedLanguages.FirstOrDefault("Universal");
+            ent.Comp.CurrentLanguage = ent.Comp.LearnedLanguages.FirstOrDefault(LanguagesPrototype.Universal);
 
         Dirty(ent.Owner, ent.Comp);
     }
@@ -54,11 +54,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         // it is taken from the cache, it is necessary for the correct display when sending in the radio,
         // when the character whispers and transmits a message to the radio
         if (ScrambleCache.TryGetValue(cacheKey, out var cachedValue))
-        {
-            ScrambleCache.Remove(cacheKey);
-            ScrambleCache[cacheKey] = cachedValue;
             return cachedValue;
-        }
 
         var scrambledText = Scramble(input, proto);
 

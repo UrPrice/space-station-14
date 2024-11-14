@@ -123,8 +123,8 @@ public sealed class PAISystem : SharedPAISystem
         if (TryComp<LanguageComponent>(uid, out var languages))
         {
             languages.LearnedLanguages.Clear();
-            languages.LearnedLanguages.Add("Galactic");
-            languages.LearnedLanguages.Add("Universal");
+            languages.LearnedLanguages.Add(LanguagesPrototype.Galactic);
+            languages.LearnedLanguages.Add(LanguagesPrototype.Universal);
             languages.CurrentLanguage = languages.LearnedLanguages[0];
         }
     }
