@@ -42,3 +42,7 @@ jobs:
                 assignees: [selectedOption.assignee]
               }); // added assignee
             }
+      - name: Remove "need label" label
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: "Status: Needs Labels"
