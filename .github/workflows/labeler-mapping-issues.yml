@@ -5,33 +5,34 @@ on:
     type: [opened]
 
 jobs:
-  add_label:
+  add-labels:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/github-script@v6
-    with:
-      script: |
-        const issueBody = context.payload.issue.body;
-        const options = {
-          'Frankenstein': 'MI: Frankenstein',
-          'Axioma': 'MI: Axioma',
-          'Donuts': 'MI: Donuts',
-          'Eclipse': 'MI: Eclipse',
-          'Astro': 'MI: Astro',
-          'Другое': 'MI: Other'
-        };
-        let selectedLabel = null;
-        for (const option in options){
-          if (issueBody.includes(option)) {
-            selectedLabel = options[option];
-            breal;
-          }
-        }
-        if (selectedLabel) {
-          await github.rest.issues.addLabels({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.issue.number,
-            labels: [selectedLabel]
-          });
-        }
+      - name: Check option and add label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issueBody = context.payload.issue.body;
+            const options = {
+              'Frankenstein': 'MI: Frankenstein',
+              'Axioma': 'MI: Axioma',
+              'Donuts': 'MI: Donuts',
+              'Eclipse': 'MI: Eclipse',
+              'Astro': 'MI: Astro',
+              'Другое': 'MI: Other'
+            };
+            let selectedLabel = null;
+            for (const option in options){
+              if (issueBody.includes(option)) {
+                selectedLabel = options[option];
+                breal;
+              }
+            }
+            if (selectedLabel) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: [selectedLabel]
+              });
+            }
