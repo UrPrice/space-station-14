@@ -39,10 +39,9 @@ body:
       placeholder: Например, "На карте Axioma отсутствуют кулеры в юридическом отделе."
     validations:
       required: true
-  - type: input
+  - type: textarea
     attributes:
-      label: Прикрепите изображение (если есть)
-      description: Загрузите файл изображения, чтобы продемонстрировать проблему.
-      placeholder: "Ссылка на изображение или путь к файлу"
+      label: Прикрепите изображение описанной вами проблемы
+      placeholder: "Сюда его можно просто вставить: Ctrl+V"
     validations:
       required: false
