@@ -5,7 +5,7 @@ on:
     type: [opened]
 
 jobs:
-  add-labels:
+  add-labels-and-assigness:
     runs-on: ubuntu-latest
     steps:
       - name: Check option and add label
@@ -14,25 +14,31 @@ jobs:
           script: |
             const issueBody = context.payload.issue.body;
             const options = {
-              'Frankenstein': 'MI: Frankenstein',
-              'Axioma': 'MI: Axioma',
-              'Donuts': 'MI: Donuts',
-              'Eclipse': 'MI: Eclipse',
-              'Astro': 'MI: Astro',
-              'Другое': 'MI: Other'
+              'Frankenstein': {label: 'MI: Frankenstein', assignee: 'UrPrice' },
+              'Axioma': {label: 'MI: Axioma', assignee: 'UrPrice'},
+              'Donuts': {label: 'MI: Donuts', assignee: 'spo9k'},
+              'Eclipse': {label: 'MI: Eclipse', assignee: 'AliceValestray'},
+              'Astro': {label: 'MI: Astro', assignee: 'UrPrice'},
+              'Другое': {label: 'MI: Other', assignee: 'UrPrice'}
             };
-            let selectedLabel = null;
+            let selectedOption = null;
             for (const option in options){
               if (issueBody.includes(option)) {
-                selectedLabel = options[option];
+                selectedOption = options[option];
                 break;
               }
             }
-            if (selectedLabel) {
+            if (selectedOption) {
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                labels: [selectedLabel]
-              });
+                labels: [selectedOption.label]
+              }); // added label
+              await github.rest.issues.addAssignees({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                assignees: [selectedOption.assignee]
+              }); // added assignee
             }
