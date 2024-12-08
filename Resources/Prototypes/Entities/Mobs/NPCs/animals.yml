@@ -389,6 +389,14 @@
   - type: NonSpreaderZombie
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Piercing: 0
 
 - type: entity
   name: glockroach
@@ -1350,7 +1358,7 @@
     rules: ghost-role-information-nonantagonist-rules
   - type: GhostTakeoverAvailable
   - type: Clumsy
-    clumsyDamage:
+    gunShootFailDamage:
       types:
         Blunt: 5
         Piercing: 4
@@ -1397,8 +1405,7 @@
   components:
     # make the player a traitor once its taken
   - type: AutoTraitor
-    giveUplink: false
-    giveObjectives: false
+    profile: TraitorReinforcement
 
 - type: entity
   id: MobMonkeySyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink
@@ -1422,11 +1429,14 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
+    allowedEmotes: ['Thump']
   - type: Vocal
     sounds:
       Male: MaleReptilian
       Female: FemaleReptilian
       Unsexed: MaleReptilian
+  - type: BodyEmotes
+    soundsId: ReptilianBodyEmotes
   - type: TypingIndicator
     proto: lizard
   - type: InteractionPopup
@@ -1524,7 +1534,7 @@
   description: Cousins to the sentient race of lizard people, kobolds blend in with their natural habitat and are as nasty as monkeys; ready to pull out your hair and stab you to death.
   components:
   - type: Clumsy
-    clumsyDamage:
+    gunShootFailDamage:
       types:
         Blunt: 2
         Piercing: 7
@@ -1556,8 +1566,7 @@
   components:
     # make the player a traitor once its taken
   - type: AutoTraitor
-    giveUplink: false
-    giveObjectives: false
+    profile: TraitorReinforcement
 
 - type: entity
   id: MobKoboldSyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink
@@ -1773,6 +1782,11 @@
   # intended for swarms that eat pills so only temporary
   - type: TimedDespawn
     lifetime: 60
+  - type: Hunger
+    baseDecayRate: 10 # always hungry
+    starvingSlowdownModifier: 1
+  - type: Thirst
+    baseDecayRate: 10 # always thirsty
 
 - type: entity
   parent: MobMouse
@@ -2150,7 +2164,7 @@
 
 - type: entity
   name: grenade penguin
-  parent: [ MobPenguin, MobCombat, BaseSyndicateContraband ]
+  parent: [ MobPenguin, MobCombat]
   id: MobGrenadePenguin
   description: A small penguin with a grenade strapped around its neck. Harvested by the Syndicate from icy shit-hole planets.
   components:
@@ -2910,13 +2924,20 @@
 - type: entity
   name: calico cat
   id: MobCatCalico
-  parent: MobCat
+  parent: [ MobCat, MobLyingDownOnEntity ] #SS220 Add lying down on entity
   description: Feline pet, very funny.
   components:
   - type: Sprite
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: cat2
+    #SS220 Add lying down on entity begin
+    - map: ["enum.LyingVisuals.LyingDown"]
+      state: cat2_rest
+      visible: false
+  - type: LyingDownOnBuckledEntity
+    offset: -0.1, 0
+    #SS220 Add lying down on entity end
   - type: DamageStateVisuals
     states:
       Alive:
@@ -2976,13 +2997,20 @@
 - type: entity
   name: space cat
   id: MobCatSpace
-  parent: MobCat
+  parent: [MobCat, MobLyingDownOnEntity ] #SS220 Add lying down on entity
   description: Feline pet, prepared for the worst.
   components:
   - type: Sprite
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: spacecat
+    #SS220 Add lying down on entity begin
+    - map: ["enum.LyingVisuals.LyingDown"]
+      state: spacecat_rest
+      visible: false
+  - type: LyingDownOnBuckledEntity
+    offset: -0.1, 0
+    #SS220 Add lying down on entity end
   - type: DamageStateVisuals
     states:
       Alive:
@@ -3033,7 +3061,7 @@
 
 - type: entity
   name: kitten
-  parent: MobCat
+  parent: [ MobCat, MobLyingDownOnEntity ] #SS220 Add lying down on entity
   id: MobCatKitten
   description: Small and fluffy.
   components:
@@ -3041,6 +3069,11 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: kitten
+    #SS220 Add lying down on entity begin
+    - map: ["enum.LyingVisuals.LyingDown"]
+      state: kitten_rest
+      visible: false
+    #SS220 Add lying down on entity end
   - type: DamageStateVisuals
     states:
       Alive:
@@ -3388,6 +3421,9 @@
   - type: NpcFactionMember
     factions:
     - Passive
+  - type: HTN
+    rootTask:
+      task: RuminantCompound
 
 - type: entity
   name: diona nymph
@@ -3462,6 +3498,7 @@
     reformTime: 10
     popupText: diona-reform-attempt
     reformPrototype: MobDionaReformed
+  - type: IgnoreKudzu #ss220 kudzu nymph fix
 
 - type: entity
   parent: MobDionaNymph

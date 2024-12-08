@@ -3,6 +3,7 @@
   id: JobCaptain
   groups:
   - CaptainHead
+  - CAPHeadset #SS220-Law Department
   - CaptainNeck
   - CaptainJumpsuit
   - CaptainBackpack
@@ -72,7 +73,7 @@
   id: JobServiceWorker
   groups:
   - GroupTankHarness
-  - BartenderJumpsuit
+  - ServiceWorkerJumpsuit #SS220-Service Worker Loadout Fix
   - CommonBackpack
   - Glasses
   - Survival
@@ -110,6 +111,7 @@
   id: JobLawyer
   groups:
   - IAAGlasses #SS220-Two Floppa Iteration
+  - IAAHeadset #SS220-Law Department
   - GroupTankHarness
   - LawyerNeck
   - LawyerJumpsuit
@@ -146,6 +148,7 @@
   - CommonBackpack
   - JanitorOuterClothing
   - JanitorShoes #SS220-OrangeJanitor
+  - JanitorBelt #SS220-JunkRecyclesJanitor
   - Glasses
   - Survival
   - Trinkets
@@ -417,6 +420,7 @@
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
+  - SecurityGloves #SS220-tacsec loadout
   - SecurityShoes
   - SecurityPDA
   - SecurityBelt

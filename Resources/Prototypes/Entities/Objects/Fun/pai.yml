@@ -45,12 +45,8 @@
     stopSearchVerbPopup: pai-system-stopped-searching
   - type: Examiner
   - type: IntrinsicRadioReceiver
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Binary
   - type: ActiveRadio
     channels:
-    - Binary
     - Common
   - type: DoAfter
   - type: Actions
@@ -79,9 +75,13 @@
   - type: Vocal # SS220 borg emotes to PAI start
     sounds:
       Unsexed: UnisexSilicon # SS220 borg emotes to PAI end
+  - type: ChangeVoiceInContainer
+    whitelist:
+      components:
+        - SecretStash
 
 - type: entity
-  parent: [ PersonalAI, BaseSyndicateContraband]
+  parent: [ PersonalAI]
   id: SyndicatePersonalAI
   name: syndicate personal ai device
   description: Your Syndicate pal who's fun to be with!

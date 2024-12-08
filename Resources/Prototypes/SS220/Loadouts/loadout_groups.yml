@@ -17,11 +17,51 @@
   minLimit: 0
   loadouts:
   - CapOfficerCutlass
+
+- type: loadoutGroup
+  id: CAPHeadset
+  name: loadout-group-cap-headset
+  minLimit: 1
+  loadouts:
+  - CaptainHeadset
+  - CaptainHeadsetAlt
   # Капитан (Конец)
 #! Командование (Конец)
 
-#! Внутренние дела (Начало)
+#! Юридический (Начало)
+  # Магистрат
+- type: loadoutGroup
+  id: MagistrateHead
+  name: loadout-group-magistrate-head
+  hidden: true
+  loadouts:
+  - MagistratePwig
 
+- type: loadoutGroup
+  id: MagistrateJumpsuit
+  name: loadout-group-magistrate-jumpsuit
+  loadouts:
+  - LawyerJumpsuit
+  - LawyerJumpskirt
+  - LawyerJumpsuitBlue
+  - LawyerJumpskirtBlue
+  - LawyerJumpsuitGood
+  - LawyerJumpskirtGood
+
+- type: loadoutGroup
+  id: MagistrateOuterClothing
+  name: loadout-group-magistrate-outerclothing
+  hidden: true
+  loadouts:
+  - MagistrateRobesJudge
+
+- type: loadoutGroup
+  id: MagistrateHeadset
+  name: loadout-group-magistrate-headset
+  minLimit: 1
+  loadouts:
+  - MagistrateHeadset
+  - MagistrateHeadsetAlt
   # Агент Внутренних Дел (Начало)
 - type: loadoutGroup
   id: IAAHead
@@ -79,6 +119,14 @@
   name: loadout-group-iaa-backpack
   loadouts:
     - IAABackpackLeather
+
+- type: loadoutGroup
+  id: IAAHeadset
+  name: loadout-group-iaa-headset
+  minLimit: 1
+  loadouts:
+  - LawHeadset
+  - LawHeadsetAlt
   # Агент Внутренних Дел (Конец)
 
   # Адвокат (Начало)
@@ -115,7 +163,7 @@
   - BlueShieldArmorBulletproof
   - BlueShieldSRTCoat
   # Офицер "Синий Щит" (Конец)
-#! Внутренние дела (Конец)
+#! Юридический (Конец)
 
 #! Служба безопасности (Начало)
 
@@ -143,6 +191,7 @@
   loadouts:
   - GlassesSecurity
   - CyberGlassesSecurity
+  - GlassesBallistic
 
 - type: loadoutGroup
   id: DetectiveSecBackpack
@@ -152,6 +201,13 @@
     - SecuritySatchel
     - SecurityDuffel
     - DetectiveNoirSatchel
+  
+- type: loadoutGroup
+  id: SecurityGloves
+  name: loadout-group-security-gloves
+  minLimit: 0
+  loadouts:
+  - GlovesSecTactical
   # Офицер СБ (Конец)
 
   # Инструктор СБ (Начало)
@@ -173,6 +229,18 @@
   - SecurityBeret
   - SecurityHat
   - PilotCapCap
+
+- type: loadoutGroup
+  id: SecurityPilotOuterClothing
+  name: loadout-group-security-pilot-outerclothing
+  loadouts:
+  - ArmorVest
+  - ArmorVestSlim
+  - SecurityOfficerWintercoat
+  - CoatSecurityOvercoat
+  - SecBomber
+  - VestArmorSec
+  - CyberVestSecurity
   # Пилот (Конец)
 #! Служба безопасности (Конец)
 
@@ -420,6 +488,8 @@
   loadouts:
   - SeniorSciensistJumpsuit
   - SeniorSciensistJumpskirt
+  - SeniorSciensistJumpsuitAssociateProfessor #SS220-loadout-academy
+  - SeniorSciensistJumpskirtAssociateProfessor #SS220-loadout-academy
 
 - type: loadoutGroup
   id: SeniorSciensistOuterClothing
@@ -469,7 +539,7 @@
 
 #! Сервис (Начало)
 
-  # Ведущий сервисный работник (Начало)
+  # Сервисный администратор (Начало)
 - type: loadoutGroup
   id: HatSeniorService
   name: loadout-group-senior-service-head
@@ -483,7 +553,7 @@
   loadouts:
   - SeniorServiceJumpsuit
   - SeniorJumpskirtService
-  # Ведущий сервисный работник (Конец)
+  # Сервисный администратор (Конец)
 
   # Шеф-повар (Начало)
 - type: loadoutGroup
@@ -509,7 +579,7 @@
 - type: loadoutGroup
   id: MusicianShoes
   name: loadout-group-musician-shoes
-  minLimit: 0
+  # minLimit: 0
   loadouts:
   - MusicianBootsLaceup
   - BardShoes
@@ -568,7 +638,24 @@
   - ShoesColorPurple
   - JanitorGaloshes
   - JanitorOrangeShoes
+  - JanitorJRShoes
+
+- type: loadoutGroup
+  id: JanitorBelt
+  name: loadout-group-janitor-belt
+  loadouts:
+  - JanitorBaseBelt
+  - JanitorJRBelt #SS220-JRBelt
   # Уборщик (Конец)
+
+ # Сервисный работник (Начало)
+- type: loadoutGroup
+  id: ServiceWorkerJumpsuit
+  name: loadout-group-service-worker-jumpsuit
+  hidden: true
+  loadouts:
+  - ServiceWorkerWaiter
+  # Сервисный работник (Конец)
 
 #! Сервис (Конец)
 
