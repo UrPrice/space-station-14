@@ -2,28 +2,44 @@ name: Сообщить о проблеме с игровой картой
 description: Если заметили недочёты на игровых картах
 title: "[Проблема с картой] "
 labels: []
-assignees: []
+assignees:
+  - UrPrice
 body:
+  - type: markdown
+    id: markdown_with_multiline_content
+    value: |
+      ## Приветствую!
+      Эта страница замещает старый сбор фидбека по игровым картам. Теперь всё происходит гораздо проще,
+      вы всегда можете оставить свой фидбек на этой странице, использую одну и ту же форму фидбека.
+      Вам не нужно искать нужный тред в дискорде, чтобы сообщить о проблеме, так как теперь достаточно
+      выбрать карту из предложенных вариантов, либо указать, что ваша проблема не по теме карты.
+      Вы всё также можете прикрепить описание и изображение.
+    validations:
+      required: false
   - type: dropdown
+    id: Другое
     attributes:
       label: Выберите игровую карту
+      description: Из выпадающего списка выберите ту игровую карту, на которой вы столкнулись с проблемой. Если карта вам неизвестна или проблема связана с чем-либо другим, оставьте "Другое".
       options:
-        - label: Frankenstein
-          value: frankenstein
-        - label: Axioma
-          value: axioma
-        - label: Astro
-          value: astro
-        - label: Eclipse
-          value: eclipse
-        - label: Donuts
-          value: donuts
+        - Frankenstein
+        - Axioma
+        - Donuts
+        - Eclipse
+        - Astro
+        - Другое
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Опишите кратко о том, какую проблему вы обнаружили
-      placeholder: Например, "На карте Axioma отсутствует текстура в области X."
+      placeholder: Например, "На карте Axioma отсутствуют кулеры в юридическом отделе."
+    validations:
+      required: true
   - type: input
     attributes:
       label: Прикрепите изображение (если есть)
       description: Загрузите файл изображения, чтобы продемонстрировать проблему.
       placeholder: "Ссылка на изображение или путь к файлу"
+    validations:
+      required: false
