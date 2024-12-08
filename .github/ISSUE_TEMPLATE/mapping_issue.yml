@@ -1,0 +1,69 @@
+
+name: Сообщить о проблеме с игровой картой
+
+description: Если заметили недочёты на игровых картах
+
+title: "[Проблема с картой] "
+
+labels: []
+
+assignees: []
+
+body:
+
+  - type: dropdown
+
+    id: game_map
+
+    attributes:
+
+      label: Выберите игровую карту
+
+    options:
+
+      - label: "Map: Frankenstein"
+
+        value: frankenstein
+
+      - label: "Map: Axioma"
+
+        value: axioma
+
+      - label: "Map: Astro"
+
+        value: astro
+
+      - label: "Map: Eclipse"
+
+        value: eclipse
+
+      - label: "Map: Donuts"
+
+        value: donuts
+
+  - type: textarea
+
+    id: issue_description
+
+    attributes:
+
+      label: Опишите кратко о том, какую проблему вы обнаружили
+
+      placeholder: Например, "На карте Axioma отсутствует текстура в области X."
+
+      value: ""
+
+      validations:
+
+        required: true
+
+  - type: file
+
+    id: issue_image
+
+    attributes:
+
+      label: Прикрепите изображение (если есть)
+
+      required: false
+
