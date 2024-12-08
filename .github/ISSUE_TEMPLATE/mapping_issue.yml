@@ -18,16 +18,12 @@ body:
           value: eclipse
         - label: Donuts
           value: donuts
-    required: true
   - type: textarea
     attributes:
       label: Опишите кратко о том, какую проблему вы обнаружили
       placeholder: Например, "На карте Axioma отсутствует текстура в области X."
-    required: true
   - type: input
     attributes:
       label: Прикрепите изображение (если есть)
       description: Загрузите файл изображения, чтобы продемонстрировать проблему.
       placeholder: "Ссылка на изображение или путь к файлу"
-    required: false
-
