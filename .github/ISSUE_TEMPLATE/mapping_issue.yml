@@ -1,37 +1,33 @@
-name: "Сообщить о проблеме с игровой картой"
-description: "Если заметили недочёты на игровых картах"
-title: "Проблема с картой"
+name: Сообщить о проблеме с игровой картой
+description: Если заметили недочёты на игровых картах
+title: "[Проблема с картой] "
 labels: []
 assignees: []
 body:
   - type: dropdown
-    id: game_map
     attributes:
       label: Выберите игровую карту
-    options:
-      - label: Frankenstein
-        value: frankenstein
-      - label: Axioma
-        value: axioma
-      - label: Astro
-        value: astro
-      - label: Eclipse
-        value: eclipse
-      - label: Donuts
-        value: donuts
-
+      options:
+        - label: Frankenstein
+          value: frankenstein
+        - label: Axioma
+          value: axioma
+        - label: Astro
+          value: astro
+        - label: Eclipse
+          value: eclipse
+        - label: Donuts
+          value: donuts
+    required: true
   - type: textarea
-    id: issue_description
     attributes:
       label: Опишите кратко о том, какую проблему вы обнаружили
       placeholder: Например, "На карте Axioma отсутствует текстура в области X."
-      value: ""
-      validations:
-        required: true
-
-  - type: file
-    id: issue_image
+    required: true
+  - type: input
     attributes:
       label: Прикрепите изображение (если есть)
-      required: false
+      description: Загрузите файл изображения, чтобы продемонстрировать проблему.
+      placeholder: "Ссылка на изображение или путь к файлу"
+    required: false
 
