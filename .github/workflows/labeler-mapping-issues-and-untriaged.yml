@@ -15,7 +15,7 @@ jobs:
             const issueBody = context.payload.issue.body;
             const options = {
               'Frankenstein': {label: 'MI: Frankenstein', assignee: 'UrPrice' },
-              'Axioma': {label: 'MI: Axioma', assignee: 'UrPrice'},
+              'Axioma': {label: 'MI: Axioma', assignee: 'NightmareStalker'},
               'Donuts': {label: 'MI: Donuts', assignee: 'spo9k'},
               'Eclipse': {label: 'MI: Eclipse', assignee: 'AliceValestray'},
               'Astro': {label: 'MI: Astro', assignee: 'UrPrice'},
