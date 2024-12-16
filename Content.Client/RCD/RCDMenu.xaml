@@ -39,7 +39,6 @@
 
     <!-- Computer and machine frames -->
     <ui:RadialContainer Name="Electrical"  VerticalExpand="True" HorizontalExpand="True" Radius="64"/>
-
     <!-- Lighting -->
     <ui:RadialContainer Name="Lighting"  VerticalExpand="True" HorizontalExpand="True" Radius="64"/>
 
