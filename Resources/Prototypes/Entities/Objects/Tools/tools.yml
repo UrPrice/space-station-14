@@ -312,6 +312,15 @@
     - HVCable
     - CableTerminal
     - Deconstruct
+  # ss220 rcd upd bgn
+    - StraightPipe
+    - PipeFourway
+    - PipeTjunction
+    - PipeBend
+    - PassiveVent
+    - AirVent
+    - Scrubber
+  # ss220 rcd upd end
   - type: LimitedCharges
     maxCharges: 30
     charges: 30
