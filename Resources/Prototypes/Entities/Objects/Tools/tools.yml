@@ -293,6 +293,7 @@
   - type: RCD
     availablePrototypes:
     - WallSolid
+    - WallReinforced # ss220 rcd upd
     - FloorSteel
     - Plating
     - Catwalk
@@ -355,10 +356,10 @@
   suffix: AutoRecharge
   components:
   - type: LimitedCharges
-    maxCharges: 20
-    charges: 20
+    maxCharges: 30 # rcd upd
+    charges: 30 # rcd upd
   - type: AutoRecharge
-    rechargeDuration: 10
+    rechargeDuration: 5 # rcd upd
 
 - type: entity
   id: RCDExperimental
