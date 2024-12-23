@@ -102,5 +102,5 @@
     - type: StationMinimap
       minimapData: !type:StationMinimapData
         mapTexture: SS220/ViewableMaps/Frankenstein.png
-        originOffset: 110, 192
+        originOffset: 110, 181
         mapScale: 6.4
