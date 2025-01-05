@@ -80,6 +80,9 @@ public sealed class CCVars220
     public static readonly CVarDef<float> AfkTeleportToCryo =
         CVarDef.Create("afk.teleport_to_cryo", 1800f, CVar.SERVERONLY);
 
+    public static readonly CVarDef<float> AfkActivityMessageInterval =
+        CVarDef.Create("afk.activity_message_interval", 20f, CVar.CLIENTONLY | CVar.CHEAT);
+
     /// <summary>
     ///     Controls whether the server will deny any players that are not whitelisted in the Prime DB.
     /// </summary>

@@ -8,7 +8,7 @@
     - id: UnknownShuttleTravelingCuisine
     - id: UnknownShuttleDisasterEvacPod
     - id: UnknownShuttleHonki
-#SS220-LostSoulsRevive begin (hide non using shuttles)
+#SS220-NoUnknownShuttles begin
 #    - id: UnknownShuttleNTQuark
 #    - id: UnknownShuttleCruiser
 #    - id: UnknownShuttleCryptid
@@ -35,7 +35,8 @@
 #     - id: LoneOpsSpawn
 #     - id: UnknownShuttleManOWar
 #     - id: UnknownShuttleInstigator
-#SS220-LostSoulsRevive end
+#SS220-NoUnknownShuttles end
+
 
 # # Shuttle Game Rules
 
@@ -60,7 +61,7 @@
   id: UnknownShuttleCargoLost
   components:
   - type: StationEvent
-    maxOccurrences: 2 # should be the same as [copies] in shuttle_incoming_event.yml
+    maxOccurrences: 1 # should be the same as [copies] in shuttle_incoming_event.yml #SS220 Lost Souls Revive
   - type: LoadMapRule
     preloadedGrid: ShuttleCargoLost
 
@@ -70,7 +71,7 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-unknown-shuttle-incoming
-    maxOccurrences: 2 # should be the same as [copies] in shuttle_incoming_event.yml
+    maxOccurrences: 1 # should be the same as [copies] in shuttle_incoming_event.yml #SS220 Lost Souls Revive
   - type: LoadMapRule
     preloadedGrid: TravelingCuisine
 
@@ -80,7 +81,7 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-unknown-shuttle-incoming
-    maxOccurrences: 3 # should be the same as [copies] in shuttle_incoming_event.yml
+    maxOccurrences: 2 # should be the same as [copies] in shuttle_incoming_event.yml #SS220 Lost Souls Revive
   - type: LoadMapRule
     preloadedGrid: DisasterEvacPod
 
@@ -90,12 +91,12 @@
   id: UnknownShuttleHonki
   components:
   - type: StationEvent
-    startAnnouncement: station-event-unknown-shuttle-incoming #!!
+    startAnnouncement: station-event-unknown-shuttle-incoming #SS220 Lost Souls Revive
     weight: 2
   - type: LoadMapRule
     preloadedGrid: Honki
 
-# SS220-NoUnknownShuttles-Begin
+#SS220-NoUnknownShuttles begin
 # - type: entity
 #   parent: BaseUnknownShuttleRule
 #   id: UnknownShuttleSyndieEvacPod
