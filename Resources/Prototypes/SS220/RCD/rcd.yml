@@ -93,3 +93,78 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct1
+
+- type: rcd
+  id: DisposalPipe
+  category: Disposals
+  sprite: /Textures/SS220/Interface/Radial/RCD/conpipe-s.png
+  mode: ConstructObject
+  prototype: DisposalPipe
+  cost: 2
+  delay: 1
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: DisposalTrunk
+  category: Disposals
+  sprite: /Textures/SS220/Interface/Radial/RCD/conpipe-t.png
+  mode: ConstructObject
+  prototype: DisposalTrunk
+  cost: 2
+  delay: 1
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: DisposalJunction
+  category: Disposals
+  sprite: /Textures/SS220/Interface/Radial/RCD/conpipe-j1.png
+  mode: ConstructObject
+  prototype: DisposalJunction
+  cost: 2
+  delay: 1
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct1
+
+
+- type: rcd
+  id: DisposalJunctionFlipped
+  category: Disposals
+  sprite: /Textures/SS220/Interface/Radial/RCD/conpipe-j2.png
+  mode: ConstructObject
+  prototype: DisposalJunctionFlipped
+  cost: 2
+  delay: 1
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct1
+
+
+- type: rcd
+  id: DisposalYJunction
+  category: Disposals
+  sprite: /Textures/SS220/Interface/Radial/RCD/conpipe-y.png
+  mode: ConstructObject
+  prototype: DisposalYJunction
+  cost: 2
+  delay: 1
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct1
+
+
+- type: rcd
+  id: DisposalBend
+  category: Disposals
+  sprite: /Textures/SS220/Interface/Radial/RCD/conpipe-c.png
+  mode: ConstructObject
+  prototype: DisposalBend
+  cost: 2
+  delay: 1
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct1

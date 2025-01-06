@@ -320,6 +320,12 @@
     - PassiveVent
     - AirVent
     - Scrubber
+    - DisposalPipe
+    - DisposalTrunk
+    - DisposalJunction
+    - DisposalJunctionFlipped
+    - DisposalYJunction
+    - DisposalBend
   # ss220 rcd upd end
   - type: LimitedCharges
     maxCharges: 30
