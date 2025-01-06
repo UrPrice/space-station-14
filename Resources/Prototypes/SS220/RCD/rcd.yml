@@ -6,7 +6,7 @@
   prototype: WallReinforced
   cost: 10
   delay: 6
-  collisionMast: FullTileMask
+  collisionMask: FullTileMask
   rotation: Fixed
   fx: EffectRCDConstruct4
 
