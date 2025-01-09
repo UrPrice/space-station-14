@@ -120,7 +120,7 @@
   rules:
     - BasicStationEventScheduler
     - MeteorSwarmScheduler
-    # - SpaceTrafficControlEventScheduler
+    # - SpaceTrafficControlEventScheduler # SS220-NoUnknownShuttles
     - SpaceTrafficControlFriendlyEventScheduler # SS220-LostSouls
     - BasicRoundstartVariation
 
