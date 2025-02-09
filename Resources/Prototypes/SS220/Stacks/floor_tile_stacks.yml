@@ -915,3 +915,9 @@
   name: floor-oldconcrete-pavement-vertical
   spawn: FloorItemOldconcretePavementVertical
   maxCount: 30
+
+- type: stack
+  id: StackFloorTileItemTechmaint
+  name: floor-tech-maint-drain
+  spawn: FloorTileItemTechmaint
+  maxCount: 30

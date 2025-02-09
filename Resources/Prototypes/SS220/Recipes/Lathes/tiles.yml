@@ -1423,3 +1423,11 @@
   completetime: 1
   materials:
     Steel: 50
+
+- type: latheRecipe
+  id: TileFloorTileItemTechmaint
+  result: FloorTileItemTechmaint
+  category: Steel
+  completetime: 1
+  materials:
+    Steel: 50

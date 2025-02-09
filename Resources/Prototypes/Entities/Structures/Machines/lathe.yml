@@ -1655,6 +1655,7 @@
       - TileFloorGrayconcretePavementVertical
       - TileFloorOldconcretePavementHorizontal
       - TileFloorOldconcretePavementVertical
+      - TileFloorTileItemTechmaint
       #SS220-NewTiles-End
   #SS220-Sheetifier-rework-end
   - type: MaterialStorage

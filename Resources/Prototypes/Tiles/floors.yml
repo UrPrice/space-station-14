@@ -688,12 +688,7 @@
   id: FloorRockVault
   name: tiles-rock-floor
   sprite: /Textures/SS220/Tiles/rock_vault.png # SS220 Tiles Retexture
-  variants: 1
-#  placementVariants:
-#  - 1.0
-#  - 1.0
-#  - 1.0
-#  - 1.06
+  variants: 16
   placementVariants:
   - 1.0
   - 1.0
@@ -827,11 +822,6 @@
   name: tiles-bar-floor
   sprite: /Textures/SS220/Tiles/bar.png # SS220 Tiles Retexture
   variants: 1
-#  placementVariants:
-#  - 1.0
-#  - 1.0
-#  - 1.0
-#  - 1.0 # SS220 Tiles Retexture
 #  placementVariants:
 #  - 1.0
 #  - 1.0
@@ -1467,12 +1457,7 @@
   id: FloorAsphalt
   name: tiles-asphalt
   sprite: /Textures/Tiles/Planet/Concrete/asphalt.png
-  variants: 1
-#  placementVariants:
-#  - 1.0
-#  - 1.0
-#  - 1.0
-#  - 1.00
+  variants: 10
   placementVariants:
   - 1.0
   - 1.0
@@ -1572,12 +1557,7 @@
   id: FloorAsteroidSand
   name: tiles-asteroid-sand
   sprite: /Textures/Tiles/Asteroid/asteroid.png
-  variants: 1
-#  placementVariants:
-#  - 1.0
-#  - 1.0
-#  - 1.0
-#  - 1.03
+  variants: 13
   placementVariants:
   - 0.8
   - 0.0166 #Should be roughly 20%.... I think??? I don't know dude, I'm just a YAML monkey.
@@ -1614,12 +1594,7 @@
   id: FloorAsteroidSandRed
   name: tiles-asteroid-sand
   sprite: /Textures/Tiles/Asteroid/asteroid_red.png
-  variants: 1
-#  placementVariants:
-#  - 1.0
-#  - 1.0
-#  - 1.0
-#  - 1.03
+  variants: 13
   placementVariants:
   - 0.8
   - 0.0166
@@ -1657,12 +1632,7 @@
   id: FloorAsteroidIronsand
   name: tiles-asteroid-ironsand
   sprite: /Textures/Tiles/Asteroid/ironsand.png
-  variants: 1
-#  placementVariants:
-#  - 1.0
-#  - 1.0
-#  - 1.0
-#  - 1.05
+  variants: 15
   placementVariants:
   - 1.0
   - 1.0
