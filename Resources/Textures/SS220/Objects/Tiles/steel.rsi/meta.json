@@ -35,7 +35,7 @@
       "name": "steel-mixed-pavement-vertical"
     },
     {
-      "name": "steel-mixed-pavement"
+      "name": "steel-mixed-pavement-horizontal"
     },
     {
       "name": "steel-mono"
@@ -59,7 +59,7 @@
       "name": "steel-shifted-mini-vertical"
     },
     {
-      "name": "steel-shifted-mini"
+      "name": "steel-shifted-mini-horizontal"
     },
     {
       "name": "steel"

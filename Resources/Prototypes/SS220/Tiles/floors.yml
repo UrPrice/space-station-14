@@ -2227,3 +2227,112 @@
   collection: FootstepFloor
   itemDrop: FloorItemWhiteShiftedMiniVertical
   heatCapacity: 10000
+
+
+- type: tile
+  id: FloorConcretePavementHorizontal
+  name: floor-concrete-pavement-horizontal
+  sprite: /Textures/SS220/Tiles/concrete_pavement_horizontal.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+  collection: FootstepFloor
+  itemDrop: FloorItemConcretePavementHorizontal
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorConcretePavementVertical
+  name: floor-concrete-pavement-vertical
+  sprite: /Textures/SS220/Tiles/concrete_pavement_vertical.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+  collection: FootstepFloor
+  itemDrop: FloorItemConcretePavementVertical
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorGrayconcretePavementHorizontal
+  name: floor-grayconcrete-pavement-horizontal
+  sprite: /Textures/SS220/Tiles/grayconcrete_pavement_horizontal.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+  collection: FootstepFloor
+  itemDrop: FloorItemGrayconcretePavementHorizontal
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorGrayconcretePavementVertical
+  name: floor-grayconcrete-pavement-vertical
+  sprite: /Textures/SS220/Tiles/grayconcrete_pavement_vertical.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+  collection: FootstepFloor
+  itemDrop: FloorItemGrayconcretePavementVertical
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorOldconcretePavementHorizontal
+  name: floor-oldconcrete-pavement-horizontal
+  sprite: /Textures/SS220/Tiles/oldconcrete_pavement_horizontal.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+  collection: FootstepFloor
+  itemDrop: FloorItemOldconcretePavementHorizontal
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorOldconcretePavementVertical
+  name: floor-oldconcrete-pavement-vertical
+  sprite: /Textures/SS220/Tiles/oldconcrete_pavement_vertical.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+  collection: FootstepFloor
+  itemDrop: FloorItemOldconcretePavementVertical
+  heatCapacity: 10000

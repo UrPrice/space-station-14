@@ -1649,6 +1649,12 @@
       - TileFloorWhiteShiftedEightBricks
       - TileFloorWhiteShiftedMiniHorizontal
       - TileFloorWhiteShiftedMiniVertical
+      - TileFloorConcretePavementHorizontal
+      - TileFloorConcretePavementVertical
+      - TileFloorGrayconcretePavementHorizontal
+      - TileFloorGrayconcretePavementVertical
+      - TileFloorOldconcretePavementHorizontal
+      - TileFloorOldconcretePavementVertical
       #SS220-NewTiles-End
   #SS220-Sheetifier-rework-end
   - type: MaterialStorage

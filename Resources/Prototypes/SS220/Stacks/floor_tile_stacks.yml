@@ -879,3 +879,39 @@
   name: floor-white-shifted-mini-vertical
   spawn: FloorItemWhiteShiftedMiniVertical
   maxCount: 30
+
+- type: stack
+  id: FloorItemStacksConcretePavementHorizontal
+  name: floor-concrete-pavement-horizontal
+  spawn: FloorItemConcretePavementHorizontal
+  maxCount: 30
+
+- type: stack
+  id: FloorItemStacksConcretePavementVertical
+  name: floor-concrete-pavement-vertical
+  spawn: FloorItemConcretePavementVertical
+  maxCount: 30
+
+- type: stack
+  id: FloorItemStacksGrayconcretePavementHorizontal
+  name: floor-grayconcrete-pavement-horizontal
+  spawn: FloorItemGrayconcretePavementHorizontal
+  maxCount: 30
+
+- type: stack
+  id: FloorItemStacksGrayconcretePavementVertical
+  name: floor-grayconcrete-pavement-vertical
+  spawn: FloorItemGrayconcretePavementVertical
+  maxCount: 30
+
+- type: stack
+  id: FloorItemStacksOldconcretePavementHorizontal
+  name: floor-oldconcrete-pavement-horizontal
+  spawn: FloorItemOldconcretePavementHorizontal
+  maxCount: 30
+
+- type: stack
+  id: FloorItemStacksOldconcretePavementVertical
+  name: floor-oldconcrete-pavement-vertical
+  spawn: FloorItemOldconcretePavementVertical
+  maxCount: 30

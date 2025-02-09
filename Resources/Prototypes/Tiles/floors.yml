@@ -3,6 +3,11 @@
   name: tiles-steel-floor
   sprite: /Textures/SS220/Tiles/steel.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -16,6 +21,11 @@
   name: tiles-steel-floor-checker-light
   sprite: /Textures/SS220/Tiles/cafeteria.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -29,6 +39,11 @@
   name: tiles-steel-floor-checker-dark
   sprite: /Textures/SS220/Tiles/checker_dark.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -42,6 +57,11 @@
   name: tiles-steel-floor-mini
   sprite: /Textures/SS220/Tiles/steel_mini.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -55,6 +75,11 @@
   name: tiles-steel-floor-pavement
   sprite: /Textures/SS220/Tiles/steel_pavement.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -68,6 +93,11 @@
   name: tiles-steel-floor-diagonal
   sprite: /Textures/SS220/Tiles/steel_diagonal.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -93,6 +123,11 @@
   name: tiles-steel-floor-mono
   sprite: /Textures/SS220/Tiles/steel_mono.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -106,6 +141,11 @@
   name: tiles-steel-floor-pavement-vertical
   sprite: /Textures/SS220/Tiles/steel_pavement_vertical.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -119,6 +159,11 @@
   name: tiles-steel-floor-herringbone
   sprite: /Textures/SS220/Tiles/steel_herringbone.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -132,6 +177,11 @@
   name: tiles-steel-floor-diagonal-mini
   sprite: /Textures/SS220/Tiles/steel_diagonal_mini.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -169,6 +219,11 @@
   name: tiles-plastic-floor
   sprite: /Textures/SS220/Tiles/plastic.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -202,6 +257,11 @@
   name: tiles-white-floor
   sprite: /Textures/SS220/Tiles/white.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -215,6 +275,11 @@
   name: tiles-white-floor-mini
   sprite: /Textures/SS220/Tiles/white_mini.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -228,6 +293,11 @@
   name: tiles-white-floor-pavement
   sprite: /Textures/SS220/Tiles/white_pavement.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -241,6 +311,11 @@
   name: tiles-white-floor-diagonal
   sprite: /Textures/SS220/Tiles/white_diagonal.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -266,6 +341,11 @@
   name: tiles-white-floor-mono
   sprite: /Textures/SS220/Tiles/white_mono.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -279,6 +359,11 @@
   name: tiles-white-floor-pavement-vertical
   sprite: /Textures/SS220/Tiles/white_pavement_vertical.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -292,6 +377,11 @@
   name: tiles-white-floor-herringbone
   sprite: /Textures/SS220/Tiles/white_herringbone.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -305,6 +395,11 @@
   name: tiles-white-floor-diagonal-mini
   sprite: /Textures/SS220/Tiles/white_diagonal_mini.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -318,6 +413,11 @@
   name: tiles-plastic-white-floor
   sprite: /Textures/SS220/Tiles/white_plastic.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -331,6 +431,11 @@
   name: tiles-dark-floor
   sprite: /Textures/SS220/Tiles/dark.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -344,6 +449,11 @@
   name: tiles-dark-floor-mini
   sprite: /Textures/SS220/Tiles/dark_mini.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -357,6 +467,11 @@
   name: tiles-dark-floor-pavement
   sprite: /Textures/SS220/Tiles/dark_pavement.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -370,6 +485,11 @@
   name: tiles-dark-floor-diagonal
   sprite: /Textures/SS220/Tiles/dark_diagonal.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -395,6 +515,11 @@
   name: tiles-dark-floor-mono
   sprite: /Textures/SS220/Tiles/dark_mono.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -408,6 +533,11 @@
   name: tiles-dark-floor-pavement-vertical
   sprite: /Textures/SS220/Tiles/dark_pavement_vertical.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -421,6 +551,11 @@
   name: tiles-dark-floor-herringbone
   sprite: /Textures/SS220/Tiles/dark_herringbone.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -434,6 +569,11 @@
   name: tiles-dark-floor-diagonal-mini
   sprite: /Textures/SS220/Tiles/dark_diagonal_mini.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -447,6 +587,11 @@
   name: tiles-plastic-dark-floor
   sprite: /Textures/SS220/Tiles/dark_plastic.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -543,7 +688,12 @@
   id: FloorRockVault
   name: tiles-rock-floor
   sprite: /Textures/SS220/Tiles/rock_vault.png # SS220 Tiles Retexture
-  variants: 16
+  variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.06
   placementVariants:
   - 1.0
   - 1.0
@@ -586,6 +736,11 @@
   name: tiles-lime-floor
   sprite: /Textures/SS220/Tiles/lime.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -672,6 +827,16 @@
   name: tiles-bar-floor
   sprite: /Textures/SS220/Tiles/bar.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0 # SS220 Tiles Retexture
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1197,6 +1362,11 @@
   name: tiles-glass-floor
   sprite: /Textures/SS220/Tiles/glass.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1210,6 +1380,11 @@
   name: tiles-reinforced-glass-floor
   sprite: /Textures/SS220/Tiles/rglass.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1223,6 +1398,11 @@
   name: tiles-metal-foam
   sprite: /Textures/Tiles/foammetal.png
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   placementVariants:
   - 1.0
   baseTurf: Plating
@@ -1287,7 +1467,12 @@
   id: FloorAsphalt
   name: tiles-asphalt
   sprite: /Textures/Tiles/Planet/Concrete/asphalt.png
-  variants: 10
+  variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.00
   placementVariants:
   - 1.0
   - 1.0
@@ -1387,7 +1572,12 @@
   id: FloorAsteroidSand
   name: tiles-asteroid-sand
   sprite: /Textures/Tiles/Asteroid/asteroid.png
-  variants: 13
+  variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.03
   placementVariants:
   - 0.8
   - 0.0166 #Should be roughly 20%.... I think??? I don't know dude, I'm just a YAML monkey.
@@ -1424,7 +1614,12 @@
   id: FloorAsteroidSandRed
   name: tiles-asteroid-sand
   sprite: /Textures/Tiles/Asteroid/asteroid_red.png
-  variants: 13
+  variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.03
   placementVariants:
   - 0.8
   - 0.0166
@@ -1462,7 +1657,12 @@
   id: FloorAsteroidIronsand
   name: tiles-asteroid-ironsand
   sprite: /Textures/Tiles/Asteroid/ironsand.png
-  variants: 15
+  variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.05
   placementVariants:
   - 1.0
   - 1.0
@@ -1584,6 +1784,11 @@
   name: tiles-techmaint3-floor
   sprite: /Textures/SS220/Tiles/grating_maint.png # SS220 Tiles Retexture
   variants: 1
+#  placementVariants:
+#  - 1.0
+#  - 1.0
+#  - 1.0
+#  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]

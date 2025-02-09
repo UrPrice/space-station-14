@@ -1375,3 +1375,51 @@
   completetime: 1
   materials:
     Steel: 50
+
+- type: latheRecipe
+  id: TileFloorConcretePavementHorizontal
+  result: FloorItemConcretePavementHorizontal
+  category: Steel
+  completetime: 1
+  materials:
+    Steel: 50
+
+- type: latheRecipe
+  id: TileFloorConcretePavementVertical
+  result: FloorItemConcretePavementVertical
+  category: Steel
+  completetime: 1
+  materials:
+    Steel: 50
+
+- type: latheRecipe
+  id: TileFloorGrayconcretePavementHorizontal
+  result: FloorItemGrayconcretePavementHorizontal
+  category: Steel
+  completetime: 1
+  materials:
+    Steel: 50
+
+- type: latheRecipe
+  id: TileFloorGrayconcretePavementVertical
+  result: FloorItemGrayconcretePavementVertical
+  category: Steel
+  completetime: 1
+  materials:
+    Steel: 50
+
+- type: latheRecipe
+  id: TileFloorOldconcretePavementHorizontal
+  result: FloorItemOldconcretePavementHorizontal
+  category: Steel
+  completetime: 1
+  materials:
+    Steel: 50
+
+- type: latheRecipe
+  id: TileFloorOldconcretePavementVertical
+  result: FloorItemOldconcretePavementVertical
+  category: Steel
+  completetime: 1
+  materials:
+    Steel: 50

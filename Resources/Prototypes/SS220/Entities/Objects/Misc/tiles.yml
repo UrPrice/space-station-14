@@ -1431,10 +1431,10 @@
   components:
   - type: Sprite
     sprite: SS220/Objects/Tiles/mining.rsi
-    state: mining-grating-directed-vertical
+    state: mining-grating-directed-horizontal
   - type: Item
     sprite: SS220/Objects/Tiles/mining.rsi
-    state: mining-grating-directed-vertical
+    state: mining-grating-directed-horizontal
   - type: FloorTile
     outputs:
       - Plating
@@ -1720,10 +1720,10 @@
   components:
   - type: Sprite
     sprite: SS220/Objects/Tiles/rock-vault.rsi
-    state: rock-vault-pavement-horizontal
+    state: rock-vault-pavement
   - type: Item
     sprite: SS220/Objects/Tiles/rock-vault.rsi
-    state: rock-vault-pavement-horizontal
+    state: rock-vault-pavement
   - type: FloorTile
     outputs:
       - Plating
@@ -2127,10 +2127,10 @@
   id: FloorItemSteelMaintDrainHorizontal
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-drain-horizontal
   - type: Item
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-drain-horizontal
   - type: FloorTile
     outputs:
@@ -2144,10 +2144,10 @@
   id: FloorItemSteelMaintDrainMiddle
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-drain-middle
   - type: Item
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-drain-middle
   - type: FloorTile
     outputs:
@@ -2161,10 +2161,10 @@
   id: FloorItemSteelMaintDrainVertical
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-drain-vertical
   - type: Item
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-drain-vertical
   - type: FloorTile
     outputs:
@@ -2178,10 +2178,10 @@
   id: FloorItemSteelMaintHorizontal
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-horizontal
   - type: Item
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-horizontal
   - type: FloorTile
     outputs:
@@ -2195,10 +2195,10 @@
   id: FloorItemSteelMaintMini
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-mini
   - type: Item
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-mini
   - type: FloorTile
     outputs:
@@ -2212,10 +2212,10 @@
   id: FloorItemSteelMaintVertical
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-vertical
   - type: Item
-    sprite: SS220/Objects/Tiles/steel.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
     state: steel-maint-vertical
   - type: FloorTile
     outputs:
@@ -2376,6 +2376,23 @@
       - FloorTechMaintMini
   - type: Stack
     stackType: FloorItemStacksTechMaintMini
+
+- type: entity
+  name: floor-tech-maint-middle
+  id: FloorItemTechMaintMiddle
+  components:
+  - type: Sprite
+    sprite: SS220/Objects/Tiles/tech-maint.rsi
+    state: tech-maint-middle
+  - type: Item
+    sprite: SS220/Objects/Tiles/tech-maint.rsi
+    state: tech-maint-middle
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorTechMaintMiddle
+  - type: Stack
+    stackType: FloorItemStacksTechMaintMiddle
 
 - type: entity
   name: floor-tech-maint-mono
@@ -2563,3 +2580,106 @@
       - FloorWhiteShiftedMiniVertical
   - type: Stack
     stackType: FloorItemStacksWhiteShiftedMiniVertical
+
+
+- type: entity
+  name: floor-concrete-pavement-horizontal
+  id: FloorItemConcretePavementHorizontal
+  components:
+  - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: concrete-pavement-horizontal
+  - type: Item
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: concrete-pavement-horizontal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorConcretePavementHorizontal
+  - type: Stack
+    stackType: FloorItemStacksConcretePavementHorizontal
+
+- type: entity
+  name: floor-concrete-pavement-vertical
+  id: FloorItemConcretePavementVertical
+  components:
+  - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: concrete-pavement-vertical
+  - type: Item
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: concrete-pavement-vertical
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorConcretePavementVertical
+  - type: Stack
+    stackType: FloorItemStacksConcretePavementVertical
+
+- type: entity
+  name: floor-grayconcrete-pavement-horizontal
+  id: FloorItemGrayconcretePavementHorizontal
+  components:
+  - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: grayconcrete-pavement-horizontal
+  - type: Item
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: grayconcrete-pavement-horizontal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorGrayconcretePavementHorizontal
+  - type: Stack
+    stackType: FloorItemStacksGrayconcretePavementHorizontal
+
+- type: entity
+  name: floor-grayconcrete-pavement-vertical
+  id: FloorItemGrayconcretePavementVertical
+  components:
+  - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: grayconcrete-pavement-vertical
+  - type: Item
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: grayconcrete-pavement-vertical
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorGrayconcretePavementVertical
+  - type: Stack
+    stackType: FloorItemStacksGrayconcretePavementVertical
+
+- type: entity
+  name: floor-oldconcrete-pavement-horizontal
+  id: FloorItemOldconcretePavementHorizontal
+  components:
+  - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: oldconcrete-pavement-horizontal
+  - type: Item
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: oldconcrete-pavement-horizontal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorOldconcretePavementHorizontal
+  - type: Stack
+    stackType: FloorItemStacksOldconcretePavementHorizontal
+
+- type: entity
+  name: floor-oldconcrete-pavement-vertical
+  id: FloorItemOldconcretePavementVertical
+  components:
+  - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: oldconcrete-pavement-vertical
+  - type: Item
+    sprite: SS220/Objects/Tiles/concrete.rsi
+    state: oldconcrete-pavement-vertical
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorOldconcretePavementVertical
+  - type: Stack
+    stackType: FloorItemStacksOldconcretePavementVertical

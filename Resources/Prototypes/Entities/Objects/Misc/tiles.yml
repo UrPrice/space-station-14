@@ -535,7 +535,8 @@
   id: FloorTileItemTechmaint
   components:
   - type: Sprite
-    state: techfloor
+    sprite: SS220/Objects/Tiles/tech-maint.rsi
+    state: tech-maint
   - type: Item
     heldPrefix: dark
   - type: FloorTile
@@ -656,6 +657,7 @@
   id: FloorTileItemRockVault
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/rock-vault.rsi
     state: rockvault
   - type: Item
     heldPrefix: steel
@@ -706,6 +708,7 @@
   id: FloorTileItemMining
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/mining.rsi # SS220 Resprite Tiles
     state: mining
   - type: Item
     heldPrefix: mining
@@ -722,7 +725,8 @@
   id: FloorTileItemMiningDark
   components:
   - type: Sprite
-    state: miningdark
+    sprite: SS220/Objects/Tiles/mining.rsi # SS220 Resprite Tiles
+    state: mining-dark
   - type: Item
     heldPrefix: miningdark
   - type: FloorTile
@@ -738,7 +742,8 @@
   id: FloorTileItemMiningLight
   components:
   - type: Sprite
-    state: mininglight
+    sprite: SS220/Objects/Tiles/mining.rsi # SS220 Resprite Tiles
+    state: mining-light
   - type: Item
     heldPrefix: mininglight
   - type: FloorTile
@@ -889,6 +894,7 @@
   name: concrete tile
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
     state: concrete
   - type: Item
     heldPrefix: generic
@@ -905,6 +911,7 @@
   id: FloorTileItemConcreteMono
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
     state: concrete-mono
   - type: FloorTile
     outputs:
@@ -919,7 +926,8 @@
   id: FloorTileItemConcreteSmooth
   components:
   - type: Sprite
-    state: concrete-smooth
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
+    state: concrete-mono
   - type: FloorTile
     outputs:
       - Plating
@@ -933,6 +941,7 @@
   name: gray concrete tile
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
     state: grayconcrete
   - type: Item
     heldPrefix: generic
@@ -949,6 +958,7 @@
   id: FloorTileItemGrayConcreteMono
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
     state: grayconcrete-mono
   - type: FloorTile
     outputs:
@@ -963,7 +973,8 @@
   id: FloorTileItemGrayConcreteSmooth
   components:
   - type: Sprite
-    state: grayconcrete-smooth
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
+    state: grayconcrete-mono
   - type: FloorTile
     outputs:
       - Plating
@@ -977,6 +988,7 @@
   name: old concrete tile
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
     state: oldconcrete
   - type: Item
     heldPrefix: generic
@@ -993,6 +1005,7 @@
   id: FloorTileItemOldConcreteMono
   components:
   - type: Sprite
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
     state: oldconcrete-mono
   - type: FloorTile
     outputs:
@@ -1007,7 +1020,8 @@
   id: FloorTileItemOldConcreteSmooth
   components:
   - type: Sprite
-    state: oldconcrete-smooth
+    sprite: SS220/Objects/Tiles/concrete.rsi # SS220 Resprite Tiles
+    state: oldconcrete-mono
   - type: FloorTile
     outputs:
       - Plating
@@ -1465,7 +1479,8 @@
   id: FloorTileItemSteelMaint
   components:
   - type: Sprite
-    state: steelmaintfloor
+    sprite: SS220/Objects/Tiles/steel-maint.rsi
+    state: steel-maint
   - type: Item
     heldPrefix: steel
   - type: FloorTile
@@ -1481,7 +1496,8 @@
   id: FloorTileItemGratingMaint
   components:
   - type: Sprite
-    state: gratingmaintfloor
+    sprite: SS220/Objects/Tiles/grating.rsi
+    state: grating-maint
   - type: Item
     heldPrefix: steel
   - type: FloorTile

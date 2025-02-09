@@ -1,9 +1,9 @@
 ## SS220 Migration and renaming
 
-tiles-space = [0] космос
-tiles-plating = [0] покрытие
-tiles-lattice = [0] решётка
-tiles-lattice-train = [0] решётка поезда
+tiles-space = [_Частое] космос
+tiles-plating = [_Частое] покрытие
+tiles-lattice = [_Частое] решётка
+tiles-lattice-train = [_Частое] решётка поезда
 
 tiles-snow = [Природа] снег
 tiles-snow-plating = [Природа] снежный пол
