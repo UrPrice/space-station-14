@@ -528,24 +528,25 @@
 #  - type: Construction #SS220-Sheetifier-Rework
 #    graph: TileWood
 #    node: woodtile
-
-- type: entity
-  name: techmaint floor
-  parent: FloorTileItemBase
-  id: FloorTileItemTechmaint
-  components:
-  - type: Sprite
-    sprite: SS220/Objects/Tiles/tech-maint.rsi
-    state: tech-maint
-  - type: Item
-    heldPrefix: dark
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorTechMaint
-  - type: Stack
-    stackType: FloorTileTechmaint
-
+#   ## SS220 Tile Respriting bgn
+# - type: entity
+#   name: techmaint floor
+#   parent: FloorTileItemBase
+#   id: FloorTileItemTechmaint
+#   components:
+#   - type: Sprite
+#     sprite: SS220/Objects/Tiles/tech-maint.rsi
+#     state: tech-maint
+#   - type: Item
+#     heldPrefix: dark
+#   - type: FloorTile
+#     outputs:
+#       - Plating
+#       - FloorTechMaint
+#   - type: Stack
+#     stackType: FloorTileTechmaint
+#   ## SS220 Tile Respriting end
+#
 # TODO add a catwalk tile item once tile smoothing is supported
 
 - type: entity
