@@ -2383,10 +2383,10 @@
   components:
   - type: Sprite
     sprite: SS220/Objects/Tiles/tech-maint.rsi
-    state: tech-maint-middle
+    state: tech-maint-drain-middle
   - type: Item
     sprite: SS220/Objects/Tiles/tech-maint.rsi
-    state: tech-maint-middle
+    state: tech-maint-drain-middle
   - type: FloorTile
     outputs:
       - Plating
