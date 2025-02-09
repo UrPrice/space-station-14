@@ -2429,8 +2429,8 @@
     stackType: FloorItemStacksTechMaintVertical
 
 - type: entity
-  name: floor-tech-maint-drain
-  id: FloorTileItemTechmaint
+  name: floor-tech-maint-drain-middle
+  id: FloorItemTechMainDrainMiddle
   components:
   - type: Sprite
     sprite: SS220/Objects/Tiles/tech-maint.rsi
@@ -2441,9 +2441,9 @@
   - type: FloorTile
     outputs:
       - Plating
-      - FloorTechMaintmiddle
+      - FloorTechMaintDrainMiddle
   - type: Stack
-    stackType: StackFloorTileItemTechmaint
+    stackType: StackFloorItemTechMainDrain
 
 - type: entity
   name: floor-white-california

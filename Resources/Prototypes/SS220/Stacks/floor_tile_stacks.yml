@@ -917,7 +917,7 @@
   maxCount: 30
 
 - type: stack
-  id: StackFloorTileItemTechmaint
-  name: floor-tech-maint-drain
-  spawn: FloorTileItemTechmaint
+  id: StackFloorItemTechMainDrain
+  name: floor-tech-maint-drain-middle
+  spawn: FloorItemTechMainDrainMiddle
   maxCount: 30

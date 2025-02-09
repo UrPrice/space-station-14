@@ -1425,8 +1425,8 @@
     Steel: 50
 
 - type: latheRecipe
-  id: TileFloorTileItemTechmaint
-  result: FloorTileItemTechmaint
+  id: TileFloorItemTechMainDrainMiddle
+  result: FloorItemTechMainDrain
   category: Steel
   completetime: 1
   materials:
