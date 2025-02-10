@@ -2378,23 +2378,6 @@
     stackType: FloorItemStacksTechMaintMini
 
 - type: entity
-  name: floor-tech-maint-middle
-  id: FloorItemTechMaintMiddle
-  components:
-  - type: Sprite
-    sprite: SS220/Objects/Tiles/tech-maint.rsi
-    state: tech-maint-drain-middle
-  - type: Item
-    sprite: SS220/Objects/Tiles/tech-maint.rsi
-    state: tech-maint-drain-middle
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorTechMaintMiddle
-  - type: Stack
-    stackType: FloorItemStacksTechMaintMiddle
-
-- type: entity
   name: floor-tech-maint-mono
   id: FloorItemTechMaintMono
   components:
