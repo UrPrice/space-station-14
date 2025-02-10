@@ -1038,7 +1038,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkCalifornia
   heatCapacity: 10000
 
@@ -1050,7 +1050,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkEightBricks
   heatCapacity: 10000
 
@@ -1062,7 +1062,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkMixedBricks
   heatCapacity: 10000
 
@@ -1074,7 +1074,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkMixedBricksMini
   heatCapacity: 10000
 
@@ -1086,7 +1086,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkMixedPavementHorizontal
   heatCapacity: 10000
 
@@ -1098,7 +1098,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkMixedPavementVertical
   heatCapacity: 10000
 
@@ -1110,7 +1110,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkShiftedEightBricks
   heatCapacity: 10000
 
@@ -1122,7 +1122,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkShiftedMiniHorizontal
   heatCapacity: 10000
 
@@ -1134,7 +1134,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemDarkShiftedMiniVertical
   heatCapacity: 10000
 
@@ -1146,7 +1146,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemFreezerHorizontal
   heatCapacity: 10000
 
@@ -1158,7 +1158,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemFreezerMini
   heatCapacity: 10000
 
@@ -1170,7 +1170,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemFreezerMiniHorizontal
   heatCapacity: 10000
 
@@ -1182,7 +1182,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemFreezerMiniVertical
   heatCapacity: 10000
 
@@ -1194,7 +1194,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemFreezerMono
   heatCapacity: 10000
 
@@ -1206,7 +1206,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemFreezerVertical
   heatCapacity: 10000
 
@@ -1218,7 +1218,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGratingMaintDrainHorizontal
   heatCapacity: 10000
 
@@ -1230,7 +1230,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGratingMaintDrainMiddle
   heatCapacity: 10000
 
@@ -1242,7 +1242,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGratingMaintDrainVertical
   heatCapacity: 10000
 
@@ -1254,7 +1254,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGratingMaintHorizontal
   heatCapacity: 10000
 
@@ -1266,7 +1266,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGratingMaintMini
   heatCapacity: 10000
 
@@ -1278,7 +1278,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGratingMaintMono
   heatCapacity: 10000
 
@@ -1290,7 +1290,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGratingMaintVertical
   heatCapacity: 10000
 
@@ -1302,7 +1302,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningDarkGratingDirectedHorizontal
   heatCapacity: 10000
 
@@ -1314,7 +1314,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningDarkGratingDirectedVertical
   heatCapacity: 10000
 
@@ -1326,7 +1326,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningDarkGratingHorizontal
   heatCapacity: 10000
 
@@ -1338,7 +1338,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningDarkGratingMiddle
   heatCapacity: 10000
 
@@ -1350,7 +1350,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningDarkGratingVertical
   heatCapacity: 10000
 
@@ -1362,7 +1362,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningDarkMono
   heatCapacity: 10000
 
@@ -1374,7 +1374,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningDarkReinforced
   heatCapacity: 10000
 
@@ -1386,7 +1386,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningGratingDirectedHorizontal
   heatCapacity: 10000
 
@@ -1398,7 +1398,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningGratingDirectedVertical
   heatCapacity: 10000
 
@@ -1410,7 +1410,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningGratingHorizontal
   heatCapacity: 10000
 
@@ -1422,7 +1422,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningGratingMiddle
   heatCapacity: 10000
 
@@ -1434,7 +1434,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningGratingVertical
   heatCapacity: 10000
 
@@ -1446,7 +1446,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningLightGratingDirectedHorizontal
   heatCapacity: 10000
 
@@ -1458,7 +1458,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningLightGratingDirectedVertical
   heatCapacity: 10000
 
@@ -1470,7 +1470,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningLightGratingHorizontal
   heatCapacity: 10000
 
@@ -1482,7 +1482,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningLightGratingMiddle
   heatCapacity: 10000
 
@@ -1494,7 +1494,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningLightGratingVertical
   heatCapacity: 10000
 
@@ -1506,7 +1506,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningLightMono
   heatCapacity: 10000
 
@@ -1518,7 +1518,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningLightReinforced
   heatCapacity: 10000
 
@@ -1530,7 +1530,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningMono
   heatCapacity: 10000
 
@@ -1542,7 +1542,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemMiningReinforced
   heatCapacity: 10000
 
@@ -1560,7 +1560,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemRockVaultHerringbone
   heatCapacity: 10000
 
@@ -1578,7 +1578,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemRockVaultHorizontal
   heatCapacity: 10000
 
@@ -1596,7 +1596,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemRockVaultMini
   heatCapacity: 10000
 
@@ -1612,7 +1612,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemRockVaultMono
   heatCapacity: 10000
 
@@ -1630,7 +1630,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemRockVaultPavementHorizontal
   heatCapacity: 10000
 
@@ -1648,7 +1648,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemRockVaultVertical
   heatCapacity: 10000
 
@@ -1660,7 +1660,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitary
   heatCapacity: 10000
 
@@ -1672,7 +1672,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryDark
   heatCapacity: 10000
 
@@ -1684,7 +1684,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryDarkHorizontal
   heatCapacity: 10000
 
@@ -1696,7 +1696,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryDarkMini
   heatCapacity: 10000
 
@@ -1708,7 +1708,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryDarkMiniHorizontal
   heatCapacity: 10000
 
@@ -1720,7 +1720,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryDarkMiniVertical
   heatCapacity: 10000
 
@@ -1732,7 +1732,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryDarkMono
   heatCapacity: 10000
 
@@ -1744,7 +1744,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryDarkVertical
   heatCapacity: 10000
 
@@ -1756,7 +1756,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryHorizontal
   heatCapacity: 10000
 
@@ -1768,7 +1768,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryMini
   heatCapacity: 10000
 
@@ -1780,7 +1780,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryMiniHorizontal
   heatCapacity: 10000
 
@@ -1792,7 +1792,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryMiniVertical
   heatCapacity: 10000
 
@@ -1804,7 +1804,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryMono
   heatCapacity: 10000
 
@@ -1816,7 +1816,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSanitaryVertical
   heatCapacity: 10000
 
@@ -1828,7 +1828,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemShowroomHorizontal
   heatCapacity: 10000
 
@@ -1840,7 +1840,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemShowroomMini
   heatCapacity: 10000
 
@@ -1852,7 +1852,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemShowroomMiniHorizontal
   heatCapacity: 10000
 
@@ -1864,7 +1864,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemShowroomMiniVertical
   heatCapacity: 10000
 
@@ -1876,7 +1876,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemShowroomMono
   heatCapacity: 10000
 
@@ -1888,7 +1888,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemShowroomVertical
   heatCapacity: 10000
 
@@ -1900,7 +1900,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelCalifornia
   heatCapacity: 10000
 
@@ -1912,7 +1912,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelEightBricks
   heatCapacity: 10000
 
@@ -1924,7 +1924,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMaintDrainHorizontal
   heatCapacity: 10000
 
@@ -1936,7 +1936,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMaintDrainMiddle
   heatCapacity: 10000
 
@@ -1948,7 +1948,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMaintDrainVertical
   heatCapacity: 10000
 
@@ -1960,7 +1960,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMaintHorizontal
   heatCapacity: 10000
 
@@ -1972,7 +1972,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMaintMini
   heatCapacity: 10000
 
@@ -1984,7 +1984,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMaintVertical
   heatCapacity: 10000
 
@@ -1996,7 +1996,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMixedBricks
   heatCapacity: 10000
 
@@ -2008,7 +2008,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMixedBricksMini
   heatCapacity: 10000
 
@@ -2020,7 +2020,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMixedPavementHorizontal
   heatCapacity: 10000
 
@@ -2032,7 +2032,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelMixedPavementVertical
   heatCapacity: 10000
 
@@ -2044,7 +2044,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelShiftedEightBricks
   heatCapacity: 10000
 
@@ -2056,7 +2056,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelShiftedMiniHorizontal
   heatCapacity: 10000
 
@@ -2068,7 +2068,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemSteelShiftedMiniVertical
   heatCapacity: 10000
 
@@ -2080,7 +2080,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemTechMaintHorizontal
   heatCapacity: 10000
 
@@ -2092,7 +2092,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemTechMaintMini
   heatCapacity: 10000
 
@@ -2104,7 +2104,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemTechMaintMono
   heatCapacity: 10000
 
@@ -2116,7 +2116,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemTechMaintVertical
   heatCapacity: 10000
 
@@ -2128,7 +2128,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteCalifornia
   heatCapacity: 10000
 
@@ -2140,7 +2140,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteEightBricks
   heatCapacity: 10000
 
@@ -2152,7 +2152,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteMixedBricks
   heatCapacity: 10000
 
@@ -2164,7 +2164,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteMixedBricksMini
   heatCapacity: 10000
 
@@ -2176,7 +2176,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteMixedPavementHorizontal
   heatCapacity: 10000
 
@@ -2188,7 +2188,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteMixedPavementVertical
   heatCapacity: 10000
 
@@ -2200,7 +2200,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteShiftedEightBricks
   heatCapacity: 10000
 
@@ -2212,7 +2212,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteShiftedMiniHorizontal
   heatCapacity: 10000
 
@@ -2224,7 +2224,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemWhiteShiftedMiniVertical
   heatCapacity: 10000
 
@@ -2243,7 +2243,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemConcretePavementHorizontal
   heatCapacity: 10000
 
@@ -2261,7 +2261,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemConcretePavementVertical
   heatCapacity: 10000
 
@@ -2279,7 +2279,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGrayconcretePavementHorizontal
   heatCapacity: 10000
 
@@ -2297,7 +2297,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemGrayconcretePavementVertical
   heatCapacity: 10000
 
@@ -2315,7 +2315,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemOldconcretePavementHorizontal
   heatCapacity: 10000
 
@@ -2333,6 +2333,6 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-  collection: FootstepFloor
+    collection: FootstepFloor
   itemDrop: FloorItemOldconcretePavementVertical
   heatCapacity: 10000
