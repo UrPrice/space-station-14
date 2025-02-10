@@ -2426,7 +2426,7 @@
       - Plating
       - FloorTechMaintDrainMiddle
   - type: Stack
-    stackType: StackFloorItemTechMainDrain
+    stackType: StackFloorItemTechMainDrainMiddle
 
 - type: entity
   name: floor-white-california
