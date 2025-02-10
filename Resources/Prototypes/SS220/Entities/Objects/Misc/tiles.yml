@@ -921,9 +921,6 @@
   - type: Sprite
     sprite: SS220/Objects/Tiles/dark.rsi
     state: dark-california
-  - type: Item
-    sprite: SS220/Objects/Tiles/dark.rsi
-    state: dark-california
   - type: FloorTile
     outputs:
       - Plating

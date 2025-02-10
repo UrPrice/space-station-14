@@ -1423,11 +1423,3 @@
   completetime: 1
   materials:
     Steel: 50
-
-- type: latheRecipe
-  id: TileFloorItemTechMainDrainMiddle
-  result: FloorItemTechMainDrain
-  category: Steel
-  completetime: 1
-  materials:
-    Steel: 50
