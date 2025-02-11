@@ -1,7 +1,7 @@
 - type: tile
   id: CP14FloorGrass
   name: cp14-tiles-grass
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/Grass/grass.png
   variants: 6
   placementVariants:
@@ -32,7 +32,7 @@
 - type: tile
   id: CP14FloorGrassAstro
   parent: CP14FloorGrass
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -40,7 +40,7 @@
 - type: tile
   id: CP14FloorGrassLight
   name: cp14-tiles-grass-light
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/GrassLight/grass.png
   variants: 6
   placementVariants:
@@ -71,7 +71,7 @@
 - type: tile
   id: CP14FloorGrassLightAstro
   parent: CP14FloorGrassLight
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -79,7 +79,7 @@
 - type: tile
   id: CP14FloorGrassTall
   name: cp14-tiles-grass-tall
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/GrassTall/grass.png
   variants: 6
   placementVariants:
@@ -110,7 +110,7 @@
 - type: tile
   id: CP14FloorGrassTallAstro
   parent: CP14FloorGrassTall
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -118,7 +118,7 @@
 - type: tile
   id: CP14Cavedrought
   name: cp14-cavedrought
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/cp14/Dirt/cavedrought.png
   variants: 16
   placementVariants:
@@ -158,7 +158,7 @@
 - type: tile
   id: CP14CavedroughtAstro
   parent: CP14Cavedrought
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -166,7 +166,7 @@
 - type: tile
   id: CP14Sand
   name: cp14-csand
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/cp14/Sand/sand.png
   variants: 5
   placementVariants:
@@ -195,7 +195,7 @@
 - type: tile
   id: CP14SandAstro
   parent: CP14Sand
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -203,7 +203,7 @@
 - type: tile
   id: CP14Snow
   name: cp14-snow
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/cp14/Snow/snow.png
   variants: 6
   placementVariants:
@@ -234,7 +234,7 @@
 - type: tile
   id: CP14SnowAstro
   parent: CP14Snow
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -242,7 +242,7 @@
 - type: tile
   id: CP14SnowDeep
   name: cp14-snow-deep
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/cp14/SnowDeep/snow.png
   variants: 6
   placementVariants:
@@ -273,7 +273,7 @@
 - type: tile
   id: CP14SnowDeepAstro
   parent: CP14SnowDeep
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -281,7 +281,7 @@
 - type: tile
   id: CP14SnowDeepDeep
   name: cp14-snow-deep-deep
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/cp14/SnowDeepDeep/snow.png
   variants: 6
   placementVariants:
@@ -312,7 +312,7 @@
 - type: tile
   id: CP14SnowDeepDeepAstro
   parent: CP14SnowDeepDeep
-  # tags: Природа-Астро
+  tags: tile-tag-nature-astro
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -320,7 +320,7 @@
 - type: tile
   id: CP14Ice
   name: cp14-ice
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/cp14/ice.png
   variants: 4
   placementVariants:
@@ -340,7 +340,7 @@
 - type: tile
   id: CP14Cave
   name: cp14-cave
-  # tags: Природа
+  tags: tile-tag-nature
   sprite: /Textures/SS220/Tiles/cp14/cave.png
   variants: 14
   placementVariants:
