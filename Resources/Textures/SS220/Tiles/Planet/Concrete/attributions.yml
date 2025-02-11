@@ -1,9 +1,0 @@
-- files: ["asphalt.png"]
-  license: "CC-BY-SA-3.0"
-  copyright: "Taken from vgstation13, modified by EmoGarbage404 (github)"
-  source: "https://github.com/vgstation-coders/vgstation13/commit/02b9f6894af4419c9f7e699a22c402b086d8067e"
-
-- files: ["oldconcrete.png", "oldconcrete_mono.png", "oldconcrete_smooth.png", "concrete.png", "concrete_mono.png", "concrete_smooth.png", "grayconcrete.png", "grayconcrete_mono.png", "grayconcrete_smooth.png"]
-  license: "Custom"
-  copyright: "Created by github user @Kit0vras. EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt"
-  source: "https://github.com/SerbiaStrong-220/space-station-14/pull/2541"
