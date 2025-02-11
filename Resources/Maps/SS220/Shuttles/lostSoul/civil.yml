@@ -7,8 +7,8 @@ tilemap:
   7: FloorSteel
   6: FloorSteelCheckerDark
   4: FloorSteelMono
-  5: FloorTechMaintDrain
   1: FloorTechMaintDrainHorizontal
+  5: FloorTechMaintDrainVertical
   2: FloorWhiteMono
   168: Lattice
   169: Plating
