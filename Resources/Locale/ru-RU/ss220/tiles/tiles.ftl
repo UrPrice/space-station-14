@@ -37,10 +37,17 @@ tiles-grass-planet-floor = пол трава планеты
 tiles-mud = грязь
 tiles-rocks = камень
 tiles-wasteland = пустошь
+snow-lawn-floor = снежный газон
 cp14-tiles-grass = луговая трава
 cp14-tiles-grass-light = светлая трава
 cp14-tiles-grass-tall = высокая трава
-snow-lawn-floor = снежный газон
+cp14-cavedrought = засушенная земля
+cp14-csand = белый песок
+cp14-snow = снег
+cp14-snow-deep = глубокий снег
+cp14-snow-deep-deep = очень глубокий снег
+cp14-ice = лёд
+cp14-cave = пещера
 
 tiles-astro-grass = астро-трава
 tiles-mowed-astro-grass = астро-газон
@@ -199,13 +206,13 @@ tiles-hull = наружная обшивка корпуса
 tiles-hull-reinforced = наружная укреплённая обшивка корпуса
 tiles-web = паутинный пол
 
-tiles-white-shuttle-floor = [Шаттл] белый пол шаттла
-tiles-blue-shuttle-floor = [Шаттл] синий пол шаттла
-tiles-orange-shuttle-floor = [Шаттл] оранжевый пол шаттла
-tiles-purple-shuttle-floor = [Шаттл] фиолетовый пол шаттла
-tiles-red-shuttle-floor = [Шаттл] красный пол шаттла
-tiles-grey-shuttle-floor = [Шаттл] серый пол шаттла
-tiles-black-shuttle-floor = [Шаттл] чёрный пол шаттла
+tiles-white-shuttle-floor = белый пол шаттла
+tiles-blue-shuttle-floor = синий пол шаттла
+tiles-orange-shuttle-floor = оранжевый пол шаттла
+tiles-purple-shuttle-floor = фиолетовый пол шаттла
+tiles-red-shuttle-floor = красный пол шаттла
+tiles-grey-shuttle-floor = серый пол шаттла
+tiles-black-shuttle-floor = чёрный пол шаттла
 
 ## New SS220 Tiles
 

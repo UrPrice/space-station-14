@@ -1215,6 +1215,7 @@
 - type: tile
   id: FloorShuttleWhite
   name: tiles-white-shuttle-floor
+  tags: Шаттл # SS220 Resprite Tiles
   sprite: /Textures/Tiles/shuttlewhite.png
   # variants: 4
   # placementVariants:
@@ -1233,6 +1234,7 @@
 - type: tile
   id: FloorShuttleGrey
   name: tiles-grey-shuttle-floor
+  tags: Шаттл # SS220 Resprite Tiles
   sprite: /Textures/Tiles/shuttlegrey.png
   # variants: 4
   # placementVariants:
@@ -1251,6 +1253,7 @@
 - type: tile
   id: FloorShuttleBlack
   name: tiles-black-shuttle-floor
+  tags: Шаттл # SS220 Resprite Tiles
   sprite: /Textures/Tiles/shuttleblack.png
   # variants: 4
   # placementVariants:
@@ -1269,6 +1272,7 @@
 - type: tile
   id: FloorShuttleBlue
   name: tiles-blue-shuttle-floor
+  tags: Шаттл # SS220 Resprite Tiles
   sprite: /Textures/Tiles/shuttleblue.png
   # variants: 4
   # placementVariants:
@@ -1287,6 +1291,7 @@
 - type: tile
   id: FloorShuttleOrange
   name: tiles-orange-shuttle-floor
+  tags: Шаттл # SS220 Resprite Tiles
   sprite: /Textures/Tiles/shuttleorange.png
   # variants: 4
   # placementVariants:
@@ -1305,6 +1310,7 @@
 - type: tile
   id: FloorShuttlePurple
   name: tiles-purple-shuttle-floor
+  tags: Шаттл # SS220 Resprite Tiles
   sprite: /Textures/Tiles/shuttlepurple.png
   # variants: 4
   # placementVariants:
@@ -1323,6 +1329,7 @@
 - type: tile
   id: FloorShuttleRed
   name: tiles-red-shuttle-floor
+  tags: Шаттл # SS220 Resprite Tiles
   sprite: /Textures/Tiles/shuttlered.png
   # variants: 4
   # placementVariants:
