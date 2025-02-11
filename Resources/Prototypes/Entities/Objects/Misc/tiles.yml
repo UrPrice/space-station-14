@@ -535,7 +535,7 @@
   id: FloorTileItemTechmaint
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/tech-maint.rsi
+    sprite: SS220/Objects/Tiles/tech-maint.rsi # SS220 Resprite Tiles
     state: tech-maint
   - type: Item
     heldPrefix: dark
@@ -657,7 +657,7 @@
   id: FloorTileItemRockVault
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/rock-vault.rsi
+    sprite: SS220/Objects/Tiles/rock-vault.rsi # SS220 Resprite Tiles
     state: rockvault
   - type: Item
     heldPrefix: steel
@@ -1479,7 +1479,7 @@
   id: FloorTileItemSteelMaint
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/steel-maint.rsi
+    sprite: SS220/Objects/Tiles/steel-maint.rsi # SS220 Resprite Tiles
     state: steel-maint
   - type: Item
     heldPrefix: steel
@@ -1496,7 +1496,7 @@
   id: FloorTileItemGratingMaint
   components:
   - type: Sprite
-    sprite: SS220/Objects/Tiles/grating.rsi
+    sprite: SS220/Objects/Tiles/grating.rsi # SS220 Resprite Tiles
     state: grating-maint
   - type: Item
     heldPrefix: steel
