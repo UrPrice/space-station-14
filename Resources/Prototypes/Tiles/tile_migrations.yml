@@ -71,11 +71,11 @@
   id: FloorSteelBurnt
   target: FloorSteelDamaged
 
+## SS220 Resprite Tiles bgn
 - type: tileAlias
   id: FloorTechMaintDrain
   target: FloorTechMaintDrainVertical
 
-## SS220 Resprite Tiles bgn
 - type: tileAlias
   id: FloorDutch
   target: FloorSanitary
