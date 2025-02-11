@@ -32,7 +32,7 @@
 - type: tile
   id: CP14FloorGrassAstro
   parent: CP14FloorGrass
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -71,7 +71,7 @@
 - type: tile
   id: CP14FloorGrassLightAstro
   parent: CP14FloorGrassLight
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -110,7 +110,7 @@
 - type: tile
   id: CP14FloorGrassTallAstro
   parent: CP14FloorGrassTall
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -158,7 +158,7 @@
 - type: tile
   id: CP14CavedroughtAstro
   parent: CP14Cavedrought
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -195,7 +195,7 @@
 - type: tile
   id: CP14SandAstro
   parent: CP14Sand
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -234,7 +234,7 @@
 - type: tile
   id: CP14SnowAstro
   parent: CP14Snow
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -273,7 +273,7 @@
 - type: tile
   id: CP14SnowDeepAstro
   parent: CP14SnowDeep
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
@@ -312,7 +312,7 @@
 - type: tile
   id: CP14SnowDeepDeepAstro
   parent: CP14SnowDeepDeep
-  tags: tile-tag-nature-astro
+  tags: [ tile-tag-nature-astro ]
   baseTurf: Plating
   isSubfloor: false
   weather: false
