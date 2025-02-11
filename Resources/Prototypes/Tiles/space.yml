@@ -1,6 +1,7 @@
 - type: tile
   id: Space
   name: tiles-space
+  tags: _Частое # SS220 Tiles Resprite
   friction: 0
   isSubfloor: true
   isSpace: true

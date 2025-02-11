@@ -1,6 +1,7 @@
 - type: tile
   id: CP14FloorGrass
   name: cp14-tiles-grass
+  tags: Природа
   sprite: /Textures/SS220/Tiles/Grass/grass.png
   variants: 6
   placementVariants:
@@ -31,6 +32,7 @@
 - type: tile
   id: CP14FloorGrassLight
   name: cp14-tiles-grass-light
+  tags: Природа
   sprite: /Textures/SS220/Tiles/GrassLight/grass.png
   variants: 6
   placementVariants:
@@ -61,6 +63,7 @@
 - type: tile
   id: CP14FloorGrassTall
   name: cp14-tiles-grass-tall
+  tags: Природа
   sprite: /Textures/SS220/Tiles/GrassTall/grass.png
   variants: 6
   placementVariants:

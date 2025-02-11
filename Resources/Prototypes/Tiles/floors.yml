@@ -627,6 +627,7 @@
 - type: tile
   id: FloorMono
   name: tiles-mono-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/mono.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -639,6 +640,7 @@
 - type: tile
   id: FloorLino
   name: tiles-linoleum-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/lino.png
   baseTurf: Plating
   isSubfloor: false
@@ -663,6 +665,7 @@
 - type: tile
   id: FloorElevatorShaft
   name: tiles-elevator-shaft
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/elevator_shaft.png
   baseTurf: Plating
   isSubfloor: false
@@ -675,6 +678,7 @@
 - type: tile
   id: FloorMetalDiamond
   name: tiles-diamond-plate-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/metaldiamond.png
   baseTurf: Plating
   isSubfloor: false
@@ -717,6 +721,7 @@
 - type: tile
   id: FloorBlue
   name: tiles-blue-tile
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/blue.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -729,6 +734,7 @@
 - type: tile
   id: FloorSteelLime
   name: tiles-lime-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/lime.png # SS220 Tiles Retexture
   variants: 1
 #  placementVariants:
@@ -808,6 +814,7 @@
 - type: tile
   id: FloorHydro
   name: tiles-hydro-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/hydro.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -820,6 +827,7 @@
 - type: tile
   id: FloorBar
   name: tiles-bar-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/bar.png # SS220 Tiles Retexture
   variants: 1
 #  placementVariants:
@@ -838,6 +846,7 @@
 - type: tile
   id: FloorClown
   name: tiles-clown-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/clown.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -850,6 +859,7 @@
 - type: tile
   id: FloorMime
   name: tiles-mime-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/mime.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -862,6 +872,7 @@
 - type: tile
   id: FloorKitchen
   name: tiles-kitchen-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/kitchen.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -874,6 +885,7 @@
 - type: tile
   id: FloorLaundry
   name: tiles-laundry-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/laundry.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -1114,6 +1126,7 @@
 - type: tile
   id: FloorEighties
   name: tiles-eighties-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/eighties.png
   baseTurf: Plating
   isSubfloor: false
@@ -1129,6 +1142,7 @@
 - type: tile
   id: FloorCarpetClown
   name: tiles-clown-carpet-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/carpetclown.png
   baseTurf: Plating
   isSubfloor: false
@@ -1144,6 +1158,7 @@
 - type: tile
   id: FloorCarpetOffice
   name: tiles-office-carpet-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/carpetoffice.png
   baseTurf: Plating
   isSubfloor: false
@@ -1159,6 +1174,7 @@
 - type: tile
   id: FloorBoxing
   name: tiles-boxing-ring-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/boxing.png
   variants: 4
   placementVariants:
@@ -1178,6 +1194,7 @@
 - type: tile
   id: FloorGym
   name: tiles-gym-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/gym.png
   variants: 4
   placementVariants:
@@ -1326,6 +1343,7 @@
 - type: tile
   id: FloorGold
   name: tiles-gold-tile
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/gold.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -1338,6 +1356,7 @@
 - type: tile
   id: FloorSilver
   name: tiles-silver-tile
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/SS220/Tiles/silver.png # SS220 Tiles Retexture
   baseTurf: Plating
   isSubfloor: false
@@ -1386,6 +1405,7 @@
 - type: tile
   id: FloorMetalFoam
   name: tiles-metal-foam
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/foammetal.png
   variants: 1
 #  placementVariants:
@@ -1456,6 +1476,7 @@
 - type: tile
   id: FloorAsphalt
   name: tiles-asphalt
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Planet/Concrete/asphalt.png
   variants: 10
   placementVariants:
@@ -1479,6 +1500,7 @@
 - type: tile
   id: FloorGrass
   name: tiles-planet-grass-floor
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/grass.png
   baseTurf: FloorDirt
   isSubfloor: true
@@ -1491,6 +1513,7 @@
 - type: tile
   id: FloorGrassJungle
   name: tiles-jungle-grass-floor
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/grassjungle.png
   baseTurf: FloorDirt
   isSubfloor: true
@@ -1503,6 +1526,7 @@
 - type: tile
   id: FloorGrassDark
   name: tiles-dark-grass-floor
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/grassdark.png
   variants: 4
   placementVariants:
@@ -1520,6 +1544,7 @@
 - type: tile
   id: FloorGrassLight
   name: tiles-light-grass-floor
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/grasslight.png
   variants: 4
   placementVariants:
@@ -1537,6 +1562,7 @@
 - type: tile
   id: FloorDirt
   name: tiles-dirt-floor
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/dirt.png
   variants: 4
   placementVariants:
@@ -1556,6 +1582,7 @@
 - type: tile
   id: FloorAsteroidSand
   name: tiles-asteroid-sand
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Asteroid/asteroid.png
   variants: 13
   placementVariants:
@@ -1582,6 +1609,7 @@
 - type: tile
   id: FloorAsteroidSandDug
   name: tiles-asteroid-sand
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Asteroid/asteroid_dug.png
   baseTurf: Space
   isSubfloor: true
@@ -1593,6 +1621,7 @@
 - type: tile
   id: FloorAsteroidSandRed
   name: tiles-asteroid-sand
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Asteroid/asteroid_red.png
   variants: 13
   placementVariants:
@@ -1619,6 +1648,7 @@
 - type: tile
   id: FloorAsteroidTile
   name: tiles-asteroid-tile
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Asteroid/asteroid_tile.png
   baseTurf: Plating
   isSubfloor: false
@@ -1631,6 +1661,7 @@
 - type: tile
   id: FloorAsteroidIronsand
   name: tiles-asteroid-ironsand
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Asteroid/ironsand.png
   variants: 15
   placementVariants:
@@ -1659,6 +1690,7 @@
 - type: tile
   id: FloorAsteroidSandUnvariantized
   name: tiles-asteroid-sand
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Asteroid/asteroid0.png
   baseTurf: Space
   isSubfloor: true
@@ -1670,6 +1702,7 @@
 - type: tile
   id: FloorAsteroidIronsandUnvariantized
   name: tiles-asteroid-ironsand
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Asteroid/ironsand0.png
   baseTurf: Space
   isSubfloor: true
@@ -1682,6 +1715,7 @@
 - type: tile
   id: FloorCave
   name: tiles-cave
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/cave.png
   variants: 7
   placementVariants:
@@ -1701,6 +1735,7 @@
 - type: tile
   id: FloorCaveDrought
   name: tiles-cave-drought
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/cavedrought.png
   variants: 8
   placementVariants:
@@ -1721,6 +1756,7 @@
 - type: tile
   id: FloorFlesh
   name: tiles-flesh-floor
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/meat.png
   variants: 4
   placementVariants:
@@ -1813,6 +1849,7 @@
 - type: tile
   id: FloorWebTile
   name: tiles-web
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Misc/Web/web_tile.png
   baseTurf: Plating
   isSubfloor: false
@@ -1827,6 +1864,7 @@
 - type: tile
   id: FloorChromite
   name: tiles-chromite
+  tags: Природа # SS220 Tiles Resprite
   sprite: /Textures/Tiles/chromite.png
   variants: 7
   placementVariants:
@@ -1847,6 +1885,7 @@
 - type: tile
   id: FloorHull
   name: tiles-hull
+  tags: Разное # SS220 Tiles Resprite
   sprite: /Textures/Tiles/hull.png
   baseTurf: Plating
   isSubfloor: true # SS220 04.11 Mapping Update, tile under SuperMatterCrystal
@@ -1857,6 +1896,7 @@
 
 - type: tile
   id: FloorHullReinforced
+  tags: Разное # SS220 Tiles Resprite
   name: tiles-hull-reinforced
   sprite: /Textures/Tiles/hull_reinforced.png
   baseTurf: Plating
@@ -1883,6 +1923,7 @@
 - type: tile
   id: FloorAstroGrass
   name: tiles-astro-grass
+  tags: Природа-Астро # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Planet/Grass/grass.png
   variants: 4
   placementVariants:
@@ -1911,6 +1952,7 @@
 - type: tile
   id: FloorMowedAstroGrass
   name: tiles-mowed-astro-grass
+  tags: Природа-Астро # SS220 Tiles Resprite
   parent: FloorGrass
   baseTurf: Plating
   isSubfloor: false
@@ -1920,6 +1962,7 @@
 - type: tile
   id: FloorJungleAstroGrass
   name: tiles-jungle-astro-grass
+  tags: Природа-Астро # SS220 Tiles Resprite
   parent: FloorGrassJungle
   baseTurf: Plating
   isSubfloor: false
@@ -1930,6 +1973,7 @@
 - type: tile
   id: FloorAstroIce
   name: tiles-astro-ice
+  tags: Природа-Астро # SS220 Tiles Resprite
   sprite: /Textures/Tiles/Planet/Snow/ice.png
   baseTurf: Plating
   isSubfloor: false
@@ -1944,6 +1988,7 @@
 - type: tile
   id: FloorAstroSnow
   name: tiles-astro-snow
+  tags: Природа-Астро # SS220 Tiles Resprite
   parent: FloorSnow
   baseTurf: Plating
   isSubfloor: false

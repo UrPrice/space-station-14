@@ -732,6 +732,7 @@
 - type: tile
   id: FloorTileMud
   name: tiles-mud
+  tags: Природа
   sprite: /Textures/SS220/Tiles/mud.png
   baseTurf: FloorDirt
   isSubfloor: false
@@ -742,6 +743,7 @@
 - type: tile
   id: FloorRocks
   name: tiles-rocks
+  tags: Природа
   sprite: /Textures/SS220/Tiles/rocks.png
   variants: 9
   placementVariants:
@@ -763,6 +765,7 @@
 - type: tile
   id: FloorWasteland
   name: tiles-wasteland
+  tags: Природа
   sprite: /Textures/SS220/Tiles/wasteland.png
   variants: 9
   placementVariants:
@@ -1007,6 +1010,7 @@
 - type: tile
   id: FloorSnowLawn
   name: snow-lawn-floor
+  tags: Природа
   sprite: /Textures/Tiles/Planet/Snow/snow.png
   variants: 13
   placementVariants:
