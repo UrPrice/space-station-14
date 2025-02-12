@@ -1628,6 +1628,7 @@
       - TileFloorSteelMaintDrainVertical
       - TileFloorSteelMaintHorizontal
       - TileFloorSteelMaintMini
+      - TileFloorSteelMaintMono
       - TileFloorSteelMaintVertical
       - TileFloorSteelMixedBricks
       - TileFloorSteelMixedBricksMini
