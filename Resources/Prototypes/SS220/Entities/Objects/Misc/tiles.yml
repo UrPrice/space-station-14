@@ -2297,7 +2297,7 @@
   - type: FloorTile
     outputs:
       - Plating
-      - FloorSteelMaintMini
+      - FloorSteelMaintMono
   - type: Stack
     stackType: FloorItemStacksSteelMaintMono
 
