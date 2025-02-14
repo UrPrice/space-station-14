@@ -147,3 +147,29 @@ ent-SpawnerMobXenoSpitter = {ent-MobXenoSpitter}
     .desc = { ent-MarkerBase.desc }
     .suffix = Спавнер
 
+ent-SpawnerWatchers = спавнер наблюдателей
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerCarpsSharksDragon = спавнер карпов 80%, карпоаку 15% и дракона 5%
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerAsteroidDemons = спавнер голиаф 70%, рой 30%
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerBasedFauna = спавнер пауков и змей
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerSpaceFauna = спавнер космической фауны
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerXenoFauna = спавнер ксеносов, королева и прето 5%
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerArgocyteFauna = спавнер агроцитов
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerFleshDemons = спавнер искажённой плоти и мерзости
+    .desc = { ent-MarkerBase.desc }
+
+ent-SpawnerLuminousFauna = спавнер светящихся сущностей
+    .desc = { ent-MarkerBase.desc }
