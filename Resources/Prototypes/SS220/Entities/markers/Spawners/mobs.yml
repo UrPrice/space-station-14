@@ -459,13 +459,13 @@
     table: !type:GroupSelector
       children:
       - id: MobWatcherIcewing
-        weight: 50
+        weight: 60
       - id: MobWatcherLavaland
-        weight: 50
+        weight: 60
       - id: MobWatcherPride
-        weight: 50
+        weight: 10
       - id: MobWatcherMagmawing
-        weight: 50
+        weight: 60
 
 ## Carps Sharks Dragon
 - type: entity
@@ -481,17 +481,17 @@
     table: !type:GroupSelector
       children:
       - id: MobDragonDungeon
-        weight: 50
+        weight: 5
       - id: MobShark
-        weight: 50
+        weight: 15
       - id: MobCarpHolo
-        weight: 50
+        weight: 60
       - id: MobCarp
-        weight: 50
+        weight: 80
       - id: MobCarpMagic
         weight: 50
       - id: MobCarpRainbow
-        weight: 50
+        weight: 40
 
 ## Asteroid Demons
 - type: entity
@@ -507,9 +507,9 @@
     table: !type:GroupSelector
       children:
       - id: MobGoliath
-        weight: 50
+        weight: 70
       - id: MobHivelord
-        weight: 50
+        weight: 30
 
 ## Based Fauna
 - type: entity
@@ -525,13 +525,13 @@
     table: !type:GroupSelector
       children:
       - id: MobGiantSpider
-        weight: 50
+        weight: 70
       - id: MobClownSpider
-        weight: 50
+        weight: 30
       - id: MobPurpleSnake
-        weight: 50
+        weight: 70
       - id: MobSmallPurpleSnake
-        weight: 50
+        weight: 30
 
 ## Space Fauna
 - type: entity
@@ -571,17 +571,17 @@
     table: !type:GroupSelector
       children:
       - id: MobXenoQueen
-        weight: 50
+        weight: 5
       - id: MobXenoDrone
         weight: 50
       - id: MobXenoSpitter
         weight: 50
       - id: MobXenoRouny
-        weight: 50
+        weight: 1
       - id: MobXenoRunner
         weight: 50
       - id: MobXenoPraetorian
-        weight: 50
+        weight: 5
       - id: MobXenoRavager
         weight: 50
       - id: MobXeno
