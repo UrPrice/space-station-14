@@ -122,6 +122,6 @@ public sealed partial class CCVars220
     /// <summary>
     /// How many sponsors can connect to the server beyond the player limit
     /// </summary>
-    public static readonly CVarDef<int> MaxSponsorBypass =
-        CVarDef.Create("connection.max_player_limit_exceeding_by_sponsors", 10, CVar.SERVER);
+    public static readonly CVarDef<int> MaxSponsorsBypass =
+        CVarDef.Create("game.max_sponsors_bypass", 10, CVar.SERVER);
 }
