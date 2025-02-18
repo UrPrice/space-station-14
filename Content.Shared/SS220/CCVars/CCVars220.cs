@@ -118,4 +118,7 @@ public sealed partial class CCVars220
     /// </summary>
     public static readonly CVarDef<int> GameYearDelta =
         CVarDef.Create("date.game_year_delta", 544, CVar.SERVER | CVar.REPLICATED);
+
+    public static readonly CVarDef<int> MaxPlayerLimitExceedingBySponsors =
+        CVarDef.Create("connection.max_player_limit_exceeding_by_sponsors", 10, CVar.SERVER);
 }
