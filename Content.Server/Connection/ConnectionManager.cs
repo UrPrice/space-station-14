@@ -302,6 +302,11 @@ namespace Content.Server.Connection
             var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && adminData != null;
             var softPlayerCount = _plyMgr.PlayerCount;
 
+            if (!_cfg.GetCVar(CCVars.AdminsCountForMaxPlayers))
+            {
+                softPlayerCount -= _adminManager.ActiveAdmins.Count();
+            }
+
             if ((softPlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !adminBypass && !wasInGame && !isQueueEnabled && // Corvax-Queue
                 !sponsorBypass)) // SS220 Sponsors
             {
