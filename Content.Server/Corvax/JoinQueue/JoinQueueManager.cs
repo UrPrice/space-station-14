@@ -195,7 +195,7 @@ public sealed class JoinQueueManager
     // SS220 sponsors begin
     private void SortQueueBySponsors()
     {
-        _queue.Sort(delegate (ICommonSession s1, ICommonSession s2)
+        _queue.Sort((ICommonSession s1, ICommonSession s2) =>
         {
             var s1HasPriorityJoin = _discordPlayerManager.HasPriorityJoinTier(s1.UserId);
             var s2HasPriorityJoin = _discordPlayerManager.HasPriorityJoinTier(s2.UserId);
