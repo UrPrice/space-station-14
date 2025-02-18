@@ -380,7 +380,7 @@ public sealed class DiscordPlayerManager : IPostInjectInit, IDisposable
     public bool HaveFreeSponsorSlot()
     {
         var maxPlayers = _cfg.GetCVar(CCVars.SoftMaxPlayers);
-        var maxLimitExcending = _cfg.GetCVar(CCVars220.MaxPlayerLimitExceedingBySponsors);
+        var maxLimitExcending = _cfg.GetCVar(CCVars220.MaxSponsorBypass);
 
         var playerCount = _playerManager.Sessions.Where(s => s.Status is SessionStatus.InGame).Count();
         if (!_cfg.GetCVar(CCVars.AdminsCountForMaxPlayers))
