@@ -2,12 +2,13 @@
 
 on:
   pull_request_target:
-    types: [edited]
+    types: [review_request_removed]
+
+permissions: write-all
 
 jobs:
   remove_label:
     runs-on: ubuntu-latest
-    if: github.event.review.state == 'approved'
     steps:
       - name: check all reviewers
         id: check_approvals
