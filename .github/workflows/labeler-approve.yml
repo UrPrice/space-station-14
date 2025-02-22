@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.review.state == 'approved'
     steps:
-      - name: check all revs
+      - name: check all reviewers
         id: check_approvals
         uses: actions/github-script@v7
         with:
