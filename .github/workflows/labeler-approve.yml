@@ -4,7 +4,11 @@ on:
   pull_request_review:
     types: [submitted]
 
-permissions: write-all
+permissions:
+  pull-requests: write
+  issues: write
+  contents: write
+  actions: write
 
 jobs:
   remove_label:
@@ -42,8 +46,11 @@ jobs:
             console.log('Current Labels:', currentLabels);
             for (const label of labelsToRemove) {
               if (currentLabels.includes(label)) {
-                console.log(`Removing label: ${label}`)
-                await github.request("DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}", {
+                console.log('Current owner:',context.repo.owner);
+                console.log('Current repo:',context.repo.repo);
+                console.log('Current issue_number:',context.payload.pull_request.number);
+                console.log('Current name:',label);
+                await github.request('DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}'', {
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: context.payload.pull_request.number,
