@@ -1,10 +1,8 @@
 ﻿name: "Labels: Approve"
 
 on:
-  pull_request_review:
-    types: [submitted, edited, dismissed]
-
-permissions: write-all
+  pull_request_target:
+    types: [edited]
 
 jobs:
   remove_label:
