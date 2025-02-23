@@ -4,13 +4,6 @@ on:
   pull_request:
     types: [edited]
 
-permissions:
-  pull-requests: write
-  issues: write
-  contents: write
-  actions: write
-  id-token: write
-
 jobs:
   remove_label:
     runs-on: ubuntu-latest
@@ -19,7 +12,6 @@ jobs:
         id: check_approvals
         uses: actions/github-script@v6
         with:
-          token: ${{ secrets.URPRICE_PAT }}
           script: |
             console.log('L:A verby 1502 23022025');
             const { data: reviews } = await github.rest.pulls.listReviews({
@@ -32,12 +24,11 @@ jobs:
             const approvedReviews = reviews.filter(review => review.state === 'APPROVED').length;
 
             return approvedReviews >= requiredApprovals;
-      - uses: actions/checkout@v4
       - name: rm labels
         if: steps.check_approvals.outputs.result == 'true'
         uses: actions/github-script@v6
         with:
-          token: ${{ secrets.URPRICE_PAT }}
+          github-token: ${{ secrets.URPRICE_PAT }}
           script: |
             const labelsToRemove = ['Status: Needs Review', 'Status: Awaiting Changes'];
             const currentLabels = context.payload.pull_request.labels.map(label => label.name);
