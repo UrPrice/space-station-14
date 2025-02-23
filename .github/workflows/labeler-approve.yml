@@ -19,7 +19,7 @@ jobs:
         id: check_approvals
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.URPRICE_PAT }}
+          token: ${{ secrets.URPRICE_PAT }}
           script: |
             console.log('L:A verby 1502 23022025');
             const { data: reviews } = await github.rest.pulls.listReviews({
@@ -37,7 +37,7 @@ jobs:
         if: steps.check_approvals.outputs.result == 'true'
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.URPRICE_PAT }}
+          token: ${{ secrets.URPRICE_PAT }}
           script: |
             const labelsToRemove = ['Status: Needs Review', 'Status: Awaiting Changes'];
             const currentLabels = context.payload.pull_request.labels.map(label => label.name);
