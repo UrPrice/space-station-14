@@ -105,7 +105,7 @@ public sealed class RadioSystem : EntitySystem
             return;
         message = _languageSystem.RemoveColorTags(message); // SS220-Add-Languages
 
-        var evt = new TransformSpeakerNameEvent(messageSource, MetaData(messageSource).EntityName);
+        var evt = new TransformSpeakerNameEvent(messageSource, _chat.GetRadioName(messageSource)); //ss220 add identity concealment for chat and radio messages
         RaiseLocalEvent(messageSource, evt);
 
         var name = evt.VoiceName;
