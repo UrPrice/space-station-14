@@ -19,8 +19,9 @@ jobs:
         id: check_approvals
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.URPRICE_PAT }}
           script: |
-            console.log('L:A verby 2255 22022025');
+            console.log('L:A verby 1502 23022025');
             const { data: reviews } = await github.rest.pulls.listReviews({
               owner: context.repo.owner,
               repo: context.repo.repo,
