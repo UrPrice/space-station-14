@@ -56,7 +56,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         if (ScrambleCache.TryGetValue(cacheKey, out var cachedValue))
             return cachedValue;
 
-        var scrambledText = Scramble(input, proto);
+        var scrambledText = proto.EncryptionMethod.EncryptMessage(input);
 
         ScrambleCache[cacheKey] = scrambledText;
         // Removes the first message from the cache if it fills up
@@ -70,63 +70,6 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         }
 
         return scrambledText;
-    }
-
-    private string Scramble(string input, LanguagesPrototype proto)
-    {
-        if (proto.Syllables == null || proto.Syllables.Count == 0)
-            return input;
-
-        var scrambledText = new StringBuilder();
-        bool capitalize = true;
-
-        while (scrambledText.Length < input.Length)
-        {
-            var next = proto.Syllables[_random.Next(proto.Syllables.Count)];
-
-            if (capitalize)
-            {
-                next = char.ToUpper(next[0]) + next.Substring(1);
-                capitalize = false;
-            }
-
-            scrambledText.Append(next);
-
-            var chance = _random.Next(100);
-            if (chance <= 5)
-            {
-                scrambledText.Append(proto.JoinOverride);
-                capitalize = true;
-            }
-            else if (chance > 5 && chance <= proto.SpaceChance)
-            {
-                scrambledText.Append(" ");
-            }
-        }
-
-        var result = scrambledText.ToString().Trim();
-        var punctuation = ExtractPunctuation(input);
-
-        result += punctuation;
-
-        return result;
-    }
-
-    /// <summary>
-    ///     Takes the last punctuation out of the original post
-    ///     (Does not affect the internal punctuation of the sentence)
-    /// </summary>
-    private string ExtractPunctuation(string input)
-    {
-        var punctuationBuilder = new StringBuilder();
-        for (int i = input.Length - 1; i >= 0; i--)
-        {
-            if (char.IsPunctuation(input[i]))
-                punctuationBuilder.Insert(0, input[i]);
-            else
-                break;
-        }
-        return punctuationBuilder.ToString();
     }
 
     /// <summary>
