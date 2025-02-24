@@ -3,7 +3,7 @@
 namespace Content.Shared.SS220.Language.EncryptionMethods;
 
 [ImplicitDataDefinitionForInheritors]
-public abstract partial class BaseEncryptionMethod
+public abstract partial class ScrambleMethod
 {
-    public abstract string EncryptMessage(string message);
+    public abstract string ScrambleMessage(string message);
 }

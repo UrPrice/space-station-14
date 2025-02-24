@@ -9,7 +9,7 @@
   id: Galactic
   name: "language-galacticcommon-name"
   description: "language-galacticcommon-desc"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     syllables: [бла, бла, бла, бле, мех, ньех, нах, ах, угу, увы]
 
 - type: languages
@@ -17,7 +17,7 @@
   name: "language-solcommon-name"
   description: "language-solcommon-desc"
   color: "#2f2fad"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     syllables: [tao, shi, tzu, yi, com, be, is, i, op, vi, ed, lec, mo, cle, te, dis, e]
 
 - type: languages
@@ -25,7 +25,7 @@
   name: "language-tradeband-name"
   description: "language-tradeband-desc"
   color: "#87451c"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 1
     syllables: [lorem, ipsum, dolor, sit, amet, consectetur, adipiscing, elit, sed, do, eiusmod, tempor, incididunt, ut, labore,
                 et, dolore, magna, aliqua, ut, enim, ad, minim, veniam, quis, nostrud, exercitation,
@@ -39,7 +39,7 @@
   name: "language-gutter-name"
   description: "language-gutter-desc"
   color: "#7092BE"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.55
     syllables: [gra, ba, ba, breh, bra, rah, dur, ra, ro, gro, go, ber, bar, geh, heh, gra]
 
@@ -48,7 +48,7 @@
   name: "language-clownish-name"
   description: "language-clownish-desc"
   color: "#ff0000"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.6
     syllables: [хонк, cкуик, ойк, бонк, тут, наф, пуп, ви, вуб, ниф]
 
@@ -57,7 +57,7 @@
   name: "language-neorusskiya-name"
   description: "language-neorusskiya-desc"
   color: "#7c4848"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.65
     syllables: [dyen, bar, bota, vyek, tvo, slov, slav, syen, doup, vah, laz, gloz,
                 yet, nyet, da, sky, glav, glaz, netz, doomat, zat, moch, boz, comy, vrad, vrade,
@@ -73,7 +73,7 @@
   name: "language-unathi-name"
   description: "language-unathi-desc"
   color: "#228B22"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     syllables: [za, az, ze, ez, zi, iz, zo, oz, zu, uz, zs, sz, ha, ah, he, eh,
               hi, ih, ho, oh, hu, uh, hs, sh, la, al, le, el, li, il, lo, ol,
               lu, ul, ls, sl, ka, ak, ke, ek, ki, ik, ko, ok, ku, uk, ks, sk,
@@ -86,7 +86,7 @@
   name: "language-siiktajr-name"
   description: "language-siiktajr-desc"
   color: "#803B56"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.4
     syllables: [rr, rrr, taj'r, kir, raj, kii, mir, kah, hrar, jun,
               kra, ahkъ, nal, vah, khaz, jri, ran, hal, nja, dar,
@@ -100,7 +100,7 @@
   name: "language-voxpidgin-name"
   description: "language-voxpidgin-desc"
   color: "#AA00AA"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     syllables: [ti, ti, ti, hi, hi, ki, ki, ki,
                 ki, ya, ta, ha, ka, ya, yi, chi, cha, kah,
                 SKRE, AHK, EHK, RAWK, KRA, AAA, EEE, KI,
@@ -111,7 +111,7 @@
   name: "language-rootspeak-name"
   description: "language-rootspeak-desc"
   color: "#804000"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.3
     syllables: [hs, zt, kr, st, sh]
 
@@ -120,7 +120,7 @@
   name: "language-bobblish-name"
   description: "language-bobblish-desc"
   color: "#0077AA"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.6
     syllables: [блоб, плап, поп, боп, буп, пламп, буб, баб, бламп]
 
@@ -129,7 +129,7 @@
   name: "language-tkachi-name"
   description: "language-tkachi-desc"
   color: "#869b29"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.55
     specialCharacter: "-"
     syllables: [år, i, går, sek, mo, ff, ok, gj, ø, gå, la, le, lit, ygg, van,
@@ -142,7 +142,7 @@
   name: "language-eldwarf-name"
   description: "language-eldwarf-desc"
   color: "#515d63"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.55
     syllables: [вр, врон, рон, крон, друк, трым, бд, шкж, брм, рыт, грн, драш, клм, трк, врг, хрм,
                 рд, клыт, зм, эмээ, гнык, зрм, длк, брг, грд, скрын, вродд, бдар, глтх, скрр,
@@ -153,7 +153,7 @@
   name: "language-arati-name"
   description: "language-arati-desc"
   color: "#68477a"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.52
     specialCharacter: "'"
     specialCharacterChance: 0.4
@@ -167,7 +167,7 @@
   name: "language-canilunzt-name"
   description: "language-canilunzt-desc"
   color: "#B97A57"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.45
     syllables: [rur, ya, cen, rawr, bar, kuk, tek, qat, uk, wu, vuh, tah, tch, schz, auch,
                 ist, ein, entch, zwichs, tut, mir, wo, bis, es, vor, nic, gro, lll,
@@ -181,7 +181,7 @@
   name: "language-binary-name"
   description: "language-binary-desc"
   color: "#2cc2e8"
-  encryptionMethod: !type:RandomSyllablesEncryptionMethod
+  scrambleMethod: !type:RandomSyllablesScrambleMethod
     spaceChance: 0.8
     dotChance: 0
     syllables: [1, 0, 01, 10, 11, 100, 101, 110, 111, 1000, 1001, 1010, 1011,

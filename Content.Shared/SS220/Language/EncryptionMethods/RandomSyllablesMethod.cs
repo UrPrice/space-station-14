@@ -1,12 +1,11 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
 
 using System.Text;
-using System;
 using Robust.Shared.Random;
 
 namespace Content.Shared.SS220.Language.EncryptionMethods;
 
-public sealed partial class RandomSyllablesEncryptionMethod : BaseEncryptionMethod
+public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
 {
     /// <summary>
     ///  List of syllables from which the original message will be encrypted
@@ -36,7 +35,7 @@ public sealed partial class RandomSyllablesEncryptionMethod : BaseEncryptionMeth
     [DataField]
     public string SpecialCharacter = string.Empty;
 
-    public override string EncryptMessage(string message)
+    public override string ScrambleMessage(string message)
     {
         if (Syllables.Count == 0)
             return message;

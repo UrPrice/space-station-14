@@ -56,7 +56,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         if (ScrambleCache.TryGetValue(cacheKey, out var cachedValue))
             return cachedValue;
 
-        var scrambledText = proto.EncryptionMethod.EncryptMessage(input);
+        var scrambledText = proto.ScrambleMethod.ScrambleMessage(input);
 
         ScrambleCache[cacheKey] = scrambledText;
         // Removes the first message from the cache if it fills up

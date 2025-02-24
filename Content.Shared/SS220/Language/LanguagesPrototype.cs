@@ -24,5 +24,5 @@ public sealed partial class LanguagesPrototype : IPrototype
     public Color? Color;
 
     [DataField]
-    public BaseEncryptionMethod EncryptionMethod = new RandomSyllablesEncryptionMethod();
+    public ScrambleMethod ScrambleMethod = new RandomSyllablesScrambleMethod();
 }
