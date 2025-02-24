@@ -87,19 +87,27 @@ public abstract class SharedLanguageSystem : EntitySystem
         return comp.CurrentLanguage;
     }
 
-    public void AddLanguage(EntityUid ent, List<string> languages)
+    public void AddLanguages(EntityUid uid, List<string> languages)
     {
-        if (!TryComp<LanguageComponent>(ent, out var comp))
+        foreach (var language in languages)
+        {
+            AddLanguage(uid, language);
+        }
+    }
+
+    public void AddLanguage(EntityUid uid, string languageId)
+    {
+        if (!TryComp<LanguageComponent>(uid, out var comp))
             return;
 
-        foreach(var language in languages)
+        if (!_proto.TryIndex<LanguagesPrototype>(languageId, out var proto))
         {
-            if (!_proto.TryIndex<LanguagesPrototype>(language, out var proto))
-                continue;
-
-            if (!comp.LearnedLanguages.Contains(language))
-                comp.LearnedLanguages.Add(language);
+            Log.Error($"Doesn't found a LanguagePrototype with id: {languageId}");
+            return;
         }
+
+        if (!comp.LearnedLanguages.Contains(proto))
+            comp.LearnedLanguages.Add(proto);
     }
 
     /// <summary>
@@ -113,5 +121,20 @@ public abstract class SharedLanguageSystem : EntitySystem
         var color = proto.Color.Value.ToHex();
         message = $"[color={color}]{message}[/color]";
         return message;
+    }
+
+    public void AddLanguagesFromSource(EntityUid source, EntityUid target)
+    {
+        if (!TryComp<LanguageComponent>(source, out var sourceComp))
+            return;
+
+        var targetComp = EnsureComp<LanguageComponent>(target);
+        foreach (var language in sourceComp.LearnedLanguages)
+        {
+            if (!targetComp.LearnedLanguages.Contains(language))
+                targetComp.LearnedLanguages.Add(language);
+        }
+
+        Dirty(target, targetComp);
     }
 }

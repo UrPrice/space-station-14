@@ -18,6 +18,6 @@ public sealed partial class AddLanguageSpecial : JobSpecial
     {
         var entMan = IoCManager.Resolve<IEntityManager>();
         var languageSystem = entMan.System<SharedLanguageSystem>();
-        languageSystem.AddLanguage(mob, Languages);
+        languageSystem.AddLanguages(mob, Languages);
     }
 }
