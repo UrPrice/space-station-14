@@ -9,7 +9,8 @@ using Content.Shared.Popups;
 using Robust.Shared.Random;
 using System.Text;
 using Robust.Shared.Player;
-using Content.Shared.SS220.Language; // SS220-Add-Languages
+using Content.Shared.SS220.Language;
+using Content.Server.SS220.Language; // SS220-Add-Languages
 
 namespace Content.Server.PAI;
 
@@ -20,6 +21,7 @@ public sealed class PAISystem : SharedPAISystem
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly ToggleableGhostRoleSystem _toggleableGhostRole = default!;
+    [Dependency] private readonly LanguageSystem _language = default!; // SS220 Languages
 
     /// <summary>
     /// Possible symbols that can be part of a scrambled pai's name.
@@ -123,8 +125,8 @@ public sealed class PAISystem : SharedPAISystem
         if (TryComp<LanguageComponent>(uid, out var languages))
         {
             languages.LearnedLanguages.Clear();
-            languages.LearnedLanguages.Add(LanguagesPrototype.Galactic);
-            languages.LearnedLanguages.Add(LanguagesPrototype.Universal);
+            languages.LearnedLanguages.Add(_language.UniversalLanguage);
+            languages.LearnedLanguages.Add(_language.GalacticLanguage);
             languages.CurrentLanguage = languages.LearnedLanguages[0];
         }
     }

@@ -516,18 +516,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue;
 
             var listener = session.AttachedEntity.Value;
-            var languageProto = _languageSystem.GetProto(source);
-
-            if (languageProto == null)
-                return;
-
-            var canUnderstand = _languageSystem.CheckLanguage(listener, languageProto);
-
-            var currentMessage = canUnderstand ? message : _languageSystem.ScrambleText(source, originalMessage, languageProto);
-            if (languageProto?.Color != null)
-            {
-                currentMessage = _languageSystem.SetColor(currentMessage, languageProto);
-            }
+            var currentMessage = _languageSystem.SanitizeMessage(source, listener, message);
         // SS220-Add-Languages end
 
             var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
@@ -629,29 +618,15 @@ public sealed partial class ChatSystem : SharedChatSystem
             listener = session.AttachedEntity.Value;
 
             // SS220-Add-Languages begin
-            var scrambledMessage = message;
-            var obfuscatedScrambledMessage = obfuscatedMessage;
-            var wrappedScrambledMessage = wrappedMessage;
-            var wrappedObfuscatedScrambledMessage = wrappedobfuscatedMessage;
-            var wrappedUnknownScrambledMessage = wrappedUnknownMessage;
+            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
+            var obfuscatedScrambledMessage = _languageSystem.SanitizeMessage(source, listener, obfuscatedMessage);
 
-            if (!_languageSystem.CheckLanguage(listener, languageProto) && languageProto != null)
-            {
-                scrambledMessage = _languageSystem.ScrambleText(source, message, languageProto);
-                obfuscatedScrambledMessage = ObfuscateMessageReadability(scrambledMessage, 0.2f);
-
-                if (languageProto.Color != null)
-                {
-                    scrambledMessage = _languageSystem.SetColor(scrambledMessage, languageProto);
-                }
-
-                wrappedScrambledMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+            var wrappedScrambledMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
                     ("entityName", name), ("message", scrambledMessage));
-                wrappedObfuscatedScrambledMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+            var wrappedObfuscatedScrambledMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
                     ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedScrambledMessage)));
-                wrappedUnknownScrambledMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
+            var wrappedUnknownScrambledMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
                     ("message", FormattedMessage.EscapeText(obfuscatedScrambledMessage)));
-            }
             // SS220-Add-Languages end
 
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)

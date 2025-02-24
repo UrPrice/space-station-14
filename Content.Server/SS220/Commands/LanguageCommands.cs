@@ -1,10 +1,10 @@
-// © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
+using Content.Server.Administration;
 using Content.Shared.Administration;
-using Robust.Shared.Console;
 using Content.Shared.SS220.Language;
+using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Administration.Commands; // If I change namespace in SS220 the AdminCommand attribute is no longer located....
+namespace Content.Server.SS220.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class AddLanguageCommand : IConsoleCommand
@@ -131,3 +131,4 @@ public sealed class ClearLanguagesCommand : IConsoleCommand
         shell.WriteLine(Loc.GetString("cmd-language-clear"));
     }
 }
+

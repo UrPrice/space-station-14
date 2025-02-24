@@ -48,7 +48,7 @@ public sealed partial class LanguageVerbs : EntitySystem
 
         foreach (string language in languages)
         {
-            if (language == LanguagesPrototype.Universal) // no verb for a universal language is created
+            if (language == _languageSystem.UniversalLanguage) // no verb for a universal language is created
                 continue;
 
             verbs.Add(new Verb

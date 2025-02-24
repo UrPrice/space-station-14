@@ -36,7 +36,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
     private void OnMapInit(Entity<LanguageComponent> ent, ref MapInitEvent args)
     {
         if (ent.Comp.CurrentLanguage == null)
-            ent.Comp.CurrentLanguage = ent.Comp.LearnedLanguages.FirstOrDefault(LanguagesPrototype.Universal);
+            ent.Comp.CurrentLanguage = ent.Comp.LearnedLanguages.FirstOrDefault(UniversalLanguage);
 
         Dirty(ent.Owner, ent.Comp);
     }
@@ -143,6 +143,17 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         string cleanedText = Regex.Replace(input, pattern, "$2");
 
         return cleanedText;
+    }
+
+    public string SanitizeMessage(EntityUid source, EntityUid listener, string message)
+    {
+        var languageProto = GetProto(source);
+        if (languageProto == null || CheckLanguage(listener, languageProto))
+            return message;
+
+        var newMessage = ScrambleText(source, message, languageProto);
+        newMessage = SetColor(newMessage, languageProto);
+        return newMessage;
     }
 }
 

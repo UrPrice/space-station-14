@@ -10,6 +10,9 @@ public abstract class SharedLanguageSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
+    public readonly string UniversalLanguage = "Universal";
+    public readonly string GalacticLanguage = "Galactic";
+
     /// <summary>
     ///     Method that checks an entity for the presence of a prototype language
     ///     or for the presence of a universal language
@@ -44,10 +47,10 @@ public abstract class SharedLanguageSystem : EntitySystem
         if (!TryComp<LanguageComponent>(ent, out var comp))
             return true;
 
-        if (comp != null && comp.CurrentLanguage == LanguagesPrototype.Universal)
+        if (comp != null && comp.CurrentLanguage == UniversalLanguage)
             return true;
 
-        if (comp != null && comp.LearnedLanguages.Contains(LanguagesPrototype.Universal))
+        if (comp != null && comp.LearnedLanguages.Contains(UniversalLanguage))
             return true;
 
         return false;
@@ -61,7 +64,7 @@ public abstract class SharedLanguageSystem : EntitySystem
     {
         if (!TryComp<LanguageComponent>(ent, out var comp))
         {
-            if (_proto.TryIndex<LanguagesPrototype>(LanguagesPrototype.Universal, out var universalProto))
+            if (_proto.TryIndex<LanguagesPrototype>(UniversalLanguage, out var universalProto))
                 return universalProto;
         }
 
