@@ -4,4 +4,4 @@ verb-categories-deattach-cart = Открепить
 verb-categories-languages-selector = Выбрать язык
 
 
-verb-shuffle-cards = Перемешать test
+verb-shuffle-cards = Перемешать
