@@ -6,12 +6,11 @@ namespace Content.Server.SS220.Language;
 
 public sealed class LanguageManager
 {
-    [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
     public List<LanguagePrototype> Languages { get; private set; } = new();
 
-    private ISawmill _sawmill = default!;
+    public readonly string KeyPrefix = ":";
 
     public void Initialize()
     {
@@ -20,27 +19,17 @@ public sealed class LanguageManager
         {
             Languages.Add(language);
         }
-
-        _sawmill = _logManager.GetSawmill("language.manager");
     }
 
     public bool TryGetLanguageById(string id, [NotNullWhen(true)] out LanguagePrototype? language)
     {
         language = Languages.Find(l => l.ID == id);
-
-        if (language == null)
-            _sawmill.Error($"Doesn't found a language with id: {id}");
-
         return language != null;
     }
 
     public bool TryGetLanguageByKey(string key, [NotNullWhen(true)] out LanguagePrototype? language)
     {
-        language = Languages.Find(l => l.Key == key);
-
-        if (language == null)
-            _sawmill.Error($"Doesn't found a language with key: {key}");
-
+        language = Languages.Find(l => KeyPrefix + l.Key == key);
         return language != null;
     }
 }

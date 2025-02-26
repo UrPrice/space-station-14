@@ -3,14 +3,15 @@ using Content.Server.GameTicking.Events;
 using Content.Shared.Ghost;
 using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Content.Server.SS220.Language;
 
 public sealed partial class LanguageSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly LanguageManager _languageManager = default!;
 
     public readonly string UniversalLanguage = "Universal";
@@ -50,6 +51,8 @@ public sealed partial class LanguageSystem : EntitySystem
     /// </summary>
     public string ScrambleText(EntityUid? ent, string input, LanguagePrototype proto)
     {
+        var saveEndWhitespace = char.IsWhiteSpace(input[input.Length - 1]);
+
         input = RemoveColorTags(input);
         var cacheKey = $"{proto.ID}:{input}";
 
@@ -71,6 +74,9 @@ public sealed partial class LanguageSystem : EntitySystem
                 ScrambleCache.Remove(key);
             }
         }
+
+        if (saveEndWhitespace)
+            scrambledText += " ";
 
         return scrambledText;
     }
@@ -94,12 +100,98 @@ public sealed partial class LanguageSystem : EntitySystem
     public string SanitizeMessage(EntityUid source, EntityUid listener, string message)
     {
         var languageProto = GetProto(source);
-        if (languageProto == null || CheckLanguage(listener, languageProto))
+        if (languageProto == null)
             return message;
 
-        var newMessage = ScrambleText(source, message, languageProto);
-        newMessage = SetColor(newMessage, languageProto);
-        return newMessage;
+        var languageStrings = SplitStringByLanguages(source, message, languageProto);
+        var sanitizedMessage = new StringBuilder();
+        foreach (var languageString in languageStrings)
+        {
+            if (CheckLanguage(listener, languageString.Item2))
+            {
+                sanitizedMessage.Append(languageString.Item1);
+            }
+            else
+            {
+                var scrambledString = ScrambleText(listener, languageString.Item1, languageString.Item2);
+                scrambledString = SetColor(scrambledString, languageString.Item2);
+                sanitizedMessage.Append(scrambledString);
+            }
+        }
+
+        return sanitizedMessage.ToString();
+    }
+
+    public List<(string, LanguagePrototype)> SplitStringByLanguages(EntityUid source, string message, LanguagePrototype defaultLanguage)
+    {
+        var list = new List<(string, LanguagePrototype)>();
+        var textWithKeyPattern = @"^:(.*?)\s(?=:\w+\s)|(?<=\s):(.*?)\s(?=:\w+\s)|(?<=\s):(.*)|^:(.*)"; // pizdec
+
+        var matches = Regex.Matches(message, textWithKeyPattern);
+        if (matches.Count <= 0)
+        {
+            list.Add((message, defaultLanguage));
+            return list;
+        }
+
+        var textBeforeFirstTag = message.Substring(0, matches[0].Index);
+        (string, LanguagePrototype?) buffer = (string.Empty, null);
+        if (textBeforeFirstTag != string.Empty)
+            buffer = (textBeforeFirstTag, defaultLanguage);
+
+        foreach (Match m in matches)
+        {
+            if (!TryGetLanguageFromString(m.Value, out var messageWithoutTags, out var language) ||
+                !CheckLanguage(source, language))
+            {
+                if (buffer.Item2 == null)
+                {
+                    buffer = (m.Value, defaultLanguage);
+                }
+                else
+                {
+                    buffer.Item1 += m.Value;
+                }
+
+                continue;
+            }
+
+            if (buffer.Item2 == language)
+            {
+                buffer.Item1 += messageWithoutTags;
+                continue;
+            }
+            else if (buffer.Item2 != null)
+            {
+                list.Add((buffer.Item1, buffer.Item2));
+            }
+
+            buffer = (messageWithoutTags, language);
+        }
+
+        if (buffer.Item2 != null)
+        {
+            list.Add((buffer.Item1, buffer.Item2));
+        }
+
+        return list;
+    }
+
+    public bool TryGetLanguageFromString(string message,
+        [NotNullWhen(true)] out string? messageWithoutTags,
+        [NotNullWhen(true)] out LanguagePrototype? language)
+    {
+        messageWithoutTags = null;
+        language = null;
+
+        var keyPatern = @":\w+\s+";
+
+        var m = Regex.Match(message, keyPatern);
+        if (m == null || !_languageManager.TryGetLanguageByKey(m.Value.Trim(), out language))
+            return false;
+
+        messageWithoutTags = Regex.Replace(message, keyPatern, string.Empty);
+        return messageWithoutTags != null && language != null;
     }
 
     /// <summary>
