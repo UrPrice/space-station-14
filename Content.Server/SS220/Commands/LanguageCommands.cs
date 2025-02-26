@@ -11,6 +11,7 @@ public sealed class AddLanguageCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entities = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly LanguageManager _languageManager = default!;
 
     public string Command => "addlanguage";
     public string Description => Loc.GetString("cmd-language-add-desc");
@@ -32,7 +33,7 @@ public sealed class AddLanguageCommand : IConsoleCommand
 
         var languageId = args[1];
 
-        if (!_proto.TryIndex<LanguagePrototype>(languageId, out var languageProto))
+        if (_languageManager.TryGetLanguageById(languageId, out var language))
         {
             shell.WriteError(Loc.GetString("cmd-language-proto-miss"));
             return;

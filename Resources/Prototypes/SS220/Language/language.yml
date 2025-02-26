@@ -3,10 +3,12 @@
 # Everyone understands you, you understand everyone, but there's no right to speak all languages
 - type: language
   id: Universal
+  key: uni
 
 # Galactic common lanaguges region:
 - type: language
   id: Galactic
+  key: gal
   name: "language-galacticcommon-name"
   description: "language-galacticcommon-desc"
   scrambleMethod: !type:RandomSyllablesScrambleMethod
@@ -14,6 +16,7 @@
 
 - type: language
   id: SolCommon
+  key: sol
   name: "language-solcommon-name"
   description: "language-solcommon-desc"
   color: "#2f2fad"
@@ -22,6 +25,7 @@
 
 - type: language
   id: Tradeband
+  key: trade
   name: "language-tradeband-name"
   description: "language-tradeband-desc"
   color: "#87451c"
@@ -36,6 +40,7 @@
 
 - type: language
   id: Gutter
+  key: gut
   name: "language-gutter-name"
   description: "language-gutter-desc"
   color: "#7092BE"
@@ -45,6 +50,7 @@
 
 - type: language
   id: Clownish
+  key: clown
   name: "language-clownish-name"
   description: "language-clownish-desc"
   color: "#ff0000"
@@ -54,6 +60,7 @@
 
 - type: language
   id: NeoRusskiya
+  key: neoru
   name: "language-neorusskiya-name"
   description: "language-neorusskiya-desc"
   color: "#7c4848"
@@ -70,6 +77,7 @@
 # Race region:
 - type: language
   id: Sintaunathi
+  key: unathi
   name: "language-unathi-name"
   description: "language-unathi-desc"
   color: "#228B22"
@@ -83,6 +91,7 @@
 
 - type: language
   id: Siiktajr
+  key: tajr
   name: "language-siiktajr-name"
   description: "language-siiktajr-desc"
   color: "#803B56"
@@ -97,6 +106,7 @@
 
 - type: language
   id: VoxPidgin
+  key: vox
   name: "language-voxpidgin-name"
   description: "language-voxpidgin-desc"
   color: "#AA00AA"
@@ -108,6 +118,7 @@
 
 - type: language
   id: Rootspeak
+  key: root
   name: "language-rootspeak-name"
   description: "language-rootspeak-desc"
   color: "#804000"
@@ -117,6 +128,7 @@
 
 - type: language
   id: Bubblish
+  key: bubbl
   name: "language-bobblish-name"
   description: "language-bobblish-desc"
   color: "#0077AA"
@@ -126,6 +138,7 @@
 
 - type: language
   id: Tkachi
+  key: tch
   name: "language-tkachi-name"
   description: "language-tkachi-desc"
   color: "#869b29"
@@ -139,6 +152,7 @@
 
 - type: language
   id: Eldwarf
+  key: dwarf
   name: "language-eldwarf-name"
   description: "language-eldwarf-desc"
   color: "#515d63"
@@ -150,6 +164,7 @@
 
 - type: language
   id: Arati
+  key: arati
   name: "language-arati-name"
   description: "language-arati-desc"
   color: "#68477a"
@@ -164,6 +179,7 @@
 
 - type: language
   id: Canilunzt
+  key: cani
   name: "language-canilunzt-name"
   description: "language-canilunzt-desc"
   color: "#B97A57"
@@ -178,6 +194,7 @@
 # Misc region:
 - type: language
   id: Binary
+  key: bin
   name: "language-binary-name"
   description: "language-binary-desc"
   color: "#2cc2e8"

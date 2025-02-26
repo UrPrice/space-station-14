@@ -39,6 +39,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server.SS220.BackEndApi;
+using Content.Server.SS220.Language;
 
 namespace Content.Server.Entry
 {
@@ -168,6 +169,8 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<IBanManager>().Initialize();
                 IoCManager.Resolve<IConnectionManager>().PostInit();
                 IoCManager.Resolve<MultiServerKickManager>().Initialize();
+
+                IoCManager.Resolve<LanguageManager>().Initialize(); // SS220 Languages
             }
         }
 

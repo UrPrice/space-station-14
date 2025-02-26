@@ -16,6 +16,9 @@ public sealed partial class LanguagePrototype : IPrototype
     [DataField]
     public string? Description { get; private set; }
 
+    [DataField(required: true)]
+    public string Key = string.Empty;
+
     /// <summary>
     ///  The color of the language in which messages will be recolored, 
     ///  an empty value will not be recolored

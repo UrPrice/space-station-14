@@ -11,6 +11,7 @@ namespace Content.Server.SS220.Language;
 public sealed partial class LanguageSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly LanguageManager _languageManager = default!;
 
     public readonly string UniversalLanguage = "Universal";
     public readonly string GalacticLanguage = "Galactic";
@@ -152,7 +153,7 @@ public sealed partial class LanguageSystem : EntitySystem
     {
         if (!TryComp<LanguageComponent>(ent, out var comp))
         {
-            if (_proto.TryIndex<LanguagePrototype>(UniversalLanguage, out var universalProto))
+            if (_languageManager.TryGetLanguageById(UniversalLanguage, out var universalProto))
                 return universalProto;
         }
 
@@ -161,7 +162,7 @@ public sealed partial class LanguageSystem : EntitySystem
         if (languageID == null)
             return null;
 
-        if (_proto.TryIndex<LanguagePrototype>(languageID, out var proto))
+        if (_languageManager.TryGetLanguageById(languageID, out var proto))
             return proto;
 
         return null;
@@ -188,7 +189,7 @@ public sealed partial class LanguageSystem : EntitySystem
         if (!TryComp<LanguageComponent>(uid, out var comp))
             return;
 
-        if (!_proto.TryIndex<LanguagePrototype>(languageId, out var proto))
+        if (!_languageManager.TryGetLanguageById(languageId, out var proto))
         {
             Log.Error($"Doesn't found a LanguagePrototype with id: {languageId}");
             return;

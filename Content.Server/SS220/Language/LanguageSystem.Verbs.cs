@@ -54,7 +54,7 @@ public sealed partial class LanguageSystem : EntitySystem
 
     public string GetName(string language)
     {
-        if (!_proto.TryIndex<LanguagePrototype>(language, out var proto))
+        if (!_languageManager.TryGetLanguageById(language, out var proto))
             return language;
 
         if (proto.Name == null)
@@ -66,7 +66,7 @@ public sealed partial class LanguageSystem : EntitySystem
 
     public string? GetDescription(string language)
     {
-        if (!_proto.TryIndex<LanguagePrototype>(language, out var proto))
+        if (!_languageManager.TryGetLanguageById(language, out var proto))
             return null;
 
         if (proto.Description == null)
