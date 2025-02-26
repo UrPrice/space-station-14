@@ -3,26 +3,25 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 
-namespace Content.Shared.SS220.Language;
+namespace Content.Server.SS220.Language;
 
 /// <summary>
 ///     A component that allows an entity to speak and understand languages.
-///     Language prototypes are taken from YML of <see cref="LanguagesPrototype"/>
+///     Language prototypes are taken from YML of <see cref="LanguagePrototype"/>
 ///     The absence of this component gives the entity “Universal” language
 /// </summary>
-[RegisterComponent, NetworkedComponent]
-[AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class LanguageComponent : Component
 {
     /// <summary>
     ///  Selected language in which the entity will speak.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public string? CurrentLanguage = default!;
 
     /// <summary>
     ///  List of languages that the Entity speaks and understands.
     /// </summary>
-    [DataField("learnedLanguages"), AutoNetworkedField]
-    public List<ProtoId<LanguagesPrototype>> LearnedLanguages { get; set; } = new();
+    [DataField("learnedLanguages")]
+    public List<ProtoId<LanguagePrototype>> LearnedLanguages { get; set; } = new();
 }

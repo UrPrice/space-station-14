@@ -42,7 +42,6 @@ using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
 using Robust.Shared.Timing;
-using Content.Shared.SS220.Language; // SS220-Add-Languages-begin
 using Content.Server.SS220.Language; // SS220-Add-Languages-end
 using Robust.Shared.Map;
 
@@ -175,7 +174,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         ICommonSession? player = null, string? nameOverride = null,
         bool checkRadioPrefix = true,
         bool ignoreActionBlocker = false,
-        LanguagesPrototype? languageProto = null) // SS220-Add-Languages
+        LanguagePrototype? languageProto = null) // SS220-Add-Languages
     {
         TrySendInGameICMessage(source, message, desiredType,
             hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal,
@@ -205,7 +204,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? nameOverride = null,
         bool checkRadioPrefix = true,
         bool ignoreActionBlocker = false,
-        LanguagesPrototype? languageProto = null) // SS220-Add-Languages
+        LanguagePrototype? languageProto = null) // SS220-Add-Languages
     {
         if (HasComp<GhostComponent>(source))
         {
@@ -563,7 +562,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? nameOverride,
         bool hideLog = false,
         bool ignoreActionBlocker = false,
-        LanguagesPrototype? languageProto = null) // SS220-Add-Languages
+        LanguagePrototype? languageProto = null) // SS220-Add-Languages
     {
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
             return;

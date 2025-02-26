@@ -1,7 +1,7 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat;
-using Content.Shared.SS220.Language; // SS220-Add-Languages
 using Content.Shared.Radio;
+using Content.Server.SS220.Language;
 
 namespace Content.Server.Radio;
 
@@ -9,7 +9,7 @@ namespace Content.Server.Radio;
 public readonly record struct RadioReceiveEvent(string Message, EntityUid MessageSource,
     RadioChannelPrototype Channel, EntityUid RadioSource,
     MsgChatMessage ChatMsg, MsgChatMessage ScrambledChatMsg,
-    LanguagesPrototype? LanguageProto, List<RadioEventReceiver> Receivers); // SS220-Add-Languages
+    LanguagePrototype? LanguageProto, List<RadioEventReceiver> Receivers); // SS220-Add-Languages
 
 /// <summary>
 /// Use this event to cancel sending message per receiver

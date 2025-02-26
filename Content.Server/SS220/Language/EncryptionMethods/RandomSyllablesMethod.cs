@@ -1,9 +1,8 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
-
 using System.Text;
 using Robust.Shared.Random;
 
-namespace Content.Shared.SS220.Language.EncryptionMethods;
+namespace Content.Server.SS220.Language.EncryptionMethods;
 
 public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
 {
@@ -43,7 +42,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         var random = IoCManager.Resolve<IRobustRandom>();
 
         var encryptedMessage = new StringBuilder();
-        bool capitalize = false;
+        var capitalize = false;
         while (encryptedMessage.Length < message.Length)
         {
             var curSyllable = random.Pick(Syllables);

@@ -1,18 +1,18 @@
 # Based on SS13 Paradise (https://github.com/ParadiseSS13/Paradise/blob/017a56f8080361f04c296c94859802aaddf25114/code/modules/mob/language.dm#L4)
 
 # Everyone understands you, you understand everyone, but there's no right to speak all languages
-- type: languages
+- type: language
   id: Universal
 
 # Galactic common lanaguges region:
-- type: languages
+- type: language
   id: Galactic
   name: "language-galacticcommon-name"
   description: "language-galacticcommon-desc"
   scrambleMethod: !type:RandomSyllablesScrambleMethod
     syllables: [бла, бла, бла, бле, мех, ньех, нах, ах, угу, увы]
 
-- type: languages
+- type: language
   id: SolCommon
   name: "language-solcommon-name"
   description: "language-solcommon-desc"
@@ -20,7 +20,7 @@
   scrambleMethod: !type:RandomSyllablesScrambleMethod
     syllables: [tao, shi, tzu, yi, com, be, is, i, op, vi, ed, lec, mo, cle, te, dis, e]
 
-- type: languages
+- type: language
   id: Tradeband
   name: "language-tradeband-name"
   description: "language-tradeband-desc"
@@ -34,7 +34,7 @@
                 nulla, pariatur, excepteur, sint, occaecat, cupidatat, non, proident, sunt, in,
                 culpa, qui, officia, deserunt, mollit, anim, id, est, laborum]
 
-- type: languages
+- type: language
   id: Gutter
   name: "language-gutter-name"
   description: "language-gutter-desc"
@@ -43,7 +43,7 @@
     spaceChance: 0.55
     syllables: [gra, ba, ba, breh, bra, rah, dur, ra, ro, gro, go, ber, bar, geh, heh, gra]
 
-- type: languages
+- type: language
   id: Clownish
   name: "language-clownish-name"
   description: "language-clownish-desc"
@@ -52,7 +52,7 @@
     spaceChance: 0.6
     syllables: [хонк, cкуик, ойк, бонк, тут, наф, пуп, ви, вуб, ниф]
 
-- type: languages
+- type: language
   id: NeoRusskiya
   name: "language-neorusskiya-name"
   description: "language-neorusskiya-desc"
@@ -68,7 +68,7 @@
                 na, udi, litchki, casa, linka, toly, anatov, vich, vech, vuch, toi, ka, vod]
 
 # Race region:
-- type: languages
+- type: language
   id: Sintaunathi
   name: "language-unathi-name"
   description: "language-unathi-desc"
@@ -81,7 +81,7 @@
               ri, ir, ro, or, ru, ur, rs, sr, a, a, e, e, i, i, o, o, u, u,
               s, s]
 
-- type: languages
+- type: language
   id: Siiktajr
   name: "language-siiktajr-name"
   description: "language-siiktajr-desc"
@@ -95,7 +95,7 @@
               mah, sanu, dra, ii'r, ъka, aasi, far, mah, tul, ragh
               wa, baq, ara, qara, zir', sam, mak, cresh, khan]
 
-- type: languages
+- type: language
   id: VoxPidgin
   name: "language-voxpidgin-name"
   description: "language-voxpidgin-desc"
@@ -106,7 +106,7 @@
                 SKRE, AHK, EHK, RAWK, KRA, AAA, EEE, KI,
                 II, KRI, KA]
 
-- type: languages
+- type: language
   id: Rootspeak
   name: "language-rootspeak-name"
   description: "language-rootspeak-desc"
@@ -115,7 +115,7 @@
     spaceChance: 0.3
     syllables: [hs, zt, kr, st, sh]
 
-- type: languages
+- type: language
   id: Bubblish
   name: "language-bobblish-name"
   description: "language-bobblish-desc"
@@ -124,7 +124,7 @@
     spaceChance: 0.6
     syllables: [блоб, плап, поп, боп, буп, пламп, буб, баб, бламп]
 
-- type: languages
+- type: language
   id: Tkachi
   name: "language-tkachi-name"
   description: "language-tkachi-desc"
@@ -137,7 +137,7 @@
                 int, tyc, om, när, två, må, dag, sjä, vii, vuo, eil, tun, käyt, teh,
                 vä, hei, huo, suo, ää, ten, ja, heu, stu, uhr, kön, we, hön]
 
-- type: languages
+- type: language
   id: Eldwarf
   name: "language-eldwarf-name"
   description: "language-eldwarf-desc"
@@ -148,7 +148,7 @@
                 рд, клыт, зм, эмээ, гнык, зрм, длк, брг, грд, скрын, вродд, бдар, глтх, скрр,
                 трг, бртх, хыкл, тр, крг, рдм, грыж, мд, гхрм, клм, прк, кнур]
 
-- type: languages
+- type: language
   id: Arati
   name: "language-arati-name"
   description: "language-arati-desc"
@@ -162,7 +162,7 @@
                 кар, харат, хш, харр, арш', ашан, шанн, хсар, ашат, хаа, хазт, рашта, зара,
                 хаш, анн, аро', хат]
 
-- type: languages
+- type: language
   id: Canilunzt
   name: "language-canilunzt-name"
   description: "language-canilunzt-desc"
@@ -176,7 +176,7 @@
                 einech, cresthz, azunein, ghzth]
 
 # Misc region:
-- type: languages
+- type: language
   id: Binary
   name: "language-binary-name"
   description: "language-binary-desc"

@@ -1,6 +1,6 @@
 using Content.Server.Administration;
+using Content.Server.SS220.Language;
 using Content.Shared.Administration;
-using Content.Shared.SS220.Language;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
 
@@ -32,7 +32,7 @@ public sealed class AddLanguageCommand : IConsoleCommand
 
         var languageId = args[1];
 
-        if (!_proto.TryIndex<LanguagesPrototype>(languageId, out var languageProto))
+        if (!_proto.TryIndex<LanguagePrototype>(languageId, out var languageProto))
         {
             shell.WriteError(Loc.GetString("cmd-language-proto-miss"));
             return;
