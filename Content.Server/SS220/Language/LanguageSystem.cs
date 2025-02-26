@@ -125,7 +125,8 @@ public sealed partial class LanguageSystem : EntitySystem
     public List<(string, LanguagePrototype)> SplitStringByLanguages(EntityUid source, string message, LanguagePrototype defaultLanguage)
     {
         var list = new List<(string, LanguagePrototype)>();
-        var textWithKeyPattern = @"^:(.*?)\s(?=:\w+\s)|(?<=\s):(.*?)\s(?=:\w+\s)|(?<=\s):(.*)|^:(.*)"; // pizdec
+        var p = _languageManager.KeyPrefix;
+        var textWithKeyPattern = $@"^{p}(.*?)\s(?={p}\w+\s)|(?<=\s){p}(.*?)\s(?={p}\w+\s)|(?<=\s){p}(.*)|^{p}(.*)"; // pizdec
 
         var matches = Regex.Matches(message, textWithKeyPattern);
         if (matches.Count <= 0)
@@ -184,7 +185,7 @@ public sealed partial class LanguageSystem : EntitySystem
         messageWithoutTags = null;
         language = null;
 
-        var keyPatern = @":\w+\s+";
+        var keyPatern = $@"{_languageManager.KeyPrefix}\w+\s+";
 
         var m = Regex.Match(message, keyPatern);
         if (m == null || !_languageManager.TryGetLanguageByKey(m.Value.Trim(), out language))
