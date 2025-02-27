@@ -1,6 +1,7 @@
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Speech.Components;
-using Content.Server.SS220.Language; 
+using Content.Server.SS220.Language;
+using Content.Server.SS220.Language.Components;
 using Content.Shared.EntityEffects;
 using Content.Shared.Mind.Components;
 using Robust.Shared.Prototypes;
@@ -27,10 +28,10 @@ public sealed partial class MakeSentient : EntityEffect
         var language = entityManager.EnsureComponent<LanguageComponent>(uid);
         var languageSystem = entityManager.System<LanguageSystem>();
 
-        if (!language.LearnedLanguages.Contains(languageSystem.GalacticLanguage))
-            language.LearnedLanguages.Add(languageSystem.GalacticLanguage);
+        if (!language.AvailableLanguages.Contains(languageSystem.GalacticLanguage))
+            language.AvailableLanguages.Add(languageSystem.GalacticLanguage);
 
-        language.CurrentLanguage = language.LearnedLanguages[0];
+        language.SelectedLanguage = language.AvailableLanguages[0];
         // SS220-Add-Languages end
 
         // Stops from adding a ghost role to things like people who already have a mind

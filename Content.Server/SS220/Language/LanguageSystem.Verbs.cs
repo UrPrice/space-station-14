@@ -1,4 +1,5 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
+using Content.Server.SS220.Language.Components;
 using Content.Shared.Verbs;
 using System.Linq;
 
@@ -19,7 +20,7 @@ public sealed partial class LanguageSystem : EntitySystem
         if (!args.CanAccess)
             return;
 
-        var learnedLanguages = comp.LearnedLanguages.Select(lang => lang.ToString()).ToList();
+        var learnedLanguages = comp.AvailableLanguages.Select(lang => lang.ToString()).ToList();
         var verbs = CreateVerbs(ent, learnedLanguages);
         foreach (var verb in verbs)
         {
@@ -31,7 +32,7 @@ public sealed partial class LanguageSystem : EntitySystem
     {
         var verbs = new List<Verb>();
 
-        if (!TryComp<LanguageComponent>(ent, out var comp))
+        if (!TryGetLanguageComponent(ent, out var comp))
             return verbs;
 
         foreach (var language in languages)
@@ -44,7 +45,7 @@ public sealed partial class LanguageSystem : EntitySystem
                 Text = GetName(language),
                 Message = GetDescription(language),
                 Category = VerbCategory.Languages,
-                Disabled = language == comp.CurrentLanguage,
+                Disabled = language == comp.SelectedLanguage,
                 Act = () => ChangeLanguage(ent, language)
             });
         }
@@ -78,9 +79,9 @@ public sealed partial class LanguageSystem : EntitySystem
 
     private void ChangeLanguage(EntityUid ent, string language)
     {
-        if (!TryComp<LanguageComponent>(ent, out var comp))
+        if (!TryGetLanguageComponent(ent, out var comp))
             return;
 
-        comp.CurrentLanguage = language;
+        comp.SelectedLanguage = language;
     }
 }

@@ -19,7 +19,8 @@ using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using System.Globalization;
 using Content.Server.Popups;
-using Content.Server.SS220.Language; // SS220-Add-Languages
+using Content.Server.SS220.Language;
+using System.Diagnostics.CodeAnalysis; // SS220-Add-Languages
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -70,12 +71,7 @@ public sealed class RadioSystem : EntitySystem
     private void OnIntrinsicReceive(EntityUid uid, IntrinsicRadioReceiverComponent component, ref RadioReceiveEvent args)
     {
         if (TryComp(uid, out ActorComponent? actor))
-            // SS220-Add-Languages begin
-            if (_languageSystem.CheckLanguage(uid, args.LanguageProto))
-                _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
-            else
-                _netMan.ServerSendMessage(args.ScrambledChatMsg, actor.PlayerSession.Channel);
-            // SS220-Add-Languages end
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
 
         // SS220 Silicon TTS fix begin
         if (component.ReceiverEntityOverride is { } receiverOverride && !TerminatingOrDeleted(receiverOverride))
@@ -103,7 +99,6 @@ public sealed class RadioSystem : EntitySystem
         // TODO if radios ever garble / modify messages, feedback-prevention needs to be handled better than this.
         if (!_messages.Add(message))
             return;
-        message = _languageSystem.RemoveColorTags(message); // SS220-Add-Languages
 
         var evt = new TransformSpeakerNameEvent(messageSource, _chat.GetRadioName(messageSource)); //ss220 add identity concealment for chat and radio messages
         RaiseLocalEvent(messageSource, evt);
@@ -123,42 +118,6 @@ public sealed class RadioSystem : EntitySystem
         var content = escapeMarkup
             ? FormattedMessage.EscapeText(message)
             : message;
-        // SS220-Add-Languages begin
-        var languageProto = _languageSystem.GetProto(messageSource);
-        if (languageProto == null)
-            return;
-
-        var scrambledMessage = _languageSystem.ScrambleText(messageSource, content, languageProto);
-
-        if (GetIdCardIsBold(messageSource))
-        {
-            content = $"[bold]{content}[/bold]";
-            scrambledMessage = $"[bold]{scrambledMessage}[/bold]";
-        }
-
-        if (languageProto.Color != null)
-        {
-            content = _languageSystem.SetColor(content, languageProto);
-            scrambledMessage = _languageSystem.SetColor(scrambledMessage, languageProto);
-        }
-
-        var wrappedScrambledMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
-            ("color", channel.Color),
-            ("fontType", speech.FontId),
-            ("fontSize", speech.FontSize),
-            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
-            ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", formattedName),
-            ("message", scrambledMessage));
-
-        var scrambledChat = new ChatMessage(
-            ChatChannel.Radio,
-            message,
-            wrappedScrambledMessage,
-            NetEntity.Invalid,
-            null);
-        var scrambledChatMsg = new MsgChatMessage { Message = scrambledChat };
-        // SS220-Add-Languages end
 
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
             ("color", channel.Color),
@@ -177,8 +136,7 @@ public sealed class RadioSystem : EntitySystem
             NetEntity.Invalid,
             null);
         var chatMsg = new MsgChatMessage { Message = chat };
-        var ev = new RadioReceiveEvent(message, messageSource, channel, radioSource,
-                                       chatMsg, scrambledChatMsg, languageProto, new()); // SS220-Add-Languages
+        var ev = new RadioReceiveEvent(message, messageSource, channel, radioSource, chatMsg, new());
 
         var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
         RaiseLocalEvent(ref sendAttemptEv);
@@ -214,8 +172,20 @@ public sealed class RadioSystem : EntitySystem
             if (attemptEv.Cancelled)
                 continue;
 
+            // SS220 languages begin
+            if (TryGetScrambledChatMessage(messageSource, receiver, message, out var scrambledChatMsg))
+            {
+                var scrabledEv = new RadioReceiveEvent(message, messageSource, channel, radioSource, scrambledChatMsg, new());
+                RaiseLocalEvent(receiver, ref scrabledEv);
+            }
+            else
+            {
+                RaiseLocalEvent(receiver, ref ev);
+            }
+            // SS220 languages end
+
             // send the message
-            RaiseLocalEvent(receiver, ref ev);
+            //RaiseLocalEvent(receiver, ref ev);
         }
 
         // Dispatch TTS radio speech event for every receiver
@@ -228,6 +198,42 @@ public sealed class RadioSystem : EntitySystem
 
         _replay.RecordServerMessage(chat);
         _messages.Remove(message);
+
+        // SS220 languages begin
+        bool TryGetScrambledChatMessage(EntityUid source, EntityUid listener, string message, [NotNullWhen(true)] out MsgChatMessage? scrambledChatMsg)
+        {
+            scrambledChatMsg = null;
+            var languageProto = _languageSystem.GetSelectedLanguage(source);
+            if (languageProto == null)
+                return false;
+
+            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
+            if (GetIdCardIsBold(source))
+            {
+                content = $"[bold]{content}[/bold]";
+                scrambledMessage = $"[bold]{scrambledMessage}[/bold]";
+            }
+
+            var wrappedScrambledMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
+                ("color", channel.Color),
+                ("fontType", speech.FontId),
+                ("fontSize", speech.FontSize),
+                ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+                ("channel", $"\\[{channel.LocalizedName}\\]"),
+                ("name", formattedName),
+                ("message", scrambledMessage));
+
+            var scrambledChat = new ChatMessage(
+                ChatChannel.Radio,
+                scrambledMessage,
+                wrappedScrambledMessage,
+                NetEntity.Invalid,
+                null);
+
+            scrambledChatMsg = new MsgChatMessage { Message = scrambledChat };
+            return scrambledChatMsg != null;
+        }
+        // SS220 languages end
     }
 
     private IdCardComponent? GetIdCard(EntityUid senderUid)

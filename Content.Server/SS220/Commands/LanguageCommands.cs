@@ -1,5 +1,6 @@
 using Content.Server.Administration;
 using Content.Server.SS220.Language;
+using Content.Server.SS220.Language.Components;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
@@ -45,9 +46,9 @@ public sealed class AddLanguageCommand : IConsoleCommand
             return;
         }
 
-        if (!languageComp.LearnedLanguages.Contains(languageId))
+        if (!languageComp.AvailableLanguages.Contains(languageId))
         {
-            languageComp.LearnedLanguages.Add(languageId);
+            languageComp.AvailableLanguages.Add(languageId);
             shell.WriteLine(Loc.GetString("cmd-language-success-add"));
         }
         else
@@ -88,7 +89,7 @@ public sealed class RemoveLanguageCommand : IConsoleCommand
             return;
         }
 
-        if (languageComp.LearnedLanguages.Remove(languageId))
+        if (languageComp.AvailableLanguages.Remove(languageId))
         {
             shell.WriteLine(Loc.GetString("cmd-language-succes-remove"));
         }
@@ -128,7 +129,7 @@ public sealed class ClearLanguagesCommand : IConsoleCommand
             return;
         }
 
-        languageComp.LearnedLanguages.Clear();
+        languageComp.AvailableLanguages.Clear();
         shell.WriteLine(Loc.GetString("cmd-language-clear"));
     }
 }

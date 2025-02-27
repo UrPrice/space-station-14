@@ -16,13 +16,13 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
-    [Dependency] private readonly LanguageSystem _languageSystem = default!; // SS220-Add-Languages
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<HeadsetComponent, RadioReceiveEvent>(OnHeadsetReceive);
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
+        SubscribeLocalEvent<HeadsetComponent, GetLanguageCompEvent>(OnGetLanguage); // SS220 languages
 
         SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
 
@@ -106,12 +106,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         var actorUid = Transform(uid).ParentUid;
         if (TryComp(actorUid, out ActorComponent? actor))
         {
-            // SS220-Add-Languages begin
-            if (_languageSystem.CheckLanguage(actorUid, args.LanguageProto))
-                _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
-            else
-                _netMan.ServerSendMessage(args.ScrambledChatMsg, actor.PlayerSession.Channel);
-            // SS220-Add-Languages end
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
             if (actorUid != args.MessageSource && TryComp(args.MessageSource, out TTSComponent? _))
             {
                 args.Receivers.Add(new(actorUid));
@@ -128,4 +123,13 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             args.Disabled = true;
         }
     }
+
+    // SS220 languages begin
+    private void OnGetLanguage(Entity<HeadsetComponent> ent, ref GetLanguageCompEvent args)
+    {
+        var actorUid = Transform(ent).ParentUid;
+        if (HasComp<ActorComponent>(actorUid))
+            RaiseLocalEvent(actorUid, ref args);
+    }
+    // SS220 languages end
 }

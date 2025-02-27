@@ -43,7 +43,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
     {
         var voice = EnsureComp<VoiceOverrideComponent>(ent);
         var speech = EnsureComp<SpeechComponent>(ent);
-        var language = _languageSystem.GetProto(ent); // SS220 Add languages
+        var language = _languageSystem.GetSelectedLanguage(ent); // SS220 Add languages
         TryComp<TTSComponent>(ent, out var tts); // SS220 Tape recorder TTS
 
         foreach (var message in tape.RecordedData)

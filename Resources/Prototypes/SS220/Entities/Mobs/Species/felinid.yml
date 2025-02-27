@@ -112,7 +112,7 @@
   - type: Emoting
     chatEmoteCooldown: 5.0
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
 
 - type: entity

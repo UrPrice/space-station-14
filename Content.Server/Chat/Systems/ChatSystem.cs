@@ -588,25 +588,15 @@ public sealed partial class ChatSystem : SharedChatSystem
             name = nameEv.VoiceName;
         }
         name = FormattedMessage.EscapeText(name);
-        // SS220-Add-Languages begin
-        if (languageProto == null)
-            languageProto = _languageSystem.GetProto(source);
-
-        if (languageProto?.Color != null)
-        {
-            message = _languageSystem.SetColor(message, languageProto);
-        }
-        // SS220-Add-Languages end
 
         var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
-            ("entityName", name), ("message", message /*SS220-Add-Languages*/));
+            ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
 
         var wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
             ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
 
         var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
             ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
-
 
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
@@ -618,13 +608,14 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             // SS220-Add-Languages begin
             var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
-            var obfuscatedScrambledMessage = _languageSystem.SanitizeMessage(source, listener, obfuscatedMessage);
+            var scrambledColorlessMessage = _languageSystem.RemoveColorTags(scrambledMessage);
+            var obfuscatedScrambledMessage = ObfuscateMessageReadability(scrambledColorlessMessage, 0.2f);
 
-            var wrappedScrambledMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+            wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
                     ("entityName", name), ("message", scrambledMessage));
-            var wrappedObfuscatedScrambledMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+            wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
                     ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedScrambledMessage)));
-            var wrappedUnknownScrambledMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
+            wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
                     ("message", FormattedMessage.EscapeText(obfuscatedScrambledMessage)));
             // SS220-Add-Languages end
 
@@ -632,13 +623,13 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
             if (data.Range <= WhisperClearRange || data.Observer /* SS220 Observer-Hearing */)
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, scrambledMessage, wrappedScrambledMessage /*SS220-Add-Languages*/, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, scrambledMessage, wrappedMessage, source, false, session.Channel);
             //If listener is too far, they only hear fragments of the message
             else if (_examineSystem.InRangeUnOccluded(source, listener, WhisperMuffledRange))
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage, wrappedObfuscatedScrambledMessage /*SS220-Add-Languages*/, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage, wrappedobfuscatedMessage, source, false, session.Channel);
             //If listener is too far and has no line of sight, they can't identify the whisperer's identity
             else
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage, wrappedUnknownScrambledMessage /*SS220-Add-Languages*/, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage, wrappedUnknownMessage, source, false, session.Channel);
         }
 
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));

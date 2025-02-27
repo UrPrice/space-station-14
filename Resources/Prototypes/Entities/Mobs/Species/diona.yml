@@ -121,7 +121,7 @@
     - Dead
   # SS220-Add-Languages begin
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - Rootspeak
   # SS220-Add-Languages end

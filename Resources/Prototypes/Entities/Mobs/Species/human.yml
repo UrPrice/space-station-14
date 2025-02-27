@@ -22,7 +22,7 @@
     - Snout
   # SS220-Add-Languages begin
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - SolCommon
   # SS220-Add-Languages end

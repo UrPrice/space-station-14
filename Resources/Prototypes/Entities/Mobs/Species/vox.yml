@@ -127,7 +127,7 @@
       visible: false
   # SS220-Add-Languages begin
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - VoxPidgin
   # SS220-Add-Languages end

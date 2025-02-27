@@ -254,7 +254,7 @@
         Heat: 10 # capable of touching light bulbs and stoves without feeling pain!
   # SS220-Add-Languages begin
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - Binary
     - Universal

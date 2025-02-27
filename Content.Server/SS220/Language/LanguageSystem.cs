@@ -1,9 +1,9 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
 using Content.Server.GameTicking.Events;
+using Content.Server.SS220.Language.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Verbs;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -14,7 +14,6 @@ namespace Content.Server.SS220.Language;
 public sealed partial class LanguageSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly LanguageManager _languageManager = default!;
 
     public readonly string UniversalLanguage = "Universal";
@@ -30,6 +29,7 @@ public sealed partial class LanguageSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
         SubscribeLocalEvent<LanguageComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<LanguageComponent, GetLanguageCompEvent>(OnGetLanguage);
 
         // Verbs
         SubscribeLocalEvent<LanguageComponent, GetVerbsEvent<Verb>>(OnVerb);
@@ -53,19 +53,25 @@ public sealed partial class LanguageSystem : EntitySystem
     /// </summary>
     private void OnMapInit(Entity<LanguageComponent> ent, ref MapInitEvent args)
     {
-        if (ent.Comp.CurrentLanguage == null)
-            ent.Comp.CurrentLanguage = ent.Comp.LearnedLanguages.FirstOrDefault(UniversalLanguage);
+        if (ent.Comp.SelectedLanguage == null)
+            ent.Comp.SelectedLanguage = ent.Comp.AvailableLanguages.FirstOrDefault(UniversalLanguage);
+    }
+
+    private void OnGetLanguage(Entity<LanguageComponent> ent, ref GetLanguageCompEvent args)
+    {
+        args.Component = ent.Comp;
+        args.Handled = true;
     }
 
     /// <summary>
     ///     A method of encrypting the original message into a message created
     ///     from the syllables of prototypes languages
     /// </summary>
-    public string ScrambleText(EntityUid? ent, string input, LanguagePrototype proto)
+    public string ScrambleText(string input, LanguagePrototype proto)
     {
-        var saveEndWhitespace = char.IsWhiteSpace(input[^0]);
+        var saveEndWhitespace = char.IsWhiteSpace(input[^1]);
 
-        input = RemoveColorTags(input);
+        //input = RemoveColorTags(input);
         var cacheKey = $"{proto.ID}:{input}";
 
         // If the original message is already there earlier encrypted,
@@ -100,9 +106,27 @@ public sealed partial class LanguageSystem : EntitySystem
         return cleanedText;
     }
 
+    public string SanitizeMessage(EntityUid source, string message)
+    {
+        var languageProto = GetSelectedLanguage(source);
+        if (languageProto == null)
+            return message;
+
+        var languageStrings = SplitStringByLanguages(source, message, languageProto);
+        var sanitizedMessage = new StringBuilder();
+        foreach (var languageString in languageStrings)
+        {
+            var scrambledString = ScrambleText(languageString.Item1, languageString.Item2);
+            scrambledString = SetColor(scrambledString, languageString.Item2);
+            sanitizedMessage.Append(scrambledString);
+        }
+
+        return sanitizedMessage.ToString();
+    }
+
     public string SanitizeMessage(EntityUid source, EntityUid listener, string message)
     {
-        var languageProto = GetProto(source);
+        var languageProto = GetSelectedLanguage(source);
         if (languageProto == null)
             return message;
 
@@ -116,7 +140,8 @@ public sealed partial class LanguageSystem : EntitySystem
             }
             else
             {
-                var scrambledString = ScrambleText(listener, languageString.Item1, languageString.Item2);
+                var colorlessMessage = RemoveColorTags(languageString.Item1);
+                var scrambledString = ScrambleText(colorlessMessage, languageString.Item2);
                 scrambledString = SetColor(scrambledString, languageString.Item2);
                 sanitizedMessage.Append(scrambledString);
             }
@@ -207,7 +232,7 @@ public sealed partial class LanguageSystem : EntitySystem
         if (proto == null)
             return false;
 
-        if (KnowsUniversalLanguage(ent))
+        if (KnowsAllLanguages(ent))
             return true;
 
         return KnowsLanguages(ent, proto.ID);
@@ -215,61 +240,50 @@ public sealed partial class LanguageSystem : EntitySystem
 
     public bool KnowsLanguages(EntityUid ent, string languageId)
     {
-        if (!TryComp<LanguageComponent>(ent, out var comp))
+        // All ents knows universal language
+        if (languageId == UniversalLanguage)
+            return true;
+
+        if (!TryGetLanguageComponent(ent, out var comp))
             return false;
 
-        if (comp.CurrentLanguage == languageId)
-            return true;
-
-        return comp.LearnedLanguages.Contains(languageId);
+        return comp.AvailableLanguages.Contains(languageId);
     }
 
-    public bool KnowsUniversalLanguage(EntityUid ent)
+    public bool KnowsAllLanguages(EntityUid uid)
     {
-        if (HasComp<GhostComponent>(ent))
-            return true;
-
-        if (!TryComp<LanguageComponent>(ent, out var comp))
-            return true;
-
-        if (comp != null && comp.CurrentLanguage == UniversalLanguage)
-            return true;
-
-        if (comp != null && comp.LearnedLanguages.Contains(UniversalLanguage))
-            return true;
-
-        return false;
+        return HasComp<GhostComponent>(uid);
     }
 
     /// <summary>
     ///     A method to get a prototype language from an entity.
     ///     If the entity does not have a language component, a universal language is assigned.
     /// </summary>
-    public LanguagePrototype? GetProto(EntityUid ent)
+    public LanguagePrototype? GetSelectedLanguage(EntityUid ent)
     {
-        if (!TryComp<LanguageComponent>(ent, out var comp))
+        if (!TryGetLanguageComponent(ent, out var comp))
         {
             if (_languageManager.TryGetLanguageById(UniversalLanguage, out var universalProto))
                 return universalProto;
+
+            return null;
         }
 
-        var languageID = GetCurrentLanguage(ent);
-
+        var languageID = comp.SelectedLanguage;
         if (languageID == null)
             return null;
 
-        if (_languageManager.TryGetLanguageById(languageID, out var proto))
-            return proto;
-
-        return null;
+        _languageManager.TryGetLanguageById(languageID, out var proto);
+        return proto;
     }
 
-    public string? GetCurrentLanguage(EntityUid ent)
+    public bool TryGetLanguageComponent(EntityUid uid, [NotNullWhen(true)] out LanguageComponent? component)
     {
-        if (!TryComp<LanguageComponent>(ent, out var comp))
-            return null;
+        var ev = new GetLanguageCompEvent();
+        RaiseLocalEvent(uid, ref ev);
+        component = ev.Component;
 
-        return comp.CurrentLanguage;
+        return component != null;
     }
 
     public void AddLanguages(EntityUid uid, List<string> languages)
@@ -282,7 +296,7 @@ public sealed partial class LanguageSystem : EntitySystem
 
     public void AddLanguage(EntityUid uid, string languageId)
     {
-        if (!TryComp<LanguageComponent>(uid, out var comp))
+        if (!TryGetLanguageComponent(uid, out var comp))
             return;
 
         if (!_languageManager.TryGetLanguageById(languageId, out var proto))
@@ -291,8 +305,8 @@ public sealed partial class LanguageSystem : EntitySystem
             return;
         }
 
-        if (!comp.LearnedLanguages.Contains(proto))
-            comp.LearnedLanguages.Add(proto);
+        if (!comp.AvailableLanguages.Contains(proto))
+            comp.AvailableLanguages.Add(proto);
     }
 
     /// <summary>
@@ -310,15 +324,21 @@ public sealed partial class LanguageSystem : EntitySystem
 
     public void AddLanguagesFromSource(EntityUid source, EntityUid target)
     {
-        if (!TryComp<LanguageComponent>(source, out var sourceComp))
+        if (!TryGetLanguageComponent(source, out var sourceComp))
             return;
 
         var targetComp = EnsureComp<LanguageComponent>(target);
-        foreach (var language in sourceComp.LearnedLanguages)
+        foreach (var language in sourceComp.AvailableLanguages)
         {
-            if (!targetComp.LearnedLanguages.Contains(language))
-                targetComp.LearnedLanguages.Add(language);
+            if (!targetComp.AvailableLanguages.Contains(language))
+                targetComp.AvailableLanguages.Add(language);
         }
     }
+}
+
+[ByRefEvent]
+public sealed class GetLanguageCompEvent() : HandledEntityEventArgs
+{
+    public LanguageComponent? Component = null;
 }
 

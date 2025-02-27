@@ -271,7 +271,7 @@
     radius: 2
     netsync: false
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - Binary
     - Universal

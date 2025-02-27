@@ -90,7 +90,7 @@
   - type: Wagging
   # SS220-Add-Languages begin
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - Sintaunathi
   # SS220-Add-Languages end

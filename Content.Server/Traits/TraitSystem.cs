@@ -6,6 +6,7 @@ using Content.Shared.Traits;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Content.Server.SS220.Language;
+using Content.Server.SS220.Language.Components;
 
 namespace Content.Server.Traits;
 
@@ -50,8 +51,8 @@ public sealed class TraitSystem : EntitySystem
             // SS220-Add-Languages begin
             if (traitPrototype.LearnedLanguage != null)
             {
-                if (TryComp<LanguageComponent>(args.Mob, out var language) && !language.LearnedLanguages.Contains(traitPrototype.LearnedLanguage))
-                    language.LearnedLanguages.Add(traitPrototype.LearnedLanguage);
+                if (TryComp<LanguageComponent>(args.Mob, out var language) && !language.AvailableLanguages.Contains(traitPrototype.LearnedLanguage))
+                    language.AvailableLanguages.Add(traitPrototype.LearnedLanguage);
             }
             // SS220-Add-Languages end
 

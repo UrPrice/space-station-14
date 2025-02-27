@@ -108,7 +108,7 @@
     highSensitiveVisionRadius: 2
     addAction: true
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - Siiktajr
 

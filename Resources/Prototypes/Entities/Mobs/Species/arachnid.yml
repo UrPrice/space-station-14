@@ -82,7 +82,7 @@
     allowedEmotes: ['Click', 'Chitter', 'Hiss'] #ss-220-emote-fix
   # SS220-Add-Languages begin
   - type: Language
-    learnedLanguages:
+    availableLanguages:
     - Galactic
     - Arati
   # SS220-Add-Languages end
