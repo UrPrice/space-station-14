@@ -34,11 +34,34 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
     [DataField]
     public string SpecialCharacter = string.Empty;
 
-    public override string ScrambleMessage(string message)
+    public override string ScrambleMessage(string message, int? seed = null)
     {
         if (Syllables.Count == 0)
             return message;
 
+        string result;
+        if (seed != null)
+        {
+            foreach (var c in message.ToCharArray())
+            {
+                seed += c;
+            }
+            result = ScrambleWithSeed(message, seed.Value);
+        }
+        else
+        {
+            result = ScrambleWithoutSeed(message);
+        }
+
+        var punctuation = ExtractPunctuation(message);
+
+        result += punctuation;
+
+        return result;
+    }
+
+    private string ScrambleWithoutSeed(string message)
+    {
         var random = IoCManager.Resolve<IRobustRandom>();
 
         var encryptedMessage = new StringBuilder();
@@ -58,21 +81,55 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
             {
                 encryptedMessage.Append(SpecialCharacter);
             }
+            else if (random.Prob(DotChance))
+            {
+                encryptedMessage.Append(". ");
+                capitalize = true;
+            }
             else if (random.Prob(SpaceChance))
             {
                 encryptedMessage.Append(' ');
+            }
+        }
+
+        var result = encryptedMessage.ToString().Trim();
+
+        return result;
+    }
+
+    private string ScrambleWithSeed(string message, int seed)
+    {
+        var random = new Random(seed);
+
+        var encryptedMessage = new StringBuilder();
+        var capitalize = false;
+        while (encryptedMessage.Length < message.Length)
+        {
+            var curSyllable = random.Pick(Syllables);
+
+            if (capitalize)
+            {
+                curSyllable = curSyllable.Substring(0, 1).ToUpper() + curSyllable.Substring(1);
+                capitalize = false;
+            }
+            encryptedMessage.Append(curSyllable);
+
+            if (random.Prob(SpecialCharacterChance))
+            {
+                encryptedMessage.Append(SpecialCharacter);
             }
             else if (random.Prob(DotChance))
             {
                 encryptedMessage.Append(". ");
                 capitalize = true;
             }
+            else if (random.Prob(SpaceChance))
+            {
+                encryptedMessage.Append(' ');
+            }
         }
 
         var result = encryptedMessage.ToString().Trim();
-        var punctuation = ExtractPunctuation(message);
-
-        result += punctuation;
 
         return result;
     }

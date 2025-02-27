@@ -2,7 +2,8 @@
 using Content.Server.GameTicking.Events;
 using Content.Shared.Ghost;
 using Content.Shared.Verbs;
-using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,17 @@ namespace Content.Server.SS220.Language;
 
 public sealed partial class LanguageSystem : EntitySystem
 {
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly LanguageManager _languageManager = default!;
 
     public readonly string UniversalLanguage = "Universal";
     public readonly string GalacticLanguage = "Galactic";
+
+    // Cached values for one tick
+    private static readonly Dictionary<string, string> ScrambleCache = new Dictionary<string, string>();
+
+    private static int Seed = 0;
 
     public override void Initialize()
     {
@@ -27,12 +35,16 @@ public sealed partial class LanguageSystem : EntitySystem
         SubscribeLocalEvent<LanguageComponent, GetVerbsEvent<Verb>>(OnVerb);
     }
 
-    private static readonly Dictionary<string, string> ScrambleCache = new Dictionary<string, string>();
-    private const int SCRAMBLE_CACHE_LEN = 20;
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        ScrambleCache.Clear();
+    }
 
     private void OnRoundStart(RoundStartingEvent args)
     {
-        ScrambleCache.Clear();
+        Seed = _random.Next();
     }
 
     /// <summary>
@@ -51,7 +63,7 @@ public sealed partial class LanguageSystem : EntitySystem
     /// </summary>
     public string ScrambleText(EntityUid? ent, string input, LanguagePrototype proto)
     {
-        var saveEndWhitespace = char.IsWhiteSpace(input[input.Length - 1]);
+        var saveEndWhitespace = char.IsWhiteSpace(input[^0]);
 
         input = RemoveColorTags(input);
         var cacheKey = $"{proto.ID}:{input}";
@@ -62,18 +74,9 @@ public sealed partial class LanguageSystem : EntitySystem
         if (ScrambleCache.TryGetValue(cacheKey, out var cachedValue))
             return cachedValue;
 
-        var scrambledText = proto.ScrambleMethod.ScrambleMessage(input);
+        var scrambledText = proto.ScrambleMethod.ScrambleMessage(input, Seed);
 
         ScrambleCache[cacheKey] = scrambledText;
-        // Removes the first message from the cache if it fills up
-        if (ScrambleCache.Count > SCRAMBLE_CACHE_LEN)
-        {
-            var keysToRemove = ScrambleCache.Keys.Take(ScrambleCache.Count - SCRAMBLE_CACHE_LEN).ToList();
-            foreach (var key in keysToRemove)
-            {
-                ScrambleCache.Remove(key);
-            }
-        }
 
         if (saveEndWhitespace)
             scrambledText += " ";

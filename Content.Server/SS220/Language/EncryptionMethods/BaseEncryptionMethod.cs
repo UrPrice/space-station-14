@@ -5,5 +5,5 @@ namespace Content.Server.SS220.Language.EncryptionMethods;
 [ImplicitDataDefinitionForInheritors]
 public abstract partial class ScrambleMethod
 {
-    public abstract string ScrambleMessage(string message);
+    public abstract string ScrambleMessage(string message, int? seed = null);
 }
