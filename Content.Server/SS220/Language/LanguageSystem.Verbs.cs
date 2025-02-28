@@ -82,6 +82,6 @@ public sealed partial class LanguageSystem : EntitySystem
         if (!TryGetLanguageComponent(ent, out var comp))
             return;
 
-        comp.SelectedLanguage = language;
+        comp.TrySetLanguage(language);
     }
 }

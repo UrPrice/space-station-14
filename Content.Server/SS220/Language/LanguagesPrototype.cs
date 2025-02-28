@@ -26,6 +26,9 @@ public sealed partial class LanguagePrototype : IPrototype
     [DataField]
     public Color? Color;
 
+    /// <summary>
+    /// The method used to scramble the message
+    /// </summary>
     [DataField]
     public ScrambleMethod ScrambleMethod = new RandomSyllablesScrambleMethod();
 }

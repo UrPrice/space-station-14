@@ -58,7 +58,11 @@ public sealed class PAISystem : SharedPAISystem
         // Cause then you could remotely figure out information about the owner's equipped items.
 
         _metaData.SetEntityName(uid, val);
-        _language.AddLanguagesFromSource(component.LastUser.Value, uid); // SS220-Add-Languages
+
+        // SS220-Add-Languages begin
+        if (TryComp<LanguageComponent>(component.LastUser.Value, out var languageComp))
+            _language.AddLanguagesFromSource((component.LastUser.Value, languageComp), uid);
+        // SS220-Add-Languages end
     }
 
     private void OnMindRemoved(EntityUid uid, PAIComponent component, MindRemovedMessage args)
@@ -121,13 +125,12 @@ public sealed class PAISystem : SharedPAISystem
             if (proto != null)
                 _metaData.SetEntityName(uid, proto.Name);
         }
-    // SS220-Add-Languages begin
-        if (TryComp<LanguageComponent>(uid, out var languages))
+        // SS220-Add-Languages begin
+        if (TryComp<LanguageComponent>(uid, out var languageComp))
         {
-            languages.AvailableLanguages.Clear();
-            _language.AddLanguages(uid, [_language.UniversalLanguage, _language.GalacticLanguage]);
-            languages.SelectedLanguage = languages.AvailableLanguages[0];
+            languageComp.ClearLanguages();
+            languageComp.AddLanguages([_language.UniversalLanguage, _language.GalacticLanguage]);
         }
+        // SS220-Add-Languages end
     }
-    // SS220-Add-Languages end
 }

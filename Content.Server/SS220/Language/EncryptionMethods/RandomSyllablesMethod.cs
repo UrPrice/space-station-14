@@ -4,6 +4,9 @@ using Robust.Shared.Random;
 
 namespace Content.Server.SS220.Language.EncryptionMethods;
 
+/// <summary>
+/// Scramble a message depending on its length using a specific list of syllables
+/// </summary>
 public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
 {
     /// <summary>

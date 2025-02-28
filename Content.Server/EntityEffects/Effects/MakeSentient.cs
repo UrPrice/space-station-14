@@ -25,13 +25,10 @@ public sealed partial class MakeSentient : EntityEffect
         entityManager.RemoveComponent<MonkeyAccentComponent>(uid);
 
         // SS220-Add-Languages begin
-        var language = entityManager.EnsureComponent<LanguageComponent>(uid);
+        var languageComp = entityManager.EnsureComponent<LanguageComponent>(uid);
         var languageSystem = entityManager.System<LanguageSystem>();
 
-        if (!language.AvailableLanguages.Contains(languageSystem.GalacticLanguage))
-            language.AvailableLanguages.Add(languageSystem.GalacticLanguage);
-
-        language.SelectedLanguage = language.AvailableLanguages[0];
+        languageComp.TryAddLanguage(languageSystem.GalacticLanguage);
         // SS220-Add-Languages end
 
         // Stops from adding a ghost role to things like people who already have a mind

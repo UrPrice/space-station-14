@@ -3,7 +3,6 @@ using Content.Server.SS220.Language;
 using Content.Server.SS220.Language.Components;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.SS220.Commands;
 
@@ -11,7 +10,6 @@ namespace Content.Server.SS220.Commands;
 public sealed class AddLanguageCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly LanguageManager _languageManager = default!;
 
     public string Command => "addlanguage";
@@ -34,7 +32,7 @@ public sealed class AddLanguageCommand : IConsoleCommand
 
         var languageId = args[1];
 
-        if (_languageManager.TryGetLanguageById(languageId, out var language))
+        if (_languageManager.TryGetLanguageById(languageId, out _))
         {
             shell.WriteError(Loc.GetString("cmd-language-proto-miss"));
             return;
@@ -46,9 +44,8 @@ public sealed class AddLanguageCommand : IConsoleCommand
             return;
         }
 
-        if (!languageComp.AvailableLanguages.Contains(languageId))
+        if (languageComp.TryAddLanguage(languageId))
         {
-            languageComp.AvailableLanguages.Add(languageId);
             shell.WriteLine(Loc.GetString("cmd-language-success-add"));
         }
         else
@@ -89,7 +86,7 @@ public sealed class RemoveLanguageCommand : IConsoleCommand
             return;
         }
 
-        if (languageComp.AvailableLanguages.Remove(languageId))
+        if (languageComp.RemoveLanguage(languageId))
         {
             shell.WriteLine(Loc.GetString("cmd-language-succes-remove"));
         }
@@ -129,7 +126,7 @@ public sealed class ClearLanguagesCommand : IConsoleCommand
             return;
         }
 
-        languageComp.AvailableLanguages.Clear();
+        languageComp.ClearLanguages();
         shell.WriteLine(Loc.GetString("cmd-language-clear"));
     }
 }

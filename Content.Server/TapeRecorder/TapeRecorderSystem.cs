@@ -2,7 +2,6 @@ using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Speech;
 using Content.Server.Speech.Components;
-using Content.Server.SS220.Language; // SS220-Add-Languages 
 using Content.Server.SS220.TTS; // SS220 Tape recorder TTS
 using Content.Shared.Chat;
 using Content.Shared.Paper;
@@ -25,7 +24,6 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly PaperSystem _paper = default!;
     [Dependency] private readonly TTSSystem _ttsSystem = default!; // SS220 Tape recorder TTS
-    [Dependency] private readonly LanguageSystem _languageSystem = default!; // SS220-Add-Languages 
 
     public override void Initialize()
     {
@@ -43,7 +41,6 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
     {
         var voice = EnsureComp<VoiceOverrideComponent>(ent);
         var speech = EnsureComp<SpeechComponent>(ent);
-        var language = _languageSystem.GetSelectedLanguage(ent); // SS220 Add languages
         TryComp<TTSComponent>(ent, out var tts); // SS220 Tape recorder TTS
 
         foreach (var message in tape.RecordedData)

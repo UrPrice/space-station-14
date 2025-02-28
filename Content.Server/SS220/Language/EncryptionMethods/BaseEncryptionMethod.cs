@@ -5,5 +5,9 @@ namespace Content.Server.SS220.Language.EncryptionMethods;
 [ImplicitDataDefinitionForInheritors]
 public abstract partial class ScrambleMethod
 {
+    /// <summary>
+    /// Scramble <paramref name="message"/> according to a specific algorithm.
+    /// It is acceptable to use a specific seed to get the same result if the message is the same
+    /// </summary>
     public abstract string ScrambleMessage(string message, int? seed = null);
 }

@@ -51,8 +51,10 @@ public sealed class TraitSystem : EntitySystem
             // SS220-Add-Languages begin
             if (traitPrototype.LearnedLanguage != null)
             {
-                if (TryComp<LanguageComponent>(args.Mob, out var language) && !language.AvailableLanguages.Contains(traitPrototype.LearnedLanguage))
-                    language.AvailableLanguages.Add(traitPrototype.LearnedLanguage);
+                if (TryComp<LanguageComponent>(args.Mob, out var language))
+                {
+                    language.TryAddLanguage(traitPrototype.LearnedLanguage);
+                }
             }
             // SS220-Add-Languages end
 

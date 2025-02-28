@@ -44,6 +44,7 @@ using Robust.Shared.Utility;
 using Robust.Shared.Timing;
 using Content.Server.SS220.Language; // SS220-Add-Languages-end
 using Robust.Shared.Map;
+using Content.Shared.Speech;
 
 namespace Content.Server.Chat.Systems;
 
@@ -173,8 +174,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         IConsoleShell? shell = null,
         ICommonSession? player = null, string? nameOverride = null,
         bool checkRadioPrefix = true,
-        bool ignoreActionBlocker = false
-        )
+        bool ignoreActionBlocker = false)
     {
         TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker);
     }
@@ -595,6 +595,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
             ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
 
+
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
             EntityUid listener;
@@ -619,14 +620,14 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
-            if (data.Range <= WhisperClearRange || data.Observer /* SS220 Observer-Hearing */)
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, scrambledMessage, wrappedMessage, source, false, session.Channel);
+            if (data.Range <= WhisperClearRange || data.Observer)
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, scrambledMessage /* SS220 languages */, wrappedMessage, source, false, session.Channel);
             //If listener is too far, they only hear fragments of the message
             else if (_examineSystem.InRangeUnOccluded(source, listener, WhisperMuffledRange))
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage, wrappedobfuscatedMessage, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage /* SS220 languages */, wrappedobfuscatedMessage, source, false, session.Channel);
             //If listener is too far and has no line of sight, they can't identify the whisperer's identity
             else
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage, wrappedUnknownMessage, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage /* SS220 languages */, wrappedUnknownMessage, source, false, session.Channel);
         }
 
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));

@@ -53,8 +53,7 @@ public sealed partial class LanguageSystem : EntitySystem
     /// </summary>
     private void OnMapInit(Entity<LanguageComponent> ent, ref MapInitEvent args)
     {
-        if (ent.Comp.SelectedLanguage == null)
-            ent.Comp.SelectedLanguage = ent.Comp.AvailableLanguages.FirstOrDefault(UniversalLanguage);
+        ent.Comp.TrySetLanguage(0);
     }
 
     private void OnGetLanguage(Entity<LanguageComponent> ent, ref GetLanguageCompEvent args)
@@ -67,11 +66,10 @@ public sealed partial class LanguageSystem : EntitySystem
     ///     A method of encrypting the original message into a message created
     ///     from the syllables of prototypes languages
     /// </summary>
-    public string ScrambleText(string input, LanguagePrototype proto)
+    public string ScrambleMessage(string message, LanguagePrototype proto)
     {
-        var saveEndWhitespace = char.IsWhiteSpace(input[^1]);
-
-        var cacheKey = $"{proto.ID}:{input}";
+        var saveEndWhitespace = char.IsWhiteSpace(message[^1]);
+        var cacheKey = $"{proto.ID}:{message}";
 
         // If the original message is already there earlier encrypted,
         // it is taken from the cache, it is necessary for the correct display when sending in the radio,
@@ -79,23 +77,26 @@ public sealed partial class LanguageSystem : EntitySystem
         if (ScrambleCache.TryGetValue(cacheKey, out var cachedValue))
             return cachedValue;
 
-        var scrambledText = proto.ScrambleMethod.ScrambleMessage(input, Seed);
+        var scrambled = proto.ScrambleMethod.ScrambleMessage(message, Seed);
 
-        ScrambleCache[cacheKey] = scrambledText;
+        ScrambleCache[cacheKey] = scrambled;
 
         if (saveEndWhitespace)
-            scrambledText += " ";
+            scrambled += " ";
 
-        return scrambledText;
+        return scrambled;
     }
 
+    /// <summary>
+    ///     Sanitize the <paramref name="message"/> by removing the language tags and scramble it (if necessary) for <paramref name="listener"/>
+    /// </summary>
     public string SanitizeMessage(EntityUid source, EntityUid listener, string message, bool setColor = true)
     {
         var languageProto = GetSelectedLanguage(source);
         if (languageProto == null)
             return message;
 
-        var languageStrings = SplitStringByLanguages(source, message, languageProto);
+        var languageStrings = SplitMessageByLanguages(source, message, languageProto);
         var sanitizedMessage = new StringBuilder();
         foreach (var languageString in languageStrings)
         {
@@ -105,7 +106,7 @@ public sealed partial class LanguageSystem : EntitySystem
             }
             else
             {
-                var scrambledString = ScrambleText(message, languageString.Item2);
+                var scrambledString = ScrambleMessage(message, languageString.Item2);
                 if (setColor)
                     scrambledString = SetColor(scrambledString, languageString.Item2);
 
@@ -116,7 +117,11 @@ public sealed partial class LanguageSystem : EntitySystem
         return sanitizedMessage.ToString();
     }
 
-    public List<(string, LanguagePrototype)> SplitStringByLanguages(EntityUid source, string message, LanguagePrototype defaultLanguage)
+    /// <summary>
+    ///     Split the message into parts by language tags.
+    ///     <paramref name="defaultLanguage"/> will be used for the part of the message without the language tag.
+    /// </summary>
+    private List<(string, LanguagePrototype)> SplitMessageByLanguages(EntityUid source, string message, LanguagePrototype defaultLanguage)
     {
         var list = new List<(string, LanguagePrototype)>();
         var p = _languageManager.KeyPrefix;
@@ -172,6 +177,9 @@ public sealed partial class LanguageSystem : EntitySystem
         return list;
     }
 
+    /// <summary>
+    ///     Tries to find the first language tag in the message and extracts it from the message
+    /// </summary>
     public bool TryGetLanguageFromString(string message,
         [NotNullWhen(true)] out string? messageWithoutTags,
         [NotNullWhen(true)] out LanguagePrototype? language)
@@ -204,6 +212,9 @@ public sealed partial class LanguageSystem : EntitySystem
         return KnowsLanguages(ent, proto.ID);
     }
 
+    /// <summary>
+    ///     Checks if the entity knows this language
+    /// </summary>
     public bool KnowsLanguages(EntityUid ent, string languageId)
     {
         // All ents knows universal language
@@ -213,9 +224,12 @@ public sealed partial class LanguageSystem : EntitySystem
         if (!TryGetLanguageComponent(ent, out var comp))
             return false;
 
-        return comp.AvailableLanguages.Contains(languageId);
+        return comp.HasLanguage(languageId);
     }
 
+    /// <summary>
+    ///     Checks whether the entity knows all languages.
+    /// </summary>
     public bool KnowsAllLanguages(EntityUid uid)
     {
         return HasComp<GhostComponent>(uid);
@@ -243,6 +257,10 @@ public sealed partial class LanguageSystem : EntitySystem
         return proto;
     }
 
+    /// <summary>
+    ///     Raises event to receive a language component.
+    ///     This is done for the possibility of forwarding
+    /// </summary>
     public bool TryGetLanguageComponent(EntityUid uid, [NotNullWhen(true)] out LanguageComponent? component)
     {
         var ev = new GetLanguageCompEvent();
@@ -250,29 +268,6 @@ public sealed partial class LanguageSystem : EntitySystem
         component = ev.Component;
 
         return component != null;
-    }
-
-    public void AddLanguages(EntityUid uid, List<string> languages)
-    {
-        foreach (var language in languages)
-        {
-            AddLanguage(uid, language);
-        }
-    }
-
-    public void AddLanguage(EntityUid uid, string languageId)
-    {
-        if (!TryGetLanguageComponent(uid, out var comp))
-            return;
-
-        if (!_languageManager.TryGetLanguageById(languageId, out var proto))
-        {
-            Log.Error($"Doesn't found a LanguagePrototype with id: {languageId}");
-            return;
-        }
-
-        if (!comp.AvailableLanguages.Contains(proto))
-            comp.AvailableLanguages.Add(proto);
     }
 
     /// <summary>
@@ -288,16 +283,15 @@ public sealed partial class LanguageSystem : EntitySystem
         return message;
     }
 
-    public void AddLanguagesFromSource(EntityUid source, EntityUid target)
+    /// <summary>
+    ///     Adds languages for <paramref name="target"/> from <paramref name="ent"/>
+    /// </summary>
+    public void AddLanguagesFromSource(Entity<LanguageComponent> ent, EntityUid target)
     {
-        if (!TryGetLanguageComponent(source, out var sourceComp))
-            return;
-
         var targetComp = EnsureComp<LanguageComponent>(target);
-        foreach (var language in sourceComp.AvailableLanguages)
+        foreach (var language in ent.Comp.AvailableLanguages)
         {
-            if (!targetComp.AvailableLanguages.Contains(language))
-                targetComp.AvailableLanguages.Add(language);
+            targetComp.TryAddLanguage(language);
         }
     }
 }

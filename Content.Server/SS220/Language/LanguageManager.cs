@@ -21,12 +21,18 @@ public sealed class LanguageManager
         }
     }
 
+    /// <summary>
+    /// Tries get language prototipe by id
+    /// </summary>
     public bool TryGetLanguageById(string id, [NotNullWhen(true)] out LanguagePrototype? language)
     {
         language = Languages.Find(l => l.ID == id);
         return language != null;
     }
 
+    /// <summary>
+    /// Tries get language prototipe by language key
+    /// </summary>
     public bool TryGetLanguageByKey(string key, [NotNullWhen(true)] out LanguagePrototype? language)
     {
         language = Languages.Find(l => KeyPrefix + l.Key == key);

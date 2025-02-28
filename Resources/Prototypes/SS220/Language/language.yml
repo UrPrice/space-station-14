@@ -4,6 +4,7 @@
 - type: language
   id: Universal
   key: uni
+  scrambleMethod: !type:EmptyScrambleMethod # Doesn't scramble messages
 
 # Galactic common lanaguges region:
 - type: language
