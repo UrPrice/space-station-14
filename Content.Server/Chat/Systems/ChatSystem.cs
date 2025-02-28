@@ -605,7 +605,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             // SS220-Add-Languages begin
             var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
-            var scrambledColorlessMessage = _languageSystem.RemoveColorTags(scrambledMessage);
+            var scrambledColorlessMessage = _languageSystem.SanitizeMessage(source, listener, message, false);
             var obfuscatedScrambledMessage = ObfuscateMessageReadability(scrambledColorlessMessage, 0.2f);
 
             wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",

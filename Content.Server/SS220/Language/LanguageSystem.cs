@@ -20,7 +20,7 @@ public sealed partial class LanguageSystem : EntitySystem
     public readonly string GalacticLanguage = "Galactic";
 
     // Cached values for one tick
-    private static readonly Dictionary<string, string> ScrambleCache = new Dictionary<string, string>();
+    private static readonly Dictionary<string, string> ScrambleCache = new();
 
     private static int Seed = 0;
 
@@ -71,7 +71,6 @@ public sealed partial class LanguageSystem : EntitySystem
     {
         var saveEndWhitespace = char.IsWhiteSpace(input[^1]);
 
-        //input = RemoveColorTags(input);
         var cacheKey = $"{proto.ID}:{input}";
 
         // If the original message is already there earlier encrypted,
@@ -90,23 +89,7 @@ public sealed partial class LanguageSystem : EntitySystem
         return scrambledText;
     }
 
-    /// <summary>
-    ///     Workaround for some message transmissions.
-    ///     Removes BBCodes colors leaving only the original message.
-    ///     (I couldn't think of anything cleverer)
-    /// </summary>
-    public string RemoveColorTags(string input)
-    {
-        if (string.IsNullOrEmpty(input))
-            return input;
-
-        string pattern = @"\[color=#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})\](.*?)\[/color\]";
-        string cleanedText = Regex.Replace(input, pattern, "$2");
-
-        return cleanedText;
-    }
-
-    public string SanitizeMessage(EntityUid source, EntityUid listener, string message)
+    public string SanitizeMessage(EntityUid source, EntityUid listener, string message, bool setColor = true)
     {
         var languageProto = GetSelectedLanguage(source);
         if (languageProto == null)
@@ -122,9 +105,10 @@ public sealed partial class LanguageSystem : EntitySystem
             }
             else
             {
-                var colorlessMessage = RemoveColorTags(languageString.Item1);
-                var scrambledString = ScrambleText(colorlessMessage, languageString.Item2);
-                scrambledString = SetColor(scrambledString, languageString.Item2);
+                var scrambledString = ScrambleText(message, languageString.Item2);
+                if (setColor)
+                    scrambledString = SetColor(scrambledString, languageString.Item2);
+
                 sanitizedMessage.Append(scrambledString);
             }
         }

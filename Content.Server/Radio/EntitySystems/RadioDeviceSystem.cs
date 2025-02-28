@@ -206,13 +206,10 @@ public sealed class RadioDeviceSystem : EntitySystem
         if (HasComp<RadioSpeakerComponent>(args.Source))
             return; // no feedback loops please.
 
-        // SS220-Add-Languages begin
-        var message = _languageSystem.RemoveColorTags(args.Message);
         var channel = _protoMan.Index<RadioChannelPrototype>(component.BroadcastChannel)!;
         if (_recentlySent.Add((args.Message, args.Source, channel)))
-            _radio.SendRadioMessage(args.Source, message, channel, uid);
-        // SS220-Add-Languages end
-   }
+            _radio.SendRadioMessage(args.Source, args.Message, channel, uid);
+    }
 
     private void OnAttemptListen(EntityUid uid, RadioMicrophoneComponent component, ListenAttemptEvent args)
     {
