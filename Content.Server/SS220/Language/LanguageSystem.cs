@@ -106,24 +106,6 @@ public sealed partial class LanguageSystem : EntitySystem
         return cleanedText;
     }
 
-    public string SanitizeMessage(EntityUid source, string message)
-    {
-        var languageProto = GetSelectedLanguage(source);
-        if (languageProto == null)
-            return message;
-
-        var languageStrings = SplitStringByLanguages(source, message, languageProto);
-        var sanitizedMessage = new StringBuilder();
-        foreach (var languageString in languageStrings)
-        {
-            var scrambledString = ScrambleText(languageString.Item1, languageString.Item2);
-            scrambledString = SetColor(scrambledString, languageString.Item2);
-            sanitizedMessage.Append(scrambledString);
-        }
-
-        return sanitizedMessage.ToString();
-    }
-
     public string SanitizeMessage(EntityUid source, EntityUid listener, string message)
     {
         var languageProto = GetSelectedLanguage(source);

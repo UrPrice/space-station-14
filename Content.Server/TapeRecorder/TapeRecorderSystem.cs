@@ -63,7 +63,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
             }
             // SS220 Tape recorder TTS end
             //Play the message
-            _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, false, languageProto: language); // SS220-Add-Languages 
+            _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, false);
         }
     }
 

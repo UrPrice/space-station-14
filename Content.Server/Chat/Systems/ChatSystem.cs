@@ -173,13 +173,10 @@ public sealed partial class ChatSystem : SharedChatSystem
         IConsoleShell? shell = null,
         ICommonSession? player = null, string? nameOverride = null,
         bool checkRadioPrefix = true,
-        bool ignoreActionBlocker = false,
-        LanguagePrototype? languageProto = null) // SS220-Add-Languages
+        bool ignoreActionBlocker = false
+        )
     {
-        TrySendInGameICMessage(source, message, desiredType,
-            hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal,
-            hideLog, shell, player, nameOverride, checkRadioPrefix,
-            ignoreActionBlocker, languageProto: languageProto); // SS220-Add-Languages
+        TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker);
     }
 
     /// <summary>
@@ -203,8 +200,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         ICommonSession? player = null,
         string? nameOverride = null,
         bool checkRadioPrefix = true,
-        bool ignoreActionBlocker = false,
-        LanguagePrototype? languageProto = null) // SS220-Add-Languages
+        bool ignoreActionBlocker = false
+        )
     {
         if (HasComp<GhostComponent>(source))
         {
@@ -301,7 +298,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 SendEntitySpeak(source, message, range, nameOverride, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Whisper:
-                SendEntityWhisper(source, message, range, null, nameOverride, hideLog, ignoreActionBlocker, languageProto); // SS220-Add-Languages
+                SendEntityWhisper(source, message, range, null, nameOverride, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Emote:
                 SendEntityEmote(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
@@ -561,8 +558,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         RadioChannelPrototype? channel,
         string? nameOverride,
         bool hideLog = false,
-        bool ignoreActionBlocker = false,
-        LanguagePrototype? languageProto = null) // SS220-Add-Languages
+        bool ignoreActionBlocker = false
+        )
     {
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
             return;
