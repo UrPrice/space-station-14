@@ -197,7 +197,7 @@ public sealed partial class TTSSystem : EntitySystem
 
     private async void OnEntitySpokeScrambled(EntitySpokeScrambledEvent args)
     {
-        HandleEntitySpoke(args.Source, args.Listener, args.Message, args.ObfuscatedMessage, args.IsRadio);
+        HandleEntitySpoke(args.Source, args.Listener, args.ColorlessMessage, args.ObfuscatedMessage, args.IsRadio);
     }
 
     private async void HandleEntitySpoke(EntityUid uid, EntityUid listener, string message, string? obfuscatedMessage, bool isRadio)
