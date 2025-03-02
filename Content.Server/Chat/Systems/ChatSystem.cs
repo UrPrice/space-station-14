@@ -511,7 +511,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue;
 
             var listener = session.AttachedEntity.Value;
-            var currentMessage = _languageSystem.SanitizeMessage(source, listener, message);
+            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
         // SS220-Add-Languages end
 
             var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
@@ -519,13 +519,30 @@ public sealed partial class ChatSystem : SharedChatSystem
                 ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
                 ("fontType", speech.FontId),
                 ("fontSize", speech.FontSize),
-                ("message", currentMessage /*SS220-Add-Languages*/));
+                ("message", scrambledMessage /*SS220-Add-Languages*/));
 
-            _chatManager.ChatMessageToOne(ChatChannel.Local, currentMessage, wrappedMessage, source, false, session.Channel); //SS220-Add-Languages
+            //SS220-Add-Languages begin
+            _chatManager.ChatMessageToOne(ChatChannel.Local, scrambledMessage, wrappedMessage, source, false, session.Channel);
+
+            if (listener == source)
+            {
+                var ev = new EntitySpokeEvent(source, scrambledMessage, originalMessage, null, null);
+                RaiseLocalEvent(source, ev, true);
+            }
+            else
+            {
+                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, originalMessage, null, false);
+                RaiseLocalEvent(scrambledEv);
+            }
+            //SS220-Add-Languages end
         }
-        //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range); //SS220-Add-Languages
-        var ev = new EntitySpokeEvent(source, message, originalMessage, null, null);
-        RaiseLocalEvent(source, ev, true);
+        //SS220-Add-Languages begin
+        message = _languageSystem.SanitizeMessage(source, source, message);
+
+        //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range); 
+        //var ev = new EntitySpokeEvent(source, message, originalMessage, null, null);
+        //RaiseLocalEvent(source, ev, true);
+        //SS220-Add-Languages end
 
         // To avoid logging any messages sent by entities that are not players, like vendors, cloning, etc.
         // Also doesn't log if hideLog is true.
@@ -594,7 +611,6 @@ public sealed partial class ChatSystem : SharedChatSystem
         var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
             ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
 
-
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
             EntityUid listener;
@@ -627,12 +643,27 @@ public sealed partial class ChatSystem : SharedChatSystem
             //If listener is too far and has no line of sight, they can't identify the whisperer's identity
             else
                 _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedScrambledMessage /* SS220 languages */, wrappedUnknownMessage, source, false, session.Channel);
+
+            // SS220-Add-Languages begin
+            if (listener == source)
+            {
+                var ev = new EntitySpokeEvent(source, scrambledMessage, originalMessage, channel, obfuscatedMessage);
+                RaiseLocalEvent(source, ev, true);
+            }
+            else
+            {
+                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, originalMessage, obfuscatedMessage, channel != null);
+                RaiseLocalEvent(scrambledEv);
+            }
+            // SS220-Add-Languages end
         }
 
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
 
-        var ev = new EntitySpokeEvent(source, message, originalMessage, channel, obfuscatedMessage);
-        RaiseLocalEvent(source, ev, true);
+        // SS220 languages begin
+        //var ev = new EntitySpokeEvent(source, message, originalMessage, channel, obfuscatedMessage);
+        //RaiseLocalEvent(source, ev, true);
+        // SS220 languages end
         if (!hideLog)
             if (originalMessage == message)
             {
@@ -1209,3 +1240,24 @@ public readonly struct RadioEventReceiver
 }
 // SS220 Silicon TTS fix end
 
+// SS220 languages begin
+public sealed class EntitySpokeScrambledEvent : EntityEventArgs
+{
+    public readonly EntityUid Source;
+    public readonly EntityUid Listener;
+    public readonly string Message;
+    public readonly string OriginalMessage;
+    public readonly string? ObfuscatedMessage; // not null if this was a whisper
+    public readonly bool IsRadio; // radio message is always a whisper
+
+    public EntitySpokeScrambledEvent(EntityUid source, EntityUid listener, string message, string originalMessage, string? obfuscatedMessage, bool isRadio)
+    {
+        Source = source;
+        Listener = listener;
+        Message = message;
+        OriginalMessage = originalMessage;
+        ObfuscatedMessage = obfuscatedMessage;
+        IsRadio = isRadio;
+    }
+}
+// SS220 languages end

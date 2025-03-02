@@ -153,6 +153,7 @@ public sealed class RadioSystem : EntitySystem
         var sourceServerExempt = _exemptQuery.HasComp(radioSource);
 
         var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
+        var messageListenerDict = new Dictionary<string, HashSet<EntityUid>>(); // SS220 languages
         while (canSend && radioQuery.MoveNext(out var receiver, out var radio, out var transform))
         {
             if (!radio.ReceiveAllChannels)
@@ -178,11 +179,13 @@ public sealed class RadioSystem : EntitySystem
                 continue;
 
             // SS220 languages begin
-            if (_languageSystem.TryGetLanguageListener(receiver, out var listener) &&
-                TryGetScrambledChatMessage(messageSource, listener.Value, message, out var scrambledChatMsg))
+            if (_languageSystem.TryGetLanguageListener(receiver, out var listener))
             {
-                var scrabledEv = new RadioReceiveEvent(message, messageSource, channel, radioSource, scrambledChatMsg, new());
-                RaiseLocalEvent(receiver, ref scrabledEv);
+                var scrambledMessage = _languageSystem.SanitizeMessage(messageSource, listener.Value, message);
+                if (messageListenerDict.TryGetValue(scrambledMessage, out var lisneners))
+                    lisneners.Add(receiver);
+                else
+                    messageListenerDict[scrambledMessage] = [receiver];
             }
             else
             {
@@ -193,6 +196,20 @@ public sealed class RadioSystem : EntitySystem
             //RaiseLocalEvent(receiver, ref ev);
             // SS220 languages end
         }
+
+        // SS220 languages begin
+        foreach (var (scrambledMessage, listeners) in messageListenerDict)
+        {
+            var newChatMsg = GetMsgChatMessage(messageSource, scrambledMessage);
+            var newEv = new RadioReceiveEvent(message, messageSource, channel, radioSource, newChatMsg, new());
+            foreach (var listener in listeners)
+            {
+                RaiseLocalEvent(listener, ref newEv);
+            }
+
+            RaiseLocalEvent(new RadioSpokeEvent(messageSource, scrambledMessage, newEv.Receivers.ToArray()));
+        }
+        // SS220 languages end
 
         // Dispatch TTS radio speech event for every receiver
         RaiseLocalEvent(new RadioSpokeEvent(messageSource, message, ev.Receivers.ToArray()));
@@ -206,18 +223,12 @@ public sealed class RadioSystem : EntitySystem
         _messages.Remove(message);
 
         // SS220 languages begin
-        bool TryGetScrambledChatMessage(EntityUid source, EntityUid listener, string message, [NotNullWhen(true)] out MsgChatMessage? scrambledChatMsg)
+        MsgChatMessage GetMsgChatMessage(EntityUid source, string message)
         {
-            scrambledChatMsg = null;
-            var languageProto = _languageSystem.GetSelectedLanguage(source);
-            if (languageProto == null)
-                return false;
-
-            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
             if (GetIdCardIsBold(source))
             {
                 content = $"[bold]{content}[/bold]";
-                scrambledMessage = $"[bold]{scrambledMessage}[/bold]";
+                message = $"[bold]{message}[/bold]";
             }
 
             var wrappedScrambledMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
@@ -227,17 +238,16 @@ public sealed class RadioSystem : EntitySystem
                 ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
                 ("channel", $"\\[{channel.LocalizedName}\\]"),
                 ("name", formattedName),
-                ("message", scrambledMessage));
+                ("message", message));
 
             var scrambledChat = new ChatMessage(
                 ChatChannel.Radio,
-                scrambledMessage,
+                message,
                 wrappedScrambledMessage,
                 NetEntity.Invalid,
                 null);
 
-            scrambledChatMsg = new MsgChatMessage { Message = scrambledChat };
-            return scrambledChatMsg != null;
+            return new MsgChatMessage { Message = scrambledChat };
         }
         // SS220 languages end
     }
