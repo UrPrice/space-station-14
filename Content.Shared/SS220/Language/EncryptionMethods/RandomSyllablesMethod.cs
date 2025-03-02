@@ -2,7 +2,7 @@
 using System.Text;
 using Robust.Shared.Random;
 
-namespace Content.Server.SS220.Language.EncryptionMethods;
+namespace Content.Shared.SS220.Language.EncryptionMethods;
 
 /// <summary>
 /// Scramble a message depending on its length using a specific list of syllables
@@ -102,7 +102,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
 
     private string ScrambleWithSeed(string message, int seed)
     {
-        var random = new Random(seed);
+        var random = new System.Random();
 
         var encryptedMessage = new StringBuilder();
         var capitalize = false;

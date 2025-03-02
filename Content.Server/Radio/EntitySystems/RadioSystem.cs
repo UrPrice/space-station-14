@@ -173,7 +173,8 @@ public sealed class RadioSystem : EntitySystem
                 continue;
 
             // SS220 languages begin
-            if (TryGetScrambledChatMessage(messageSource, receiver, message, out var scrambledChatMsg))
+            if (_languageSystem.TryGetLanguageListener(receiver, out var listener) &&
+                TryGetScrambledChatMessage(messageSource, listener.Value, message, out var scrambledChatMsg))
             {
                 var scrabledEv = new RadioReceiveEvent(message, messageSource, channel, radioSource, scrambledChatMsg, new());
                 RaiseLocalEvent(receiver, ref scrabledEv);

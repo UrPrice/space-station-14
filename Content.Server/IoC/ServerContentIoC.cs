@@ -35,7 +35,6 @@ using Content.Shared.Chat;
 using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
-using Content.Server.SS220.Language;
 
 namespace Content.Server.IoC
 {
@@ -90,7 +89,6 @@ namespace Content.Server.IoC
             IoCManager.Register<IWatchlistWebhookManager, WatchlistWebhookManager>();
             IoCManager.Register<ConnectionManager>();
             IoCManager.Register<MultiServerKickManager>();
-            IoCManager.Register<LanguageManager>(); // SS220 Languages
         }
     }
 }

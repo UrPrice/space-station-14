@@ -1,8 +1,8 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
-using Content.Server.SS220.Language.EncryptionMethods;
+using Content.Shared.SS220.Language.EncryptionMethods;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.SS220.Language;
+namespace Content.Shared.SS220.Language;
 
 [Prototype("language")]
 public sealed partial class LanguagePrototype : IPrototype
@@ -11,10 +11,10 @@ public sealed partial class LanguagePrototype : IPrototype
     public string ID { get; private set; } = default!;
 
     [DataField]
-    public string? Name { get; private set; }
+    public string Name = string.Empty;
 
     [DataField]
-    public string? Description { get; private set; }
+    public string Description = string.Empty;
 
     [DataField(required: true)]
     public string Key = string.Empty;

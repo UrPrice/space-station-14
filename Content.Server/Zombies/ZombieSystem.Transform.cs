@@ -41,7 +41,7 @@ using Content.Shared.Humanoid.Markings;
 using Robust.Server.Player;
 using Content.Shared.Ghost.Roles.Components;
 using Content.Server.SS220.Language;
-using Content.Server.SS220.Language.Components; // SS220-Add-Languages
+using Content.Shared.SS220.Language.Components;
 
 namespace Content.Server.Zombies;
 

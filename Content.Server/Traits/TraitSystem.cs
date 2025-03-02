@@ -6,7 +6,7 @@ using Content.Shared.Traits;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Content.Server.SS220.Language;
-using Content.Server.SS220.Language.Components;
+using Content.Shared.SS220.Language.Components;
 
 namespace Content.Server.Traits;
 
@@ -15,6 +15,7 @@ public sealed class TraitSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly LanguageSystem _language = default!;
 
     public override void Initialize()
     {
@@ -51,10 +52,8 @@ public sealed class TraitSystem : EntitySystem
             // SS220-Add-Languages begin
             if (traitPrototype.LearnedLanguage != null)
             {
-                if (TryComp<LanguageComponent>(args.Mob, out var language))
-                {
-                    language.TryAddLanguage(traitPrototype.LearnedLanguage);
-                }
+                var language = EnsureComp<LanguageComponent>(args.Mob);
+                _language.AddLanguage((args.Mob, language), traitPrototype.LearnedLanguage);
             }
             // SS220-Add-Languages end
 

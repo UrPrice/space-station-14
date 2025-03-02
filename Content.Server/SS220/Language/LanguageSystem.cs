@@ -1,20 +1,24 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
 using Content.Server.GameTicking.Events;
-using Content.Server.SS220.Language.Components;
+using Content.Shared.SS220.Language.Components;
 using Content.Shared.Ghost;
-using Content.Shared.Verbs;
+using Content.Shared.SS220.Language;
+using Robust.Server.Player;
 using Robust.Shared.Random;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Content.Shared.SS220.Language.Systems;
+using Robust.Shared.Network;
 
 namespace Content.Server.SS220.Language;
 
-public sealed partial class LanguageSystem : EntitySystem
+public sealed partial class LanguageSystem : SharedLanguageSystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly LanguageManager _languageManager = default!;
+    [Dependency] private readonly LanguageManager _language = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public readonly string UniversalLanguage = "Universal";
     public readonly string GalacticLanguage = "Galactic";
@@ -27,12 +31,13 @@ public sealed partial class LanguageSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
         SubscribeLocalEvent<LanguageComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<LanguageComponent, GetLanguageCompEvent>(OnGetLanguage);
+        SubscribeLocalEvent<LanguageComponent, GetLanguageListenerEvent>(OnGetLanguage);
 
-        // Verbs
-        SubscribeLocalEvent<LanguageComponent, GetVerbsEvent<Verb>>(OnVerb);
+        // UI
+        _net.RegisterNetMessage<ClientSelectlanguageMessage>(OnClientSelectLanguage);
     }
 
     public override void Update(float frameTime)
@@ -53,14 +58,28 @@ public sealed partial class LanguageSystem : EntitySystem
     /// </summary>
     private void OnMapInit(Entity<LanguageComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.TrySetLanguage(0);
+        TrySetLanguage(ent, 0);
     }
 
-    private void OnGetLanguage(Entity<LanguageComponent> ent, ref GetLanguageCompEvent args)
+    private void OnGetLanguage(Entity<LanguageComponent> ent, ref GetLanguageListenerEvent args)
     {
-        args.Component = ent.Comp;
+        args.Listener = ent;
         args.Handled = true;
     }
+
+    #region Client
+    private void OnClientSelectLanguage(ClientSelectlanguageMessage msg)
+    {
+        if (!_player.TryGetSessionByChannel(msg.MsgChannel, out var player))
+            return;
+
+        var entity = player.AttachedEntity;
+        if (entity == null || !TryComp<LanguageComponent>(entity, out var comp))
+            return;
+
+        TrySetLanguage((entity.Value, comp), msg.LanguageId);
+    }
+    #endregion
 
     /// <summary>
     ///     A method of encrypting the original message into a message created
@@ -100,7 +119,7 @@ public sealed partial class LanguageSystem : EntitySystem
         var sanitizedMessage = new StringBuilder();
         foreach (var languageString in languageStrings)
         {
-            if (CheckLanguage(listener, languageString.Item2))
+            if (CheckLanguage(listener, languageString.Item2.ID))
             {
                 sanitizedMessage.Append(languageString.Item1);
             }
@@ -124,7 +143,7 @@ public sealed partial class LanguageSystem : EntitySystem
     private List<(string, LanguagePrototype)> SplitMessageByLanguages(EntityUid source, string message, LanguagePrototype defaultLanguage)
     {
         var list = new List<(string, LanguagePrototype)>();
-        var p = _languageManager.KeyPrefix;
+        var p = _language.KeyPrefix;
         var textWithKeyPattern = $@"^{p}(.*?)\s(?={p}\w+\s)|(?<=\s){p}(.*?)\s(?={p}\w+\s)|(?<=\s){p}(.*)|^{p}(.*)"; // pizdec
 
         var matches = Regex.Matches(message, textWithKeyPattern);
@@ -142,7 +161,7 @@ public sealed partial class LanguageSystem : EntitySystem
         foreach (Match m in matches)
         {
             if (!TryGetLanguageFromString(m.Value, out var messageWithoutTags, out var language) ||
-                !CheckLanguage(source, language))
+                !CheckLanguage(source, language.ID))
             {
                 if (buffer.Item2 == null)
                 {
@@ -187,10 +206,10 @@ public sealed partial class LanguageSystem : EntitySystem
         messageWithoutTags = null;
         language = null;
 
-        var keyPatern = $@"{_languageManager.KeyPrefix}\w+\s+";
+        var keyPatern = $@"{_language.KeyPrefix}\w+\s+";
 
         var m = Regex.Match(message, keyPatern);
-        if (m == null || !_languageManager.TryGetLanguageByKey(m.Value.Trim(), out language))
+        if (m == null || !_language.TryGetLanguageByKey(m.Value.Trim(), out language))
             return false;
 
         messageWithoutTags = Regex.Replace(message, keyPatern, string.Empty);
@@ -201,30 +220,17 @@ public sealed partial class LanguageSystem : EntitySystem
     ///     Method that checks an entity for the presence of a prototype language
     ///     or for the presence of a universal language
     /// </summary>
-    public bool CheckLanguage(EntityUid ent, LanguagePrototype? proto)
+    public bool CheckLanguage(EntityUid uid, string? languageId)
     {
-        if (proto == null)
-            return false;
-
-        if (KnowsAllLanguages(ent))
+        if (KnowsAllLanguages(uid) ||
+            languageId == UniversalLanguage)
             return true;
 
-        return KnowsLanguages(ent, proto.ID);
-    }
-
-    /// <summary>
-    ///     Checks if the entity knows this language
-    /// </summary>
-    public bool KnowsLanguages(EntityUid ent, string languageId)
-    {
-        // All ents knows universal language
-        if (languageId == UniversalLanguage)
-            return true;
-
-        if (!TryGetLanguageComponent(ent, out var comp))
+        if (languageId == null ||
+            !TryComp<LanguageComponent>(uid, out var comp))
             return false;
 
-        return comp.HasLanguage(languageId);
+        return HasLanguage((uid, comp), languageId);
     }
 
     /// <summary>
@@ -239,11 +245,11 @@ public sealed partial class LanguageSystem : EntitySystem
     ///     A method to get a prototype language from an entity.
     ///     If the entity does not have a language component, a universal language is assigned.
     /// </summary>
-    public LanguagePrototype? GetSelectedLanguage(EntityUid ent)
+    public LanguagePrototype? GetSelectedLanguage(EntityUid uid)
     {
-        if (!TryGetLanguageComponent(ent, out var comp))
+        if (!TryComp<LanguageComponent>(uid, out var comp))
         {
-            if (_languageManager.TryGetLanguageById(UniversalLanguage, out var universalProto))
+            if (_language.TryGetLanguageById(UniversalLanguage, out var universalProto))
                 return universalProto;
 
             return null;
@@ -253,21 +259,21 @@ public sealed partial class LanguageSystem : EntitySystem
         if (languageID == null)
             return null;
 
-        _languageManager.TryGetLanguageById(languageID, out var proto);
+        _language.TryGetLanguageById(languageID, out var proto);
         return proto;
     }
 
     /// <summary>
-    ///     Raises event to receive a language component.
+    ///     Raises event to receive the listener entity.
     ///     This is done for the possibility of forwarding
     /// </summary>
-    public bool TryGetLanguageComponent(EntityUid uid, [NotNullWhen(true)] out LanguageComponent? component)
+    public bool TryGetLanguageListener(EntityUid uid, [NotNullWhen(true)] out Entity<LanguageComponent>? listener)
     {
-        var ev = new GetLanguageCompEvent();
+        var ev = new GetLanguageListenerEvent();
         RaiseLocalEvent(uid, ref ev);
-        component = ev.Component;
+        listener = ev.Listener;
 
-        return component != null;
+        return listener != null;
     }
 
     /// <summary>
@@ -291,14 +297,14 @@ public sealed partial class LanguageSystem : EntitySystem
         var targetComp = EnsureComp<LanguageComponent>(target);
         foreach (var language in ent.Comp.AvailableLanguages)
         {
-            targetComp.TryAddLanguage(language);
+            AddLanguage((target, targetComp), language);
         }
     }
 }
 
 [ByRefEvent]
-public sealed class GetLanguageCompEvent() : HandledEntityEventArgs
+public sealed class GetLanguageListenerEvent() : HandledEntityEventArgs
 {
-    public LanguageComponent? Component = null;
+    public Entity<LanguageComponent>? Listener = null;
 }
 

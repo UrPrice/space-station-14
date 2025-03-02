@@ -25,4 +25,9 @@
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\XamlIL.targets" />
+  <ItemGroup>
+    <AdditionalFiles Update="SS220\UserInterface\System\Chat\Controls\LanguageSettings\LanguageSettingsPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AdditionalFiles>
+  </ItemGroup>
 </Project>
