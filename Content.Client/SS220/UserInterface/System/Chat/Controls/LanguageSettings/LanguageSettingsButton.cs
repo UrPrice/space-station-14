@@ -14,7 +14,7 @@ public sealed class LanguageSettingsButton : ChatPopupButton<LanguageSettingsPop
         IoCManager.InjectDependencies(this);
 
         var texture = IoCManager.Resolve<IResourceCache>()
-            .GetTexture("/Textures/SS220/Interface/Nano/language_icon.png");
+            .GetTexture("/Textures/SS220/Interface/Nano/language_settings-button.png");
 
         AddChild(new TextureRect
         {
