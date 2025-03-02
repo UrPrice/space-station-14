@@ -44,6 +44,7 @@ using Robust.Shared.Utility;
 using Robust.Shared.Timing;
 using Content.Server.SS220.Language; // SS220-Add-Languages-end
 using Robust.Shared.Map;
+using JetBrains.Annotations;
 
 namespace Content.Server.Chat.Systems;
 
@@ -511,7 +512,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue;
 
             var listener = session.AttachedEntity.Value;
-            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
+            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message, out var scrambledColorlessMessage);
         // SS220-Add-Languages end
 
             var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
@@ -531,13 +532,13 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
             else
             {
-                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, originalMessage, null, false);
+                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, scrambledColorlessMessage, originalMessage, null, false);
                 RaiseLocalEvent(scrambledEv);
             }
             //SS220-Add-Languages end
         }
         //SS220-Add-Languages begin
-        message = _languageSystem.SanitizeMessage(source, source, message);
+        message = _languageSystem.SanitizeMessage(source, source, message, out _);
 
         //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range); 
         //var ev = new EntitySpokeEvent(source, message, originalMessage, null, null);
@@ -620,8 +621,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             listener = session.AttachedEntity.Value;
 
             // SS220-Add-Languages begin
-            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message);
-            var scrambledColorlessMessage = _languageSystem.SanitizeMessage(source, listener, message, false);
+            var scrambledMessage = _languageSystem.SanitizeMessage(source, listener, message, out var scrambledColorlessMessage);
             var obfuscatedScrambledMessage = ObfuscateMessageReadability(scrambledColorlessMessage, 0.2f);
 
             wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
@@ -652,7 +652,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
             else
             {
-                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, originalMessage, obfuscatedMessage, channel != null);
+                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, scrambledColorlessMessage,  originalMessage, obfuscatedMessage, channel != null);
                 RaiseLocalEvent(scrambledEv);
             }
             // SS220-Add-Languages end
@@ -1246,15 +1246,17 @@ public sealed class EntitySpokeScrambledEvent : EntityEventArgs
     public readonly EntityUid Source;
     public readonly EntityUid Listener;
     public readonly string Message;
+    public readonly string ColorlessMessage;
     public readonly string OriginalMessage;
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
     public readonly bool IsRadio; // radio message is always a whisper
 
-    public EntitySpokeScrambledEvent(EntityUid source, EntityUid listener, string message, string originalMessage, string? obfuscatedMessage, bool isRadio)
+    public EntitySpokeScrambledEvent(EntityUid source, EntityUid listener, string message, string colorlessMessage, string originalMessage, string? obfuscatedMessage, bool isRadio)
     {
         Source = source;
         Listener = listener;
         Message = message;
+        ColorlessMessage = colorlessMessage;
         OriginalMessage = originalMessage;
         ObfuscatedMessage = obfuscatedMessage;
         IsRadio = isRadio;

@@ -105,8 +105,9 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
     /// <summary>
     ///     Sanitize the <paramref name="message"/> by removing the language tags and scramble it (if necessary) for <paramref name="listener"/>
     /// </summary>
-    public string SanitizeMessage(EntityUid source, EntityUid listener, string message, bool setColor = true)
+    public string SanitizeMessage(EntityUid source, EntityUid listener, string message, out string colorlessMessage, bool setColor = true)
     {
+        colorlessMessage = message;
         var languageProto = GetSelectedLanguage(source);
         if (languageProto == null)
             return message;
@@ -122,6 +123,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
             else
             {
                 var scrambledString = ScrambleMessage(message, languageString.Item2);
+                colorlessMessage = scrambledString;
                 if (setColor)
                     scrambledString = SetColor(scrambledString, languageString.Item2);
 
@@ -129,7 +131,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
             }
         }
 
-        return sanitizedMessage.ToString();
+        return sanitizedMessage.ToString().Trim();
     }
 
     /// <summary>

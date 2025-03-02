@@ -153,7 +153,7 @@ public sealed class RadioSystem : EntitySystem
         var sourceServerExempt = _exemptQuery.HasComp(radioSource);
 
         var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
-        var messageListenerDict = new Dictionary<string, HashSet<EntityUid>>(); // SS220 languages
+        var messageListenerDict = new Dictionary<(string, string), HashSet<EntityUid>>(); // SS220 languages
         while (canSend && radioQuery.MoveNext(out var receiver, out var radio, out var transform))
         {
             if (!radio.ReceiveAllChannels)
@@ -181,11 +181,11 @@ public sealed class RadioSystem : EntitySystem
             // SS220 languages begin
             if (_languageSystem.TryGetLanguageListener(receiver, out var listener))
             {
-                var scrambledMessage = _languageSystem.SanitizeMessage(messageSource, listener.Value, message);
-                if (messageListenerDict.TryGetValue(scrambledMessage, out var lisneners))
+                var scrambledMessage = _languageSystem.SanitizeMessage(messageSource, listener.Value, message, out var colorlessMessage);
+                if (messageListenerDict.TryGetValue((scrambledMessage, colorlessMessage), out var lisneners))
                     lisneners.Add(receiver);
                 else
-                    messageListenerDict[scrambledMessage] = [receiver];
+                    messageListenerDict[(scrambledMessage, colorlessMessage)] = [receiver];
             }
             else
             {
@@ -198,7 +198,7 @@ public sealed class RadioSystem : EntitySystem
         }
 
         // SS220 languages begin
-        foreach (var (scrambledMessage, listeners) in messageListenerDict)
+        foreach (var ((scrambledMessage, colorlessMessage), listeners) in messageListenerDict)
         {
             var newChatMsg = GetMsgChatMessage(messageSource, scrambledMessage);
             var newEv = new RadioReceiveEvent(message, messageSource, channel, radioSource, newChatMsg, new());
@@ -207,7 +207,7 @@ public sealed class RadioSystem : EntitySystem
                 RaiseLocalEvent(listener, ref newEv);
             }
 
-            RaiseLocalEvent(new RadioSpokeEvent(messageSource, scrambledMessage, newEv.Receivers.ToArray()));
+            RaiseLocalEvent(new RadioSpokeEvent(messageSource, colorlessMessage, newEv.Receivers.ToArray()));
         }
         // SS220 languages end
 

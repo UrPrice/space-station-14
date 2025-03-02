@@ -178,7 +178,7 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
 
         // SS220 no English begin
         var language = _entityManager.System<LanguageSystem>();
-        var checkMessage = language.SanitizeMessage(speaker, speaker, sanitized);
+        var checkMessage = language.SanitizeMessage(speaker, speaker, sanitized, out _);
         var ntAllowed = checkMessage.Replace("NanoTrasen", string.Empty, StringComparison.OrdinalIgnoreCase);
         ntAllowed = ntAllowed.Replace("nt", string.Empty, StringComparison.OrdinalIgnoreCase);
 

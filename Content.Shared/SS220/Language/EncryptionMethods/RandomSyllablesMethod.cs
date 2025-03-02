@@ -1,5 +1,6 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
 using System.Text;
+using System.Text.RegularExpressions;
 using Robust.Shared.Random;
 
 namespace Content.Shared.SS220.Language.EncryptionMethods;
@@ -42,25 +43,35 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         if (Syllables.Count == 0)
             return message;
 
-        string result;
-        if (seed != null)
+        var wordRegex = @"\S+";
+        var matches = Regex.Matches(message, wordRegex);
+        if (matches.Count <= 0)
+            return message;
+
+        var result = new StringBuilder();
+        foreach (Match m in matches)
         {
-            foreach (var c in message.ToCharArray())
+            string scrambledWord;
+            if (seed != null)
             {
-                seed += c;
+                foreach (var c in m.Value.ToCharArray())
+                {
+                    seed += c;
+                }
+                scrambledWord = ScrambleWithSeed(m.Value, seed.Value);
             }
-            result = ScrambleWithSeed(message, seed.Value);
-        }
-        else
-        {
-            result = ScrambleWithoutSeed(message);
+            else
+            {
+                scrambledWord = ScrambleWithoutSeed(message);
+            }
+
+            result.Append(scrambledWord);
         }
 
         var punctuation = ExtractPunctuation(message);
+        result.Append(punctuation);
 
-        result += punctuation;
-
-        return result;
+        return result.ToString();
     }
 
     private string ScrambleWithoutSeed(string message)
@@ -96,8 +107,6 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         }
 
         var result = encryptedMessage.ToString().Trim();
-        result += " "; // save whitespace before language tag
-
         return result;
     }
 
@@ -134,8 +143,6 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         }
 
         var result = encryptedMessage.ToString().Trim();
-        result += " "; // save whitespace before language tag
-
         return result;
     }
 
@@ -153,6 +160,8 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
             else
                 break;
         }
+        punctuationBuilder.Append(' '); // save whitespace before language tag
+
         return punctuationBuilder.ToString();
     }
 }
