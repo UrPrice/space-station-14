@@ -38,9 +38,14 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
     [DataField]
     public string SpecialCharacter = string.Empty;
 
+    private int? _inputSeed;
+
+    private bool _capitalize = false;
+
     public override string ScrambleMessage(string message, int? seed = null)
     {
-        if (Syllables.Count == 0)
+        if (message == string.Empty ||
+            Syllables.Count == 0)
             return message;
 
         var wordRegex = @"\S+";
@@ -48,13 +53,17 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         if (matches.Count <= 0)
             return message;
 
+        _inputSeed = seed;
+        _capitalize = char.IsUpper(message[0]);
         var result = new StringBuilder();
         foreach (Match m in matches)
         {
             string scrambledWord;
+            seed = _inputSeed;
+            var word = m.Value.ToLower();
             if (seed != null)
             {
-                foreach (var c in m.Value.ToCharArray())
+                foreach (var c in word.ToCharArray())
                 {
                     seed += c;
                 }
@@ -62,7 +71,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
             }
             else
             {
-                scrambledWord = ScrambleWithoutSeed(message);
+                scrambledWord = ScrambleWithoutSeed(m.Value);
             }
 
             result.Append(scrambledWord);
@@ -71,6 +80,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         var punctuation = ExtractPunctuation(message);
         result.Append(punctuation);
 
+        _capitalize = false;
         return result.ToString();
     }
 
@@ -79,15 +89,14 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         var random = IoCManager.Resolve<IRobustRandom>();
 
         var encryptedMessage = new StringBuilder();
-        var capitalize = false;
         while (encryptedMessage.Length < message.Length)
         {
             var curSyllable = random.Pick(Syllables);
 
-            if (capitalize)
+            if (_capitalize)
             {
-                curSyllable = string.Concat(curSyllable.Substring(0, 1).ToUpper(), curSyllable.AsSpan(1));
-                capitalize = false;
+                curSyllable = curSyllable.Substring(0, 1).ToUpper() + curSyllable.Substring(1);
+                _capitalize = false;
             }
             encryptedMessage.Append(curSyllable);
 
@@ -98,7 +107,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
             else if (random.Prob(DotChance))
             {
                 encryptedMessage.Append(". ");
-                capitalize = true;
+                _capitalize = true;
             }
             else if (random.Prob(SpaceChance))
             {
@@ -106,24 +115,23 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
             }
         }
 
-        var result = encryptedMessage.ToString().Trim();
+        var result = encryptedMessage.ToString();
         return result;
     }
 
     private string ScrambleWithSeed(string message, int seed)
     {
-        var random = new System.Random();
+        var random = new System.Random(seed);
 
         var encryptedMessage = new StringBuilder();
-        var capitalize = false;
         while (encryptedMessage.Length < message.Length)
         {
             var curSyllable = random.Pick(Syllables);
 
-            if (capitalize)
+            if (_capitalize)
             {
                 curSyllable = curSyllable.Substring(0, 1).ToUpper() + curSyllable.Substring(1);
-                capitalize = false;
+                _capitalize = false;
             }
             encryptedMessage.Append(curSyllable);
 
@@ -134,7 +142,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
             else if (random.Prob(DotChance))
             {
                 encryptedMessage.Append(". ");
-                capitalize = true;
+                _capitalize = true;
             }
             else if (random.Prob(SpaceChance))
             {
@@ -142,7 +150,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
             }
         }
 
-        var result = encryptedMessage.ToString().Trim();
+        var result = encryptedMessage.ToString();
         return result;
     }
 

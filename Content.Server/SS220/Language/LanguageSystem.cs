@@ -114,23 +114,31 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
 
         var languageStrings = SplitMessageByLanguages(source, message, languageProto);
         var sanitizedMessage = new StringBuilder();
-        foreach (var languageString in languageStrings)
+        var sanitizedColorlessMessage = new StringBuilder();
+        for (var i = 0; i < languageStrings.Count; i++)
         {
-            if (CheckLanguage(listener, languageString.Item2.ID))
+            var curString = languageStrings[i];
+            if (CheckLanguage(listener, curString.Item2.ID))
             {
-                sanitizedMessage.Append(languageString.Item1);
+                sanitizedMessage.Append(curString.Item1);
+                sanitizedColorlessMessage.Append(curString.Item1);
             }
             else
             {
-                var scrambledString = ScrambleMessage(message, languageString.Item2);
-                colorlessMessage = scrambledString;
+                var scrambledString = ScrambleMessage(message, curString.Item2);
+                sanitizedColorlessMessage.Append(scrambledString);
                 if (setColor)
-                    scrambledString = SetColor(scrambledString, languageString.Item2);
+                {
+                    if (i + 1 == languageStrings.Count)
+                        scrambledString = scrambledString.Trim();
+                    scrambledString = SetColor(scrambledString, curString.Item2);
+                }
 
                 sanitizedMessage.Append(scrambledString);
             }
         }
 
+        colorlessMessage = sanitizedColorlessMessage.ToString().Trim();
         return sanitizedMessage.ToString().Trim();
     }
 

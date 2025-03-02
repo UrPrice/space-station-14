@@ -1,4 +1,4 @@
-﻿using Content.Client.Stylesheets;
+using Content.Client.Stylesheets;
 using Content.Client.SS220.UserInterface.System.Chat.Controls;
 using Content.Shared.Chat;
 using Content.Shared.Input;
@@ -14,7 +14,7 @@ public class ChatInputBox : PanelContainer
     public readonly HistoryLineEdit Input;
     public readonly ChannelFilterButton FilterButton;
     public readonly HighlightButton HighlightButton; //ss220 highlight words
-    public readonly LanguageSettingsButton LanguageSettings;
+    public readonly LanguageSettingsButton LanguageSettings; // SS220 languages
     protected readonly BoxContainer Container;
     protected ChatChannel ActiveChannel { get; private set; } = ChatChannel.Local;
 
