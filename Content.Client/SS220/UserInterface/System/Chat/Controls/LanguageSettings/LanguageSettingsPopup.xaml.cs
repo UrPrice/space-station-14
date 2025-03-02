@@ -50,8 +50,13 @@ public sealed partial class LanguageSettingsPopup : Popup
         }
         UpdateLanguageContainer(availableLanguages);
 
-        _language.TryGetLanguageById(comp.SelectedLanguage, out var selectedLanguage);
-        UpdateSelectedLanguage(selectedLanguage);
+        if (comp.SelectedLanguage is { } selectedLanguageId)
+        {
+            _language.TryGetLanguageById(comp.SelectedLanguage, out var selectedLanguage);
+            UpdateSelectedLanguage(selectedLanguage);
+        }
+        else
+            UpdateSelectedLanguage(null);
     }
 
     private void UpdateLanguageContainer(List<LanguagePrototype>? availableLanguages)

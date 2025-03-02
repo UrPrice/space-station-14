@@ -87,7 +87,6 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
     /// </summary>
     public string ScrambleMessage(string message, LanguagePrototype proto)
     {
-        var saveEndWhitespace = char.IsWhiteSpace(message[^1]);
         var cacheKey = $"{proto.ID}:{message}";
 
         // If the original message is already there earlier encrypted,
@@ -99,9 +98,6 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         var scrambled = proto.ScrambleMethod.ScrambleMessage(message, Seed);
 
         ScrambleCache[cacheKey] = scrambled;
-
-        if (saveEndWhitespace)
-            scrambled += " ";
 
         return scrambled;
     }

@@ -75,7 +75,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
 
             if (capitalize)
             {
-                curSyllable = curSyllable.Substring(0, 1).ToUpper() + curSyllable.Substring(1);
+                curSyllable = string.Concat(curSyllable.Substring(0, 1).ToUpper(), curSyllable.AsSpan(1));
                 capitalize = false;
             }
             encryptedMessage.Append(curSyllable);
@@ -96,6 +96,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         }
 
         var result = encryptedMessage.ToString().Trim();
+        result += " "; // save whitespace before language tag
 
         return result;
     }
@@ -133,6 +134,7 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         }
 
         var result = encryptedMessage.ToString().Trim();
+        result += " "; // save whitespace before language tag
 
         return result;
     }

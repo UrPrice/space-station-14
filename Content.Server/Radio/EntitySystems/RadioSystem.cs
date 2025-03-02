@@ -119,6 +119,11 @@ public sealed class RadioSystem : EntitySystem
             ? FormattedMessage.EscapeText(message)
             : message;
 
+        if (GetIdCardIsBold(messageSource))
+        {
+            content = $"[bold]{content}[/bold]";
+        }
+
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
             ("color", channel.Color),
             ("fontType", speech.FontId),
@@ -183,10 +188,10 @@ public sealed class RadioSystem : EntitySystem
             {
                 RaiseLocalEvent(receiver, ref ev);
             }
-            // SS220 languages end
 
             // send the message
             //RaiseLocalEvent(receiver, ref ev);
+            // SS220 languages end
         }
 
         // Dispatch TTS radio speech event for every receiver
