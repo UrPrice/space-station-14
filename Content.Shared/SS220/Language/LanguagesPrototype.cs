@@ -30,5 +30,5 @@ public sealed partial class LanguagePrototype : IPrototype
     /// The method used to scramble the message
     /// </summary>
     [DataField]
-    public ScrambleMethod ScrambleMethod = new RandomSyllablesScrambleMethod();
+    public ScrambleMethod ScrambleMethod = new SyllablesScrambleMethod();
 }

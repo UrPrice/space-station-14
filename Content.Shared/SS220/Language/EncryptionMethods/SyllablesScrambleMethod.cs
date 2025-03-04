@@ -1,6 +1,8 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Random;
 
 namespace Content.Shared.SS220.Language.EncryptionMethods;
@@ -8,7 +10,7 @@ namespace Content.Shared.SS220.Language.EncryptionMethods;
 /// <summary>
 /// Scramble a message depending on its length using a specific list of syllables
 /// </summary>
-public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
+public sealed partial class SyllablesScrambleMethod : ScrambleMethod
 {
     /// <summary>
     ///  List of syllables from which the original message will be encrypted
@@ -18,28 +20,18 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
     public List<string> Syllables = new();
 
     /// <summary>
-    ///  Chance of space between scrambled syllables
+    /// Chance of the <see cref="SpecialCharacters"/> after a scrambled syllable
     /// </summary>
     [DataField]
-    public float SpaceChance = 0.5f;
+    public float SpecialCharacterChance = 0.5f;
 
     /// <summary>
-    ///  Chance for a dot after a scrambled syllable.
+    /// Special characters that can be inserted after a scrambled syllable
     /// </summary>
     [DataField]
-    public float DotChance = 0.3f;
+    public List<SyllablesSpecialCharacter> SpecialCharacters = new();
 
-    /// <summary>
-    /// Chance of the <see cref="SpecialCharacter"/> after a scrambled syllable
-    /// </summary>
-    [DataField]
-    public float SpecialCharacterChance = 0.3f;
-
-    [DataField]
-    public string SpecialCharacter = string.Empty;
-
-    private int? _inputSeed;
-
+    private int _inputSeed;
     private bool _capitalize = false;
 
     public override string ScrambleMessage(string message, int? seed = null)
@@ -53,27 +45,21 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         if (matches.Count <= 0)
             return message;
 
-        _inputSeed = seed;
+        var random = IoCManager.Resolve<IRobustRandom>();
+        _inputSeed = seed ?? random.Next();
         _capitalize = char.IsUpper(message[0]);
+
         var result = new StringBuilder();
         foreach (Match m in matches)
         {
-            string scrambledWord;
             seed = _inputSeed;
             var word = m.Value.ToLower();
-            if (seed != null)
+            foreach (var c in word.ToCharArray())
             {
-                foreach (var c in word.ToCharArray())
-                {
-                    seed += c;
-                }
-                scrambledWord = ScrambleWithSeed(m.Value, seed.Value);
-            }
-            else
-            {
-                scrambledWord = ScrambleWithoutSeed(m.Value);
+                seed += c;
             }
 
+            var scrambledWord = ScrambleWord(m.Value, seed.Value);
             result.Append(scrambledWord);
         }
 
@@ -84,69 +70,29 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
         return result.ToString();
     }
 
-    private string ScrambleWithoutSeed(string message)
-    {
-        var random = IoCManager.Resolve<IRobustRandom>();
-
-        var encryptedMessage = new StringBuilder();
-        while (encryptedMessage.Length < message.Length)
-        {
-            var curSyllable = random.Pick(Syllables);
-
-            if (_capitalize)
-            {
-                curSyllable = curSyllable.Substring(0, 1).ToUpper() + curSyllable.Substring(1);
-                _capitalize = false;
-            }
-            encryptedMessage.Append(curSyllable);
-
-            if (random.Prob(SpecialCharacterChance))
-            {
-                encryptedMessage.Append(SpecialCharacter);
-            }
-            else if (random.Prob(DotChance))
-            {
-                encryptedMessage.Append(". ");
-                _capitalize = true;
-            }
-            else if (random.Prob(SpaceChance))
-            {
-                encryptedMessage.Append(' ');
-            }
-        }
-
-        var result = encryptedMessage.ToString();
-        return result;
-    }
-
-    private string ScrambleWithSeed(string message, int seed)
+    private string ScrambleWord(string word, int seed)
     {
         var random = new System.Random(seed);
-
         var encryptedMessage = new StringBuilder();
-        while (encryptedMessage.Length < message.Length)
+        while (encryptedMessage.Length < word.Length)
         {
             var curSyllable = random.Pick(Syllables);
 
             if (_capitalize)
             {
-                curSyllable = curSyllable.Substring(0, 1).ToUpper() + curSyllable.Substring(1);
+                curSyllable = string.Concat(curSyllable.Substring(0, 1).ToUpper(), curSyllable.AsSpan(1));
                 _capitalize = false;
             }
             encryptedMessage.Append(curSyllable);
 
             if (random.Prob(SpecialCharacterChance))
             {
-                encryptedMessage.Append(SpecialCharacter);
-            }
-            else if (random.Prob(DotChance))
-            {
-                encryptedMessage.Append(". ");
-                _capitalize = true;
-            }
-            else if (random.Prob(SpaceChance))
-            {
-                encryptedMessage.Append(' ');
+                var character = GetSpecialCharacter(random);
+                if (character != null)
+                {
+                    encryptedMessage.Append(character.Character);
+                    _capitalize = character.Capitalize;
+                }
             }
         }
 
@@ -172,4 +118,26 @@ public sealed partial class RandomSyllablesScrambleMethod : ScrambleMethod
 
         return punctuationBuilder.ToString();
     }
+
+    private SyllablesSpecialCharacter? GetSpecialCharacter(System.Random random)
+    {
+        var weights = SpecialCharacters.ToDictionary(s => s, s => s.Weight);
+        if (weights == null || weights.Count <= 0)
+            return null;
+
+        return SharedRandomExtensions.Pick(weights, random);
+    }
+}
+
+[DataDefinition]
+public sealed partial class SyllablesSpecialCharacter
+{
+    [DataField(required: true)]
+    public string Character;
+
+    [DataField]
+    public float Weight = 1f;
+
+    [DataField]
+    public bool Capitalize = false;
 }
