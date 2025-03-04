@@ -35,6 +35,6 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - Bubblish
+    - id: Galactic
+    - id: Bubblish
   # SS220-Add-Languages end

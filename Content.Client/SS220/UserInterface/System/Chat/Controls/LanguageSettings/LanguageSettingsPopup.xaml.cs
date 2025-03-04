@@ -41,9 +41,10 @@ public sealed partial class LanguageSettingsPopup : Popup
         }
 
         var availableLanguages = new List<LanguagePrototype>();
-        foreach (var id in comp.AvailableLanguages)
+        foreach (var def in comp.AvailableLanguages)
         {
-            if (!_language.TryGetLanguageById(id, out var language))
+            if (!def.CanSpeak ||
+                !_language.TryGetLanguageById(def.Id, out var language))
                 continue;
 
             availableLanguages.Add(language);
@@ -52,7 +53,7 @@ public sealed partial class LanguageSettingsPopup : Popup
 
         if (comp.SelectedLanguage is { } selectedLanguageId)
         {
-            _language.TryGetLanguageById(comp.SelectedLanguage, out var selectedLanguage);
+            _language.TryGetLanguageById(selectedLanguageId, out var selectedLanguage);
             UpdateSelectedLanguage(selectedLanguage);
         }
         else

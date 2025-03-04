@@ -143,8 +143,8 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - Tkachi
+    - id: Galactic
+    - id: Tkachi
   # SS220-Add-Languages end
   - type: Inventory
     femaleDisplacements:

@@ -89,6 +89,6 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - Universal
+    - id: Galactic
+    - id: Universal
   # SS220-Add-Languages end

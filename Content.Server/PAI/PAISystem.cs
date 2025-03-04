@@ -129,7 +129,7 @@ public sealed class PAISystem : SharedPAISystem
         if (TryComp<LanguageComponent>(uid, out var languageComp))
         {
             _language.ClearLanguages((uid, languageComp));
-            _language.AddLanguages((uid, languageComp), [_language.UniversalLanguage, _language.GalacticLanguage]);
+            _language.AddLanguages((uid, languageComp), [_language.UniversalLanguage, _language.GalacticLanguage], true);
         }
         // SS220-Add-Languages end
     }

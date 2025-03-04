@@ -20,9 +20,6 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly INetManager _net = default!;
 
-    public readonly string UniversalLanguage = "Universal";
-    public readonly string GalacticLanguage = "Galactic";
-
     // Cached values for one tick
     private static readonly Dictionary<string, string> ScrambleCache = new();
 
@@ -118,7 +115,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         for (var i = 0; i < languageStrings.Count; i++)
         {
             var curString = languageStrings[i];
-            if (CheckLanguage(listener, curString.Item2.ID))
+            if (CanUnderstand(listener, curString.Item2.ID))
             {
                 sanitizedMessage.Append(curString.Item1);
                 sanitizedColorlessMessage.Append(curString.Item1);
@@ -167,7 +164,7 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
         foreach (Match m in matches)
         {
             if (!TryGetLanguageFromString(m.Value, out var messageWithoutTags, out var language) ||
-                !CheckLanguage(source, language.ID))
+                !CanSpeak(source, language.ID))
             {
                 if (buffer.Item2 == null)
                 {
@@ -220,31 +217,6 @@ public sealed partial class LanguageSystem : SharedLanguageSystem
 
         messageWithoutTags = Regex.Replace(message, keyPatern, string.Empty);
         return messageWithoutTags != null && language != null;
-    }
-
-    /// <summary>
-    ///     Method that checks an entity for the presence of a prototype language
-    ///     or for the presence of a universal language
-    /// </summary>
-    public bool CheckLanguage(EntityUid uid, string? languageId)
-    {
-        if (KnowsAllLanguages(uid) ||
-            languageId == UniversalLanguage)
-            return true;
-
-        if (languageId == null ||
-            !TryComp<LanguageComponent>(uid, out var comp))
-            return false;
-
-        return HasLanguage((uid, comp), languageId);
-    }
-
-    /// <summary>
-    ///     Checks whether the entity knows all languages.
-    /// </summary>
-    public bool KnowsAllLanguages(EntityUid uid)
-    {
-        return HasComp<GhostComponent>(uid);
     }
 
     /// <summary>

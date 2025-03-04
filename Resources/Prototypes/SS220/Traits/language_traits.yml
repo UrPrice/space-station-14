@@ -4,11 +4,8 @@
   description: "language-tradeband-desc"
   category: Languages
   cost: 1
-  components:
-  - type: Language
-    availableLanguages:
-    - Tradeband
-  learnedLanguage: Tradeband
+  learnedLanguages:
+  - id: Gutter
 
 - type: trait
   id: GutterLanguage
@@ -16,11 +13,8 @@
   description: "language-gutter-desc"
   category: Languages
   cost: 1
-  components:
-  - type: Language
-    availableLanguages:
-    - Gutter
-  learnedLanguage: Gutter
+  learnedLanguages:
+  - id: Gutter
 
 - type: trait
   id: ClownishLanguage
@@ -28,11 +22,8 @@
   description: "language-clownish-desc"
   category: Languages
   cost: 1
-  components:
-  - type: Language
-    availableLanguages:
-    - Clownish
-  learnedLanguage: Clownish
+  learnedLanguages:
+  - id: Gutter
 
 - type: trait
   id: NeoRusskiyaLanguage
@@ -40,8 +31,5 @@
   description: "language-neorusskiya-desc"
   category: Languages
   cost: 1
-  components:
-  - type: Language
-    availableLanguages:
-    - NeoRusskiya
-  learnedLanguage: NeoRusskiya
+  learnedLanguages:
+  - id: Gutter

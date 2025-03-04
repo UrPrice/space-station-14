@@ -255,9 +255,9 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - Binary
-    - Universal
+    - id: Galactic
+    - id: Binary
+    - id: Universal
   # SS220-Add-Languages end
 
 - type: entity

@@ -109,8 +109,8 @@
     addAction: true
   - type: Language
     availableLanguages:
-    - Galactic
-    - Siiktajr
+    - id: Galactic
+    - id: Siiktajr
 
 - type: entity
   id: MobTajaranDummy

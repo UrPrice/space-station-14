@@ -122,8 +122,8 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - Rootspeak
+    - id: Galactic
+    - id: Rootspeak
   # SS220-Add-Languages end
   - type: Inventory
     templateId: diona

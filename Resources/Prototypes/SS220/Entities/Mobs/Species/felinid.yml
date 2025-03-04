@@ -113,7 +113,7 @@
     chatEmoteCooldown: 5.0
   - type: Language
     availableLanguages:
-    - Galactic
+    - id: Galactic
 
 - type: entity
   save: false

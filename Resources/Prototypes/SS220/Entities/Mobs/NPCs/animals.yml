@@ -272,9 +272,9 @@
     netsync: false
   - type: Language
     availableLanguages:
-    - Galactic
-    - Binary
-    - Universal
+    - id: Galactic
+    - id: Binary
+    - id: Universal
 
 - type: entity
   name: крокодил

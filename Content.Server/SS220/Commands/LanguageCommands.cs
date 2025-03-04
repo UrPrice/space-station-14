@@ -16,19 +16,24 @@ public sealed class AddLanguageCommand : IConsoleCommand
 
     public string Command => "addlanguage";
     public string Description => Loc.GetString("cmd-language-add-desc");
-    public string Help => "addlanguage <entityId> <languageId>";
+    public string Help => "addlanguage <entityId> <languageId> <canSpeak>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (args.Length != 2)
+        if (args.Length != 3)
         {
-            shell.WriteError("addlanguage <entityId> <languageId>");
+            shell.WriteError("addlanguage <entityId> <languageId> <canSpeak>");
             return;
         }
 
         if (!EntityUid.TryParse(args[0], out var entityId))
         {
             shell.WriteError(Loc.GetString("cmd-language-invalid-id"));
+            return;
+        }
+
+        if (!bool.TryParse(args[2], out var canSpeak))
+        {
             return;
         }
 
@@ -47,7 +52,7 @@ public sealed class AddLanguageCommand : IConsoleCommand
         }
 
         var languageSystem = _entities.System<LanguageSystem>();
-        if (languageSystem.AddLanguage((entityId, languageComp), languageId))
+        if (languageSystem.AddLanguage((entityId, languageComp), languageId, canSpeak))
         {
             shell.WriteLine(Loc.GetString("cmd-language-success-add"));
         }

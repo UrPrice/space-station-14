@@ -83,8 +83,8 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - Arati
+    - id: Galactic
+    - id: Arati
   # SS220-Add-Languages end
   - type: Vocal
     sounds:

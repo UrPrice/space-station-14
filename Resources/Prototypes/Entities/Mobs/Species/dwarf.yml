@@ -64,8 +64,8 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - Eldwarf
+    - id: Galactic
+    - id: Eldwarf
   # SS220-Add-Languages end
   - type: HumanoidAppearance
     species: Human

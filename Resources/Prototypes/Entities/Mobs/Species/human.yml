@@ -23,8 +23,8 @@
   # SS220-Add-Languages begin
   - type: Language
     availableLanguages:
-    - Galactic
-    - SolCommon
+    - id: Galactic
+    - id: SolCommon
   # SS220-Add-Languages end
   - type: Inventory
     femaleDisplacements:

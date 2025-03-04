@@ -17,13 +17,31 @@ public sealed partial class LanguageComponent : Component
 {
     /// <summary>
     ///  Selected language in which the entity will speak.
+    ///  If null, the universal language will be used.
     /// </summary>
     [DataField, AutoNetworkedField]
     public ProtoId<LanguagePrototype>? SelectedLanguage;
 
     /// <summary>
-    ///  List of languages that the Entity speaks and understands.
+    ///  List of languages that the Entity can speak.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public List<ProtoId<LanguagePrototype>> AvailableLanguages = new();
+    public List<LanguageDefinition> AvailableLanguages = new();
+}
+
+[DataDefinition]
+[Serializable, NetSerializable]
+public sealed partial class LanguageDefinition
+{
+    [DataField(required: true)]
+    public ProtoId<LanguagePrototype> Id;
+
+    [DataField]
+    public bool CanSpeak = true;
+
+    public LanguageDefinition(ProtoId<LanguagePrototype> id, bool canSpeak)
+    {
+        Id = id;
+        CanSpeak = canSpeak;
+    }
 }
