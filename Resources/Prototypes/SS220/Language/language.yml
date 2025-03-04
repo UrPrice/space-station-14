@@ -276,6 +276,7 @@
   description: "language-binary-desc"
   color: "#2cc2e8"
   scrambleMethod: !type:SyllablesScrambleMethod
+    scrambledLengthCoefficient: 0.5
     specialCharacterChance: 0.8
     specialCharacters:
       - character: " "

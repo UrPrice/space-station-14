@@ -26,6 +26,13 @@ public sealed partial class SyllablesScrambleMethod : ScrambleMethod
     public float SpecialCharacterChance = 0.5f;
 
     /// <summary>
+    /// Coefficient of how much the length of the scrambled message will differ from the original.
+    /// The shorter the syllables length, the higher the accuracy.
+    /// </summary>
+    [DataField]
+    public float ScrambledLengthCoefficient = 1f;
+
+    /// <summary>
     /// Special characters that can be inserted after a scrambled syllable
     /// </summary>
     [DataField]
@@ -73,8 +80,9 @@ public sealed partial class SyllablesScrambleMethod : ScrambleMethod
     private string ScrambleWord(string word, int seed)
     {
         var random = new System.Random(seed);
-        var encryptedMessage = new StringBuilder();
-        while (encryptedMessage.Length < word.Length)
+        var scrambledMessage = new StringBuilder();
+        var scrambledLength = word.Length * ScrambledLengthCoefficient;
+        while (scrambledMessage.Length < scrambledLength)
         {
             var curSyllable = random.Pick(Syllables);
 
@@ -83,20 +91,20 @@ public sealed partial class SyllablesScrambleMethod : ScrambleMethod
                 curSyllable = string.Concat(curSyllable.Substring(0, 1).ToUpper(), curSyllable.AsSpan(1));
                 _capitalize = false;
             }
-            encryptedMessage.Append(curSyllable);
+            scrambledMessage.Append(curSyllable);
 
             if (random.Prob(SpecialCharacterChance))
             {
                 var character = GetSpecialCharacter(random);
                 if (character != null)
                 {
-                    encryptedMessage.Append(character.Character);
+                    scrambledMessage.Append(character.Character);
                     _capitalize = character.Capitalize;
                 }
             }
         }
 
-        var result = encryptedMessage.ToString();
+        var result = scrambledMessage.ToString();
         return result;
     }
 
