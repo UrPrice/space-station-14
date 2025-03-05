@@ -55,6 +55,22 @@
                 culpa, qui, officia, deserunt, mollit, anim, id, est, laborum]
 
 - type: language
+  id: Codespeak
+  key: cod
+  name: "language-codespeak-name"
+  description: "language-codespeak-desc"
+  color: "#8f4a4b"
+  scrambleMethod: !type:SyllablesScrambleMethod
+  scrambleMethod: !type:SyllablesScrambleMethod
+    specialCharacterChance: 1
+    specialCharacters:
+      - character: " "
+      - character: ". "
+        capitalize: true
+        weight: 0.3
+    syllables: [виски, кола, тоник, водка, эхо, лима, альфа, дельта, русский, черный, белый, капитан]
+
+- type: language
   id: Gutter
   key: gt
   name: "language-gutter-name"
@@ -108,7 +124,7 @@
 # Race region:
 - type: language
   id: Sintaunathi
-  key: Sin
+  key: sin
   name: "language-unathi-name"
   description: "language-unathi-desc"
   color: "#228B22"
@@ -127,7 +143,7 @@
 
 - type: language
   id: Siiktajr
-  key: Sii
+  key: sii
   name: "language-siiktajr-name"
   description: "language-siiktajr-desc"
   color: "#803B56"

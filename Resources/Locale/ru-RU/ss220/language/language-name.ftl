@@ -17,3 +17,4 @@ language-arati-name = Арати
 language-canilunzt-name = Канилунц
 # Misc
 language-binary-name = Бинарный канал
+language-codespeak-name = Кодспик
