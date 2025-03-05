@@ -61,7 +61,6 @@
   description: "language-codespeak-desc"
   color: "#8f4a4b"
   scrambleMethod: !type:SyllablesScrambleMethod
-  scrambleMethod: !type:SyllablesScrambleMethod
     specialCharacterChance: 1
     specialCharacters:
       - character: " "
