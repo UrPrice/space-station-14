@@ -11,6 +11,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -86,6 +87,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -143,6 +145,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -187,6 +190,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Siiktajr
       canSpeak: false
   #SS220 languages revive end
@@ -215,6 +219,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Siiktajr
       canSpeak: false
   #SS220 languages revive end
@@ -252,6 +257,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Siiktajr
       canSpeak: false
   #SS220 languages revive end
@@ -276,6 +282,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -307,6 +314,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Siiktajr
       canSpeak: false
   #SS220 languages revive end
@@ -385,6 +393,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -459,6 +468,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -492,6 +502,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -563,6 +574,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -606,6 +618,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -643,6 +656,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Tradeband #Cause cargo dep
       canSpeak: false
   #SS220 languages revive end
@@ -672,6 +686,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -703,6 +718,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Canilunzt #Vulp gagaga
       canSpeak: false
   #SS220 languages revive end
@@ -740,6 +756,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -794,6 +811,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Arati
       canSpeak: false
   #SS220 languages revive end
@@ -870,6 +888,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -905,6 +924,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Bubblish
       canSpeak: false
   #SS220 languages revive end
@@ -997,6 +1017,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -1045,6 +1066,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: SolCommon
       canSpeak: false
   #SS220 languages revive end
@@ -1078,6 +1100,7 @@
   - type: Language
     availableLanguages:
     - id: Galactic
+      canSpeak: false
     - id: Siiktajr
       canSpeak: false
   #SS220 languages revive end
