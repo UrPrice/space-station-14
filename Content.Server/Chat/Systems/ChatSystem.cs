@@ -506,6 +506,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         name = FormattedMessage.EscapeText(name);
         // SS220-Add-Languages begin
+        Dictionary<string, (string, List<EntityUid>)> scrambledMsgReceiversDict = new();
         foreach (var (session, data) in GetRecipients(source, VoiceRange))
         {
             if (session.AttachedEntity is not { Valid: true } playerEntity)
@@ -532,12 +533,20 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
             else
             {
-                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, scrambledColorlessMessage, originalMessage, null, false);
-                RaiseLocalEvent(scrambledEv);
+                if (scrambledMsgReceiversDict.TryGetValue(scrambledMessage, out var entities))
+                    entities.Item2.Add(listener);
+                else
+                    scrambledMsgReceiversDict[scrambledMessage] = (scrambledColorlessMessage, [listener]);
             }
             //SS220-Add-Languages end
         }
         //SS220-Add-Languages begin
+        foreach (var (scrambledMsg, (colorlessMsg, reseivers)) in scrambledMsgReceiversDict)
+        {
+            var scrambledEv = new EntitySpokeScrambledEvent(source, reseivers, scrambledMsg, colorlessMsg, originalMessage, null, false);
+            RaiseLocalEvent(scrambledEv);
+        }
+
         message = _languageSystem.SanitizeMessage(source, source, message, out _);
 
         //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range); 
@@ -550,21 +559,22 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (!HasComp<ActorComponent>(source) || hideLog)
             return;
 
+        var defaultLanguageName = _languageSystem.GetSelectedLanguage(source)?.Name ?? "none"; // SS220 languages
         if (originalMessage == message)
         {
             if (name != Name(source))
-                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {ToPrettyString(source):user} as {name}: {originalMessage}.");
+                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {ToPrettyString(source):user} as {name}: {originalMessage}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
             else
-                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {ToPrettyString(source):user}: {originalMessage}.");
+                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Say from {ToPrettyString(source):user}: {originalMessage}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
         }
         else
         {
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Say from {ToPrettyString(source):user} as {name}, original: {originalMessage}, transformed: {message}.");
+                    $"Say from {ToPrettyString(source):user} as {name}, original: {originalMessage}, transformed: {message}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
             else
                 _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Say from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}.");
+                    $"Say from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
         }
     }
 
@@ -584,6 +594,11 @@ public sealed partial class ChatSystem : SharedChatSystem
         var message = TransformSpeech(source, FormattedMessage.RemoveMarkupOrThrow(originalMessage));
         if (message.Length == 0)
             return;
+
+        // SS220 languages begin
+        var transformedMessage = message;
+        message = _languageSystem.SanitizeMessage(source, source, message, out _);
+        // SS220 languages end
 
         var obfuscatedMessage = ObfuscateMessageReadability(message, 0.2f);
 
@@ -612,6 +627,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
             ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
 
+        Dictionary<string, (string, List<EntityUid>)> scrambledMsgReceiversDict = new(); // SS220 languages
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
             EntityUid listener;
@@ -652,8 +668,10 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
             else
             {
-                var scrambledEv = new EntitySpokeScrambledEvent(source, listener, scrambledMessage, scrambledColorlessMessage,  originalMessage, obfuscatedMessage, channel != null);
-                RaiseLocalEvent(scrambledEv);
+                if (scrambledMsgReceiversDict.TryGetValue(scrambledMessage, out var entities))
+                    entities.Item2.Add(listener);
+                else
+                    scrambledMsgReceiversDict[scrambledMessage] = (scrambledColorlessMessage, [listener]);
             }
             // SS220-Add-Languages end
         }
@@ -661,25 +679,33 @@ public sealed partial class ChatSystem : SharedChatSystem
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
 
         // SS220 languages begin
+        foreach (var (scrambledMsg, (colorlessMsg, reseivers)) in scrambledMsgReceiversDict)
+        {
+            var scrambledEv = new EntitySpokeScrambledEvent(source, reseivers, scrambledMsg, colorlessMsg, originalMessage, obfuscatedMessage, channel != null);
+            RaiseLocalEvent(scrambledEv);
+        }
+
         //var ev = new EntitySpokeEvent(source, message, originalMessage, channel, obfuscatedMessage);
         //RaiseLocalEvent(source, ev, true);
+
+        var defaultLanguageName = _languageSystem.GetSelectedLanguage(source)?.Name ?? "none";
         // SS220 languages end
         if (!hideLog)
             if (originalMessage == message)
             {
                 if (name != Name(source))
-                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {ToPrettyString(source):user} as {name}: {originalMessage}.");
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {ToPrettyString(source):user} as {name}: {originalMessage}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
                 else
-                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {ToPrettyString(source):user}: {originalMessage}.");
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Whisper from {ToPrettyString(source):user}: {originalMessage}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
             }
             else
             {
                 if (name != Name(source))
                     _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Whisper from {ToPrettyString(source):user} as {name}, original: {originalMessage}, transformed: {message}.");
+                    $"Whisper from {ToPrettyString(source):user} as {name}, original: {originalMessage}, transformed: {message}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
                 else
                     _adminLogger.Add(LogType.Chat, LogImpact.Low,
-                    $"Whisper from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}.");
+                    $"Whisper from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}, defaultLanguage: {defaultLanguageName}."); // SS220 languages
             }
     }
 
@@ -1244,17 +1270,17 @@ public readonly struct RadioEventReceiver
 public sealed class EntitySpokeScrambledEvent : EntityEventArgs
 {
     public readonly EntityUid Source;
-    public readonly EntityUid Listener;
+    public readonly List<EntityUid> Listeners;
     public readonly string Message;
     public readonly string ColorlessMessage;
     public readonly string OriginalMessage;
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
     public readonly bool IsRadio; // radio message is always a whisper
 
-    public EntitySpokeScrambledEvent(EntityUid source, EntityUid listener, string message, string colorlessMessage, string originalMessage, string? obfuscatedMessage, bool isRadio)
+    public EntitySpokeScrambledEvent(EntityUid source, List<EntityUid> listeners, string message, string colorlessMessage, string originalMessage, string? obfuscatedMessage, bool isRadio)
     {
         Source = source;
-        Listener = listener;
+        Listeners = listeners;
         Message = message;
         ColorlessMessage = colorlessMessage;
         OriginalMessage = originalMessage;
