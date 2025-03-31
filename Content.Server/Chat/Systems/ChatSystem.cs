@@ -80,7 +80,21 @@ public sealed partial class ChatSystem : SharedChatSystem
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
     public const string DefaultAnnouncementSound = "/Audio/Announcements/announce.ogg";
-    public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
+    static readonly string[] CentComAnnouncementSound = [
+        "/Audio/SS220/Announcements/Intern/commandreport/1.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/2.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/3.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/4.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/5.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/6.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/7.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/8.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/9.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/10.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/11.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/commandreport_beer.ogg",
+        "/Audio/SS220/Announcements/Intern/commandreport/commandreport_sleep.ogg"
+    ]; // Corvax-Announcements
 
     public readonly TimeSpan CoolDown = TimeSpan.FromSeconds(2); //ss220 chat unique
     public const int MaximumLengthMsg = 5; //ss220 chat unique
@@ -382,13 +396,13 @@ public sealed partial class ChatSystem : SharedChatSystem
         )
     {
         sender ??= Loc.GetString("chat-manager-sender-announcement");
-
+        var randomedCentcomAudioAnnouncement = _random.Pick(CentComAnnouncementSound);
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound
-                : sender == Loc.GetString("admin-announce-announcer-default") ? CentComAnnouncementSound // Corvax-Announcements: Support custom alert sound from admin panel
+            _audio.PlayGlobal(announcementSound == null ? randomedCentcomAudioAnnouncement
+                : sender == Loc.GetString("admin-announce-announcer-default") ? randomedCentcomAudioAnnouncement // Corvax-Announcements: Support custom alert sound from admin panel
                 : _audio.GetSound(announcementSound),
                 Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
@@ -549,7 +563,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         message = _languageSystem.SanitizeMessage(source, source, message, out _);
 
-        //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range); 
+        //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range);
         //var ev = new EntitySpokeEvent(source, message, originalMessage, null, null);
         //RaiseLocalEvent(source, ev, true);
         //SS220-Add-Languages end

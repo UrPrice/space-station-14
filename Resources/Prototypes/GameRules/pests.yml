@@ -7,6 +7,7 @@
     - id: SnailMigrationLowPop
     - id: CockroachMigration
     - id: MouseMigration
+    - id: MoproachMigration
 
 - type: entityTable
   id: SpicyPestEventsTable
@@ -26,10 +27,7 @@
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/SS220/Announcements/infestation.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     earliestStart: 15
     weight: 6
     duration: 50
@@ -54,10 +52,7 @@
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/SS220/Announcements/infestation.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     earliestStart: 15
     weight: 6
     duration: 50
@@ -85,10 +80,7 @@
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/SS220/Announcements/infestation.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     weight: 6
     duration: 50
   - type: VentCrittersRule
@@ -99,6 +91,21 @@
       prob: 0.008
 
 - type: entity
+  id: MoproachMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      collection: InternAlert
+    weight: 6
+    duration: 50
+  - type: VentCrittersRule
+    entries:
+    - id: MobMoproachHat
+      prob: 0.03
+
+- type: entity
   id: SnailMigrationLowPop
   parent: BaseStationEventShortDelay
   components:
@@ -107,10 +114,7 @@
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/SS220/Announcements/infestation.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     weight: 6
     duration: 50
   - type: VentCrittersRule
@@ -131,10 +135,7 @@
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/SS220/Announcements/infestation.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     earliestStart: 15
     weight: 6
     duration: 50

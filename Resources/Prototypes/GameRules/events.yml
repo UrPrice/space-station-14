@@ -77,12 +77,10 @@
   components:
   - type: StationEvent
     startAnnouncementColor: "#18abf5"
+    startAudio:
+      collection: InternAnomaly
     weight: 8
     duration: 35
-    startAudio: # Corvax-Announcements
-      path: /Audio/Corvax/Announcements/flux.ogg
-      params:
-        volume: -4
   - type: AnomalySpawnRule
 
 - type: entity
@@ -95,12 +93,10 @@
       max:  30
   - type: StationEvent
     startAnnouncementColor: "#18abf5"
+    startAudio:
+      collection: InternAlert
     weight: 8
     duration: 35
-    startAudio: # Corvax-Announcements
-      path: /Audio/Corvax/Announcements/blusp_anomalies.ogg
-      params:
-        volume: -4
   - type: BluespaceArtifactRule
 
 - type: entity
@@ -121,9 +117,7 @@
   - type: StationEvent
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
-      path: /Audio/Announcements/attention.ogg
-      params:
-        volume: -4
+      collection: InternAlert
   # SS220 MoreAnonces (sound and alert upgrades) end
     weight: 7
     duration: 1
@@ -138,9 +132,7 @@
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/Announcements/attention.ogg
-      params:
-        volume: -4
+      collection: InternAlert
   # SS220 MoreAnonces (sound and alert upgrades) end
     startAnnouncement: station-event-bureaucratic-error-announcement
     minimumPlayers: 25
@@ -159,9 +151,7 @@
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/Announcements/attention.ogg
-      params:
-        volume: -4
+      collection: InternAlert
   # SS220 MoreAnonces (sound and alert upgrades) end
     minimumPlayers: 15
     weight: 5
@@ -301,9 +291,7 @@
   - type: StationEvent
     startAnnouncement: station-event-gas-leak-start-announcement
     startAudio:
-      path: /Audio/Announcements/gasleak_start.ogg # Corvax-Announcements
-      params:
-        volume: -4
+      collection: InternAlert
     endAnnouncement: station-event-gas-leak-end-announcement
     endAudio:
       path: /Audio/Announcements/gasleak_end.ogg # Corvax-Announcements
@@ -334,7 +322,7 @@
     startAnnouncement: station-event-power-grid-check-start-announcement
     endAnnouncement: station-event-power-grid-check-end-announcement
     startAudio:
-      path: /Audio/Announcements/power_off.ogg
+      path: /Audio/SS220/Announcements/Intern/events/poweroff.ogg
       params:
         volume: -4
     duration: 60
@@ -349,10 +337,8 @@
     weight: 8
     startAnnouncement: station-event-solar-flare-start-announcement
     endAnnouncement: station-event-solar-flare-end-announcement
-    startAudio: # Corvax-Announcements
-      path: /Audio/Corvax/Announcements/comms_blackout.ogg
-      params:
-        volume: -4
+    startAudio:
+      path: /Audio/SS220/Announcements/Intern/events/radiation.ogg # not exactly the same event, but close
     duration: 120
     maxDuration: 240
   - type: SolarFlareRule
@@ -378,9 +364,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-clog-start-announcement
     startAudio:
-      path: /Audio/Announcements/ventclog.ogg # Corvax-Announcements
-      params:
-        volume: -4
+      collection: InternAlert
     earliestStart: 15
     minimumPlayers: 15
     weight: 5
@@ -395,10 +379,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
-      path: /Audio/SS220/Announcements/lifesigns.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
@@ -420,10 +401,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
-      path: /Audio/SS220/Announcements/lifesigns.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
@@ -445,10 +423,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
-      path: /Audio/SS220/Announcements/lifesigns.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
@@ -466,10 +441,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
-      path: /Audio/SS220/Announcements/lifesigns.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end
+      collection: InternAliens
     earliestStart: 20
     minimumPlayers: 20
     weight: 1.5
@@ -566,7 +538,7 @@
     maxOccurrences: 1 # can only happen once per round
     startAnnouncement: station-event-communication-interception
     startAudio:
-      path: /Audio/Announcements/intercept.ogg
+      collection: InternAliens
     duration: null # the rule has to last the whole round not 1 second
     occursDuringRoundEnd: false
   - type: AlertLevelInterceptionRule
@@ -608,9 +580,7 @@
     startAnnouncementColor: "#18abf5"
     startAnnouncement: station-event-ion-storm-start-announcement
     startAudio:
-      path: /Audio/SS220/Announcements/i-storm1.ogg
-      params:
-        volume: -4
+      path: /Audio/SS220/Announcements/Intern/events/ionstorm.ogg
   # SS220 MoreAnonces (sound and alert upgrades) end
     weight: 8
     reoccurrenceDelay: 20
@@ -635,10 +605,8 @@
   - type: StationEvent
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
-      path: /Audio/SS220/Announcements/greytide.ogg
-      params:
-        volume: -4
-  # SS220 MoreAnonces (sound and alert upgrades) end    weight: 5
+      collection: InternAlert
+    weight: 5
     minimumPlayers: 25
     reoccurrenceDelay: 20
   - type: GreytideVirusRule

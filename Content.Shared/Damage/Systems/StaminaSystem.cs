@@ -11,6 +11,7 @@ using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Rounding;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee.Events;
@@ -59,6 +60,7 @@ public sealed partial class StaminaSystem : EntitySystem
         SubscribeLocalEvent<StaminaDamageOnCollideComponent, ThrowDoHitEvent>(OnThrowHit);
 
         SubscribeLocalEvent<StaminaDamageOnHitComponent, MeleeHitEvent>(OnMeleeHit);
+        SubscribeLocalEvent<BoxingComponent, DownedEvent>(OnFallOver);
     }
 
     private void OnStamHandleState(EntityUid uid, StaminaComponent component, ref AfterAutoHandleStateEvent args)
@@ -176,6 +178,13 @@ public sealed partial class StaminaSystem : EntitySystem
                 _popup.PopupClient(Loc.GetString("stamina-resist"), ent, args.User);// PopupClient Сообщение о том что человек уже в крите по стамине, нужно его перести в  TakeStaminaDamage 242
             }
         }
+    }
+
+
+    private void OnFallOver(EntityUid uid, BoxingComponent component, DownedEvent args)
+    {
+        if (_net.IsServer)
+            _audio.PlayPvs(component.Sound, uid);
     }
 
     private void OnProjectileHit(EntityUid uid, StaminaDamageOnCollideComponent component, ref ProjectileHitEvent args)
