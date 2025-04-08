@@ -68,12 +68,18 @@ public sealed class LimitationReviveSystem : EntitySystem
 
         _damageableSystem.TryChangeDamage(uid, reviveComp.TypeDamageOnDead, true);
 
-        var traitString = _prototype.Index<WeightedRandomPrototype>(reviveComp.WeightListProto)
-            .Pick(_random);
+        var tryAddTraitAfterDeath = _random.NextFloat(0.0f, 1.0f);
 
-        var traitProto = _prototype.Index<TraitPrototype>(traitString);
+        if (tryAddTraitAfterDeath > 0.4) {
 
-        if (traitProto.Components is not null)
-            _entityManager.AddComponents(uid, traitProto.Components, false);
+            var traitString = _prototype.Index<WeightedRandomPrototype>(reviveComp.WeightListProto)
+                .Pick(_random);
+
+            var traitProto = _prototype.Index<TraitPrototype>(traitString);
+
+            if (traitProto.Components is not null)
+                _entityManager.AddComponents(uid, traitProto.Components, false);
+
+        }
     }
 }
