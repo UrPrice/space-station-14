@@ -71,7 +71,7 @@
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
   - type: ApcPowerReceiver
-    powerLoad: 0 # SS220 Limitation Revive
+    powerLoad: 3000
   - type: ExtensionCableReceiver
   - type: NodeContainer
     nodes:
