@@ -70,7 +70,7 @@ public sealed class LimitationReviveSystem : EntitySystem
 
         var tryAddTraitAfterDeath = _random.NextFloat(0.0f, 1.0f);
 
-        if (tryAddTraitAfterDeath > 0.4) {
+        if (tryAddTraitAfterDeath < reviveComp.ChanceToAddTrait ) {
 
             var traitString = _prototype.Index<WeightedRandomPrototype>(reviveComp.WeightListProto)
                 .Pick(_random);
