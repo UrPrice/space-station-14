@@ -261,11 +261,12 @@ public sealed class CultYoggSystem : SharedCultYoggSystem
             return;
         }
 
-        if (!TryReplaceMiGo())//if amount of migo < required amount of migo or have 1 to replace
+        /*if (!TryReplaceMiGo())//if amount of migo < required amount of migo or have 1 to replace
         {
             _popup.PopupEntity(Loc.GetString("cult-yogg-acsending-migo-full"), uid, uid);
             return;
         }
+        */
 
         //Maybe in later version we will detiriorate the body and add some kind of effects
 
@@ -295,7 +296,7 @@ public sealed class CultYoggSystem : SharedCultYoggSystem
         _popup.PopupEntity(message, uid, uid);
     }
 
-    private bool TryReplaceMiGo()
+    /*private bool TryReplaceMiGo()
     {
         //if any MiGo needs to be replaced add here
         List<EntityUid> migoOnDelete = [];
@@ -314,7 +315,8 @@ public sealed class CultYoggSystem : SharedCultYoggSystem
         }
 
         return false;
-    }
+    }*/
+
     private bool AcsendingCultistCheck()//if anybody else is acsending
     {
         var query = EntityQueryEnumerator<CultYoggComponent, AcsendingComponent>();
