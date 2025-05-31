@@ -11,7 +11,7 @@
       stationProto: NightshiftNanotrasenStation
       components:
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/SS220/Shuttles/emergency/emergency_axioma.yml
+          emergencyShuttlePath: /Maps/SS220/Shuttles/emergency/emergency_nightshift.yml
         - type: StationNameSetup
           mapNameTemplate: '{0} Nightshift {1}'
           nameGenerator:
