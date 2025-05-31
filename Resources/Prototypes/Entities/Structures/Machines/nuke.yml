@@ -107,10 +107,20 @@
       Nuke: !type:ContainerSlot
   - type: StealTarget
     stealGroup: NuclearBomb
+  - type: Tag
+    tags:
+    - GhostOnlyWarp
   - type: WarpPoint
     follow: true
     location: nuclear bomb
+    blacklist:
+      tags:
+      - GhostOnlyWarp
   - type: FTLSmashImmune
+  #ss220 lockpick add start
+  - type: TargetLockPick
+    chanceToLockPick: 0.4 # need to discuss # 0.4 == 40%
+  #ss220 lockpick add end
 
 - type: entity
   parent: NuclearBomb

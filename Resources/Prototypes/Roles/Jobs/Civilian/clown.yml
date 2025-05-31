@@ -18,6 +18,7 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: RenameStart #SS220-RenameStart
     - type: Clumsy
       gunShootFailDamage:
         types: #literally just picked semi random valus. i tested this once and tweaked it.
@@ -30,6 +31,11 @@
       interval: 10
   - !type:AddImplantSpecial
     implants: [ SadTromboneImplant ]
+  # SS220-Add-Languages begin
+  - !type:AddLanguageSpecial
+    languages:
+    - Clownish
+  # SS220-Add-Languages end
 
 - type: startingGear
   id: ClownGear
