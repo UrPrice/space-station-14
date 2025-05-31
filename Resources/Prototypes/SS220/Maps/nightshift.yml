@@ -2,7 +2,7 @@
 
 - type: gameMap
   id: Nightshift
-  mapName: 'NSS Nightshift'
+  mapName: 'JGT Nightshift'
   mapPath: /Maps/SS220/nightshift.yml
   maxPlayers: 30
   minPlayers: 0
