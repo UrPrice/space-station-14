@@ -5,12 +5,13 @@
   mapName: 'NSS Nightshift'
   mapPath: /Maps/SS220/nightshift.yml
   maxPlayers: 30
+  minPlayers: 0
   stations:
     Nightshift:
       stationProto: NightshiftNanotrasenStation
       components:
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/SS220/Shuttles/emergency/emergency_eclipse.yml
+          emergencyShuttlePath: /Maps/SS220/Shuttles/emergency/emergency_axioma.yml
         - type: StationNameSetup
           mapNameTemplate: '{0} Nightshift {1}'
           nameGenerator:
@@ -84,6 +85,6 @@
   components:
     - type: StationMinimap
       minimapData: !type:StationMinimapData
-        mapTexture: SS220/ViewableMaps/eclipse.png
-        originOffset: -56, -91
+        mapTexture: SS220/ViewableMaps/nightshift.png
+        originOffset: -8, -100
         mapScale: 6.4
