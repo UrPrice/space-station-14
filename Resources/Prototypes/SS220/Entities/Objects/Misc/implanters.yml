@@ -8,3 +8,27 @@
     - type: Implanter
       implant: MindSlaveImplant
       implantTime: 10
+
+- type: entity
+  id: ThermalVisorImplanter
+  name: Thermal-Visor Implanter
+  description: Thermal-Visor right in your brain!
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+    - type: Implanter
+      implant: ThermalVisionImplant
+
+- type: entity
+  id: DnaCopyImplanter
+  name: Dna Copy Implanter
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+    - type: Implanter
+      implant: DnaCopyImplant
+
+- type: entity
+  id: AdrenalImplanter
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+  - type: Implanter
+    implant: AdrenalImplant
