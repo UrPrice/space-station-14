@@ -22221,16 +22221,6 @@ entities:
     components:
     - type: Transform
       parent: 45
-- proto: ActionToggleJetpack
-  entities:
-  - uid: 28
-    components:
-    - type: Transform
-      parent: 26
-  - uid: 43
-    components:
-    - type: Transform
-      parent: 41
 - proto: ActionToggleLight
   entities:
   - uid: 52
@@ -117235,17 +117225,6 @@ entities:
     - type: Transform
       pos: 33.491863,-27.287996
       parent: 2
-    - type: GasTank
-      toggleActionEntity: 27
-    - type: Jetpack
-      toggleActionEntity: 28
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 28
-          - 27
   - uid: 15929
     components:
     - type: Transform
@@ -117258,17 +117237,6 @@ entities:
     - type: Transform
       pos: -16.256401,66.47073
       parent: 2
-    - type: GasTank
-      toggleActionEntity: 42
-    - type: Jetpack
-      toggleActionEntity: 43
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 43
-          - 42
 - proto: Jukebox
   entities:
   - uid: 15930
