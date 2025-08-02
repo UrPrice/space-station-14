@@ -22214,14 +22214,10 @@ entities:
     - type: Transform
       parent: 32
   - uid: 42
-    mapInit: true
-    paused: true
     components:
     - type: Transform
       parent: 41
   - uid: 46
-    mapInit: true
-    paused: true
     components:
     - type: Transform
       parent: 45
@@ -22232,16 +22228,12 @@ entities:
     - type: Transform
       parent: 26
   - uid: 43
-    mapInit: true
-    paused: true
     components:
     - type: Transform
       parent: 41
 - proto: ActionToggleLight
   entities:
   - uid: 52
-    mapInit: true
-    paused: true
     components:
     - type: Transform
       parent: 51
