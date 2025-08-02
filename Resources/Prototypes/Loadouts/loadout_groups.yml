@@ -250,6 +250,8 @@
   - PassengerJumpskirtTurtleneck
   - PassengerJumpskirtTurtleneckAlt #SS220-MoreTurtleneck-End
   - RainbowJumpsuit
+  - RainbowJumpskirt
+  - PassengerJumpsuitBlueYellow14 #SS-220 Yellow Jumpsuit with 220 on it
 
 - type: loadoutGroup
   id: PassengerFace
@@ -682,6 +684,7 @@
   loadouts:
   - EmergencyNitrogenMime
   - EmergencyOxygenMime
+  - EmergencySpeciesMothMime
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1427,7 +1430,7 @@
   loadouts:
   - BrownShoes
   - MedicalWinterBoots
-  - CMOCorpShoes #ss220 new cmo 
+  - CMOCorpShoes #ss220 new cmo
 
 - type: loadoutGroup
   id: MedicalDoctorHead
@@ -1591,6 +1594,7 @@
   loadouts:
   - MedicalHud
   - MedicalEyePatchHud
+  - CyberMedVisor #SS220 II floppa iteration
   - Glasses
   - GlassesJamjar
   - GlassesJensen

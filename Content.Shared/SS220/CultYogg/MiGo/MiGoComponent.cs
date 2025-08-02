@@ -51,9 +51,10 @@ public sealed partial class MiGoComponent : Component
     #endregion
 
     /// <summary>
-    ///Enlsavement variables
+    /// The effect necessary for enslavement
     /// <summary>
-    public string RequiedEffect = "Rave";//Required effect for enslavement
+    [ViewVariables]
+    public string RequiedEffect = "Rave";
 
     [DataField]
     public SoundSpecifier? EnslavingSound = new SoundPathSpecifier("/Audio/SS220/CultYogg/migo_slave.ogg");
@@ -61,19 +62,27 @@ public sealed partial class MiGoComponent : Component
     /// <summary>
     /// The time it takes to enslave the target
     /// </summary>
-    [DataField]
+    [ViewVariables]
     public TimeSpan EnslaveTime = TimeSpan.FromSeconds(3);
 
     /// <summary>
-    ///Erect variables
+    /// How long healing effect will occure
     /// <summary>
-    public TimeSpan HealingEffectTime = TimeSpan.FromSeconds(15);//How long heal effect will occure
+    [ViewVariables]
+    public TimeSpan HealingEffectTime = TimeSpan.FromSeconds(15);
+
 
     /// <summary>
-    ///Erect variables
+    /// How far from altar MiGo can start action
+    /// <summary>
+    [ViewVariables]
+    public float SaraficeStartRange = 1f;
+
+    /// <summary>
+    /// How long does it take to erect a building
     /// <summary>
     [ViewVariables, DataField]
-    public float ErectDoAfterSeconds = 3f;
+    public TimeSpan ErectDoAfterSeconds = TimeSpan.FromSeconds(3);
 
     /// <summary>
     /// Base time to erase buildings.
@@ -85,18 +94,12 @@ public sealed partial class MiGoComponent : Component
     /// <summary>
     /// Which entities can be erased by MiGo
     /// </summary>
-    [DataField]
-    public EntityWhitelist? EraseWhitelist = new()
-    {
-        Components =
-        [
-            "CultYoggBuilding",
-            "CultYoggBuildingFrame"
-        ]
-    };
+    [DataField(required: true)]
+    public EntityWhitelist? EraseWhitelist = new();
+
     #region Astral
     /// <summary>
-    ///Astral variables
+    /// Flag to check if the target is in the astral plane
     /// <summary>
     [ViewVariables, AutoNetworkedField]
     public bool IsPhysicalForm = true;//Is MiGo in phisycal form?
@@ -135,29 +138,6 @@ public sealed partial class MiGoComponent : Component
 
     [DataField]
     public ProtoId<AlertPrototype> AstralAlert = "MiGoAstralAlert";
-    #endregion
-
-    #region Replacement
-    /// <summary>
-    ///Replacement required cause MiGo is key character among
-    /// <summary>
-
-    //Marking if entity can be gibbed and replaced
-    public bool MayBeReplaced = false;
-
-    //Should the timer count down the time
-    public bool ShouldBeCounted = false;
-
-    /// <summary>
-    /// How long it takes to be able to replace this migo
-    /// </summary>
-    public TimeSpan BeforeReplacementCooldown = TimeSpan.FromSeconds(300);
-
-    /// <summary>
-    /// Buffer to markup when time has come
-    /// </summary>
-    [DataField]
-    public TimeSpan? ReplacementEventTime;
     #endregion
 }
 

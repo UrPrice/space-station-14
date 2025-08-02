@@ -256,25 +256,16 @@
   categories:
   - UplinkWearables
 
-# READD-VEHICLES
 - type: listing
-  id: UplinkSyndicateSegwayCrate
-  name: uplink-syndicate-segway-crate-name
-  description: uplink-syndicate-segway-crate-desc
-  icon: { sprite: /Textures/Objects/Vehicles/syndicatesegway.rsi, state: icon }
-  productEntity: CrateFunSyndicateSegway
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 2
+  id: UplinkOuterElectrification
+  name: uplink-outer-electrification-name
+  description: uplink-outer-electrification-desc
+  icon: {sprite: Clothing/OuterClothing/Armor/security.rsi, state: icon}
+  productEntity: ClothingOuterArmorElectricity
   cost:
     Telecrystal: 5
   categories:
-  - UplinkDeception
-  conditions:
-  - !type:BuyerWhitelistCondition
-    blacklist:
-      components:
-      - SurplusBundle
+  - UplinkWearables
 
 #SS220 SpicyUPD begin
 - type: listing
