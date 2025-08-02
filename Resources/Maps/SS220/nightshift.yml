@@ -22199,38 +22199,6 @@ entities:
     components:
     - type: Transform
       parent: 18
-- proto: ActionToggleInternals
-  entities:
-  - uid: 27
-    components:
-    - type: Transform
-      parent: 26
-  - uid: 31
-    components:
-    - type: Transform
-      parent: 30
-  - uid: 33
-    components:
-    - type: Transform
-      parent: 32
-  - uid: 42
-    components:
-    - type: Transform
-      parent: 41
-  - uid: 46
-    components:
-    - type: Transform
-      parent: 45
-- proto: ActionToggleLight
-  entities:
-  - uid: 52
-    components:
-    - type: Transform
-      parent: 51
-  - uid: 55
-    components:
-    - type: Transform
-      parent: 54
 - proto: AirAlarm
   entities:
   - uid: 60
