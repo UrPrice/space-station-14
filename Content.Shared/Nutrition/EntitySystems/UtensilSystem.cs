@@ -1,0 +1,83 @@
+using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Interaction;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Popups;
+using Content.Shared.Tools.EntitySystems;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Random;
+
+namespace Content.Shared.Nutrition.EntitySystems;
+
+public sealed class UtensilSystem : EntitySystem
+{
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly FoodSystem _foodSystem = default!;
+    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private readonly IRobustRandom _robustRandom = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<UtensilComponent, AfterInteractEvent>(OnAfterInteract, after: new[] { typeof(ItemSlotsSystem), typeof(ToolOpenableSystem) });
+    }
+
+    /// <summary>
+    /// Clicked with utensil
+    /// </summary>
+    private void OnAfterInteract(Entity<UtensilComponent> entity, ref AfterInteractEvent ev)
+    {
+        if (ev.Handled || ev.Target == null || !ev.CanReach)
+            return;
+
+        var result = TryUseUtensil(ev.User, ev.Target.Value, entity);
+        //ss220-placeable-utensils-begin
+        // ev.Handled = result.Handled;
+        // old PR #26
+        // SS220 placeable-utensils
+        // We only handle this case if the attempt to use item was successful
+        // Otherwise, let other entities to handle it
+        // e.g. to place it on the table
+        // (Probably breaking something else somewhere)
+        if (result.Success)
+            ev.Handled = result.Handled;
+        //ss220-placeable-utensils-end
+    }
+
+    public (bool Success, bool Handled) TryUseUtensil(EntityUid user, EntityUid target, Entity<UtensilComponent> utensil)
+    {
+        if (!TryComp(target, out FoodComponent? food))
+            return (false, false);
+
+        //Prevents food usage with a wrong utensil
+        if ((food.Utensil & utensil.Comp.Types) == 0)
+        {
+            _popupSystem.PopupClient(Loc.GetString("food-system-wrong-utensil", ("food", target), ("utensil", utensil.Owner)), user, user);
+            return (false, true);
+        }
+
+        if (!_interactionSystem.InRangeUnobstructed(user, target, popup: true))
+            return (false, true);
+
+        return _foodSystem.TryFeed(user, user, target, food);
+    }
+
+    /// <summary>
+    /// Attempt to break the utensil after interaction.
+    /// </summary>
+    /// <param name="uid">Utensil.</param>
+    /// <param name="userUid">User of the utensil.</param>
+    public void TryBreak(EntityUid uid, EntityUid userUid, UtensilComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        if (_robustRandom.Prob(component.BreakChance))
+        {
+            _audio.PlayPredicted(component.BreakSound, userUid, userUid, AudioParams.Default.WithVolume(-2f));
+            Del(uid);
+        }
+    }
+}

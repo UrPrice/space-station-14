@@ -127,6 +127,8 @@
     graph: EnergyDoubleSwordGraph
     node: esword
   #SS220 craftable desword end
+  - type: StaticPrice
+    price: 2500
 
 - type: entity
   name: energy dagger

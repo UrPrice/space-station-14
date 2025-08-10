@@ -5,9 +5,8 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Players.RateLimiting;
-using Content.Server.Speech.Prototypes;
 using Content.Server.Speech.EntitySystems;
+using Content.Server.Speech.Prototypes;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
@@ -455,8 +454,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             // you can't make a station announcement without a station
             return;
         }
-        if (!EntityManager.TryGetComponent<StationDataComponent>(station, out var stationDataComp))
-            return;
+
+        if (!TryComp<StationDataComponent>(station, out var stationDataComp)) return;
 
         var filter = _stationSystem.GetInStation(stationDataComp);
 
@@ -703,14 +702,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
 
-        if (checkEmote)
-        {
-            // SS220 Chat-Emote-Cooldown begin
-            TryEmoteChatInput(source, action, out var consumed);
-            if (consumed)
-                return;
-            // SS220 Chat-Emote-Cooldown end
-        }
+        if (checkEmote &&
+            !TryEmoteChatInput(source, action))
+            return;
 
         SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
         if (!hideLog)
@@ -991,8 +985,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         return message;
     }
 
-    [ValidatePrototypeId<ReplacementAccentPrototype>]
-    public const string ChatSanitize_Accent = "chatsanitize";
+    public static readonly ProtoId<ReplacementAccentPrototype> ChatSanitize_Accent = "chatsanitize";
 
     public string SanitizeMessageReplaceWords(string message)
     {

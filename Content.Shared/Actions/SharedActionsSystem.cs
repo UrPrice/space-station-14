@@ -111,7 +111,7 @@ public abstract class SharedActionsSystem : EntitySystem
     /// </summary>
     public Entity<ActionComponent>? GetAction(Entity<ActionComponent?>? action, bool logError = true)
     {
-        if (action is not {} ent || TerminatingOrDeleted(ent))
+        if (action is not {} ent || Deleted(ent))
             return null;
 
         if (!_actionQuery.Resolve(ent, ref ent.Comp, logError))
@@ -582,7 +582,7 @@ public abstract class SharedActionsSystem : EntitySystem
     #region AddRemoveActions
 
     public EntityUid? AddAction(EntityUid performer,
-        string? actionPrototypeId,
+        [ForbidLiteral] string? actionPrototypeId,
         EntityUid container = default,
         ActionsComponent? component = null)
     {
@@ -602,7 +602,7 @@ public abstract class SharedActionsSystem : EntitySystem
     /// <param name="container">The entity that contains/enables this action (e.g., flashlight).</param>
     public bool AddAction(EntityUid performer,
         [NotNullWhen(true)] ref EntityUid? actionId,
-        string? actionPrototypeId,
+        [ForbidLiteral] string? actionPrototypeId,
         EntityUid container = default,
         ActionsComponent? component = null)
     {
@@ -613,7 +613,7 @@ public abstract class SharedActionsSystem : EntitySystem
     public bool AddAction(EntityUid performer,
         [NotNullWhen(true)] ref EntityUid? actionId,
         [NotNullWhen(true)] out ActionComponent? action,
-        string? actionPrototypeId,
+        [ForbidLiteral] string? actionPrototypeId,
         EntityUid container = default,
         ActionsComponent? component = null)
     {
@@ -1032,4 +1032,17 @@ public abstract class SharedActionsSystem : EntitySystem
         }
     }
     // SS220 ninja gloves toggle on states end
+
+    /// <summary>
+    /// Marks the action as temporary.
+    /// Temporary actions get deleted upon being removed from an entity.
+    /// </summary>
+    public void SetTemporary(Entity<ActionComponent?> ent, bool temporary)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp, false))
+            return;
+
+        ent.Comp.Temporary = temporary;
+        Dirty(ent);
+    }
 }

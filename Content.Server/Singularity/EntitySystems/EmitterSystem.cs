@@ -62,7 +62,7 @@ namespace Content.Server.Singularity.EntitySystems
 
         private void OnActivate(EntityUid uid, EmitterComponent component, ActivateInWorldEvent args)
         {
-            if (args.Handled)
+            if (args.Handled || !args.Complex)
                 return;
             // SS220-SM-smEmitter-fix
             args.Handled = TryActivate((uid, component), args.User);
@@ -109,7 +109,7 @@ namespace Content.Server.Singularity.EntitySystems
 
         private void OnGetVerb(EntityUid uid, EmitterComponent component, GetVerbsEvent<Verb> args)
         {
-            if (!args.CanAccess || !args.CanInteract || args.Hands == null)
+            if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract || args.Hands == null)
                 return;
 
             if (TryComp<LockComponent>(uid, out var lockComp) && lockComp.Locked)

@@ -62,6 +62,8 @@ public sealed class GhostRoleSystem : EntitySystem
     private uint _nextRoleIdentifier;
     private bool _needsUpdateGhostRoleCount = true;
 
+    private readonly ProtoId<JobPrototype> _ghostRoleProtoId = "GhostRole"; // ss220-add-ghost-roles-ban
+
     private readonly Dictionary<uint, Entity<GhostRoleComponent>> _ghostRoles = new();
     private readonly Dictionary<uint, Entity<GhostRoleRaffleComponent>> _ghostRoleRaffles = new();
 
@@ -133,7 +135,7 @@ public sealed class GhostRoleSystem : EntitySystem
     public void OpenEui(ICommonSession session)
     {
         if (session.AttachedEntity is not { Valid: true } attached ||
-            !EntityManager.HasComponent<GhostComponent>(attached))
+            !HasComp<GhostComponent>(attached))
             return;
 
         if (_openUis.ContainsKey(session))
@@ -346,7 +348,7 @@ public sealed class GhostRoleSystem : EntitySystem
 
     private bool IsGhostRolesBanned(NetUserId userId)
     {
-        if (_banManager.GetJobBans(userId) is { } bans && bans.Contains("GhostRole"))
+        if (_banManager.GetJobBans(userId) is { } bans && bans.Contains(_ghostRoleProtoId))
         {
             if (!_playerManager.TryGetSessionById(userId, out var session))
             {
@@ -566,8 +568,13 @@ public sealed class GhostRoleSystem : EntitySystem
 
         DebugTools.AssertNotNull(player.ContentData());
 
+        // After taking a ghost role, the player cannot return to the original body, so wipe the player's current mind
+        // unless it is a visiting mind
+        if(_mindSystem.TryGetMind(player.UserId, out _, out var mind) && !mind.IsVisitingEntity)
+            _mindSystem.WipeMind(player);
+
         var newMind = _mindSystem.CreateMind(player.UserId,
-            EntityManager.GetComponent<MetaDataComponent>(mob).EntityName);
+            Comp<MetaDataComponent>(mob).EntityName);
 
         _mindSystem.SetUserId(newMind, player.UserId);
         _mindSystem.TransferTo(newMind, mob);

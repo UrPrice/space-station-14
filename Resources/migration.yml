@@ -46,7 +46,7 @@ lanternextrabright: LanternFlash
 
 # 2023-08-04
 BoxMagazineLightRifleHighVelocity: BoxMagazineLightRifle
-BoxMagazineMagnumSubMachineGunHighVelocity: BoxMagazineMagnumSubMachineGun
+BoxMagazineMagnumSubMachineGunHighVelocity: null
 BoxMagazinePistolCaselessRifleHighVelocity: BoxMagazinePistolCaselessRifle
 BoxMagazinePistolHighCapacityHighVelocity: BoxMagazinePistolHighCapacity
 BoxMagazinePistolHighVelocity: BoxMagazinePistol
@@ -68,9 +68,9 @@ MagazineBoxMagnumHighVelocity: MagazineBoxMagnum
 MagazineBoxPistolHighVelocity: MagazineBoxPistol
 MagazineBoxRifleHighVelocity: MagazineBoxRifle
 MagazineCaselessRifleHighVelocity: MagazineCaselessRifle
-MagazineCaselessRifleShortHighVelocity: MagazineCaselessRifleShort
+MagazineCaselessRifleShortHighVelocity: null
 MagazineLightRifleHighVelocity: MagazineLightRifle
-MagazineMagnumSubMachineGunHighVelocity: MagazineMagnumSubMachineGun
+MagazineMagnumSubMachineGunHighVelocity: null
 MagazinePistolCaselessRifleHighVelocity: MagazinePistolCaselessRifle
 MagazinePistolHighCapacityHighVelocity: MagazinePistolHighCapacity
 MagazinePistolHighVelocity: MagazinePistol
@@ -742,6 +742,11 @@ ClothingNeckCloakMiner: ClothingNeckCloakSalvagerSupreme # SS220-migrate-cloak
 MatterBinStockPart: MicroManipulatorStockPart
 CapacitorStockPart: MicroManipulatorStockPart
 
+# 2025-05-26 Turrets
+WeaponEnergyTurretStation: WeaponEnergyTurretSecurity
+WeaponEnergyTurretStationControlPanel: WeaponEnergyTurretSecurityControlPanel
+WeaponEnergyTurretStationMachineCircuitboard: WeaponEnergyTurretSecurityMachineCircuitboard
+
 # 2025-05-30
 SpawnHonkBot: SpawnMobHonkBot
 
@@ -751,3 +756,53 @@ VehicleKeyParamedicATV: null
 CrateParamedicATV: null
 SpawnVehicleParamedicATV: null
 SpawnVehicleSyndicateSegway: null
+# 2025-06-01
+CrateFoodPizzaLarge: CrateFoodPizza
+CrateFoodSoftdrinksLarge: CrateFoodSoftdrinks
+
+# 2025-06-06
+MagazineLightRifleMaxim: null
+MagazineLightRiflePkBox: null
+MagazineCaselessRifle10x24: null
+BaseMagazineCaselessRifleShort: null
+MagazineCaselessRifleShort: null
+MagazineCaselessRifleShortPractice: null
+BaseMagazineMagnumSubMachineGun: null
+MagazineMagnumSubMachineGunEmpty: null
+MagazineMagnumSubMachineGun: null
+MagazineMagnumSubMachineGunPractice: null
+MagazineMagnumSubMachineGunUranium: null
+MagazineMagnumSubMachineGunPiercing: null
+BoxMagazineMagnumSubMachineGun: null
+BoxMagazineMagnumSubMachineGunPractice: null
+
+# 2025-06-09
+BarSignAlignTile: BarSign
+BarSignComboCafeAlignTile: BarSignComboCafe
+BarSignEmergencyRumPartyAlignTile: BarSignEmergencyRumParty
+BarSignLV426AlignTile: BarSignLV426
+BarSignMaidCafeAlignTile: BarSignMaidCafe
+BarSignMalteseFalconAlignTile: BarSignMalteseFalcon
+BarSignOfficerBeerskyAlignTile: BarSignOfficerBeersky
+BarSignRobustaCafeAlignTile: BarSignRobustaCafe
+BarSignTheAleNathAlignTile: BarSignTheAleNath
+BarSignTheBirdCageAlignTile: BarSignTheBirdCage
+BarSignTheCoderbusAlignTile: BarSignTheCoderbus
+BarSignTheDrunkCarpAlignTile: BarSignTheDrunkCarp
+BarSignEngineChangeAlignTile: BarSignEngineChange
+BarSignTheHarmbatonAlignTile: BarSignTheHarmbaton
+BarSignTheLightbulbAlignTile: BarSignTheLightbulb
+BarSignTheLooseGooseAlignTile: BarSignTheLooseGoose
+BarSignTheNetAlignTile: BarSignTheNet
+BarSignTheOuterSpessAlignTile: BarSignTheOuterSpess
+BarSignTheSinguloAlignTile: BarSignTheSingulo
+BarSignTheSunAlignTile: BarSignTheSun
+BarSignWiggleRoomAlignTile: BarSignWiggleRoom
+BarSignZocaloAlignTile: BarSignZocalo
+BarSignEmprahAlignTile: BarSignEmprah
+BarSignSpacebucksAlignTile: BarSignSpacebucks
+BarSignMaltroachAlignTile: BarSignMaltroach
+BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
+
+# 2025-06-21
+ClothingNeckHeadphones: ClothingMultipleHeadphones

@@ -1,4 +1,5 @@
 - type: entity
+<<<<<<< HEAD
   parent: ClothingNeckBase
   id: ClothingNeckHeadphones
   name: headphones
@@ -35,6 +36,8 @@
     - WhitelistChameleon #SS220-pr: FIX CLOTHING TAGS
 
 - type: entity
+=======
+>>>>>>> off/master
   parent: Clothing
   id: ClothingNeckStethoscope
   name: stethoscope
