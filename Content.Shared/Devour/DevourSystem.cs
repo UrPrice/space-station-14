@@ -90,8 +90,10 @@ public sealed class DevourSystem : EntitySystem
 
         _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-structure"), ent.Owner, ent.Owner);
 
-        if (ent.Comp.SoundStructureDevour != null)
-            _audioSystem.PlayPredicted(ent.Comp.SoundStructureDevour, ent.Owner, ent.Owner, ent.Comp.SoundStructureDevour.Params);
+        //SS220-sound-devour-rename-begin
+        if (ent.Comp.SoundDevour != null)
+            _audioSystem.PlayPredicted(ent.Comp.SoundDevour, ent.Owner, ent.Owner, ent.Comp.SoundDevour.Params);
+        //SS220-sound-devour-rename-end
 
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, ent.Owner, ent.Comp.StructureDevourTime, new DevourDoAfterEvent(), ent.Owner, target: target, used: ent.Owner)
         {
@@ -125,7 +127,7 @@ public sealed class DevourSystem : EntitySystem
             PredictedQueueDel(args.Args.Target.Value);
         }
 
-        _audioSystem.PlayPredicted(ent.Comp.SoundDevour, ent.Owner, ent.Owner);
+        _audioSystem.PlayPredicted(ent.Comp.SoundDevourMob, ent.Owner, ent.Owner); //SS220-dragon-audio
     }
 
     private void OnGibContents(Entity<DevourerComponent> ent, ref BeingGibbedEvent args)

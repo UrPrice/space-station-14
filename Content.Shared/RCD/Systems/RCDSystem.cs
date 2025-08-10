@@ -44,7 +44,6 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!; // SS220 fix rcd rotation
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -414,7 +413,7 @@ public sealed class RCDSystem : EntitySystem
             }
 
             //SS220 RCD_indestructable_fix start
-            if (tile.Tile.GetContentTileDefinition().Indestructible)
+            if (_turf.GetContentTileDefinition(tile).Indestructible)
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-tile-indestructible-message"), uid, user);
@@ -573,7 +572,7 @@ public sealed class RCDSystem : EntitySystem
                 }
 
                 // SS220 fix rcd rotation begin
-                var mapcords = _xform.ToMapCoordinates(_mapSystem.GridTileToLocal(gridUid, mapGrid, position));
+                var mapcords = _transform.ToMapCoordinates(_mapSystem.GridTileToLocal(gridUid, mapGrid, position));
                 var ent = Spawn(prototype.Prototype, mapcords, rotation: rotation);
                 // SS220 fix rcd rotation end
 

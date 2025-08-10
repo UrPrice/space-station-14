@@ -25,7 +25,7 @@
     stateBaseClosed: smartfridge
     stateDoorOpen: smartfridge_open
     stateDoorClosed: smartfridge_door
-      shader: unshaded
+    shader: unshaded
   - type: PointLight
     radius: 1.5
     energy: 1.6

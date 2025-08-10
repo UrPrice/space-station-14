@@ -337,7 +337,6 @@
 
 - type: stack
   id: FloorCarpetBlack
-  name: stack-block-carpet-tile
   icon: { sprite: /Textures/Objects/Tiles/tile.rsi, state: carpet-black } #SS220 Curtains and fancy tables recepie fix
   name: stack-black-carpet-tile
   spawn: FloorCarpetItemBlack

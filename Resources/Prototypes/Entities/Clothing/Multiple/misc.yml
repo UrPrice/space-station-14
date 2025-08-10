@@ -5,13 +5,13 @@
   description: Quality headphones from Drunk Masters, with good sound insulation.
   components:
   - type: Sprite
-    sprite: Clothing/Multiple/headphones.rsi
+    sprite: SS220/Clothing/Neck/Misc/headphones.rsi #SS220HeadphonesResprite
     layers:
     - state: icon
       map: [ "enum.ToggleableVisuals.Layer" ]
   - type: Clothing
     equippedPrefix: off
-    sprite: Clothing/Multiple/headphones.rsi
+    sprite: SS220/Clothing/Neck/Misc/headphones.rsi #SS220HeadphonesResprite
     slots:
     - HEAD
     - EARS
@@ -38,3 +38,6 @@
       path: /Audio/Items/flashlight_on.ogg
     soundDeactivate:
       path: /Audio/Items/flashlight_off.ogg
+  - type: Tag #SS220-pr: FIX CLOTHING TAGS
+    tags: #SS220-pr: FIX CLOTHING TAGS
+    - WhitelistChameleon #SS220-pr: FIX CLOTHING TAGS

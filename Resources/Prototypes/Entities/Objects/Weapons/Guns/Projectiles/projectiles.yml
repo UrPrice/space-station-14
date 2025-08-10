@@ -962,11 +962,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-<<<<<<< HEAD
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi #ss220 toys
-=======
-    sprite: Objects/Fun/capgun.rsi
->>>>>>> off/master
     layers:
       - state: bullet #ss220 toys
   - type: Projectile

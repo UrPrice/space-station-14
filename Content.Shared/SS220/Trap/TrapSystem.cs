@@ -188,7 +188,7 @@ public sealed class TrapSystem : EntitySystem
         if (ent.Comp.DurationStun != TimeSpan.Zero && TryComp<StatusEffectsComponent>(args.Activator.Value, out var status))
         {
             _stunSystem.TryStun(args.Activator.Value, ent.Comp.DurationStun, true, status);
-            _stunSystem.TryKnockdown(args.Activator.Value, ent.Comp.DurationStun, true, status);
+            _stunSystem.TryKnockdown(args.Activator.Value, ent.Comp.DurationStun, true);
         }
 
         _ensnareableSystem.TryEnsnare(args.Activator.Value, ent.Owner, ensnaring);

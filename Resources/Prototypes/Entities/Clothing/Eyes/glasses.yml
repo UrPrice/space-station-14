@@ -63,15 +63,13 @@
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/meson.rsi
   - type: EyeProtection
-  - type: Tag
-    tags:
-    - SecDogWearable # Roxi
   - type: IdentityBlocker
     coverage: EYES
   - type: Tag
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SecDogWearable # Roxi
 
 - type: entity
   parent: ClothingEyesBase

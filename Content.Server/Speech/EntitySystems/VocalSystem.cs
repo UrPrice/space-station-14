@@ -148,10 +148,15 @@ public sealed class VocalSystem : EntitySystem
         if (!itemComponent.Sounds.TryGetValue(sex.Value, out var protoId))
             return;
 
-        if (!_proto.TryIndex(protoId, out itemComponent.EmoteSounds))
-            return;
+        itemComponent.EmoteSounds = protoId;
 
-        component.SpecialEmoteSounds.Add(itemUid, itemComponent.EmoteSounds);
+        if (!_proto.TryIndex(protoId, out var emoteProto))
+        {
+            Log.Error($"Cant index proto {protoId} for usage in special emotes");
+            return;
+        }
+
+        component.SpecialEmoteSounds.Add(itemUid, emoteProto);
     }
     private void InitSpecialSounds(EntityUid uid, VocalComponent component, InitSpecialSoundsEvent args)
     {

@@ -18,10 +18,7 @@
           path:
             "/Audio/Weapons/slash.ogg"
     - type: Sprite
-      sprite: Objects/Misc/spiderweb.rsi
-      layers:
-        - state: spider_web_1
-          map: ["spiderWebLayer"]
+      sprite: Structures/floor_web.rsi
       drawdepth: WallMountedItems
     - type: Appearance
     - type: GenericVisualizer

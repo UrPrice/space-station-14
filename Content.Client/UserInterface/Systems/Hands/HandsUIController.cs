@@ -155,9 +155,9 @@ public sealed class HandsUIController : UIController, IOnStateEntered<GameplaySt
             }
 
             //ss220 StuckOnEquip begin
-            if (_entities.HasComponent<StuckOnEquipComponent>(hand.HeldEntity))
+            if (_entities.HasComponent<StuckOnEquipComponent>(held))
             {
-                handButton.SetEntity(hand.HeldEntity);
+                handButton.SetEntity(held);
                 handButton.StuckOnEquip = true;
             }
             //ss220 StuckOnEquip end

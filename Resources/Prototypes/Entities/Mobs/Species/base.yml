@@ -134,12 +134,8 @@
     - StaminaModifier
     - Flashed
     - RadiationProtection
-<<<<<<< HEAD
-    - Drowsiness
-    - TemporaryWaddle  #SS220 Temporary waddle status effect
-=======
->>>>>>> off/master
     - Adrenaline
+    - TemporaryWaddle  #SS220 Temporary waddle status effect
     - Rave #SS220 cult
     - MiGoHeal  #SS220 cult
   - type: Body
@@ -287,11 +283,8 @@
         Asphyxiation: -1.0
   - type: FireVisuals
     alternateState: Standing
-<<<<<<< HEAD
   - type: Surgable #SS220 Surgery
-=======
   - type: StunVisuals
->>>>>>> off/master
 
 - type: entity
   save: false

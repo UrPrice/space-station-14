@@ -13,14 +13,14 @@ using Content.Shared.VendingMachines;
 namespace Content.Client.SS220.SmartFridge.UI
 {
     [GenerateTypedNameReferences]
-    public sealed partial class SmartFridgeMenu : DefaultWindow
+    public sealed partial class SmartFridge220Menu : DefaultWindow
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
         public event Action<ItemList.ItemListSelectedEventArgs>? OnItemSelected;
         public event Action<string>? OnSearchChanged;
 
-        public SmartFridgeMenu()
+        public SmartFridge220Menu()
         {
             MinSize = new Vector2(250, 150); // Corvax-Resize
 			SetSize = new Vector2(450, 150); // Corvax-Resize

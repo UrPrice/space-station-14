@@ -141,13 +141,13 @@ public sealed class CQCCombatSystem : CQCCombatSharedSystem
     {
         if (TryComp<HandsComponent>(target, out var handsComponent))
             foreach (var kvp in handsComponent.Hands)
-                _hands.TryDrop(target, kvp.Value, null, false, false, handsComponent);
+                _hands.TryDrop(target, null, false, false);
     }
 
     private void OnLongSleep(EntityUid inflictor, EntityUid target)
     {
         _sleeping.TrySleeping(target);
-        _statusEffects.TryAddStatusEffect<ForcedSleepingComponent>(target, StatusEffectKey,
+        _statusEffects.TryAddStatusEffect<ForcedSleepingStatusEffectComponent>(target, StatusEffectKey,
                 TimeSpan.FromSeconds(SleepCooldown), true);
     }
 }

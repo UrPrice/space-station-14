@@ -71,7 +71,7 @@ namespace Content.Server.SS220.MimeRelic
 
         private bool CanPlaceWallInTile(EntityCoordinates cordToPlace)
         {
-            TileRef? tile = cordToPlace.SnapToGrid().GetTileRef(EntityManager, _mapManager);
+            TileRef? tile = _turf.GetTileRef(cordToPlace.SnapToGrid());
             if (tile == null)
                 return false;
 
@@ -87,7 +87,7 @@ namespace Content.Server.SS220.MimeRelic
 
         private void PlaceWallInTile(EntityCoordinates targetCord, string wallPrototype, TimeSpan wallLifetime)
         {
-            TileRef? targetTile = targetCord.SnapToGrid().GetTileRef(EntityManager, _mapManager);
+            TileRef? targetTile = _turf.GetTileRef(targetCord.SnapToGrid());
             if (CanPlaceWallInTile(targetCord) == false)
             {
                 Log.Error("Error tried to place wall prototype, but tile is occupied");
