@@ -64,6 +64,12 @@ namespace Content.Server.Singularity.EntitySystems
         {
             if (args.Handled || !args.Complex)
                 return;
+
+            // SS220 SM-Emitter ui fix begin
+            if (!component.ActivateOnInteract)
+                return;
+            // SS220 SM-Emitter ui fix end
+
             // SS220-SM-smEmitter-fix
             args.Handled = TryActivate((uid, component), args.User);
         }

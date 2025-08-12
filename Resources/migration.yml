@@ -806,3 +806,6 @@ BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
+
+# 2025-07-28 - SS220 forcefield refactor
+forcefieldGenerator220: ForcefieldGeneratorParabola

@@ -8,6 +8,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Rejuvenate;
+using Content.Shared.SS220.LimitationRevive;
 using Content.Shared.Traits;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -19,7 +20,7 @@ namespace Content.Server.SS220.LimitationRevive;
 /// <summary>
 /// This handles limiting the number of defibrillator resurrections
 /// </summary>
-public sealed class LimitationReviveSystem : EntitySystem
+public sealed class LimitationReviveSystem : SharedLimitationReviveSystem
 {
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
@@ -34,8 +35,8 @@ public sealed class LimitationReviveSystem : EntitySystem
         SubscribeLocalEvent<LimitationReviveComponent, MobStateChangedEvent>(OnMobStateChanged, before: [typeof(ZombieSystem)]);
         SubscribeLocalEvent<LimitationReviveComponent, CloningEvent>(OnCloning);
         SubscribeLocalEvent<LimitationReviveComponent, AddReviweDebuffsEvent>(OnAddReviweDebuffs);
-		SubscribeLocalEvent<LimitationReviveComponent, RejuvenateEvent>(OnRejuvenate);
-		SubscribeLocalEvent<LimitationReviveComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
+        SubscribeLocalEvent<LimitationReviveComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<LimitationReviveComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
     }
 
     private void OnMobStateChanged(Entity<LimitationReviveComponent> ent, ref MobStateChangedEvent args)
@@ -142,5 +143,16 @@ public sealed class LimitationReviveSystem : EntitySystem
     private void OnApplyMetabolicMultiplier(Entity<LimitationReviveComponent> ent, ref ApplyMetabolicMultiplierEvent args)
     {
         ent.Comp.UpdateIntervalMultiplier = args.Multiplier;
+    }
+
+    public override void IncreaseTimer(EntityUid ent, TimeSpan addTime)
+    {
+        if (!TryComp<LimitationReviveComponent>(ent, out var limComp))
+            return;
+
+        if (limComp.DamageTime == null)
+            return;
+
+        limComp.DamageTime += addTime;
     }
 }

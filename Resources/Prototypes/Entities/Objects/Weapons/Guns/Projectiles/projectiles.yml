@@ -848,6 +848,10 @@
         Blunt: 1
     soundHit:
       path: /Audio/Effects/gen_hit.ogg
+    # SS220 Add projectiles on shuttle nav begin
+    shuttleNavInfo:
+      enabled: true
+    # SS220 Add projectiles on shuttle nav end
   - type: StaminaDamageOnCollide
     damage: 80
 
@@ -867,6 +871,11 @@
     totalIntensity: 150 # a ~2 tile radius
     intensitySlope: 5
     maxIntensity: 10
+  # SS220 Add projectiles on shuttle nav begin
+  - type: Projectile
+    shuttleNavInfo:
+      enabled: true
+  # SS220 Add projectiles on shuttle nav end
 
 - type: entity
   id: BulletGrenadeFlash
@@ -885,6 +894,11 @@
   - type: ActiveTimerTrigger
     timeRemaining: 0.3
   - type: DeleteOnTrigger
+  # SS220 Add projectiles on shuttle nav begin
+  - type: Projectile
+    shuttleNavInfo:
+      enabled: true
+  # SS220 Add projectiles on shuttle nav end
 
 # This is supposed to spawn shrapnel and stuff so uhh... TODO?
 - type: entity
@@ -903,6 +917,11 @@
     totalIntensity: 175 # about a ~6 tile radius
     intensitySlope: 1
     maxIntensity: 10
+  # SS220 Add projectiles on shuttle nav begin
+  - type: Projectile
+    shuttleNavInfo:
+      enabled: true
+  # SS220 Add projectiles on shuttle nav end
 
 - type: entity
   parent: BaseBulletTrigger
@@ -933,6 +952,11 @@
     intensitySlope: 1
     maxIntensity: 0.01
     tileBreakScale: 0.01
+  # SS220 Add projectiles on shuttle nav begin
+  - type: Projectile
+    shuttleNavInfo:
+      enabled: true
+  # SS220 Add projectiles on shuttle nav end
 
 - type: entity
   id: BulletGrenadeEMP
@@ -954,6 +978,11 @@
     radius: 3.5
     color: blue
     energy: 0.5
+  # SS220 Add projectiles on shuttle nav begin
+  - type: Projectile
+    shuttleNavInfo:
+      enabled: true
+  # SS220 Add projectiles on shuttle nav end
 
 - type: entity
   id: BulletCap

@@ -2643,8 +2643,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 0.5,9.5
       parent: 410
-<<<<<<< HEAD
-=======
     - type: Construction
       step: 1
       edge: 0
@@ -2678,7 +2676,6 @@ entities:
       edge: 0
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
->>>>>>> off/master
     - type: AtmosPipeColor
       color: '#990000FF'
 - proto: GeneratorBasic15kW
