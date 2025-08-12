@@ -150,9 +150,10 @@ public sealed class LimitationReviveSystem : SharedLimitationReviveSystem
         if (!TryComp<LimitationReviveComponent>(ent, out var limComp))
             return;
 
-        if (limComp.DamageTime == null)
+        if (limComp.DamageCountingTime == null)
             return;
 
-        limComp.DamageTime += addTime;
+        // TODO-SS220: please make it logic to adjust time passed and not the time start point
+        limComp.DamageCountingTime -= addTime;
     }
 }
