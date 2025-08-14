@@ -54,7 +54,8 @@
       - id: BarberScissors
       - id: FlippoLighter
       - id: trayScanner
-      - id: Wristwatch
+      # - id: Wristwatch # SS220-our-watches
+      - id: ClothingWristWatch # SS220-our-watches
       - id: ClothingNeckBling
       - id: ClothingMultipleHeadphones
       - id: DiceBag

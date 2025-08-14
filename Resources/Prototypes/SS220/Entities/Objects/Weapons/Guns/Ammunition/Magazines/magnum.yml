@@ -4,9 +4,6 @@
   parent: BaseItem
   abstract: true
   components:
-  - type: Tag
-    tags:
-      - MagazineMagnumSubMachineGun
   - type: BallisticAmmoProvider
     mayTransfer: true
     whitelist:
@@ -41,10 +38,11 @@
     proto: CartridgeMagnumIncendiary
   - type: Sprite
     layers:
-    - state: red
+    - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
+    - state: stripe
   - type: Item
     inhandVisuals:
       left:

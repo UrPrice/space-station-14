@@ -70,9 +70,6 @@
   parent: [ BaseItem, BaseSecurityContraband ]
   abstract: true
   components:
-  - type: Tag
-    tags:
-      - MagazinePistolSubMachineGun
   - type: BallisticAmmoProvider
     mayTransfer: true
     whitelist:

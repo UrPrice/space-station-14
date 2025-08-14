@@ -18,6 +18,9 @@
     science: AirlockScience
     security: AirlockSecurity
     virology: AirlockVirology
+    # SS220-add-our-airlock-begin
+    law: AirlockLaw
+    # SS220-add-our-airlock-end
 
 - type: paintableGroup
   id: AirlockGlass
@@ -38,3 +41,28 @@
     science: AirlockScienceGlass
     security: AirlockSecurityGlass
     virology: AirlockVirologyGlass
+    # SS220-add-our-airlock-begin
+    law: AirlockLawGlass
+
+    # SS220-add-our-airlock-end
+
+
+#SS220-add-our-double-airlock
+# p.s. you should move into our folder if it works
+
+- type: paintableGroup
+  id: DoubleDepartmentAirlock
+  time: 3
+  cost: 3
+  defaultStyle: basic
+  styles:
+    security: AirlockLawSecurity
+
+
+- type: paintableGroup
+  id: DoubleDepartmentAirlockGlass
+  time: 3
+  cost: 3
+  defaultStyle: basic
+  styles:
+    security: AirlockLawSecurityGlass

@@ -1843,6 +1843,7 @@
   name: dark steel squiggly tile
   components:
   - type: Sprite
+    sprite: Objects/Tiles/tile.rsi # SS220-revert-resprite-for-new-tiles
     state: dark-squiggly
   - type: FloorTile
     outputs:

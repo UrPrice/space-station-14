@@ -21,12 +21,6 @@
       sprite: Structures/floor_web.rsi
       drawdepth: WallMountedItems
     - type: Appearance
-    - type: GenericVisualizer
-      visuals:
-        enum.SpiderWebVisuals.Variant:
-          spiderWebLayer:
-            1:  {state: spider_web_1}
-            2:  {state: spider_web_2}
     - type: Clickable
     - type: Transform
       anchored: true
