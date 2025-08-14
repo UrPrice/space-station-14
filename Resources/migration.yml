@@ -809,3 +809,5 @@ forcefieldGenerator220: ForcefieldGeneratorParabola
 
 # 14-08-2025 - SS220 move to off smart fridge
 StorageSmartFridge: SmartFridge
+# 2025-08-01
+FoodDonutJellySlugcat: FoodDonutJellyScurret

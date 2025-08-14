@@ -26,6 +26,12 @@ public abstract class SharedChatSystem : EntitySystem
     //ss220-telepathy
     public const char TelepathyChannelPrefix = '|';
 
+    public const int VoiceRange = 10; // how far voice goes in world units
+    public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
+    public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
+    public const string DefaultAnnouncementSound = "/Audio/Announcements/announce.ogg";
+    public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // (SS220) Corvax-Announcements
+
     public static readonly ProtoId<RadioChannelPrototype> CommonChannel = "Common";
 
     public static readonly string DefaultChannelPrefix = $"{RadioChannelPrefix}{DefaultChannelKey}";

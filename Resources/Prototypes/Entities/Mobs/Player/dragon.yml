@@ -103,7 +103,6 @@
       types: {}
   - type: StatusEffects # Overwriting basesimplemob to remove flash, getting flashed as dragon just feelsbad
     allowed:
-    - SlowedDown
     - Stutter
     - Electrocution
     - TemporaryBlindness
@@ -162,6 +161,7 @@
     tags:
     - CannotSuicide
     - DoorBumpOpener
+    - StunImmune
   - type: ReplacementAccent #SS220 No talking dragons
     accent: genericAggressive
     # ss220 lowTTKUpdate

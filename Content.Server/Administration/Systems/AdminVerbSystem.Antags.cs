@@ -28,8 +28,9 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultNukeOpRule = "LoneOpsSpawn";
     private static readonly EntProtoId DefaultRevsRule = "Revolutionary";
     private static readonly EntProtoId DefaultThiefRule = "Thief";
-    private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
+    private static readonly EntProtoId DefaultChangelingRule = "Changeling";
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
+    private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
     //SS200 CultYogg start
     [ValidatePrototypeId<EntityPrototype>]
@@ -173,6 +174,21 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(cult_yogg);
         //SS220 CultYogg end
+
+        var changelingName = Loc.GetString("admin-verb-text-make-changeling");
+        Verb changeling = new()
+        {
+            Text = changelingName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Objects/Weapons/Melee/armblade.rsi"), "icon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ChangelingRuleComponent>(targetPlayer, DefaultChangelingRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", changelingName, Loc.GetString("admin-verb-make-changeling")),
+        };
+        args.Verbs.Add(changeling);
 
         var paradoxCloneName = Loc.GetString("admin-verb-text-make-paradox-clone");
         Verb paradox = new()
