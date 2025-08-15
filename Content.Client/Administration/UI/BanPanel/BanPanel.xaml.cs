@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -174,7 +173,7 @@ public sealed partial class BanPanel : DefaultWindow
         // SS220-add-ghost-roles-ban-begin
         var ghostRoles = _protoMan.EnumeratePrototypes<JobPrototype>().Where((x) => x.ID == _ghostRoleProtoId);
         // Check for me if I done it correctly. Count of ghostRoles CAN BE changed if you NEED
-        Debug.Assert(ghostRoles.Count() == 1);
+        DebugTools.Assert(ghostRoles.Count() == 1);
         CreateRoleGroup("Ghost roles", Color.DarkGray, ghostRoles);
         // SS220-add-ghost-roles-ban-end
     }

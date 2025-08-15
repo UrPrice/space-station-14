@@ -1,1 +1,1 @@
-name-identifier-format-power-id = PU
+name-identifier-format-power-id = PU-{$number}
