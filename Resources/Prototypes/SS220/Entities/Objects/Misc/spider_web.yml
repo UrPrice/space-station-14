@@ -144,6 +144,7 @@
       - SpiderQueen
       - SpiderServant
       - SpiderLittle
+    bloodlossModifier: -12
 
 - type: entity
   parent: BaseSpiderWeb
