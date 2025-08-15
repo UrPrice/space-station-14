@@ -182,9 +182,11 @@
   components:
   - type: Appearance
   - type: EntityStorageVisuals
-    stateBaseClosed: eng
-    stateDoorOpen: eng_open
-    stateDoorClosed: eng_evac_door
+  #SS220-Closet-Resprite-start
+    stateBaseClosed: engineer
+    stateDoorOpen: steellocker_open
+    stateDoorClosed: engineer_door
+    #SS220-Closet-Resprite-end
   - type: AccessReader
     access: [ [ "Engineering" ] ]
 
