@@ -134,7 +134,7 @@ public sealed class CQCCombatSystem : CQCCombatSharedSystem
 
     private void OnBlowback(EntityUid inflictor, EntityUid target)
     {
-        _stun.TryParalyze(target, TimeSpan.FromSeconds(BlowbackParalyze), true);
+        _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(BlowbackParalyze));
     }
 
     private void OnDisarm(EntityUid inflictor, EntityUid target)

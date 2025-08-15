@@ -8,6 +8,7 @@ using Content.Server.Administration.Managers;
 using Content.Server.AlertLevel;
 using Content.Server.Station.Systems;
 using Content.Shared.Administration;
+using Content.Shared.Station.Components;
 
 namespace Content.Server.GameTicking
 {

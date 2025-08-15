@@ -1,6 +1,5 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
 
-using Content.Server.Abilities.Mime;
 using Content.Server.Popups;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Interaction;
@@ -12,6 +11,7 @@ using Robust.Shared.Map;
 using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
 using Robust.Shared.Timing;
 using System.Numerics;
+using Content.Shared.Abilities.Mime;
 
 namespace Content.Server.SS220.MimeRelic
 {

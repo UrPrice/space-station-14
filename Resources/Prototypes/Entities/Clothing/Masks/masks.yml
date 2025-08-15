@@ -733,6 +733,13 @@
   - type: EyeProtection
   - type: BreathMask
   - type: IdentityBlocker
+  # SS220-add-ninja-voice-mask-begin
+  - type: VoiceMask
+  - type: UserInterface
+    interfaces:
+      enum.VoiceMaskUIKey.Key:
+        type: VoiceMaskBoundUserInterface
+  # SS220-add-ninja-voice-mask-end
 
 - type: entity
   parent: ClothingMaskGas

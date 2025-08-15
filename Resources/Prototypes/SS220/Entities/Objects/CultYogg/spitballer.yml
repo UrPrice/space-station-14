@@ -130,7 +130,7 @@
           softness: 1
           offset: "0, 0"
         - type: ExplodeOnTrigger
-        - type: SoundOnTrigger
+        - type: EmitSoundOnTrigger
           sound:
             path: /Audio/Effects/Grenades/Supermatter/supermatter_end.ogg
             params:

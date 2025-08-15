@@ -22,4 +22,8 @@ public sealed partial class DamageOnTriggerComponent : BaseXOnTriggerComponent
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
     public DamageSpecifier Damage = default!;
+
+    // SS220-add-log-for-traps
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public bool Log = false;
 }

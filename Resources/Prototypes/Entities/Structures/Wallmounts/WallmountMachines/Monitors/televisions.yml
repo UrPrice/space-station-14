@@ -73,7 +73,7 @@
     node: TelevisionFrame
   - type: Sprite
     drawdepth: AboveFovOverlay #SS220 Perpective-wall-fov
-    drawdepth: WallMountedItems
+    # drawdepth: WallMountedItems
     sprite: Structures/Wallmounts/flatscreentv.rsi
     layers:
       - map: ["computerLayerBody"]

@@ -135,7 +135,7 @@ public sealed partial class RevenantSystem : EntitySystem
         if (component.StunTime is null || args.Origin is null || HasComp<MindShieldComponent>(args.Origin))
             return;
 
-        _stun.TryParalyze(args.Origin.Value, component.StunTime.Value, true, null);
+        _stun.TryUpdateParalyzeDuration(args.Origin.Value, component.StunTime.Value);
         // SS220 revenant-stuns-damage-dealer-end
     }
 
