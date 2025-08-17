@@ -25,7 +25,7 @@ public sealed class TileSpawnInRangeOnTriggerSystem : EntitySystem
             return;
         }
 
-        if(!_prototypeManager.TryIndex(entity.Comp.KudzuProtoId, out var prototype, logError: true))
+        if (!_prototypeManager.TryIndex(entity.Comp.KudzuProtoId, out var prototype, logError: true))
             return;
 
         var xform = Transform(entity);

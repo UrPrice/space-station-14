@@ -14,62 +14,64 @@ using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Interaction.Components;
 using Robust.Shared.Input.Binding;
 using Content.Shared.SS220.Input;
+using Robust.Shared.Prototypes;
 
-namespace Content.Server.SS220.ItemOfferVerb.Systems
+namespace Content.Server.SS220.ItemOfferVerb.Systems;
+
+public sealed class ItemOfferSystem : EntitySystem
 {
-    public sealed class ItemOfferSystem : EntitySystem
+    [Dependency] private readonly EntityManager _entMan = default!;
+    [Dependency] private readonly PopupSystem _popupSystem = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private readonly HandsSystem _hands = default!;
+
+    private readonly ProtoId<AlertPrototype> _itemOfferAlert = "ItemOffer";
+
+    public override void Initialize()
     {
-        [Dependency] private readonly EntityManager _entMan = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly AlertsSystem _alerts = default!;
-        [Dependency] private readonly HandsSystem _hands = default!;
+        base.Initialize();
+        SubscribeLocalEvent<HandsComponent, GetVerbsEvent<EquipmentVerb>>(AddOfferVerb);
+        SubscribeLocalEvent<ItemReceiverComponent, ItemOfferAlertEvent>(OnItemOffserAlertClicked);
 
-        [ValidatePrototypeId<AlertPrototype>]
-        private const string ItemOfferAlert = "ItemOffer";
+        CommandBinds.Builder
+            .Bind(KeyFunctions220.ItemOffer,
+                new PointerInputCmdHandler(HandleItemOfferKey))
+            .Register<ItemOfferSystem>();
+    }
 
-        public override void Initialize()
+    private bool HandleItemOfferKey(in PointerInputCmdHandler.PointerInputCmdArgs args)
+    {
+        if (!args.EntityUid.IsValid() || !EntityManager.EntityExists(args.EntityUid))
+            return false;
+
+        if (args.Session?.AttachedEntity == null)
+            return false;
+
+        DoItemOffer(args.Session.AttachedEntity.Value, args.EntityUid);
+        return true;
+    }
+
+    private void OnItemOffserAlertClicked(Entity<ItemReceiverComponent> ent, ref ItemOfferAlertEvent args)
+    {
+        TransferItemInHands(ent, ent);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var enumerator = EntityQueryEnumerator<ItemReceiverComponent, TransformComponent>();
+        while (enumerator.MoveNext(out var uid, out var comp, out var transform))
         {
-            base.Initialize();
-            SubscribeLocalEvent<HandsComponent, GetVerbsEvent<EquipmentVerb>>(AddOfferVerb);
-            SubscribeLocalEvent<ItemReceiverComponent, ItemOfferAlertEvent>(OnItemOffserAlertClicked);
-
-            CommandBinds.Builder
-                .Bind(KeyFunctions220.ItemOffer,
-                    new PointerInputCmdHandler(HandleItemOfferKey))
-                .Register<ItemOfferSystem>();
-        }
-
-        private bool HandleItemOfferKey(in PointerInputCmdHandler.PointerInputCmdArgs args)
-        {
-            if (!args.EntityUid.IsValid() || !EntityManager.EntityExists(args.EntityUid))
-                return false;
-
-            if (args.Session?.AttachedEntity == null)
-                return false;
-
-            DoItemOffer(args.Session.AttachedEntity.Value, args.EntityUid);
-            return true;
-        }
-
-        private void OnItemOffserAlertClicked(Entity<ItemReceiverComponent> ent, ref ItemOfferAlertEvent args)
-        {
-            TransferItemInHands(ent, ent);
-        }
-
-        public override void Update(float frameTime)
-        {
-            base.Update(frameTime);
-
-            var enumerator = EntityQueryEnumerator<ItemReceiverComponent, TransformComponent>();
-            while (enumerator.MoveNext(out var uid, out var comp, out var transform))
+            var receiverPos = Transform(comp.Giver).Coordinates;
+            var giverPos = Transform(uid).Coordinates;
+            receiverPos.TryDistance(EntityManager, giverPos, out var distance);
+            var giverHands = Comp<HandsComponent>(comp.Giver);
+            if (distance > comp.ReceiveRange)
             {
-                var receiverPos = Transform(comp.Giver).Coordinates;
-                var giverPos = Transform(uid).Coordinates;
-                receiverPos.TryDistance(EntityManager, giverPos, out var distance);
-                var giverHands = Comp<HandsComponent>(comp.Giver);
                 if (distance > comp.ReceiveRange)
                 {
-                    _alerts.ClearAlert(uid, ItemOfferAlert);
+                    _alerts.ClearAlert(uid, _itemOfferAlert);
                     _entMan.RemoveComponent<ItemReceiverComponent>(uid);
                 }
                 //FunTust: added a new variable responsible for whether the object is still in the hand during transmission
@@ -78,37 +80,42 @@ namespace Content.Server.SS220.ItemOfferVerb.Systems
 
                 if (!foundInHand)
                 {
-                    _alerts.ClearAlert(uid, ItemOfferAlert);
+                    _alerts.ClearAlert(uid, _itemOfferAlert);
                     _entMan.RemoveComponent<ItemReceiverComponent>(uid);
                 }
             }
         }
+    }
 
-        private void AddOfferVerb(EntityUid uid, HandsComponent component, GetVerbsEvent<EquipmentVerb> args)
+    private void AddOfferVerb(Entity<HandsComponent> entity, GetVerbsEvent<EquipmentVerb> args)
+    {
+        if (!args.CanInteract || !args.CanAccess || _hands.GetActiveItem((entity.Owner, entity.Comp)) == null)
+            return;
+
+        var verb = new EquipmentVerb()
         {
-            if (!args.CanInteract || !args.CanAccess || args.Hands == null)
-                return;
-
-            var handHeldEntity = _hands.GetActiveItem(args.User);
-
-            if (handHeldEntity is null)
-                return;
-
-            EquipmentVerb verb = new EquipmentVerb()
+            Text = "Передать предмет",
+            Act = () =>
             {
-                Text = "Передать предмет",
-                Act = () =>
-                {
-                   DoItemOffer(args.User, uid);
-                },
-            };
+                DoItemOffer(args.User, entity.Owner);
+            },
+        };
 
-            args.Verbs.Add(verb);
-        }
-        public void TransferItemInHands(EntityUid receiver, ItemReceiverComponent? itemReceiver)
+        args.Verbs.Add(verb);
+    }
+
+    public void TransferItemInHands(EntityUid receiver, ItemReceiverComponent? itemReceiver)
+    {
+        if (itemReceiver == null)
+            return;
+
+        _hands.PickupOrDrop(itemReceiver.Giver, itemReceiver.Item!.Value);
+
+        if (_hands.TryPickupAnyHand(receiver, itemReceiver.Item!.Value))
         {
             if (itemReceiver == null)
                 return;
+
             _hands.PickupOrDrop(itemReceiver.Giver, itemReceiver.Item!.Value);
             if (_hands.TryPickupAnyHand(receiver, itemReceiver.Item!.Value))
             {
@@ -117,36 +124,37 @@ namespace Content.Server.SS220.ItemOfferVerb.Systems
                     ("item", itemReceiver.Item),
                     ("target", receiver));
                 _popupSystem.PopupEntity(loc, itemReceiver.Giver, PopupType.Medium);
-                _alerts.ClearAlert(receiver, ItemOfferAlert);
+                _alerts.ClearAlert(receiver, _itemOfferAlert);
                 _entMan.RemoveComponent<ItemReceiverComponent>(receiver);
-            };
+            }
+            ;
         }
+    }
 
-        private void DoItemOffer(EntityUid user, EntityUid target)
-        {
-            if (!TryComp<HandsComponent>(target, out var handsComponent))
-                return;
+    private void DoItemOffer(EntityUid user, EntityUid target)
+    {
+        if (!TryComp<HandsComponent>(target, out var handsComponent))
+            return;
 
-            // (fix https://github.com/SerbiaStrong-220/space-station-14/issues/2054)
-            if (HasComp<BorgChassisComponent>(user) || _hands.CountFreeHands(target) == 0 || target == user)
-                return;
+        // (fix https://github.com/SerbiaStrong-220/space-station-14/issues/2054)
+        if (HasComp<BorgChassisComponent>(user) || _hands.CountFreeHands((target, handsComponent)) == 0 || target == user)
+            return;
 
-            if (!_hands.TryGetActiveItem(user, out var item))
-                return;
+        if (!_hands.TryGetActiveItem(user, out var item))
+            return;
 
-            if (HasComp<UnremoveableComponent>(item))
-                return;
+        if (HasComp<UnremoveableComponent>(item))
+            return;
 
-            var itemReceiver = EnsureComp<ItemReceiverComponent>(target);
-            itemReceiver.Giver = user;
-            itemReceiver.Item = item;
-            _alerts.ShowAlert(target, ItemOfferAlert);
+        var itemReceiver = EnsureComp<ItemReceiverComponent>(target);
+        itemReceiver.Giver = user;
+        itemReceiver.Item = item;
+        _alerts.ShowAlert(target, _itemOfferAlert);
 
-            var loc = Loc.GetString("loc-item-offer-attempt",
-                ("user", user),
-                ("item", item),
-                ("target", target));
-            _popupSystem.PopupEntity(loc, user);
-          }
+        var loc = Loc.GetString("loc-item-offer-attempt",
+            ("user", user),
+            ("item", item),
+            ("target", target));
+        _popupSystem.PopupEntity(loc, user);
     }
 }

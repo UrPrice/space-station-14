@@ -157,6 +157,7 @@ public sealed partial class MiGoSystem : SharedMiGoSystem
         // Remove ascension reagent
         if (!_body.TryGetBodyOrganEntityComps<StomachComponent>(args.Target.Value, out var stomachs))
             return;
+
         foreach (var stomach in stomachs)
         {
             if (stomach.Comp2.Body is not { } body)
@@ -166,9 +167,6 @@ public sealed partial class MiGoSystem : SharedMiGoSystem
             _stomach.TryRemoveReagent(stomach, reagentRoRemove); // Removes from stomach
 
             if (!_solutionContainer.TryGetSolution(body, stomach.Comp1.BodySolutionName, out var bodySolutionEnt, out var bodySolution))
-                continue;
-
-            if (bodySolution == null)
                 continue;
 
             bodySolution.RemoveReagent(reagentRoRemove); // Removes from body

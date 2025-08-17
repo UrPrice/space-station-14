@@ -1,4 +1,5 @@
 // © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
+
 using Content.Server.Antag;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -20,8 +21,6 @@ public sealed class DarkReaperMajorRuleSystem : GameRuleSystem<DarkReaperMajorRu
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-
-    private readonly ISawmill _sawmill = Logger.GetSawmill("DarkReaperMajorRule");
 
     public override void Initialize()
     {
