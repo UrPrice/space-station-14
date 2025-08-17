@@ -117,7 +117,7 @@ SignNtFlag: NTFlag
 ClothingOuterHardsuitMedic: ClothingOuterHardsuitSyndieMedic
 
 # 2023-12-13
-#VendingMachineSmartFridge: SmartFridge
+VendingMachineSmartFridge: SmartFridge
 
 # 2023-12-18
 ReagentContainerMilk: DrinkMilkCarton
@@ -811,3 +811,10 @@ forcefieldGenerator220: ForcefieldGeneratorParabola
 StorageSmartFridge: SmartFridge
 # 2025-08-01
 FoodDonutJellySlugcat: FoodDonutJellyScurret
+
+# 17-08-2025 - SS220 remove of lingering stacks
+CableMVStackLingering10: null
+FloorTileItemSteelLingering0: null
+PartRodMetalLingering0: null
+SheetGlassLingering0: null
+SheetSteelLingering0: null

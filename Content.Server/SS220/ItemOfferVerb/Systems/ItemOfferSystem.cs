@@ -30,6 +30,7 @@ public sealed class ItemOfferSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<HandsComponent, GetVerbsEvent<EquipmentVerb>>(AddOfferVerb);
         SubscribeLocalEvent<ItemReceiverComponent, ItemOfferAlertEvent>(OnItemOffserAlertClicked);
 
@@ -87,9 +88,9 @@ public sealed class ItemOfferSystem : EntitySystem
         }
     }
 
-    private void AddOfferVerb(Entity<HandsComponent> entity, GetVerbsEvent<EquipmentVerb> args)
+    private void AddOfferVerb(EntityUid uid, HandsComponent component, GetVerbsEvent<EquipmentVerb> args)
     {
-        if (!args.CanInteract || !args.CanAccess || _hands.GetActiveItem((entity.Owner, entity.Comp)) == null)
+        if (!args.CanInteract || !args.CanAccess || _hands.GetActiveItem((uid, component)) == null)
             return;
 
         var verb = new EquipmentVerb()
@@ -97,7 +98,7 @@ public sealed class ItemOfferSystem : EntitySystem
             Text = "Передать предмет",
             Act = () =>
             {
-                DoItemOffer(args.User, entity.Owner);
+                DoItemOffer(args.User, uid);
             },
         };
 

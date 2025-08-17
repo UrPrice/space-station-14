@@ -171,6 +171,21 @@
   name: emergency shuttle emergency wall locker
   description: It's emergencies all the way down.
   components:
+  # SS220-revert-our-resprite-begin
+  - type: Sprite
+    sprite: Structures/Storage/wall_locker.rsi
+    layers:
+    - state: generic
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: generic_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  # SS220-revert-our-resprite-end
   - type: EntityStorageVisuals
     stateBaseClosed: eng
     stateDoorOpen: eng_open
