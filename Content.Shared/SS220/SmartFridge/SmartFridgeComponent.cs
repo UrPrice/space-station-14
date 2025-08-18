@@ -105,11 +105,11 @@ public enum SmartFridgeVisualLayers : byte
     Screen
 }
 
-[Serializable, NetSerializable]
-public enum SmartFridgeUiKey
-{
-    Key,
-}
+// [Serializable, NetSerializable]
+// public enum SmartFridgeUiKey
+// {
+//     Key,
+// }
 
 [Serializable, NetSerializable]
 public sealed class SmartFridgeInteractWithItemEvent : BoundUserInterfaceMessage

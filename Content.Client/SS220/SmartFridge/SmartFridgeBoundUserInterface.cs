@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Content.Client.SS220.SmartFridge
 {
-    public sealed class SmartFridgeBoundUserInterface : BoundUserInterface
+    public sealed class SmartFridge220BoundUserInterface : BoundUserInterface
     {
         [ViewVariables]
         private SmartFridge220Menu? _menu;
@@ -19,7 +19,7 @@ namespace Content.Client.SS220.SmartFridge
         [ViewVariables]
         private List<int> _cachedFilteredIndex = new();
 
-        public SmartFridgeBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
+        public SmartFridge220BoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
         }
 
