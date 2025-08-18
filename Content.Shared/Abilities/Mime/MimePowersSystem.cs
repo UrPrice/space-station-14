@@ -29,6 +29,7 @@ public sealed class MimePowersSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MimePowersComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<MimePowersComponent, MapInitEvent>(OnMapInit); // SS220-fix-BorgChassisClownMime
         SubscribeLocalEvent<MimePowersComponent, ComponentShutdown>(OnComponentShutdown);
         SubscribeLocalEvent<MimePowersComponent, InvisibleWallActionEvent>(OnInvisibleWall);
 
@@ -67,9 +68,17 @@ public sealed class MimePowersSystem : EntitySystem
             Dirty(ent, illiterateComponent);
         }
 
+    // SS220-fix-BorgChassisClownMime-begin
+        // _alertsSystem.ShowAlert(ent, ent.Comp.VowAlert);
+        // _actionsSystem.AddAction(ent, ref ent.Comp.InvisibleWallActionEntity, ent.Comp.InvisibleWallAction);
+    }
+
+    private void OnMapInit(Entity<MimePowersComponent> ent, ref MapInitEvent args)
+    {
         _alertsSystem.ShowAlert(ent, ent.Comp.VowAlert);
         _actionsSystem.AddAction(ent, ref ent.Comp.InvisibleWallActionEntity, ent.Comp.InvisibleWallAction);
     }
+    // SS220-fix-BorgChassisClownMime-end
 
     private void OnComponentShutdown(Entity<MimePowersComponent> ent, ref ComponentShutdown args)
     {
