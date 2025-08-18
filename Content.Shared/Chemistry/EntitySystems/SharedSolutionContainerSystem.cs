@@ -1149,14 +1149,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         }
 
         if (needsInit)
-        // SS220-to-remove
-        {
-            if (prototype?.Name == "food")
-                Log.Info($"Trying to initialize and start entity with name {prototype?.Name} and uid {ToPrettyString(solutionId)}, container name is {name}. Owner is {ToPrettyString(entity)}");
-
             EntityManager.InitializeAndStartEntity(solutionId, Transform(solutionId).MapID);
-        }
-        // SS220-to-remove
         solutionEntity = (solutionId, solutionComp);
         return true;
     }
