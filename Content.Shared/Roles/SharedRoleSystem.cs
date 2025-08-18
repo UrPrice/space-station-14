@@ -5,6 +5,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
+using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
@@ -30,6 +31,11 @@ public abstract class SharedRoleSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
 
     private JobRequirementOverridePrototype? _requirementOverride;
+
+    // SS220-add-ghost-role-tracker-begin
+    private readonly ProtoId<PlayTimeTrackerPrototype> _ghostRoleTracker = "JobGhostRole";
+    private readonly ProtoId<JobPrototype> _ghostRolePrototype = "GhostRole";
+    // SS220-add-ghost-role-tracker-end
 
     public override void Initialize()
     {
@@ -614,6 +620,13 @@ public abstract class SharedRoleSystem : EntitySystem
 
             if (valid)
                 roleInfo.Add(new RoleInfo(name, comp.Antag, playTimeTracker, prototype));
+
+            // SS220-add-ghost-role-tracker-begin
+            if (TryComp<GhostRoleMarkerRoleComponent>(role, out var _))
+            {
+                roleInfo.Add(new RoleInfo(MetaData(role).EntityName, false, _ghostRoleTracker, _ghostRolePrototype));
+            }
+            // SS220-add-ghost-role-tracker-begin
         }
         return roleInfo;
     }

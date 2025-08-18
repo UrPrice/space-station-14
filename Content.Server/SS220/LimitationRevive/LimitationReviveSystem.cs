@@ -127,7 +127,7 @@ public sealed class LimitationReviveSystem : SharedLimitationReviveSystem
             if (limitationRevive.DamageCountingTime is null)
                 continue;
 
-            limitationRevive.DamageCountingTime += TimeSpan.FromSeconds(frameTime * limitationRevive.MetabolismModifierAffect);
+            limitationRevive.DamageCountingTime += TimeSpan.FromSeconds(frameTime / limitationRevive.UpdateIntervalMultiplier);
 
             if (limitationRevive.DamageCountingTime < limitationRevive.BeforeDamageDelay)
                 continue;

@@ -20,7 +20,7 @@ public sealed class GhostRoleMarkerRoleTimeTracker : EntitySystem
 
     private void OnMindGetAllRoles(EntityUid uid, GhostRoleMarkerRoleComponent component, ref MindGetAllRoleInfoEvent args)
     {
-        //TODO-SS220: what is this...
-        args.Roles.Add(new RoleInfo(nameof(GhostRoleMarkerRoleComponent), false, GhostRoleTracker, GhostRolePrototype));
+        //TODO-SS220-enqueue-removing:
+        // args.Roles.Add(new RoleInfo(nameof(GhostRoleMarkerRoleComponent), false, GhostRoleTracker, GhostRolePrototype));
     }
 }

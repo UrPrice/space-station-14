@@ -48,7 +48,7 @@ public sealed class StunsContactsSystem : EntitySystem
     private bool TryEffectEntity(EntityUid targetUid, Entity<StunsContactsComponent> source)
     {
         if (!source.Comp.TimeEntitiesStunned.TryGetValue(targetUid, out var timeLastStunned)
-            && _stun.TryAddParalyzeDuration(targetUid, source.Comp.StunTime))
+            && _stun.TryUpdateParalyzeDuration(targetUid, source.Comp.StunTime))
         {
             var debugFlag = source.Comp.TimeEntitiesStunned.TryAdd(targetUid, _timing.CurTime);
             DebugTools.Assert(debugFlag);

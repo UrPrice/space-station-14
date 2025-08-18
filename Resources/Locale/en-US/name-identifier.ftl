@@ -7,6 +7,3 @@ name-identifier-format-silicon = Si-{$number}
 name-identifier-format-xenoborg = Xi-{$number}
 name-identifier-format-station-ai = AI-{$number}
 name-identifier-format-telepad = TELE-{$number}
-
-# SS220-add-eng-locale for power id
-name-identifier-format-power-id = PU-{$number}

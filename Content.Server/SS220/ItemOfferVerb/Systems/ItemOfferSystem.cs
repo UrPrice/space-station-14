@@ -88,14 +88,15 @@ public sealed class ItemOfferSystem : EntitySystem
         }
     }
 
+    //TODO-SS220-move-to-shared-for-prediction
     private void AddOfferVerb(EntityUid uid, HandsComponent component, GetVerbsEvent<EquipmentVerb> args)
     {
-        if (!args.CanInteract || !args.CanAccess || _hands.GetActiveItem((uid, component)) == null)
+        if (!args.CanInteract || !args.CanAccess || _hands.GetActiveItem(args.User) == null)
             return;
 
         var verb = new EquipmentVerb()
         {
-            Text = "Передать предмет",
+            Text = Loc.GetString("offer-verb-text"),
             Act = () =>
             {
                 DoItemOffer(args.User, uid);
@@ -138,8 +139,14 @@ public sealed class ItemOfferSystem : EntitySystem
             return;
 
         // (fix https://github.com/SerbiaStrong-220/space-station-14/issues/2054)
-        if (HasComp<BorgChassisComponent>(user) || _hands.CountFreeHands((target, handsComponent)) == 0 || target == user)
+        if (HasComp<BorgChassisComponent>(user) || target == user)
             return;
+
+        if (_hands.CountFreeHands((target, handsComponent)) == 0)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("item-offer-no-hands", ("user", user), ("target", target)), target);
+            return;
+        }
 
         if (!_hands.TryGetActiveItem(user, out var item))
             return;
