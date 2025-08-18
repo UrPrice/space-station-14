@@ -1,9 +1,13 @@
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Server.Store.Conditions;
 using Content.Server.Store.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
+using Content.Shared.Store.Components;
 using Content.Shared.StoreDiscount.Components;
+using Robust.Server.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -18,6 +22,7 @@ public sealed class StoreDiscountSystem : EntitySystem
 
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly StoreSystem _store = default!; // ss220 nukeops discount
 
     /// <inheritdoc />
     public override void Initialize()
@@ -346,7 +351,7 @@ public sealed class StoreDiscountSystem : EntitySystem
 
             for (var i = indexToRemove + 1; i < _categories.Count; i++)
             {
-                _weights[i]-= discountCategory.Weight;
+                _weights[i] -= discountCategory.Weight;
             }
 
             _totalWeight -= discountCategory.Weight;
@@ -378,6 +383,18 @@ public sealed class StoreDiscountSystem : EntitySystem
             return null;
         }
     }
+    // ss220 nukeops discount start
+    public void TryAddDiscounts(EntityUid uid, StoreComponent comp)
+    {
+        if (!comp.UseDiscounts) return;
+
+        var discountComponent = EnsureComp<StoreDiscountComponent>(uid);
+        var listings = comp.FullListingsCatalog.ToArray();
+        var discounts = InitializeDiscounts(listings);
+        ApplyDiscounts(listings, discounts);
+        discountComponent.Discounts = discounts;
+    }
+    // ss220 nukeops discount end
 }
 
 /// <summary>

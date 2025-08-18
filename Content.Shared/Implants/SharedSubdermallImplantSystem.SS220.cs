@@ -30,23 +30,26 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem // SS2
     {
         if (component.ImplantedEntity is not { } ent)
             return;
-        if (!TryComp<SolutionContainerManagerComponent>(args.Performer, out var _performerSolutionComp)
-            || !TryComp<SolutionContainerManagerComponent>(uid, out var _implantSolutionComp))
+        if (!TryComp<SolutionContainerManagerComponent>(args.Performer, out var performerSolutionComp)
+            || !TryComp<SolutionContainerManagerComponent>(uid, out var implantSolutionComp))
             return;
 
-        if (!_solutionContainer.TryGetSolution(new(args.Performer, _performerSolutionComp), "chemicals", out var chemicalSolution))
+        if (!_solutionContainer.TryGetSolution(new(args.Performer, performerSolutionComp), "chemicals", out var chemicalSolution))
             return;
 
-        if (!_solutionContainer.TryGetSolution(new(uid, _implantSolutionComp), "beaker", out var beakerSolution))
+        if (!_solutionContainer.TryGetSolution(new(uid, implantSolutionComp), "beaker", out var beakerSolution))
             return;
 
-        _solutionContainer.TryTransferSolution(chemicalSolution.Value, beakerSolution.Value.Comp.Solution, beakerSolution.Value.Comp.Solution.Volume);
+        var transferAmount = beakerSolution.Value.Comp.Solution.Volume;
+        if (TryComp<LimitedChargesComponent>(args.Action, out var limitedCharges))
+            transferAmount /= limitedCharges.MaxCharges;
+
+        _solutionContainer.TryTransferSolution(chemicalSolution.Value, beakerSolution.Value.Comp.Solution, transferAmount);
 
         args.Handled = true;
 
         QueueDel(uid);
     }
-
     //ss220 dna copy implant add start
     private void OnDnaCopyImplant(Entity<SubdermalImplantComponent> ent, ref UseDnaCopyImplantEvent args)
     {
