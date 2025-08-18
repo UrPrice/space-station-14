@@ -1149,7 +1149,12 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         }
 
         if (needsInit)
+        // SS220-to-remove
+        {
+            Log.Info($"Trying to initialize and start entity with name {prototype?.Name} and uid {ToPrettyString(solutionId)}");
             EntityManager.InitializeAndStartEntity(solutionId, Transform(solutionId).MapID);
+        }
+        // SS220-to-remove
         solutionEntity = (solutionId, solutionComp);
         return true;
     }
