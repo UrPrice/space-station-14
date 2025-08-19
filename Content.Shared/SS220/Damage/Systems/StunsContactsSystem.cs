@@ -58,7 +58,7 @@ public sealed class StunsContactsSystem : EntitySystem
         if (_timing.CurTime < timeLastStunned + source.Comp.StunDelayTime + source.Comp.StunTime)
             return false;
 
-        if (_stun.TryAddParalyzeDuration(targetUid, source.Comp.StunTime))
+        if (_stun.TryUpdateParalyzeDuration(targetUid, source.Comp.StunTime))
         {
             DebugTools.Assert(source.Comp.TimeEntitiesStunned.ContainsKey(targetUid));
             source.Comp.TimeEntitiesStunned[targetUid] = _timing.CurTime;
