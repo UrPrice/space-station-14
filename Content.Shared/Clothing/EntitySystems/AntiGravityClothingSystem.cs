@@ -9,6 +9,7 @@ namespace Content.Shared.Clothing.EntitySystems;
 
 public sealed class AntiGravityClothingSystem : EntitySystem
 {
+    [Dependency] SharedGravitySystem _gravity = default!;
     /// <inheritdoc/>
     [Dependency] private readonly SharedJetpackSystem _jetpackSystem = default!; //SS220 Moonboots with jet fix
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!; //SS220 Moonboots with jet fix
@@ -16,7 +17,8 @@ public sealed class AntiGravityClothingSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<AntiGravityClothingComponent, InventoryRelayedEvent<IsWeightlessEvent>>(OnIsWeightless);
-        SubscribeLocalEvent<AntiGravityClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped); //SS220 Moonboots with jet fix
+        SubscribeLocalEvent<AntiGravityClothingComponent, ClothingGotEquippedEvent>(OnEquipped);
+        SubscribeLocalEvent<AntiGravityClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped);
     }
 
     private void OnIsWeightless(Entity<AntiGravityClothingComponent> ent, ref InventoryRelayedEvent<IsWeightlessEvent> args)
@@ -28,9 +30,15 @@ public sealed class AntiGravityClothingSystem : EntitySystem
         args.Args.IsWeightless = true;
     }
 
+    private void OnEquipped(Entity<AntiGravityClothingComponent> entity, ref ClothingGotEquippedEvent args)
+    {
+        _gravity.RefreshWeightless(args.Wearer, true);
+    }
+
     //SS220 Moonboots with jet fix begin
     private void OnUnequipped(Entity<AntiGravityClothingComponent> ent, ref ClothingGotUnequippedEvent args)
     {
+        _gravity.RefreshWeightless(args.Wearer, false);
         if (TryComp<JetpackUserComponent>(args.Wearer, out var jetpackUserComp) &&
             TryComp<JetpackComponent>(jetpackUserComp.Jetpack, out var jetpack))
         {
