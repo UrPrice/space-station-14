@@ -5,16 +5,14 @@ on:
   push:
     branches: [master]
     paths:
-      - '.github/workflows/update-wiki.yml'
-      - 'Content.Shared/Chemistry/**.cs'
+      - '.github/workflows/wiki-updater.yml'
+      - '**/Chemistry/**/**.*'
       - 'Content.Shared/**/EntityEffects/**/**.cs'
-      - 'Content.Server/Chemistry/**.cs'
-      - 'Content.Server/GuideGenerator/**.cs'
-      - 'Content.Server/SS220/Wiki/**.cs'
+      - 'Content.Server/GuideGenerator/**/**.cs'
+      - 'Content.Server/SS220/Wiki/**/**.cs'
       - 'Resousces/Locale/**/chemistry/**/**.ftl'
-      - 'Resources/**/Reagents/**.yml'
-      - 'Resources/**/Chemistry/**.yml'
-      - 'Resources/**/Recipes/Reactions/**.yml'
+      - 'Resources/**/Reagents/**/**.yml'
+      - 'Resources/**/Recipes/Reactions/**/**.yml'
       - 'RobustToolbox/'
 
 jobs:
