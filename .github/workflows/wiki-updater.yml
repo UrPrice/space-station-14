@@ -11,6 +11,7 @@ on:
       - 'Content.Server/Chemistry/**.cs'
       - 'Content.Server/GuideGenerator/**.cs'
       - 'Content.Server/SS220/Wiki/**.cs'
+      - 'Resousces/Locale/**/chemistry/**/**.ftl'
       - 'Resources/**/Reagents/**.yml'
       - 'Resources/**/Chemistry/**.yml'
       - 'Resources/**/Recipes/Reactions/**.yml'
