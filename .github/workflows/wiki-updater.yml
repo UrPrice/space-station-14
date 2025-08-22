@@ -3,10 +3,11 @@ name: "Wiki updater"
 on:
   workflow_dispatch:
   push:
-    branch: [master]
+    branches: [master]
     paths:
       - '.github/workflows/update-wiki.yml'
       - 'Content.Shared/Chemistry/**.cs'
+      - 'Content.Shared/**/EntityEffects/**/**.cs'
       - 'Content.Server/Chemistry/**.cs'
       - 'Content.Server/GuideGenerator/**.cs'
       - 'Content.Server/SS220/Wiki/**.cs'
