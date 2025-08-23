@@ -22173,32 +22173,6 @@ entities:
     - type: Transform
       pos: 47.33519,-10.501397
       parent: 2
-- proto: ActionBibleSummon
-  entities:
-  - uid: 8
-    components:
-    - type: Transform
-      parent: 7
-  - uid: 13
-    components:
-    - type: Transform
-      parent: 12
-- proto: ActionExorcism
-  entities:
-  - uid: 9
-    components:
-    - type: Transform
-      parent: 7
-  - uid: 14
-    components:
-    - type: Transform
-      parent: 12
-- proto: ActionSmartGasMask
-  entities:
-  - uid: 19
-    components:
-    - type: Transform
-      parent: 18
 - proto: AirAlarm
   entities:
   - uid: 60
@@ -31717,15 +31691,11 @@ entities:
     - type: Transform
       pos: 25.667038,30.781181
       parent: 2
-    - type: Summonable
-      summonActionEntity: 8
     - type: Storage
       storedItems:
         10:
           position: 0,1
           _rotation: South
-    - type: ExorcismPerformer
-      exorcismActionEntity: 9
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
@@ -31733,36 +31703,19 @@ entities:
           occludes: True
           ents:
           - 10
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 9
-          - 8
-    - type: ActionsContainer
   - uid: 12
     components:
     - type: Transform
       parent: 11
     - type: Summonable
-      summonActionEntity: 13
-    - type: ExorcismPerformer
-      exorcismActionEntity: 14
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
           showEnts: False
           occludes: True
           ents: []
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 14
-          - 13
     - type: Physics
       canCollide: False
-    - type: ActionsContainer
   - uid: 1446
     components:
     - type: Transform
@@ -70761,22 +70714,14 @@ entities:
     components:
     - type: Transform
       parent: 53
-    - type: HandheldLight
-      toggleActionEntity: 55
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
           showEnts: False
           occludes: True
           ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 55
     - type: Physics
       canCollide: False
-    - type: ActionsContainer
   - uid: 8896
     components:
     - type: Transform
@@ -70789,20 +70734,12 @@ entities:
     - type: Transform
       pos: 23.270351,-17.243336
       parent: 2
-    - type: HandheldLight
-      toggleActionEntity: 52
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
           showEnts: False
           occludes: True
           ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 52
-    - type: ActionsContainer
   - uid: 8897
     components:
     - type: Transform
@@ -71205,16 +71142,8 @@ entities:
     components:
     - type: Transform
       parent: 17
-    - type: SmartGasMask
-      smartGasMaskActionEntity: 19
     - type: Physics
       canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 19
   - uid: 8795
     components:
     - type: Transform
@@ -89538,44 +89467,20 @@ entities:
     components:
     - type: Transform
       parent: 29
-    - type: GasTank
-      toggleActionEntity: 31
     - type: Physics
       canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 31
   - uid: 32
     components:
     - type: Transform
       parent: 29
-    - type: GasTank
-      toggleActionEntity: 33
     - type: Physics
       canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 33
   - uid: 45
     components:
     - type: Transform
       parent: 44
-    - type: GasTank
-      toggleActionEntity: 46
     - type: Physics
       canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 46
   - uid: 11978
     components:
     - type: Transform
@@ -119561,9 +119466,6 @@ entities:
           ent: 20
     - type: Physics
       bodyType: Static
-    - type: Actions
-      actions:
-      - 19
   - uid: 53
     components:
     - type: Transform
