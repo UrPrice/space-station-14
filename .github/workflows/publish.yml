@@ -19,7 +19,7 @@ jobs:
           DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"username": "GitHub Publish Changes", "content": "🚀 Запущено обновление по ${{GITHUB.REF_NAME}} ветке!"}' \
+          -d '{"username": "GitHub Publish Changes", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": ":catrolling: Запущено обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
           $DISCORD_PUBLISH_NOTIFY
   # SS220 Discord Notifier end
 
@@ -28,7 +28,7 @@ jobs:
 
     steps:
     - name: Fail if we are attempting to run on the master branch
-      if: ${{GITHUB.REF_NAME == 'master' && github.repository == 'space-wizards/space-station-14'}}
+      if: ${{GITHUB.REF_NAME == 'master' && github.repository == 'SerbiaStrong-220/space-station-14'}}
       run: exit 1
 
     - name: Install dependencies
@@ -92,7 +92,15 @@ jobs:
           DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
         run: |
           curl -X PATCH -H "Content-Type: application/json" \
-          -d '{"username": "GitHub Actions", "content": "✅ Заверршено обновление по ${{GITHUB.REF_NAME}} ветке!"}' \
+          -d '{"username": "GitHub Actions", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "✅ Успешно обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
+          $DISCORD_PUBLISH_NOTIFY
+      - name: SS220 PN2D - Failure
+        if: failure()
+        env:
+          DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"username": "GitHub Actions", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "❌ Неуспешно обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
           $DISCORD_PUBLISH_NOTIFY
   # SS220 Discord Notifier end
 
