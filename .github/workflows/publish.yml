@@ -10,6 +10,19 @@ on:
     # - cron: '0 1 * * *'
 
 jobs:
+  # SS220 Discord Notifier bgn
+  notify_start:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SS220 PN2D - Start # PN2D - Publish notify to Discord
+        env:
+          DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"username": "GitHub Publish Changes", "content": "🚀 Запущено обновление по ${{GITHUB.REF_NAME}} ветке!"}' \
+          $DISCORD_PUBLISH_NOTIFY
+  # SS220 Discord Notifier end
+
   build:
     runs-on: ubuntu-latest
 
@@ -68,6 +81,21 @@ jobs:
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+
+  # SS220 Discord Notifier bgn
+  notify_end:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SS220 PN2D - End
+        if: success()
+        env:
+          DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
+        run: |
+          curl -X PATCH -H "Content-Type: application/json" \
+          -d '{"username": "GitHub Actions", "content": "✅ Заверршено обновление по ${{GITHUB.REF_NAME}} ветке!"}' \
+          $DISCORD_PUBLISH_NOTIFY
+  # SS220 Discord Notifier end
+
 # SS220 temp disable discord publish
     # - name: Publish changelog (Discord)
     #   continue-on-error: true
