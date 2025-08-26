@@ -10,23 +10,20 @@ on:
     # - cron: '0 1 * * *'
 
 jobs:
-  # SS220 Discord Notifier bgn
-  notify_start:
-    runs-on: ubuntu-latest
-    steps:
-      - name: SS220 PN2D - Start # PN2D - Publish notify to Discord
-        env:
-          DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"username": "GitHub Publish Changes", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "<a:catrolling:1409809407721869312> Запущено обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
-          $DISCORD_PUBLISH_NOTIFY
-  # SS220 Discord Notifier end
 
   build:
     runs-on: ubuntu-latest
 
     steps:
+  # SS220 Discord Notifier bgn
+    - name: SS220 PN2D - Start # PN2D - Publish notify to Discord
+      env:
+        DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
+      run: |
+        curl -X POST -H "Content-Type: application/json" \
+        -d '{"username": "GitHub Publish Changes", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "<a:catrolling:1409809407721869312> Запущено обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
+        $DISCORD_PUBLISH_NOTIFY
+  # SS220 Discord Notifier end
     - name: Fail if we are attempting to run on the master branch
       if: ${{GITHUB.REF_NAME == 'master' && github.repository == 'SerbiaStrong-220/space-station-14'}}
       run: exit 1
@@ -81,28 +78,24 @@ jobs:
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
-
   # SS220 Discord Notifier bgn
-  notify_end:
-    runs-on: ubuntu-latest
-    steps:
-      - name: SS220 PN2D - End
-        if: success()
-        env:
-          DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
-        run: |
-          curl -X PATCH -H "Content-Type: application/json" \
-          -d '{"username": "GitHub Actions", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "✅ Успешно обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
-          $DISCORD_PUBLISH_NOTIFY
-      - name: SS220 PN2D - Failure
-        if: failure()
-        env:
-          DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"username": "GitHub Actions", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "❌ Неуспешно обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
-          $DISCORD_PUBLISH_NOTIFY
-  # SS220 Discord Notifier end
+    - name: SS220 PN2D - End
+      if: success()
+      env:
+        DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
+      run: |
+        curl -X PATCH -H "Content-Type: application/json" \
+        -d '{"username": "GitHub Actions", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "✅ Успешно обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
+        $DISCORD_PUBLISH_NOTIFY
+    - name: SS220 PN2D - Failure
+      if: failure()
+      env:
+        DISCORD_PUBLISH_NOTIFY: ${{ secrets.DISCORD_PUBLISH_NOTIFY }}
+      run: |
+        curl -X POST -H "Content-Type: application/json" \
+        -d '{"username": "GitHub Actions", "avatar_url": "https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/refs/heads/master/logo.png", "content": "❌ Неуспешно обновление по `${{GITHUB.REF_NAME}}` ветке!"}' \
+        $DISCORD_PUBLISH_NOTIFY
+# SS220 Discord Notifier end
 
 # SS220 temp disable discord publish
     # - name: Publish changelog (Discord)
