@@ -1,22 +1,4 @@
 ﻿Entries:
-- author: ReeZii
-  changes:
-  - message: "\u0422\u0435\u043F\u0435\u0440\u044C \u0440\u0435\u0430\u0433\u0435\u043D\
-      \u0442\u044B \u0432 \u0425\u0438\u043C\u041C\u0430\u0441\u0442\u0435\u0440\u0435\
-      \ \u0441\u043E\u0440\u0442\u0438\u0440\u0443\u044E\u0442\u0441\u044F \u043F\u043E\
-      \ \u0438\u043C\u0435\u043D\u0438"
-    type: Tweak
-  id: 628
-  time: '2024-10-27T20:15:30.0000000+00:00'
-  url: https://github.com/SerbiaStrong-220/space-station-14/pull/2114
-- author: NORKA
-  changes:
-  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043D\u043E\u0432\u044B\
-      \u0439 \u043B\u043E\u0431\u0431\u0438-\u0430\u0440\u0442!"
-    type: Add
-  id: 629
-  time: '2024-10-28T05:57:48.0000000+00:00'
-  url: https://github.com/SerbiaStrong-220/space-station-14/pull/2171
 - author: spo9k
   changes:
   - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430 \u043A\u0430\u0440\
@@ -7344,3 +7326,23 @@
   id: 1127
   time: '2025-08-31T17:34:58.0000000+00:00'
   url: https://github.com/SerbiaStrong-220/space-station-14/pull/3301
+- author: Kemran
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u0445\u043E\u0442\
+      \u043A\u0435\u0438 \u0443\u043C\u043D\u043E\u0439 \u043C\u0430\u0441\u043A\u0438\
+      \ \u043F\u0440\u043E\u0442\u0438\u0432\u043E\u0433\u0430\u0437\u0430\u043C \u0413\
+      \u0421\u0411 \u0438 \u041E\u0421\u0429."
+    type: Add
+  id: 1128
+  time: '2025-08-31T17:39:48.0000000+00:00'
+  url: https://github.com/SerbiaStrong-220/space-station-14/pull/3299
+- author: Kemran
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043F\u0438\u0440\u0430\
+      \u0442\u0441\u043A\u0438\u0439 \u0430\u043A\u0446\u0435\u043D\u0442 \u0442\u0440\
+      \u0435\u0443\u0433\u043E\u043B\u043A\u0435 \u0438 \u043F\u043B\u0430\u0449\u0443\
+      \ \u043F\u0438\u0440\u0430\u0442\u043E\u0432."
+    type: Add
+  id: 1129
+  time: '2025-08-31T17:39:56.0000000+00:00'
+  url: https://github.com/SerbiaStrong-220/space-station-14/pull/3298
