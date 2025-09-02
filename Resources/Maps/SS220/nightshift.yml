@@ -70757,26 +70757,6 @@ entities:
       parent: 2
 - proto: ClothingHeadHatHardhatRed
   entities:
-  - uid: 54
-    components:
-    - type: Transform
-      parent: 53
-    - type: HandheldLight
-      toggleActionEntity: 55
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 55
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
   - uid: 8896
     components:
     - type: Transform
@@ -70784,25 +70764,6 @@ entities:
       parent: 2
 - proto: ClothingHeadHatHardhatYellow
   entities:
-  - uid: 51
-    components:
-    - type: Transform
-      pos: 23.270351,-17.243336
-      parent: 2
-    - type: HandheldLight
-      toggleActionEntity: 52
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        actions: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 52
-    - type: ActionsContainer
   - uid: 8897
     components:
     - type: Transform
@@ -88450,9 +88411,6 @@ entities:
         50:
           position: 0,0
           _rotation: East
-        45:
-          position: 2,0
-          _rotation: South
         47:
           position: 3,0
           _rotation: South
@@ -88469,7 +88427,6 @@ entities:
           occludes: True
           ents:
           - 50
-          - 45
           - 47
           - 49
           - 48
@@ -89534,48 +89491,6 @@ entities:
       parent: 2
 - proto: EmergencyOxygenTankFilled
   entities:
-  - uid: 30
-    components:
-    - type: Transform
-      parent: 29
-    - type: GasTank
-      toggleActionEntity: 31
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 31
-  - uid: 32
-    components:
-    - type: Transform
-      parent: 29
-    - type: GasTank
-      toggleActionEntity: 33
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 33
-  - uid: 45
-    components:
-    - type: Transform
-      parent: 44
-    - type: GasTank
-      toggleActionEntity: 46
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 46
   - uid: 11978
     components:
     - type: Transform
@@ -119594,7 +119509,7 @@ entities:
         head: !type:ContainerSlot
           showEnts: False
           occludes: False
-          ent: 54
+          ent: null
         suitstorage: !type:ContainerSlot
           showEnts: False
           occludes: False
@@ -136915,12 +136830,6 @@ entities:
         35:
           position: 2,0
           _rotation: South
-        30:
-          position: 3,0
-          _rotation: South
-        32:
-          position: 3,3
-          _rotation: South
         37:
           position: 0,0
           _rotation: South
@@ -136941,12 +136850,9 @@ entities:
           ents:
           - 34
           - 35
-          - 30
           - 36
-          - 32
           - 37
           - 38
-          - 39
           - 40
 - proto: ShelfWood
   entities:
