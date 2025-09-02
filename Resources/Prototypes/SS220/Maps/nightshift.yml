@@ -93,5 +93,5 @@
     - type: StationMinimap
       minimapData: !type:StationMinimapData
         mapTexture: SS220/ViewableMaps/nightshift.png
-        originOffset: -8, -100
+        originOffset: -10, -114
         mapScale: 6.4
