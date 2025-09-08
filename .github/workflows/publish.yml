@@ -12,7 +12,8 @@ on:
 jobs:
 
   build:
-    runs-on: [self-hosted, Linux, X64, MainRunner]
+    runs-on: self-hosted
+
     steps:
   # SS220 Discord Notifier bgn
     - name: SS220 PN2D - Start # PN2D - Publish notify to Discord
