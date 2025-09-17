@@ -1,4 +1,6 @@
 using System.Numerics;
+using System.Linq;
+using Content.Client.Pinpointer.UI;
 using Content.Shared.Silicons.StationAi;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -26,10 +28,10 @@ public sealed class StationAiOverlay : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private readonly HashSet<Vector2i> _visibleTiles = new();
-
+    private readonly NavMapControl _navMap = new();
     private IRenderTexture? _staticTexture;
     private IRenderTexture? _stencilTexture;
-
+    private Dictionary<Color, Color> _sRGBLookUp = new();
     private float _updateRate = 1f / 30f;
     private float _accumulator;
 
@@ -61,33 +63,36 @@ public sealed class StationAiOverlay : Overlay
         _entManager.TryGetComponent(gridUid, out BroadphaseComponent? broadphase);
 
         var invMatrix = args.Viewport.GetWorldToLocalMatrix();
-        _accumulator -= (float) _timing.FrameTime.TotalSeconds;
+        _accumulator -= (float)_timing.FrameTime.TotalSeconds;
 
         if (grid != null && broadphase != null)
         {
-            var maps = _entManager.System<SharedMapSystem>();
+            var maps = _entManager.System<SharedMapSystem>(); // ss220-mgs
             var lookups = _entManager.System<EntityLookupSystem>();
             var xforms = _entManager.System<SharedTransformSystem>();
-            var vision = _entManager.System<StationAiVisionSystem>();
+            var vision = _entManager.System<StationAiVisionSystem>(); // ss220-mgs
 
             if (_accumulator <= 0f)
             {
                 _visibleTiles.Clear();
-                vision.GetView((gridUid, broadphase, grid), worldBounds.Enlarged(1f), _visibleTiles, new HashSet<Vector2i>());
+                // _entManager.System<StationAiVisionSystem>().GetView((gridUid, broadphase, grid), worldBounds, _visibleTiles);
+                vision.GetView((gridUid, broadphase, grid), worldBounds.Enlarged(1f), _visibleTiles, new HashSet<Vector2i>()); // ss220-mgs
             }
 
             var gridMatrix = xforms.GetWorldMatrix(gridUid);
-            var matty =  Matrix3x2.Multiply(gridMatrix, invMatrix);
+            var matty = Matrix3x2.Multiply(gridMatrix, invMatrix);
 
             // Draw visible tiles to stencil
             worldHandle.RenderInRenderTarget(_stencilTexture!, () =>
             {
+                // ss220-mgs bgn
                 worldHandle.SetTransform(matty);
-
+                DrawOverlay(worldHandle);
                 foreach (var tile in _visibleTiles)
                 {
                     var aabb = lookups.GetLocalBounds(tile, grid.TileSize);
                     worldHandle.DrawRect(aabb, Color.White);
+
                 }
             },
             Color.Transparent);
@@ -99,7 +104,7 @@ public sealed class StationAiOverlay : Overlay
                 worldHandle.SetTransform(matty);
                 var shader = _proto.Index(CameraStaticShader).Instance();
                 worldHandle.UseShader(shader);
-                var tiles = _mapSystem.GetTilesEnumerator(gridUid, grid, worldBounds.Enlarged(grid.TileSize / 2f));
+                var tiles = maps.GetTilesEnumerator(gridUid, grid, worldBounds.Enlarged(grid.TileSize / 2f));
                 var gridEnt = new Entity<BroadphaseComponent, MapGridComponent>(gridUid, _entManager.GetComponent<BroadphaseComponent>(gridUid), grid);
                 var airlockVertCache = new ValueList<Vector2>(9);
                 var airlockColor = Color.Gold;
@@ -180,39 +185,35 @@ public sealed class StationAiOverlay : Overlay
                             }
 
                             worldHandle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, airlockVertCache.Span, airlockColor.WithAlpha(0.05f));
+                            // ss220-mgs end
                         }
 
                         continue;
                     }
-
-
-                    var occluded = vision.IsOccluded(gridEnt, tileRef.GridIndices);
-
+                    // var occluded = vision.IsOccluded(gridEnt, tileRef.GridIndices);
                     // Draw walls
-                    if (occluded)
-                    {
-                        worldHandle.DrawRect(aabb, Color.LimeGreen.WithAlpha(0.05f));
-                        worldHandle.DrawRect(aabb, Color.LimeGreen, filled: false);
-                    }
+                    // if (occluded)
+                    // {
+                    //     worldHandle.DrawRect(aabb, Color.White.WithAlpha(0.05f));
+                    //     worldHandle.DrawRect(aabb, Color.White, filled: false);
+                    // }
                     // Draw tiles
-                    else
-                    {
-                        worldHandle.DrawRect(aabb, Color.Green.WithAlpha(0.35f), filled: false);
-                    }
+                    // else
+                    // {
+                    //     worldHandle.DrawRect(aabb, Color.Green.WithAlpha(0.35f), filled: false);
+                    // }
                 }
 
                 worldHandle.DrawPrimitives(DrawPrimitiveTopology.LineList, airlockVerts.Span, Color.Gold);
             },
             Color.Black);
         }
-        // Not on a grid
         else
         {
             worldHandle.RenderInRenderTarget(_stencilTexture!, () =>
             {
             },
             Color.Transparent);
-
             worldHandle.RenderInRenderTarget(_staticTexture!,
             () =>
             {
@@ -227,15 +228,72 @@ public sealed class StationAiOverlay : Overlay
         }
 
         // Use the lighting as a mask
-        worldHandle.UseShader(_proto.Index(StencilMaskShader).Instance());
+        worldHandle.UseShader(_proto.Index<ShaderPrototype>("StencilMask").Instance());
         worldHandle.DrawTextureRect(_stencilTexture!.Texture, worldBounds);
-
         // Draw the static
-        worldHandle.UseShader(_proto.Index(StencilDrawShader).Instance());
+        worldHandle.UseShader(_proto.Index<ShaderPrototype>("StencilDraw").Instance());
         worldHandle.DrawTextureRect(_staticTexture!.Texture, worldBounds);
-
         worldHandle.SetTransform(Matrix3x2.Identity);
         worldHandle.UseShader(null);
-
     }
+
+    // ss220-mgs bgn
+    protected void DrawOverlay(DrawingHandleWorld handle)
+    {
+        _navMap.WallColor = new(200, 200, 200);
+        _navMap.TileColor = new(100, 100, 100);
+
+        // Wall sRGB
+        if (!_sRGBLookUp.TryGetValue(_navMap.WallColor, out var wallsRGB))
+        {
+            wallsRGB = Color.ToSrgb(_navMap.WallColor);
+            _sRGBLookUp[_navMap.WallColor] = wallsRGB;
+        }
+
+        // Draw floor tiles
+        if (_navMap.TilePolygons.Any())
+        {
+            foreach (var (polygonVerts, polygonColor) in _navMap.TilePolygons)
+            {
+                handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, polygonVerts[..polygonVerts.Length], polygonColor);
+            }
+        }
+
+        // Draw map lines
+        if (_navMap.TileLines.Any())
+        {
+            var lines = new ValueList<Vector2>(_navMap.TileLines.Count * 2);
+
+            if (lines.Count > 0)
+                handle.DrawPrimitives(DrawPrimitiveTopology.LineList, lines.Span, wallsRGB);
+        }
+
+        // Draw map rects
+        if (_navMap.TileRects.Any())
+        {
+            var rects = new ValueList<Vector2>(_navMap.TileRects.Count * 8);
+
+            foreach (var (lt, rb) in _navMap.TileRects)
+            {
+                var leftTop = new Vector2(lt.X, lt.Y);
+                var rightBottom = new Vector2(rb.X, rb.Y);
+
+                var rightTop = new Vector2(rightBottom.X, leftTop.Y);
+                var leftBottom = new Vector2(leftTop.X, rightBottom.Y);
+
+                rects.Add(leftTop);
+                rects.Add(rightTop);
+                rects.Add(rightTop);
+                rects.Add(rightBottom);
+                rects.Add(rightBottom);
+                rects.Add(leftBottom);
+                rects.Add(leftBottom);
+                rects.Add(leftTop);
+            }
+
+            if (rects.Count > 0)
+                handle.DrawPrimitives(DrawPrimitiveTopology.LineList, rects.Span, wallsRGB);
+        }
+    }
+    // ss220-mgs end
 }
