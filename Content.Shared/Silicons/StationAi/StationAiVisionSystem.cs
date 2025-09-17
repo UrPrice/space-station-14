@@ -252,7 +252,7 @@ public sealed class StationAiVisionSystem : EntitySystem
 
             if (IsOccluded(grid, tileRef.GridIndices)) // ss220-mgs
             {
-                opaque.Add(tileRef.GridIndices);
+                opaque.Add(tileRef.GridIndices); // ss220-mgs
             }
         }
 

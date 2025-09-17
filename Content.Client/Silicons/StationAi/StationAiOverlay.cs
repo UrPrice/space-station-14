@@ -29,9 +29,9 @@ public sealed class StationAiOverlay : Overlay
 
     private readonly HashSet<Vector2i> _visibleTiles = new();
     private readonly NavMapControl _navMap = new();
+    private Dictionary<Color, Color> _sRGBLookUp = new();
     private IRenderTexture? _staticTexture;
     private IRenderTexture? _stencilTexture;
-    private Dictionary<Color, Color> _sRGBLookUp = new();
     private float _updateRate = 1f / 30f;
     private float _accumulator;
 
@@ -53,7 +53,6 @@ public sealed class StationAiOverlay : Overlay
         }
 
         var worldHandle = args.WorldHandle;
-
         var worldBounds = args.WorldBounds;
 
         var playerEnt = _player.LocalEntity;
@@ -85,9 +84,7 @@ public sealed class StationAiOverlay : Overlay
             // Draw visible tiles to stencil
             worldHandle.RenderInRenderTarget(_stencilTexture!, () =>
             {
-                // ss220-mgs bgn
                 worldHandle.SetTransform(matty);
-                DrawOverlay(worldHandle);
                 foreach (var tile in _visibleTiles)
                 {
                     var aabb = lookups.GetLocalBounds(tile, grid.TileSize);
@@ -101,6 +98,7 @@ public sealed class StationAiOverlay : Overlay
             worldHandle.RenderInRenderTarget(_staticTexture!,
             () =>
             {
+                // ss220-mgs bgn
                 worldHandle.SetTransform(matty);
                 var shader = _proto.Index(CameraStaticShader).Instance();
                 worldHandle.UseShader(shader);
@@ -187,7 +185,7 @@ public sealed class StationAiOverlay : Overlay
                             worldHandle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, airlockVertCache.Span, airlockColor.WithAlpha(0.05f));
                             // ss220-mgs end
                         }
-
+                        DrawOverlay(worldHandle); // ss220-mgs
                         continue;
                     }
                     // var occluded = vision.IsOccluded(gridEnt, tileRef.GridIndices);
@@ -243,6 +241,9 @@ public sealed class StationAiOverlay : Overlay
         _navMap.WallColor = new(200, 200, 200);
         _navMap.TileColor = new(100, 100, 100);
 
+        if (_navMap == null)
+            return;
+
         // Wall sRGB
         if (!_sRGBLookUp.TryGetValue(_navMap.WallColor, out var wallsRGB))
         {
@@ -275,8 +276,8 @@ public sealed class StationAiOverlay : Overlay
 
             foreach (var (lt, rb) in _navMap.TileRects)
             {
-                var leftTop = new Vector2(lt.X, lt.Y);
-                var rightBottom = new Vector2(rb.X, rb.Y);
+                var leftTop = new Vector2(lt.X, -lt.Y);
+                var rightBottom = new Vector2(rb.X, -rb.Y);
 
                 var rightTop = new Vector2(rightBottom.X, leftTop.Y);
                 var leftBottom = new Vector2(leftTop.X, rightBottom.Y);
