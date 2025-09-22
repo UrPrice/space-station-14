@@ -36,8 +36,8 @@ public sealed partial class TTSSystem
     private float _volume = 0.0f;
     private float _radioVolume = 0.0f;
 
-    private readonly int _maxQueuedPerEntity = 20;
-    private readonly int _maxEntitiesQueued = 30;
+    private int _maxQueuedPerEntity = 20;
+    private int _maxEntitiesQueued = 30;
     private readonly Dictionary<EntityUid, Queue<PlayRequest>> _playQueues = new();
     private readonly Dictionary<EntityUid, EntityUid?> _playingStreams = new();
 
@@ -47,8 +47,8 @@ public sealed partial class TTSSystem
     {
         _sawmill = Logger.GetSawmill("tts");
 
-        Subs.CVar(_config, CCVars220.MaxQueuedPerEntity, (x) => _maxQueuedPerEntity = x, true);
-        Subs.CVar(_config, CCVars220.MaxEntitiesQueued, (x) => _maxEntitiesQueued = x, true);
+        Subs.CVar(_cfg, CCVars220.MaxQueuedPerEntity, (x) => _maxQueuedPerEntity = x, true);
+        Subs.CVar(_cfg, CCVars220.MaxEntitiesQueued, (x) => _maxEntitiesQueued = x, true);
         _cfg.OnValueChanged(CCCVars.TTSVolume, OnTtsVolumeChanged, true);
         _cfg.OnValueChanged(CCCVars.TTSRadioVolume, OnTtsRadioVolumeChanged, true);
 
