@@ -1,12 +1,4 @@
 ﻿Entries:
-- author: NightmareStalker
-  changes:
-  - message: "\u0418\u0437\u043C\u0435\u043D\u0435\u043D \u042F\u041E \u0410\u0432\
-      \u0430\u043D\u043F\u043E\u0441\u0442 \u043F\u043E\u0434 \u0437\u0438\u043C\u0443"
-    type: Tweak
-  id: 682
-  time: '2024-12-02T02:06:59.0000000+00:00'
-  url: https://github.com/SerbiaStrong-220/space-station-14/pull/2284
 - author: AlwyAnri
   changes:
   - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043E \u0441\u043B\
@@ -7342,3 +7334,20 @@
   id: 1181
   time: '2025-10-02T15:46:09.0000000+00:00'
   url: https://github.com/SerbiaStrong-220/space-station-14/pull/3385
+- author: SkaldetSkaeg
+  changes:
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u044B \u0441\u043F\
+      \u0440\u0430\u0439\u0442\u044B \u043B\u0430\u043C\u043F\u044B \u043A\u0443\u043B\
+      \u044C\u0442\u0430"
+    type: Fix
+  - message: "\u041C\u044B\u0448\u044C \u043A\u0443\u043B\u044C\u0442\u0430 \u0431\
+      \u043E\u043B\u044C\u0448\u0435 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043E\
+      \u0442\u043A\u0440\u044B\u0432\u0430\u0442\u044C \u0434\u0432\u0435\u0440\u0438"
+    type: Fix
+  - message: "\u041F\u043E\u0444\u0438\u043A\u0448\u0435\u043D \u0445\u0430\u043C\u0435\
+      \u043B\u0435\u043E\u043D \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440 \u043A\
+      \u0443\u043B\u044C\u0442\u0430"
+    type: Fix
+  id: 1182
+  time: '2025-10-02T16:18:28.0000000+00:00'
+  url: https://github.com/SerbiaStrong-220/space-station-14/pull/3403
