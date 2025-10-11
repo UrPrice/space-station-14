@@ -10,6 +10,7 @@ jobs:
       - name: Переименование задач в другом репозитории
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.URPRICE_PAT }}
           script: |
             const issues = await github.paginate(
               github.rest.issues.listForRepo,
@@ -17,7 +18,6 @@ jobs:
                 owner: "SerbiaStrong-220",
                 repo: "DevTeam220",
                 state: "open",
-                per_page: 100,
               }
             );
             const filtered = issues.filter(issue => issue.title.includes("[Идея]"));
