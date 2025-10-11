@@ -19,7 +19,7 @@ jobs:
                 repo: "DevTeam220",
                 state: "open",
                 per_page: 100,
-                labels: "Feauture",
+                labels: "Feature",
               }
             );
             const filtered = issues.filter(issue => issue.title.includes("[Идея]"));
