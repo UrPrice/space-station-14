@@ -15,6 +15,7 @@ jobs:
             const issues = await github.paginate(
               github.rest.issues.listForRepo,
               {
+                auth: ${{ secrets.URPRICE_PAT }},
                 owner: "SerbiaStrong-220",
                 repo: "DevTeam220",
                 state: "open",
@@ -25,6 +26,7 @@ jobs:
               const newTitle = issue.title.replace("[Идея]", "[F]:");
               if (newTitle !== issue.title) {
                 await github.rest.issues.update({
+                  auth: ${{ secrets.URPRICE_PAT }},
                   owner: "SerbiaStrong-220",
                   repo: "DevTeam220",
                   issue_number: issue.number,
