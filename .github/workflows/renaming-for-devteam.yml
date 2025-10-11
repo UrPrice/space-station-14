@@ -1,4 +1,4 @@
-name: Переименование "[Идея]" на "[F]:" в другом репозитории
+name: Переименование "[Идея]" на "[F]:" в DevTeam220
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ jobs:
   rename-issues:
     runs-on: ubuntu-latest
     steps:
-      - name: Переименование задач в другом репозитории
+      - name: Переименование задач в DevTeam220
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.URPRICE_PAT }}
@@ -15,10 +15,11 @@ jobs:
             const issues = await github.paginate(
               github.rest.issues.listForRepo,
               {
-                auth: ${{ secrets.URPRICE_PAT }},
                 owner: "SerbiaStrong-220",
                 repo: "DevTeam220",
                 state: "open",
+                per_page: 100,
+                labels: "Feauture",
               }
             );
             const filtered = issues.filter(issue => issue.title.includes("[Идея]"));
@@ -26,7 +27,6 @@ jobs:
               const newTitle = issue.title.replace("[Идея]", "[F]:");
               if (newTitle !== issue.title) {
                 await github.rest.issues.update({
-                  auth: ${{ secrets.URPRICE_PAT }},
                   owner: "SerbiaStrong-220",
                   repo: "DevTeam220",
                   issue_number: issue.number,
