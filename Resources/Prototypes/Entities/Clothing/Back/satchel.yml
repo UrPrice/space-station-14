@@ -75,6 +75,12 @@
     microFiberMaterial: micro-fibers-textile
     microFiberColor: micro-fibers-green
 #SS220 Micro_fibers end
+      params:
+        variation: 0.125
+    storageInsertSound:
+      collection: FootstepClown
+      params:
+        variation: 0.125
 
 - type: entity
   parent: ClothingBackpackSatchel
@@ -89,6 +95,9 @@
     microFiberMaterial: micro-fibers-textile
     microFiberColor: micro-fibers-white
 #SS220 Micro_fibers end
+  - type: Storage
+    storageOpenSound: null
+    storageInsertSound: null
 
 - type: entity
   parent: ClothingBackpackSatchel

@@ -30,6 +30,7 @@
 - type: entity
   parent: BaseKeyedInstrument
   id: SuperSynthesizerInstrument
+  suffix: Admin
   name: super synthesizer
   description: Blasting the ghetto with Touhou MIDIs since 2020.
   suffix: For playtime #SS220-add-time-loadout-suffix
@@ -37,13 +38,20 @@
   - type: Instrument
     allowPercussion: true
     allowProgramChange: true
-    respectMidiLimits: false
   - type: Sprite
     sprite: SS220/Objects/Fun/Instruments/h_synthesizer.rsi # SS220 Synthesizer resprite
     state: supersynth
   - type: Item
     heldPrefix: super
     sprite: SS220/Objects/Fun/Instruments/h_synthesizer.rsi # SS220 Synthesizer resprite
+
+- type: entity
+  parent: SuperSynthesizerInstrument
+  id: SuperSynthesizerNoLimitInstrument
+  suffix: NoLimits Admin
+  components:
+  - type: Instrument
+    respectMidiLimits: false
 
 - type: entity
   parent: BaseKeyedInstrument

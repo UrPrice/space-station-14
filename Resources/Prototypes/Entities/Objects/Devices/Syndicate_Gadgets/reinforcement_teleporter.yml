@@ -177,6 +177,7 @@
       - MindRoleGhostRoleSilicon
       raffle:
         settings: default
+      job: Borg
     - type: GhostRoleMobSpawner
       prototype: PlayerBorgSyndicateAssaultBattery
 # Corvax-HiddenDesc-Start
