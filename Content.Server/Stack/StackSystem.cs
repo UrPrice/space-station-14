@@ -176,11 +176,11 @@ namespace Content.Server.Stack
                         return;
 
                     _quickDialog.OpenDialog(actorComp.PlayerSession,
-                        Loc.GetString("custom-amount-title"),
-                        Loc.GetString("custom-amount-prompt"),
+                        Loc.GetString(title),
+                        Loc.GetString(prompt),
                         (int amount) =>
                         {
-                            UserSplit(uid, args.User, amount, stack);
+                            UserSplit(stackEntity.Owner, user, amount, stackEntity.Comp);
                         },
                         () =>
                         {

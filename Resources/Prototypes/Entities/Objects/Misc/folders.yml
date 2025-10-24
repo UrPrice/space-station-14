@@ -156,18 +156,6 @@
     - state: folder-base
 
 - type: entity
-  id: BoxFolderWhite
-  parent: BoxFolderBase
-  suffix: White
-  components:
-  - type: Sprite
-    sprite: SS220/Objects/Misc/bureaucracy.rsi #SS220-RespriteFolders
-    layers:
-    - state: folder-colormap #SS220-RespriteFolders-Begin
-      color: "#eeeeee" #SS220-RespriteFolders-End
-    - state: folder-base
-
-- type: entity
   parent: [BoxFolderYellowEmpty, BoxFolderFillThreePapers]
   id: BoxFolderYellowThreePapers
   suffix: Yellow, 3 papers

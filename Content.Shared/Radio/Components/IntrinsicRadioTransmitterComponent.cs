@@ -19,6 +19,6 @@ public sealed partial class IntrinsicRadioTransmitterComponent : Component
     ///     Channels that an entity can use by encryption keys
     /// </summary>
     [ViewVariables]
-    public HashSet<string> EncryptionKeyChannels = new();
+    public HashSet<ProtoId<RadioChannelPrototype>> EncryptionKeyChannels = new();
     //SS220 PAI with encryption keys end
 }

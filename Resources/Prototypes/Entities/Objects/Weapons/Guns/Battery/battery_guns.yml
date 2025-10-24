@@ -963,11 +963,13 @@
   - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/energy_magnum.rsi
-  - type: Tag
-    tags:
-    - HighRiskItem
-  - type: StealTarget
-    stealGroup: WeaponEnergyMagnum
+  # SS220-multiphase-gun-instead-of-magnum-begin
+  # - type: Tag
+  #   tags:
+  #   - HighRiskItem
+  # - type: StealTarget
+  #   stealGroup: WeaponEnergyMagnum
+  # SS220-multiphase-gun-instead-of-magnum-end
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg

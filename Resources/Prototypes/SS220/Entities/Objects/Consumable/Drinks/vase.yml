@@ -1,7 +1,7 @@
 - type: entity
   name: Glass Vase
   description: strangely shaped glass vase, what is it for?
-  parent: DrinkGlassBase
+  parent: DrinkGlass
   id: GlassVase
   components:
   - type: Sprite

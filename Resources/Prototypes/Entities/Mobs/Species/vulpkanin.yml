@@ -3,14 +3,24 @@
   save: false
   parent: [BaseMobSpeciesOrganic]
   id: BaseMobVulpkanin
-  name: Urist McBark
+  name: Urist McVulp # SS220-port-vulpkanin
   components:
+  # SS220-port-vulpkanins-begin
+  - type: VulpkaninAccent
+  - type: Wagging
+    action: ActionToggleWaggingVulp
+  - type: Language
+    selectedLanguage: Galactic
+    availableLanguages:
+    - id: Galactic
+    - id: Canilunzt
+  # SS220-port-vulpkanins-end
   - type: Hunger
   - type: Thirst
   - type: MessyDrinker
     spillChance: 0.33
   - type: Icon
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: SS220/Mobs/Species/Vulpkanin/parts.rsi
     state: full
   - type: Body
     prototype: Vulpkanin
@@ -31,8 +41,11 @@
     animation: WeaponArcClaw
     damage:
       types:
-        Piercing: 2
-        Slash: 3
+        #SS220-port-vulpkanins-begin
+        # Piercing: 2
+        # Slash: 3
+        Slash: 5.5
+        #SS220-port-vulpkanins-end
   - type: Temperature # Same as moth temperatures until below is solved.
     heatDamageThreshold: 320 # TODO: 315 when there is a way to make the temperature alert not blink to the side of the screen and disappear when you "sweat" at 39C.
     coldDamageThreshold: 230 # TODO: 220 when the above is solved.

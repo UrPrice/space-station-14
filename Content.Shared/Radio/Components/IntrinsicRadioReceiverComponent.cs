@@ -1,5 +1,6 @@
 using Content.Shared.Radio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.Radio.Components;
@@ -9,15 +10,17 @@ namespace Content.Server.Radio.Components;
 ///     automatically add an <see cref="ActiveRadioComponent"/>, which is required to receive radio messages on specific
 ///     channels.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
+[NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class IntrinsicRadioReceiverComponent : Component
 {
     //SS220 PAI with encryption keys begin
     /// <summary>
     ///     Channels that will not be deleted from <see cref="ActiveRadioComponent"/> when extracting the encryption key from the entity
     /// </summary>
-    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
-    public HashSet<string> Channels = new();
+    [DataField]
+    [AutoNetworkedField]
+    public HashSet<ProtoId<RadioChannelPrototype>> Channels = new();
     //SS220 PAI with encryption keys end
     //SS220 Silicon TTS fix begin
     /// <summary>

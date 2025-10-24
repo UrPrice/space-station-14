@@ -154,14 +154,14 @@
       #ss220 stumulants buff begin
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Nocturine
           min: 1
         reagent: Nocturine
         amount: -3
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Haloperidol
           min: 1
         reagent: Haloperidol

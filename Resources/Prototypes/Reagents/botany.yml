@@ -146,6 +146,7 @@
             Asphyxiation: 1
             Heat: 2
             Poison: 1
+      # SS220-etot-tomat-begin
       - !type:HealthChange
         damage:
           types:
@@ -153,8 +154,9 @@
             Slash: -2
             Piercing: -2
         conditions:
-        - !type:OrganType
-          type: Hydroponic
+        - !type:MetabolizerTypeCondition
+          type: [ Hydroponic ]
+      # SS220-tot-tomat-end
     Medicine:
       effects:
       - !type:Polymorph
@@ -311,6 +313,7 @@
         damage:
           types:
             Caustic: 1
+      # SS220-add-effect-for-pomidors-begin
       - !type:HealthChange
         damage:
           types:
@@ -323,5 +326,6 @@
             Shock: -1
             Caustic: -1
         conditions:
-        - !type:OrganType
-          type: Hydroponic
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
+      # SS220-add-effect-for-pomidors-end

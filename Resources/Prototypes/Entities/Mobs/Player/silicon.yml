@@ -478,8 +478,6 @@
   - type: Sprite
     # Once it's in a core it's pretty much an abstract entity at that point.
     visible: false
-  - type: BlockMovement
-    blockInteraction: false
 #SS220 languages revive begin
   - type: Language
     selectedLanguage: Galactic
@@ -652,15 +650,9 @@
       name: ghost-role-information-syndicate-cyborg-assault-name
       description: ghost-role-information-syndicate-cyborg-description
       rules: ghost-role-information-silicon-rules
-      requirements: #SS220 ghostrole-times (20h overall 10h silicon) start
-        - !type:OverallPlaytimeRequirement
-          time: 72000
-        - !type:RoleTimeRequirement
-          role: JobBorg
-          time: 36000 #SS220 ghostrole-times (20h overall 10h silicon) end
+      job: SyndicateBorg # SS220-add-playtime-restriction-to-borg
       raffle:
         settings: default
-      job: Borg
     - type: GhostTakeoverAvailable
 
 - type: entity
@@ -692,15 +684,9 @@
       name: ghost-role-information-syndicate-cyborg-saboteur-name
       description: ghost-role-information-syndicate-cyborg-description
       rules: ghost-role-information-silicon-rules
-      requirements: #SS220 ghostrole-times (20h overall 10h silicon) start
-        - !type:OverallPlaytimeRequirement
-          time: 72000
-        - !type:RoleTimeRequirement
-          role: JobBorg
-          time: 36000 #SS220 ghostrole-times (20h overall 10h silicon) end
       raffle:
         settings: default
-      job: Borg
+      job: SyndicateBorg # SS220-add-playtime-restriction-to-borg
     - type: GhostTakeoverAvailable
 
 - type: entity
@@ -786,16 +772,10 @@
       name: ghost-role-information-derelict-cyborg-name
       description: ghost-role-information-derelict-cyborg-description
       rules: ghost-role-information-silicon-rules
-      requirements: #SS220 ghostrole-times (20h overall 10h silicon) start
-        - !type:OverallPlaytimeRequirement
-          time: 72000
-        - !type:RoleTimeRequirement
-          role: JobBorg
-          time: 36000 #SS220 ghostrole-times (20h overall 10h silicon) end
       raffle:
         settings: default
       reregister: false
-      job: Borg
+      job: DerelictBorg
     - type: GhostTakeoverAvailable
 
 - type: entity

@@ -113,22 +113,7 @@
             "name": "MedicalIntern"
         },
         {
-            "name": "TechnicalAssistant"
-        },
-        {
             "name": "BlueShield"
-        },
-        {
-            "name": "ServiceWorker"
-        },
-        {
-            "name": "SecurityCadet"
-        },
-        {
-            "name": "Zombie"
-        },
-        {
-            "name": "Zookeeper"
         },
 		{
             "name": "IAA"
@@ -136,24 +121,9 @@
         {
             "name": "SeniorEngineer"
         },
-        {
-            "name": "SeniorResearcher"
-        },
-        {
-            "name": "SeniorPhysician"
-        },
-        {
-            "name": "SeniorOfficer"
-        },
 		{
 			"name": "SeniorService"
 		},
-        {
-            "name": "Revolutionary"
-        },
-        {
-            "name": "HeadRevolutionary"
-        },
         {
             "name": "Mime"
         },
@@ -216,9 +186,6 @@
         },
         {
             "name": "SecurityOfficer"
-        },
-        {
-            "name": "SeniorEngineer"
         },
         {
             "name": "SeniorOfficer"

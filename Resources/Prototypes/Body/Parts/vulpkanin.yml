@@ -6,7 +6,7 @@
   name: vulpkanin body part
   components:
   - type: Sprite
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: SS220/Mobs/Species/Vulpkanin/parts.rsi
 
 - type: entity
   parent: [ PartVulpkanin, BaseTorso ]

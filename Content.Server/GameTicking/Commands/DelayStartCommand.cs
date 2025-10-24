@@ -1,5 +1,5 @@
 using Content.Server.Administration;
-using Robust.Shared.Configuration;
+using Content.Shared.Administration;
 using Robust.Shared.Console;
 
 namespace Content.Server.GameTicking.Commands;

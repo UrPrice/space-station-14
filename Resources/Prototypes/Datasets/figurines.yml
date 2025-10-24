@@ -284,4 +284,4 @@
   id: FigurinesGriffin
   values:
     prefix: figurines-griffin-
-    count: 5
+    count: 3 # SS220-griffin-dataset-to-out-count

@@ -17,6 +17,7 @@
   metabolisms:
     Drink:
       effects:
+      # SSS220-tomat-begin
       - !type:HealthChange
         damage:
           types:
@@ -24,8 +25,9 @@
             Slash: -3
             Piercing: -3
         conditions:
-        - !type:OrganType
-          type: Hydroponic
+        - !type:MetabolizerTypeCondition
+          type: [ Hydroponic ]
+      # SSS220-pomidor-end
       - !type:SatiateThirst
         factor: 1.0
         conditions:
@@ -186,7 +188,7 @@
         damage:
           types:
             Bloodloss: -5
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: -2 #SS220 Antag balance
   # Just in case you REALLY want to water your plants
   plantMetabolism:

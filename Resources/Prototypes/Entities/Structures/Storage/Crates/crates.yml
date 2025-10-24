@@ -946,8 +946,9 @@
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: Cart #SS220-Cart-system
 #SS220 RatKing tweaks and changes start
-  - type: RatKingRummageable
-    rummageLoot: RatKingLootTrashCans
+  - type: Rummageable
+    table: !type:NestedSelector
+      tableId: RatKingLootTrashCans
   - type: RegalRatSpawnLocation
 #SS220 RatKing tweaks and changes here
 #SS220 CollisionTrash bgn

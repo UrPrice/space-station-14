@@ -10,7 +10,6 @@
         reagents:
         - ReagentId: Alexander
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/alexander.rsi
     state: icon
@@ -27,7 +26,6 @@
         reagents:
         - ReagentId: BadTouch
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/badTouch.rsi
     state: icon
@@ -44,7 +42,6 @@
         reagents:
         - ReagentId: Boyarsky
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/boyarsky.rsi
     state: icon
@@ -61,7 +58,6 @@
         reagents:
         - ReagentId: Bramble
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/bramble.rsi
     state: icon
@@ -78,13 +74,12 @@
         reagents:
         - ReagentId: DarkAndStormy
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/darkAndStormy.rsi
     state: icon
 
 - type: entity
-  parent: DrinkGlassBase
+  parent: DrinkGlass
   id: DrinkKvassGlass
   suffix: kvass
   components:
@@ -110,7 +105,6 @@
         reagents:
         - ReagentId: MaiTai
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/maiTai.rsi
     state: icon
@@ -127,7 +121,6 @@
         reagents:
         - ReagentId: Negroni
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/negroni.rsi
     state: icon
@@ -144,7 +137,6 @@
         reagents:
         - ReagentId: OldFashioned
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/oldFashioned.rsi
     state: icon
@@ -161,7 +153,6 @@
         reagents:
         - ReagentId: Paloma
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/paloma.rsi
     state: icon
@@ -178,7 +169,6 @@
         reagents:
         - ReagentId: Yorsh
           Quantity: 30
-  - type: Drink
   - type: Icon
     sprite: Corvax/Objects/Consumable/Drinks/yorsh.rsi
     state: icon

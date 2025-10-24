@@ -16,12 +16,11 @@ using Robust.Shared.Utility;
 using Content.Shared.Access.Components;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
-using System.Globalization;
 using Content.Server.Popups;
 using Content.Server.SS220.Language;
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.SS220.Language.Systems;  // SS220-Add-Languages
-using Content.Server.SS220.Events; // SS220 borg-id-fix
+using Content.Server.SS220.Events;
+using Content.Server.Radio.Components; // SS220 borg-id-fix
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -337,7 +336,7 @@ public sealed class RadioSystem : EntitySystem
 
     private void OnEncryptionChannelsChangeReceiver(Entity<IntrinsicRadioReceiverComponent> entity, ref EncryptionChannelsChangedEvent args)
     {
-        HashSet<string> channels = new();
+        HashSet<ProtoId<RadioChannelPrototype>> channels = new();
         channels.UnionWith(args.Component.Channels);
         channels.UnionWith(entity.Comp.Channels);
 

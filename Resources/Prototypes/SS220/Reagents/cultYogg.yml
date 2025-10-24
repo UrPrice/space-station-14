@@ -17,12 +17,11 @@
         component: Rave
         type: Add
         time: 150
-        refresh: false
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
             reagent: TheBloodOfYogg
             min: 2
-        - !type:HasComponentsCondition
+        - !type:ComponentCondition
             inverted: true
             components:
               - CultYogg
@@ -62,7 +61,6 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         ignoreResistances: false
         damage:
           types:

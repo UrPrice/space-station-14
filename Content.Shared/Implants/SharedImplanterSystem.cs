@@ -120,7 +120,7 @@ public abstract class SharedImplanterSystem : EntitySystem
     //Set to draw mode if not implant only
     public void Implant(EntityUid user, EntityUid target, EntityUid implanter, ImplanterComponent component)
     {
-        if (!CanImplant(user, target, implanter, component, out var implant, out _))
+        if (!CanImplant(user, target, implanter, component, out var implant, out var implantComp)) // SS220-add-implant-comp-for-mindslave
             return;
 
         // Check if we are trying to implant a implant which is already implanted

@@ -290,6 +290,20 @@
   - barks
   - barked
   - barking
+  # SS220-port-vulpkanins-begin
+  - лает
+  - лает.
+  - лает?
+  - лает!
+  - гавкнул
+  - гавкнул.
+  - гавкнул?
+  - гавкнул!
+  - гавкает
+  - гавкает.
+  - гавкает!
+  - гавкает?
+  # SS220-port-vulpkanins-end
 
 - type: emote
   id: Snarl
@@ -344,6 +358,24 @@
   - howls
   - howling
   - howled
+  # SS220-port-vulpkanins-begin
+  - выть
+  - выть.
+  - выть!
+  - выть?
+  - воет
+  - воет.
+  - воет!
+  - воет?
+  - завыл
+  - завыл.
+  - завыл!
+  - завыл?
+  - завывает
+  - завывает.
+  - завывает!
+  - завывает?
+  # SS220-port-vulpkanins-end
 
 - type: emote
   id: Growl
@@ -362,6 +394,17 @@
   - growls
   - growled
   - growling
+# SS220-port-vulpkanins-begin
+  - рычать
+  - рычать.
+  - рычать?
+  - рычать!
+  - рычит
+  - рычит.
+  - рычит!
+  - рычит?
+  - ррр
+# SS220-port-vulpkanins-end
 
 # hand emotes
 - type: emote

@@ -1571,9 +1571,7 @@
     name: ghost-role-information-monkey-name
     description: ghost-role-information-monkey-description
     rules: ghost-role-information-syndicate-reinforcement-rules
-    requirements: #SS220 ghostrole-times (20h overall) start
-        - !type:OverallPlaytimeRequirement
-          time: 72000 #SS220 ghostrole-times (20h overall) end
+    job: SyndicateReinforcement # SS220-add-playtime-restrictions
     mindRoles:
     # This is for syndicate monkeys that randomly gain sentience, thus have no summoner to team with
     - MindRoleGhostRoleSoloAntagonist
@@ -2686,8 +2684,6 @@
         Burn: -0.07
   #SS220-fuana-update-begin
   - type: Magboots
-  - type: Puller
-    needsHands: false
   - type: ThermalVision
     state: Half
     visionRadius: 14
@@ -3342,9 +3338,7 @@
     allowMovement: true
     description: ghost-role-information-SyndiCat-description
     rules: ghost-role-information-SyndiCat-rules
-    requirements: #SS220 ghostrole-times (20h overall) start
-      - !type:OverallPlaytimeRequirement
-        time: 72000 #SS220 ghostrole-times (20h overall) end
+    job: SyndicateReinforcement # SS220-add-playtime-restrictions
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
     raffle:

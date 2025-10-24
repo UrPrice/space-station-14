@@ -92,5 +92,6 @@ internal static class ServerContentIoC
         deps.Register<DiscordAuthManager>(); // Corvax-DiscordAuth
         deps.Register<DiscordPlayerManager>(); // SiS220 discord player manager
         deps.Register<DiscordBanPostManager>();  // SS220 dscord ban post manager
+        deps.Register<ServerControlController>(); // SS220
     }
 }

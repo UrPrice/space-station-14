@@ -305,16 +305,18 @@
         damage:
           types:
             Radiation: 3
-      - !type:MovespeedModifier
+      #  SS220-etot-tomat-begin
+      - !type:MovementSpeedModifier
         walkSpeedModifier: 1.25
         sprintSpeedModifier: 1.25
         conditions:
-        - !type:OrganType
-          type: Hydroponic
+        - !type:MetabolizerTypeCondition
+          type: [ Hydroponic ]
       - !type:Jitter
         conditions:
-        - !type:OrganType
-          type: Hydroponic
+        - !type:MetabolizerTypeCondition
+          type: [ Hydroponic ]
+      # SS220-tomat-end
 
 - type: reagent
   id: HeartbreakerToxin

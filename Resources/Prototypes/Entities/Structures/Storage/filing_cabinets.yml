@@ -9,7 +9,6 @@
       - id: BoxFolderBase
       - id: BoxFolderRed
       - id: BoxFolderBlue
-      - id: BoxFolderYellow
       - id: BoxFolderGrey
       - id: BoxFolderBlack
       - id: BoxFolderGreen

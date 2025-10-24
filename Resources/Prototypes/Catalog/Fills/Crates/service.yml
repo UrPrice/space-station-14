@@ -298,8 +298,9 @@
   parent: CrateTrashCart
   components:
     #SS220 RatKing tweaks and changes start here
-    - type: RatKingRummageable
-      rummageLoot: RatKingLootTrashCans
+    - type: Rummageable
+      table: !type:NestedSelector
+        tableId: RatKingLootTrashCans
     - type: RegalRatSpawnLocation
     #SS220 Ratking tweaks and changes end here
     - type: StorageFill

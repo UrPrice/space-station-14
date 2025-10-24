@@ -10,13 +10,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      requirements:
-        - !type:DepartmentTimeRequirement
-          department: Security
-          time: 72000
-        - !type:DepartmentTimeRequirement
-          department: Command
-          time: 36000
+      job: DeathSquadLeader
       name: Командир Эскадрона Смерти
       description: "Командир элитного отряда зачистки НаноТрейзен - Эскадрона Смерти. Приготовьтесь к массированному наступлению на станцию. Ваша задача, как тяжеловооружённого оперативника, - уничтожить всё живое на своём пути. И никаких свидетелей."
     - type: GhostTakeoverAvailable
@@ -90,13 +84,7 @@
   parent: DeathSquadLeaderRandom
   components:
     - type: GhostRole
-      requirements:
-        - !type:DepartmentTimeRequirement
-          department: Security
-          time: 54000
-        - !type:DepartmentTimeRequirement
-          department: Medical
-          time: 36000
+      job: DeathSquadHealer
       name: Специалист Эскадрона Смерти
       description: "Специалист элитного отряда зачистки НаноТрейзен - Эскадрона Смерти. Приготовьтесь к массированному наступлению на станцию. Ваша задача, как тяжеловооружённого оперативника, - уничтожить всё живое на своём пути. И никаких свидетелей."
     - type: Loadout
@@ -117,10 +105,7 @@
   parent: DeathSquadLeaderRandom
   components:
     - type: GhostRole
-      requirements:
-        - !type:DepartmentTimeRequirement
-          department: Security
-          time: 54000
+      job: DeathSquadOperative
       name: Оперативник Эскадрона Смерти
       description: "Оперативник элитного отряда зачистки НаноТрейзен - Эскадрона Смерти. Приготовьтесь к массированному наступлению на станцию. Ваша задача, как тяжеловооружённого оперативника, - уничтожить всё живое на своём пути. И никаких свидетелей."
     - type: Loadout

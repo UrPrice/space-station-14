@@ -30,10 +30,9 @@
 - type: entity
   parent: BaseKeyedInstrument
   id: SuperSynthesizerInstrument
-  suffix: Admin
+  suffix: For playtime #SS220-add-time-loadout-suffix
   name: super synthesizer
   description: Blasting the ghetto with Touhou MIDIs since 2020.
-  suffix: For playtime #SS220-add-time-loadout-suffix
   components:
   - type: Instrument
     allowPercussion: true

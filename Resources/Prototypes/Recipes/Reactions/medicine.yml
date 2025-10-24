@@ -605,8 +605,8 @@
       amount: 1
 # SS220 Dangerous chemistry update begin
   effects:
-    - !type:EmpReactionEffect
-      rangePerUnit: 0.2
+    - !type:Emp
+      rangeModifier: 0.2
       maxRange: 2
       energyConsumption: 50
       duration: 10

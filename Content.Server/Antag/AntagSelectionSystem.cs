@@ -48,7 +48,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly GhostRoleSystem _ghostRole = default!;
     [Dependency] private readonly JobSystem _jobs = default!;
-    [Dependency] private readonly IBanManager _banManager = default!; // SS220 Antag ban fix
     [Dependency] private readonly LoadoutSystem _loadout = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -538,7 +537,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             return false;
 
         // SS220 Antag ban fix begin
-        if (_banManager.GetRoleBans(session.UserId) is { } roleBans)
+        if (_ban.GetRoleBans(session.UserId) is { } roleBans)
         {
             foreach (var role in def.PrefRoles)
             {

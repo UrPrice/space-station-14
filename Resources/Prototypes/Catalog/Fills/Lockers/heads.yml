@@ -340,14 +340,10 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
-<<<<<<< HEAD
     #- id: WeaponEnergyShotgun #SS220 Energy shotgun removal
     - id: BookSecretDocuments # SS220 mindslave-stop-word
     - id: BookSpaceLaws # SS220 Space Law Replace
-=======
-    - id: WeaponEnergyMagnum
-    - id: BookSpaceLaw
->>>>>>> off/master
+    # - id: WeaponEnergyMagnum
     - id: BoxEncryptionKeySecurity
     - id: CigarGoldCase
       prob: 0.50
@@ -362,15 +358,12 @@
     - id: RubberStampHos
     - id: BoxHoSCircuitboards
     - id: WeaponDisabler
-<<<<<<< HEAD
     - id: BookBusido # Corvax-Books
     - id: ClothingWristWatchGold # SS220 Wrist Watch
     - id: WeaponMultiPhaseEnergyGun #SS220 MultiPhaze Energy Gun
     - id: BodySecurityCamera #SS220-Bodycam
     - id: CigPackSEC #SS220 Cigarettes
-=======
     - id: WeaponTaser
->>>>>>> off/master
     - id: WantedListCartridge
     - id: DrinkHosFlask
 

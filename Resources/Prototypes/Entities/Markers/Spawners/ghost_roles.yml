@@ -23,9 +23,7 @@
     name: ghost-role-information-rat-king-name
     description: ghost-role-information-rat-king-description
     rules: ghost-role-information-freeagent-rules
-    requirements: #SS220 ghostrole-times (20h overall) start
-      - !type:OverallPlaytimeRequirement
-        time: 72000 #SS220 ghostrole-times (20h overall) end
+    job: AggressiveAnimals
     mindRoles:
     - MindRoleGhostRoleSoloAntagonist
     raffle:
@@ -72,9 +70,7 @@
     name: ghost-role-information-cerberus-name
     description: ghost-role-information-cerberus-description
     rules: ghost-role-information-familiar-rules
-    requirements: #SS220 ghostrole-times (20h overall) start
-      - !type:OverallPlaytimeRequirement
-        time: 72000 #SS220 ghostrole-times (20h overall) end
+    job: SyndicateReinforcement # SS220-add-playtime-restrictions
     mindRoles:
     - MindRoleGhostRoleFamiliar
     raffle:
@@ -173,9 +169,7 @@
     name: ghost-role-information-space-dragon-name
     description: ghost-role-information-space-dragon-description
     rules: ghost-role-information-space-dragon-rules
-    requirements: #SS220 ghostrole-times (20h overall) start
-      - !type:OverallPlaytimeRequirement
-        time: 72000 #SS220 ghostrole-times (20h overall) end
+    job: SpaceDragon # SS220-add-playtime-restrictions
     mindRoles:
     - MindRoleDragon
   - type: Sprite
@@ -193,9 +187,7 @@
     name: ghost-role-information-space-ninja-name
     description: ghost-role-information-space-ninja-description
     rules: ghost-role-information-antagonist-rules
-    requirements: #SS220 ghostrole-times (20h overall) start
-      - !type:OverallPlaytimeRequirement
-        time: 72000 #SS220 ghostrole-times (20h overall) end
+    job: Ninja # SS220-add-playtime-restrictions
     mindRoles:
     - MindRoleNinja
     raffle:
@@ -248,12 +240,7 @@
     name: ghost-role-information-derelict-cyborg-name
     description: ghost-role-information-derelict-cyborg-description
     rules: ghost-role-information-silicon-rules
-    requirements: #SS220 ghostrole-times (20h overall) start
-      - !type:OverallPlaytimeRequirement
-        time: 72000
-      - !type:RoleTimeRequirement
-        role: JobBorg
-        time: 36000 #SS220 ghostrole-times (10h overall) end
+    job: DerelictBorg # SS220-time-requirements
     mindRoles:
     - MindRoleSubvertedSilicon
     raffle:

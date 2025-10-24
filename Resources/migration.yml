@@ -814,8 +814,6 @@ forcefieldGenerator220: ForcefieldGeneratorParabola
 
 # 14-08-2025 - SS220 move to off smart fridge
 StorageSmartFridge: SmartFridge
-# 2025-08-01
-FoodDonutJellySlugcat: FoodDonutJellyScurret
 
 # 17-08-2025 - SS220 remove of lingering stacks
 CableMVStackLingering10: null

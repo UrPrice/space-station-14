@@ -20,7 +20,7 @@
       organs:
         heart: OrganAnimalHeart
         lungs: OrganHumanLungs
-        stomach: OrganAnimalStomach
+        stomach: OrganVulpkaninStomach # SS220-vulpkanins-port
         liver: OrganAnimalLiver
         kidneys: OrganHumanKidneys
     right arm:

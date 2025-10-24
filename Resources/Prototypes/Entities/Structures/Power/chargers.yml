@@ -165,11 +165,6 @@
     slots:
       charger_slot:
         ejectOnInteract: true
-        # SS220 E-N
-        blacklist:
-          tags:
-          - E-N
-        # SS220 E-N
         whitelist:
           components:
           - HitscanBatteryAmmoProvider
@@ -183,6 +178,7 @@
         blacklist:
           tags:
           - PotatoBattery
+          - E-N # SS220 E-N
 
 - type: entity
   parent: BaseItemRecharger
