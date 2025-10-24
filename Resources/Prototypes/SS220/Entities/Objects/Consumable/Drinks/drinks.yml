@@ -29,6 +29,7 @@
           Quantity: 30
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/glass_berry.rsi
+  - type: SolutionContainerVisuals
 
 - type: entity
   parent: DrinkGlass

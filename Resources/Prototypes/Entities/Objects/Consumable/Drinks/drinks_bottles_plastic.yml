@@ -72,7 +72,6 @@
     sprite: SS220/Objects/Consumable/Drinks/waterbottle.rsi
   - type: SolutionContainerVisuals
     maxFillLevels: 7
-    fillBaseName: icon-
     inHandsMaxFillLevels: 2
     inHandsFillBaseName: -fill-
     #SS220-WaterBottle Resprite-end

@@ -83,15 +83,16 @@
   id: DrinkKvassGlass
   suffix: kvass
   components:
-    - type: SolutionContainerManager
-      solutions:
-        drink:
-          maxVol: 30
-          reagents:
-            - ReagentId: Kvass
-              Quantity: 30
-    - type: Sprite
-      sprite: Corvax/Objects/Consumable/Drinks/kvass.rsi
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+          - ReagentId: Kvass
+            Quantity: 30
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Drinks/kvass.rsi
+  - type: SolutionContainerVisuals
 
 - type: entity
   parent: DrinkGlass
