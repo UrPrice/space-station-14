@@ -202,7 +202,6 @@ public abstract class SharedCargoSystem : EntitySystem
         Dirty(ent);
     }
 
-    // TODO upstream maybe remove
     // SS220 Cargomoney command begin
     public void SetBankAccountBalance(
         Entity<StationBankAccountComponent?> ent,
