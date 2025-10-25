@@ -44,6 +44,7 @@ using Robust.Shared.Timing;
 using Content.Server.SS220.Language; // SS220-Add-Languages-end
 using Robust.Shared.Map;
 using Content.Shared.SS220.Language.Systems;
+using Content.Shared.SS220.TTS;
 
 namespace Content.Server.Chat.Systems;
 
@@ -371,8 +372,10 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? sender = null,
         bool playSound = true,
         SoundSpecifier? announcementSound = null,
-        Color? colorOverride = null
-        )
+        Color? colorOverride = null,
+        bool playTTS = true, // SS220-fix-double-event-announce
+        bool playPrerecordedSound = true, // SS220-fix-double-event-announce
+        ProtoId<TTSVoicePrototype>? voiceId = null) // SS2220-tts
     {
         sender ??= Loc.GetString("chat-manager-sender-announcement");
 
@@ -384,7 +387,19 @@ public sealed partial class ChatSystem : SharedChatSystem
             var centcommAnnounce = sender == Loc.GetString("admin-announce-announcer-default");
             var defaultAnnounceSound = centcommAnnounce ? CentComAnnouncementSound : DefaultAnnouncementSound;
             // TODO upstream-we-need-better-way...
-            _audio.PlayGlobal(announcementSound ?? defaultAnnounceSound, Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f)); // SS220 Default -> default
+            // SS220-announce-TTS-begin
+            var mask = AudioWithTTSPlayOperation.NotPlay;
+
+            if (playTTS)
+                mask |= AudioWithTTSPlayOperation.PlayTTS;
+
+            if (playPrerecordedSound)
+                mask |= AudioWithTTSPlayOperation.PlayAudio;
+
+            RaiseLocalEvent(new AnnouncementSpokeEvent(Filter.Broadcast(), announcementSound ?? defaultAnnounceSound, mask, FormattedMessage.RemoveMarkupPermissive(wrappedMessage.Replace(':', '.')), voiceId)); // ss220-tts-announcement
+            // _audio.PlayGlobal(announcementSound ?? defaultAnnounceSound, Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f)); // wizden & SS220 Default -> default
+            // SS220-announce-TTS-end
+
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -406,17 +421,30 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? sender = null,
         bool playSound = true,
         SoundSpecifier? announcementSound = null,
-        Color? colorOverride = null)
+        Color? colorOverride = null,
+        bool playTTS = true, // SS220-fix-double-event-announce
+        bool playPrerecordedSound = true, // SS220-fix-double-event-announce
+        ProtoId<TTSVoicePrototype>? voiceId = null) // SS2220-tts
     {
         sender ??= Loc.GetString("chat-manager-sender-announcement");
 
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));
         _chatManager.ChatMessageToManyFiltered(filter, ChatChannel.Radio, message, wrappedMessage, source ?? default, false, true, colorOverride);
-        // TODO upstream-todo-make prettier-and-robust
-        // RaiseLocalEvent(new AnnouncementSpokeEvent(filter, DefaultAnnouncementSound, AudioParams.Default, message, null)); // ss220-tts-announcement
+
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            // SS220-announce-TTS-begin
+            var mask = AudioWithTTSPlayOperation.NotPlay;
+
+            if (playTTS)
+                mask |= AudioWithTTSPlayOperation.PlayTTS;
+
+            if (playPrerecordedSound)
+                mask |= AudioWithTTSPlayOperation.PlayAudio;
+
+            RaiseLocalEvent(new AnnouncementSpokeEvent(filter, announcementSound ?? DefaultAnnouncementSound, mask, FormattedMessage.RemoveMarkupPermissive(wrappedMessage), voiceId)); // ss220-tts-announcement
+            // _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f)); // wizden
+            // SS220-announce-TTS-end
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement from {sender}: {message}");
     }
@@ -437,7 +465,9 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool playDefaultSound = true,
         SoundSpecifier? announcementSound = null,
         Color? colorOverride = null,
-        string? voiceId = null)
+        bool playTTS = true, // SS220-fix-double-event-announce
+        bool playPrerecordedSound = true, // SS220-fix-double-event-announce
+        ProtoId<TTSVoicePrototype>? voiceId = null) // SS2220-tts
     {
         sender ??= Loc.GetString("chat-manager-sender-announcement");
 
@@ -456,20 +486,20 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         _chatManager.ChatMessageToManyFiltered(filter, ChatChannel.Radio, message, wrappedMessage, source, false, true, colorOverride);
 
-        //SS220 CluwneComms start
-        //made here cause  "announcementSound?.ToString()" returning shit
-        string? key = null;
-
-        if (announcementSound is SoundPathSpecifier path)
-            key = path.Path.ToString();
-        //SS220 CluwneComms end
-
-        // TODO upstream-todo-remove
-        // RaiseLocalEvent(new AnnouncementSpokeEvent(filter, key?.ToString() ?? DefaultAnnouncementSound, AudioParams.Default, message, voiceId));//SS220 CluwneComms
-
         if (playDefaultSound)
         {
-            _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            // SS220-announce-TTS-begin
+            var mask = AudioWithTTSPlayOperation.NotPlay;
+
+            if (playTTS)
+                mask |= AudioWithTTSPlayOperation.PlayTTS;
+
+            if (playPrerecordedSound)
+                mask |= AudioWithTTSPlayOperation.PlayAudio;
+
+            RaiseLocalEvent(new AnnouncementSpokeEvent(filter, announcementSound ?? DefaultAnnouncementSound, mask, message, voiceId));
+            // _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f)); // wizden
+            // SS220-announce-TTS-end
         }
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
@@ -1258,23 +1288,23 @@ public enum InGameOOCChatType : byte
 public sealed class AnnouncementSpokeEvent : EntityEventArgs
 {
     public readonly Filter Source;
-    public readonly string AnnouncementSound;
-    public readonly AudioParams AnnouncementSoundParams;
+    public readonly SoundSpecifier AnnouncementSound;
     public readonly string Message;
-    public readonly string? SpokeVoiceId;
+    public readonly ProtoId<TTSVoicePrototype>? SpokeVoiceId;
+    public readonly AudioWithTTSPlayOperation PlayAudioMask = AudioWithTTSPlayOperation.PlayAll;
 
-    public AnnouncementSpokeEvent(Filter source, string announcementSound, AudioParams announcementSoundParams, string message, string? spokeVoiceId)
+    public AnnouncementSpokeEvent(Filter source, SoundSpecifier announcementSound, AudioWithTTSPlayOperation playAudioMask, string message, ProtoId<TTSVoicePrototype>? spokeVoiceId)
     {
         Source = source;
         Message = message;
         AnnouncementSound = announcementSound;
-        AnnouncementSoundParams = announcementSoundParams;
         SpokeVoiceId = spokeVoiceId;
+        PlayAudioMask = playAudioMask;
     }
 }
 
-//ss220 add filter tts for ghost start
-public sealed class RadioSpokeEvent : EntityEventArgs
+[ByRefEvent]
+public record struct RadioSpokeEvent
 {
     public readonly EntityUid Source;
     public readonly string Message;
@@ -1289,9 +1319,7 @@ public sealed class RadioSpokeEvent : EntityEventArgs
         Receivers = receivers;
     }
 }
-//ss220 add filter tts for ghost end
 
-// SS220 Silicon TTS fix begin
 public readonly struct RadioEventReceiver
 {
     public EntityUid Actor { get; }
@@ -1305,4 +1333,4 @@ public readonly struct RadioEventReceiver
         PlayTarget = playTarget;
     }
 }
-// SS220 Silicon TTS fix end
+// SS220-TTS-end

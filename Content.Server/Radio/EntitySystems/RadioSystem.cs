@@ -209,15 +209,17 @@ public sealed class RadioSystem : EntitySystem
         // SS220 languages begin
         foreach (var languageEv in languageRadioReceiveEvents)
         {
+            var radioSpokeEventLanguage = new RadioSpokeEvent(messageSource, languageEv.Key, channel, languageEv.Value.Receivers.ToArray());
             //ss220 add filter tts for ghost start
-            RaiseLocalEvent(new RadioSpokeEvent(messageSource, languageEv.Key, channel, languageEv.Value.Receivers.ToArray()));
+            RaiseLocalEvent(ref radioSpokeEventLanguage);
             //ss220 add filter tts for ghost end
         }
         // SS220 languages end
 
         // Dispatch TTS radio speech event for every receiver
         //ss220 add filter tts for ghost start
-        RaiseLocalEvent(new RadioSpokeEvent(messageSource, message, channel, ev.Receivers.ToArray()));
+        var radioSpokeEvent = new RadioSpokeEvent(messageSource, message, channel, ev.Receivers.ToArray());
+        RaiseLocalEvent(ref radioSpokeEvent);
         //ss220 add filter tts for ghost end
 
         if (name != Name(messageSource))
