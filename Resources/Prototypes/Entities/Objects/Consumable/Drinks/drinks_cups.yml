@@ -293,9 +293,9 @@
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/teacup.rsi #ss220 mug resprite
     layers:
-      - state: icon
+      - state: icon #ss220 mug resprite
       - map: ["enum.SolutionContainerLayers.Fill"]
-        state: fill-4
+        state: fill-4 #ss220 mug resprite
   - type: TrashOnSolutionEmpty
     solution: drink
 
@@ -316,9 +316,9 @@
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/teacup.rsi #ss220 mug resprite
     layers:
-      - state: icon-0
+      - state: icon #ss220 mug resprite
       - map: ["enum.SolutionContainerLayers.Fill"]
-        state: icon-4
+        state: fill-4 #ss220 mug resprite
   - type: TrashOnSolutionEmpty
     solution: drink
 
