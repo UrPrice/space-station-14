@@ -43,7 +43,7 @@ public sealed partial class HasComponentsConditionSystem : EntityConditionSystem
             break;
         }
 
-        args.Result = condition ^ args.Condition.Inverted;
+        args.Result = condition;
     }
 }
 
