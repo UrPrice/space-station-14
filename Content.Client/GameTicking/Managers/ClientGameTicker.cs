@@ -132,6 +132,7 @@ namespace Content.Client.GameTicking.Managers
 
         private void LobbyInfo(TickerLobbyInfoEvent message)
         {
+            RoundId = message.RoundId; // SS220-add-round-id-to-client
             ServerInfoBlob = message.TextBlob;
 
             InfoBlobUpdated?.Invoke();

@@ -160,7 +160,7 @@ namespace Content.Server.GameTicking
 
         private TickerLobbyInfoEvent GetInfoMsg(ICommonSession session)
         {
-            return new (GetInfoText(session)); // SS220-some-feature-with-lobby
+            return new (GetInfoText(session), RoundId); // SS220-mask-game-mode-and-client-round-id
         }
 
         private void UpdateLateJoinStatus()

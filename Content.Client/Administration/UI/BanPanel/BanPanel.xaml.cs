@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Numerics;
 using Content.Client.Administration.UI.CustomControls;
+using Content.Client.GameTicking.Managers;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -46,11 +47,12 @@ public sealed partial class BanPanel : DefaultWindow
     private readonly ISawmill _banPanelSawmill;
 
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedGameTicker _gameTicker = default!; // SS220-add-round-id-to-ban
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
+
+    private readonly ClientGameTicker _gameTicker = default!; // SS220-add-round-id-to-ban
 
     private const string ExpandedArrow = "▼";
     private const string ContractedArrow = "▶";
@@ -89,6 +91,7 @@ public sealed partial class BanPanel : DefaultWindow
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+        _gameTicker = _entMan.System<ClientGameTicker>();
         _banPanelSawmill = _logManager.GetSawmill("admin.banpanel");
         PlayerList.OnSelectionChanged += OnPlayerSelectionChanged;
         PlayerNameLine.OnFocusExit += _ => OnPlayerNameChanged();

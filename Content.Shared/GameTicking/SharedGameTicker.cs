@@ -116,11 +116,13 @@ namespace Content.Shared.GameTicking
     [Serializable, NetSerializable]
     public sealed class TickerLobbyInfoEvent : EntityEventArgs
     {
+        public int RoundId; // SS220-add-round-id-info-for-client
         public string TextBlob { get; }
 
-        public TickerLobbyInfoEvent(string textBlob)
+        public TickerLobbyInfoEvent(string textBlob, int roundId) // SS220-add-round-id-info-for-client
         {
             TextBlob = textBlob;
+            RoundId = roundId; // SS220-add-round-id-info-for-client
         }
     }
 
