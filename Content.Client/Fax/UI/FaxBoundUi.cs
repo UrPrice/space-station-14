@@ -26,9 +26,8 @@ public sealed class FaxBoundUi : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<FaxWindow>();
-        // SS220 Printer (And fax overhaul)
-        // _window.FileButtonPressed += OnFileButtonPressed;
-        // _window.CopyButtonPressed += OnCopyButtonPressed;
+        _window.FileButtonPressed += OnFileButtonPressed;
+        _window.CopyButtonPressed += OnCopyButtonPressed;
         _window.SendButtonPressed += OnSendButtonPressed;
         _window.RefreshButtonPressed += OnRefreshButtonPressed;
         _window.PeerSelected += OnPeerSelected;
@@ -76,6 +75,11 @@ public sealed class FaxBoundUi : BoundUserInterface
     private void OnSendButtonPressed()
     {
         SendMessage(new FaxSendMessage());
+    }
+
+    private void OnCopyButtonPressed()
+    {
+        SendMessage(new FaxCopyMessage());
     }
 
     private void OnRefreshButtonPressed()
