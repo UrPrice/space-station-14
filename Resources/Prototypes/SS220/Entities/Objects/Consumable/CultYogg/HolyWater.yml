@@ -13,3 +13,6 @@
           Quantity: 30
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/holy_water_jug.rsi
+    layers:
+    - state: icon
+      map: [ "enum.SolutionContainerLayers.Base" ]

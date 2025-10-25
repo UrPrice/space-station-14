@@ -13,6 +13,9 @@
           Quantity: 30
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/glass_apple.rsi
+    layers:
+    - state: icon
+      map: [ "enum.SolutionContainerLayers.Base" ]
 
 - type: entity
   parent: DrinkGlass
@@ -29,6 +32,9 @@
           Quantity: 30
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/glass_berry.rsi
+    layers:
+    - state: icon
+      map: [ "enum.SolutionContainerLayers.Base" ]
   - type: SolutionContainerVisuals
 
 - type: entity

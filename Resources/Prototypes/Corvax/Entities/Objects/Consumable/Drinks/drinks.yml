@@ -92,6 +92,10 @@
             Quantity: 30
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Drinks/kvass.rsi
+    layers:
+    - state: icon
+      map: [ "enum.SolutionContainerLayers.Base" ]
+
   - type: SolutionContainerVisuals
 
 - type: entity

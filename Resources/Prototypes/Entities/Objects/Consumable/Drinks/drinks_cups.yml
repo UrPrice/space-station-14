@@ -55,7 +55,7 @@
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/mug.rsi #ss220 mug resprite
   - type: SolutionContainerVisuals
-    maxFillLevels: 4
+    maxFillLevels: 3 # SS220-mugs-resprite
 
 - type: entity
   parent: [ DrinkBaseMaterialGlass, DrinkBaseCup, DrinkVisualsFillOverlay ]
@@ -217,9 +217,9 @@
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/hot_coco.rsi #ss220 mug resprite
     layers:
-      - state: icon-0
+      - state: icon
       - map: ["enum.SolutionContainerLayers.Fill"]
-        state: icon-3 #ss220 mug resprite
+        state: fill-3 #ss220 mug resprite
   - type: TrashOnSolutionEmpty
     solution: drink
 
@@ -242,9 +242,9 @@
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/hot_coffee.rsi #ss220 mug resprite
     layers:
-      - state: icon-0
+      - state: icon
       - map: ["enum.SolutionContainerLayers.Fill"]
-        state: icon-3 #ss220 mug resprite
+        state: fill-3 #ss220 mug resprite
   - type: TrashOnSolutionEmpty
     solution: drink
 
@@ -293,9 +293,9 @@
   - type: Sprite
     sprite: SS220/Objects/Consumable/Drinks/teacup.rsi #ss220 mug resprite
     layers:
-      - state: icon-0
+      - state: icon
       - map: ["enum.SolutionContainerLayers.Fill"]
-        state: icon-4
+        state: fill-4
   - type: TrashOnSolutionEmpty
     solution: drink
 
