@@ -53,7 +53,7 @@ public abstract class StationEventSystem<T> : GameRuleSystem<T> where T : ICompo
 
         if (stationEvent.StartAnnouncement != null)
             ChatSystem.DispatchFilteredAnnouncement(allPlayersInGame, Loc.GetString(stationEvent.StartAnnouncement), playSound: true,
-                        announcementSound: stationEvent.StartAudio, colorOverride: stationEvent.StartAnnouncementColor);
+                        announcementSound: stationEvent.StartAudio, colorOverride: stationEvent.StartAnnouncementColor, playTTS: stationEvent.PlayTTS);
         else
             Audio.PlayGlobal(stationEvent.StartAudio, allPlayersInGame, true);
         // SS220-better-TTS-announcement-end

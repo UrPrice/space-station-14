@@ -510,6 +510,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
+    playTTS: false # SS220-fix-double-announce-audio
     startAnnouncement: station-event-vent-creatures-start-announcement
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
@@ -536,6 +537,7 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-start-announcement
+    playTTS: false # SS220-fix-double-announce-audio
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
       path: /Audio/SS220/Announcements/lifesigns.ogg
@@ -570,6 +572,7 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-start-announcement
+    playTTS: false # SS220-fix-double-announce-audio
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
       path: /Audio/SS220/Announcements/lifesigns.ogg
@@ -591,6 +594,7 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-start-announcement
+    playTTS: false # SS220-fix-double-announce-audio
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
       path: /Audio/SS220/Announcements/lifesigns.ogg
@@ -736,6 +740,7 @@
   id: IonStorm
   components:
   - type: StationEvent
+    playTTS: false # SS220-fix-double-announce-audio
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     #ss220 tweak ion storm start
     endAnnouncementColor: "#18abf5"
@@ -770,6 +775,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
+    playTTS: false # SS220-fix-double-announce-audio
   # SS220 MoreAnonces (sound and alert upgrades) bgn
     startAudio:
       path: /Audio/SS220/Announcements/greytide.ogg
