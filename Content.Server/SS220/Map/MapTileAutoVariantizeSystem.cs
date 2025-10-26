@@ -19,7 +19,7 @@ public sealed partial class MapTileAutoVariantizeSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MapGridComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<MapGridComponent, BeforeSerializationEvent>(OnBeforeSerialization);
+        SubscribeLocalEvent<BeforeSerializationEvent>(OnBeforeSerializationEvent);
     }
 
     private void OnMapInit(Entity<MapGridComponent> entity, ref MapInitEvent _)
@@ -35,8 +35,17 @@ public sealed partial class MapTileAutoVariantizeSystem : EntitySystem
         }
     }
 
-    private void OnBeforeSerialization(Entity<MapGridComponent> entity, ref BeforeSerializationEvent _)
+    private void OnBeforeSerializationEvent(BeforeSerializationEvent args)
     {
-        EnsureComp<SkipAutoVariantizeComponent>(entity);
+        foreach (var id in args.MapIds)
+        {
+            if (!_map.TryGetMap(id, out var uid))
+            {
+                Log.Error($"Cant get uid for map with id {id}");
+                return;
+            }
+
+            EnsureComp<SkipAutoVariantizeComponent>(uid.Value);
+        }
     }
 }

@@ -117,7 +117,7 @@ ent-ZookeeperIDCard = ID-карта зоотехника
 ent-DetectiveIDCard = ID-карта детектива
     .desc = { ent-IDCardStandard.desc }
 ent-PrisonerIDCard = ID-карта заключённого
-    .desc = Шаблонная, напечатанная ID-карта для мерзких заключённых.
+    .desc = Шаблонная, напечатанная ID-карта.
 # SS220 CBURN questions
 ent-CBURNIDcard = ID карта РХБЗ
     .desc = { ent-CentcomIDCard.desc }

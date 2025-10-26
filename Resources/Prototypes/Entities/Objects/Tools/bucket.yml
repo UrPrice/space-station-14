@@ -31,6 +31,7 @@
   - type: SpillWhenWorn
     solution: drink
   - type: SolutionContainerVisuals
+    inHandsMaxFillLevels: 0
     maxFillLevels: 4 #SS220 Resprite Buckets
     fillBaseName: fill-
   - type: Tag

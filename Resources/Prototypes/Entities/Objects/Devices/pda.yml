@@ -1890,10 +1890,10 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-syndi-operative
+       pda-syndi #SS220 PDA-Resprite-TODO
   - type: Icon
-    sprite: Objects/Devices/pda.rsi #SS220 PDA-Resprite-TODO
-    state: pda-syndi-operative
+    sprite: SS220/Objects/Devices/pda.rsi #SS220 PDA-Resprite-TODO
+    state: pda-syndi #SS220 PDA-Resprite-TODO
 
 - type: entity
   parent: [ SyndiOperativePDA, BaseSyndicateContraband ]
@@ -1907,10 +1907,10 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-syndi-corpsman
+       pda-syndi-agent #SS220 PDA-Resprite-TODO
   - type: Icon
-    sprite: Objects/Devices/pda.rsi #SS220 PDA-Resprite-TODO
-    state: pda-syndi-corpsman
+    sprite: SS220/Objects/Devices/pda.rsi #SS220 PDA-Resprite-TODO
+    state: pda-syndi-agent #SS220 PDA-Resprite-TODO
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
@@ -1930,10 +1930,10 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-syndi-commander
+       pda-syndi #SS220 PDA-Resprite-TODO
   - type: Icon
-    sprite: Objects/Devices/pda.rsi #SS220 PDA-Resprite-TODO
-    state: pda-syndi-commander
+    sprite: SS220/Objects/Devices/pda.rsi #SS220 PDA-Resprite-TODO
+    state: pda-syndi #SS220 PDA-Resprite-TODO
 
 - type: entity
   parent: BaseSecurityPDA
@@ -2584,13 +2584,13 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-seniorcourier
+       pda-cargo #SS220 PDA-Resprite-TODO
   - type: PdaBorderColor
     borderColor: "#e39751"
     accentVColor: "#DFDFDF"
   - type: Icon
     sprite: Objects/Devices/pda.rsi #SS220 PDA-Resprite-TODO
-    state: pda-seniorcourier
+    state: pda-cargo #SS220 PDA-Resprite-TODO
 
 - type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]

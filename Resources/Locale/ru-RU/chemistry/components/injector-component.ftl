@@ -16,7 +16,6 @@ injector-component-cannot-draw-message = Вы не можете ничего н�
 injector-component-cannot-draw-message-self = Вы не можете ничего набрать из себя!
 injector-component-cannot-inject-message = Вы не можете ничего ввести в { $target }!
 injector-component-cannot-inject-message-self = Вы не можете ничего себе ввести!
-Expand commentComment on line R19Resolved
 injector-component-inject-success-message = Вы вводите { $amount } ед. в { $target }!
 injector-component-inject-success-message-self = Вы вводите в себя { $amount } ед.!
 injector-component-transfer-success-message = Вы перемещаете { $amount } ед. в { $target }.

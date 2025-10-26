@@ -16,3 +16,6 @@
     layers:
     - state: icon
       map: [ "enum.SolutionContainerLayers.Base" ]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 5
+    inHandsMaxFillLevels: 0

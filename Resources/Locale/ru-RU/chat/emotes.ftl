@@ -35,7 +35,7 @@ chat-emote-name-bark = Лаять
 chat-emote-name-snarl = Скалиться
 chat-emote-name-whine = Скулить
 chat-emote-name-howl = Выть
-chat-emote-name-growl = Рычать
+# chat-emote-name-growl = Рычать
 # Сообщение
 chat-emote-msg-scream = кричит!
 chat-emote-msg-laugh = смеётся
@@ -74,4 +74,4 @@ chat-emote-msg-bark = лает.
 chat-emote-msg-snarl = скалится.
 chat-emote-msg-whine = скулит.
 chat-emote-msg-howl = воет.
-chat-emote-msg-growl = рычит.
+# chat-emote-msg-growl = рычит.

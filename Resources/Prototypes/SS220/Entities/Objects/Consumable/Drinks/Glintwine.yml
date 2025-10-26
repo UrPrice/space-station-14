@@ -6,15 +6,18 @@
   name: Стакан глинтвейна
   description: Горячий алкогольный напиток на основе вина, родом из Нюрнберга.
   components:
-    - type: SolutionContainerManager
-      solutions:
-        drink:
-          maxVol: 30
-          reagents:
-          - ReagentId: Glintwine
-            Quantity: 30
-    - type: Sprite
-      sprite: SS220/Objects/Consumable/Drinks/glintveinglass.rsi
-      layers:
-      - state: icon
-        map: [ "enum.SolutionContainerLayers.Base" ]
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Glintwine
+          Quantity: 30
+  - type: Sprite
+    sprite: SS220/Objects/Consumable/Drinks/glintveinglass.rsi
+    layers:
+    - state: icon
+      map: [ "enum.SolutionContainerLayers.Base" ]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 0
+    inHandsMaxFillLevels: 0

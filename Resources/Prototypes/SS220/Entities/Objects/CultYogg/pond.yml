@@ -30,6 +30,7 @@
         - ReagentId: Nocturine
           Quantity: 30
   - type: Edible
+    solution: drink
     edible: Drink
     destroyOnEmpty: false
   - type: DrawableSolution

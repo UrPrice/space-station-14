@@ -95,8 +95,9 @@
     layers:
     - state: icon
       map: [ "enum.SolutionContainerLayers.Base" ]
-
   - type: SolutionContainerVisuals
+    maxFillLevels: 0
+    inHandsMaxFillLevels: 0
 
 - type: entity
   parent: DrinkGlass
