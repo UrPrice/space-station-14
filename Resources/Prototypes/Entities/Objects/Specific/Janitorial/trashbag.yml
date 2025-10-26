@@ -21,6 +21,8 @@
     whitelist:
       tags:
         - Trash
+        - Grenade
+        - ToyGrenade
   - type: UseDelay
     delay: 0.5
   - type: Tag

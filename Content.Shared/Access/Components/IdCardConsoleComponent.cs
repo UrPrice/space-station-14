@@ -57,6 +57,7 @@ public sealed partial class IdCardConsoleComponent : Component
         "Paramedic",
         "Command",
         "Cryogenics",
+        "Clown", //SS220 New_accesses_and_some_tweaks
         "Engineering",
         "External",
         "HeadOfPersonnel",
@@ -65,16 +66,21 @@ public sealed partial class IdCardConsoleComponent : Component
         "Janitor",
         "Kitchen",
         "Lawyer",
+        "Librarian", //SS220 New_accesses_and_some_tweaks
         "Maintenance",
         "Medical",
+        "Psychologist", //SS220 New_accesses_and_some_tweaks
         "Quartermaster",
         "Research",
         "ResearchDirector",
+        "Reporter", //SS220 New_accesses_and_some_tweaks
         "Salvage",
         "Security",
         "Service",
         "Theatre",
         "Magistrate", //SS220-Magistrate Access Fix
+        "Mime", //SS220 New_accesses_and_some_tweaks
+        "Musician", //SS220 New_accesses_and_some_tweaks
     };
 
     // SS220-ID console extended access button-Begin

@@ -339,6 +339,7 @@ public sealed class CultYoggRuleSystem : GameRuleSystem<CultYoggRuleComponent>
             return;
 
         MakeCultist(args.EntityUid, ent, true);
+        UpdateMiGoTeleportList();
     }
 
     /// <summary>
@@ -419,6 +420,7 @@ public sealed class CultYoggRuleSystem : GameRuleSystem<CultYoggRuleComponent>
         DeCultMind(args.Entity, rule.Value.Comp);
 
         DeMakeCultist(args.Entity, rule.Value.Comp);
+        UpdateMiGoTeleportList();
     }
 
     public void DeCultMind(EntityUid uid, CultYoggRuleComponent component)
@@ -707,5 +709,15 @@ public sealed class CultYoggRuleSystem : GameRuleSystem<CultYoggRuleComponent>
         }
 
         return false;
+    }
+
+    public void UpdateMiGoTeleportList()//i made this cause idk any other ways to properly trigger this like PrototypesReloadedEventArgs
+    {
+        var queryMiGo = EntityQueryEnumerator<MiGoComponent>();
+
+        while (queryMiGo.MoveNext(out var ent, out _))
+        {
+            _migo.UpdateTeleportTargets(ent);
+        }
     }
 }
