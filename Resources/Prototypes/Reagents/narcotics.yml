@@ -133,7 +133,7 @@
     Narcotic:
       metabolismRate: 1.0
       effects:
-      - !type:MovespeedModifier
+      - !type:MovementSpeedModifier
         #SS220-speed stimulants fix start
         walkSpeedModifier: 1.2
         sprintSpeedModifier: 1.2

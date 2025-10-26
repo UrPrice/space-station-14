@@ -5,18 +5,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.SS220.EntityEffects.Effects;
 
-public sealed partial class Hallucination : EntityEffect
+public sealed partial class Hallucination : EntityEffectBase<Hallucination>
 {
     [DataField(required: true)]
     public HallucinationSetting Setting = new();
 
-    public override void Effect(EntityEffectBaseArgs args)
-    {
-        var hallucinationSystem = args.EntityManager.System<SharedHallucinationSystem>();
-        hallucinationSystem.TryAdd(args.TargetEntity, Setting);
-    }
-
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
         return Loc.GetString("reaction-effect-guidebook-hallucination", ("duration", Setting.TotalDuration));
     }

@@ -100,7 +100,7 @@
       effects:
       - !type:ModifyStatusEffect
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: EssenceOfTheAbyss
           min: 8
         effectProto: StatusEffectForcedSleeping
@@ -111,8 +111,7 @@
         component: Muted
         type: Add
         time: 15
-        refresh: false
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: EssenceOfTheAbyss
           min: 10

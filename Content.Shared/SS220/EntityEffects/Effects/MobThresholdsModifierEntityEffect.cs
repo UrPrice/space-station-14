@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.SS220.EntityEffects.Effects;
 
-public sealed partial class MobThresholdsChange : EntityEffect
+public sealed partial class MobThresholdsModifier : EntityEffectBase<MobThresholdsModifier>
 {
     /// <summary>
     /// Id of the status effect entity with <see cref="MobThresholdsModifierStatusEffectComponent"/>.
@@ -27,25 +27,12 @@ public sealed partial class MobThresholdsChange : EntityEffect
     [DataField]
     public bool Refresh = false;
 
-    public override void Effect(EntityEffectBaseArgs args)
-    {
-        if (string.IsNullOrEmpty(StatusEffectId))
-            return;
-
-        var statusEffectsSys = IoCManager.Resolve<IEntityManager>().System<StatusEffectsSystem>();
-
-        if (Refresh)
-            statusEffectsSys.TrySetStatusEffectDuration(args.TargetEntity, StatusEffectId, Duration);
-        else
-            statusEffectsSys.TryAddStatusEffectDuration(args.TargetEntity, StatusEffectId, Duration);
-    }
-
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
         var factory = IoCManager.Resolve<IComponentFactory>();
         if (!prototype.TryIndex<EntityPrototype>(StatusEffectId, out var statusProto) ||
             !statusProto.TryGetComponent<MobThresholdsModifierStatusEffectComponent>(out var component, factory))
-            return null;
+            return string.Empty;
 
         var lines = new List<string>();
         foreach (var (state, modifier) in component.Modifiers)
@@ -77,7 +64,7 @@ public sealed partial class MobThresholdsChange : EntityEffect
         }
 
         if (lines.Count <= 0)
-            return null;
+            return string.Empty;
 
         var statesChanges = string.Join(';', lines);
         var result = Loc.GetString("reagent-effect-guidebook-mob-thresholds-modifier",

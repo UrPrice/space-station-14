@@ -199,7 +199,7 @@
     pocket1: EnergySword
     pocket2: EnergyShield
 
-##Ert Gamma                             
+##Ert Gamma
 
 #ERT Gamma Leader
 - type: randomHumanoidSettings
@@ -212,14 +212,7 @@
     - type: GhostRole
       name: ghost-role-information-ert-leader-name
       description: ghost-role-information-ert-leader-description
-      rules: ghost-role-information-nonantagonist-rules      
-      requirements: 
-        - !type:DepartmentTimeRequirement
-          department: Security
-          time: 72000
-        - !type:DepartmentTimeRequirement
-          department: Command
-          time: 36000 
+      rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
       job: ERTLeader
@@ -270,7 +263,7 @@
     pocket1: WeaponSubMachineGunSaber
     pocket2: DoubleEmergencyOxygenTankFilled
   storage:
-    belt: 
+    belt:
     - Stunbaton
     - Flash
     - GrenadeFlashBang
@@ -287,11 +280,7 @@
     - type: GhostRole
       name: ghost-role-information-ert-security-name
       description: ghost-role-information-ert-security-description
-      rules: ghost-role-information-nonantagonist-rules 
-      requirements: #SS220 ghostrole-times (20h sec 10h med) start
-        - !type:DepartmentTimeRequirement
-          department: Security
-          time: 72000
+      rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
       job: ERTSecurity
@@ -325,7 +314,7 @@
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurityGammaFilled
     shoes: ClothingShoesBootsMagAdv
-    eyes: ClothingEyesHudMedSec  
+    eyes: ClothingEyesHudMedSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurityGamma
     neck: ClothingBeltHolster
@@ -336,7 +325,7 @@
     pocket1: WeaponSubMachineGunSaber
     pocket2: DoubleEmergencyOxygenTankFilled
   storage:
-    belt: 
+    belt:
     - Stunbaton
     - Flash
     - GrenadeFlashBang
@@ -354,14 +343,7 @@
     - type: GhostRole
       name: ghost-role-information-ert-medical-name
       description: ghost-role-information-ert-medical-description
-      rules: ghost-role-information-nonantagonist-rules    
-      requirements: 
-        - !type:DepartmentTimeRequirement
-          department: Security
-          time: 72000
-        - !type:DepartmentTimeRequirement
-          department: Medical
-          time: 36000 
+      rules: ghost-role-information-nonantagonist-rules
       raffle:
         settings: short
       job: ERTMedical
@@ -388,7 +370,7 @@
       nameFormat: name-format-ert
     - type: RandomHumanoidSpawner
       settings: ERTMedicalGamma
-    
+
 - type: startingGear
   id: ERTMedicalGammaGear
   equipment:

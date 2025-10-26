@@ -5,18 +5,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.SS220.EntityEffects.Effects;
 
-public sealed partial class StaminaDamage : EntityEffect
+public sealed partial class StaminaDamage : EntityEffectBase<StaminaDamage>
 {
     [DataField(required: true)]
     public float Value;
 
-    public override void Effect(EntityEffectBaseArgs args)
-    {
-        var stunSys = args.EntityManager.System<SharedStaminaSystem>();
-        stunSys.TakeStaminaDamage(args.TargetEntity, Value, visual: false, ignoreResist: true);
-    }
-
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
         return Loc.GetString("reaction-effect-guidebook-stamina-damage", ("heals", Value < 0), ("value", Value));
     }
