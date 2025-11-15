@@ -1,16 +1,4 @@
 ﻿Entries:
-- author: UrPrice
-  changes:
-  - message: "\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u044B \u043F\u0440\u043E\u0446\
-      \u0435\u043D\u0442\u043D\u044B\u0435 \u0441\u043E\u0441\u0442\u0430\u0432\u043B\
-      \u044F\u044E\u0449\u0438\u0435 \u0432\u044B\u043F\u0430\u0434\u0435\u043D\u0438\
-      \u044F \u0440\u0435\u0436\u0438\u043C\u043E\u0432 \u0432 \u0421\u0435\u043A\u0440\
-      \u0435\u0442\u0435. \u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u041A\u0443\
-      \u043B\u044C\u0442 \u0432 \u0421\u0435\u043A\u0440\u0435\u0442!"
-    type: Tweak
-  id: 742
-  time: '2024-12-31T21:46:17.0000000+00:00'
-  url: https://github.com/SerbiaStrong-220/space-station-14/pull/2440
 - author: Vimenant
   changes:
   - message: "\u0421 \u043F\u0440\u0430\u0437\u0434\u043D\u0438\u043A\u0430\u043C\u0438\
@@ -7439,3 +7427,11 @@
   id: 1241
   time: '2025-11-15T20:02:33.0000000+00:00'
   url: https://github.com/SerbiaStrong-220/space-station-14/pull/3579
+- author: FemboiiThighs
+  changes:
+  - message: "\u0418\u0437\u043C\u0435\u043D\u0435\u043D \u0441\u043F\u0440\u0430\u0439\
+      \u0442 \u0443\u0442\u0438\u043B\u044C \u0448\u043B\u044E\u0437\u0430"
+    type: Tweak
+  id: 1242
+  time: '2025-11-15T21:22:55.0000000+00:00'
+  url: https://github.com/SerbiaStrong-220/space-station-14/pull/3575
