@@ -13,6 +13,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using Content.Shared.SS220.TraitorDynamics;
 
 namespace Content.Client.Store.Ui;
 
@@ -104,6 +105,13 @@ public sealed partial class StoreMenu : DefaultWindow, IPinnableWindow // ss220 
         TraitorFooter.Visible = visible;
     }
 
+    // SS220 DynamicTraitor begin
+    public void AppendFooterDynamic(LocId? dynamicName)
+    {
+        DynamicLabel.Text += " " + Loc.GetString(dynamicName ?? "dynamic-unknown-name");
+    }
+    // SS220 DynamicTraitor end
+
     private void OnWithdrawButtonDown(BaseButton.ButtonEventArgs args)
     {
         // check if window is already open
@@ -193,7 +201,22 @@ public sealed partial class StoreMenu : DefaultWindow, IPinnableWindow // ss220 
             return string.Empty;
         }
 
-        var relativeModifiersSummary = listingDataWithCostModifiers.GetModifiersSummaryRelative();
+        //SS220 - TraitorDynamics - begin
+        //if this is not a real discount, it’s just a decrease from dynamics
+        if (!listingDataWithCostModifiers.Categories.Contains("DiscountedItems"))
+            return string.Empty;
+
+        IReadOnlyDictionary<ProtoId<CurrencyPrototype>, float> relativeModifiersSummary;
+        var dynamics = nameof(listingDataWithCostModifiers.DynamicsPrices);
+        if (listingDataWithCostModifiers.CostModifiersBySourceId.ContainsKey(dynamics))
+        {
+            relativeModifiersSummary = listingDataWithCostModifiers.GetDynamicRelative();
+        }
+        else
+        {
+            relativeModifiersSummary = listingDataWithCostModifiers.GetModifiersSummaryRelative();
+        }
+        // SS220 Dynamics end
         if (relativeModifiersSummary.Count > 1)
         {
             var sb = new StringBuilder();
@@ -223,6 +246,10 @@ public sealed partial class StoreMenu : DefaultWindow, IPinnableWindow // ss220 
             var enumerator = relativeModifiersSummary.GetEnumerator();
             enumerator.MoveNext();
             var amount = enumerator.Current.Value;
+            //SS220-dont-show-0-percent-start
+            if (amount == 0)
+                 return string.Empty;
+            //SS220-dont-show-0-percent-end
             discountMessage = Loc.GetString(
                 "store-ui-discount-display",
                 ("amount", (amount.ToString("P0")))
