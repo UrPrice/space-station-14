@@ -1,4 +1,4 @@
-station-goal-fax-paper-name = Цель станции
+station-goal-fax-paper-name = форма НТ-ЦК-КОМ-УКЗ
 
 station-goal-shuttle =
     Цель смены станции {$station} - постройка пилотируемого шаттла в космосе и обеспечение его всем необходимым для выживания.
