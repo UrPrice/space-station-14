@@ -479,7 +479,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalShuttle
-  suffix: [Цель - мед. шаттл]
+  suffix: Цель мед шаттл
   components:
     - type: Paper
       contentSize: 10000
@@ -488,7 +488,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalSingulo
-  suffix: [Цель - сингулярность]
+  suffix: Цель сингулярность
   components:
     - type: Paper
       contentSize: 10000
@@ -497,7 +497,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalSolars
-  suffix: [Цель - соляры]
+  suffix: Цель соляры
   components:
     - type: Paper
       contentSize: 10000
@@ -506,7 +506,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalArtifacts
-  suffix: [Цель - артефакты]
+  suffix: Цель артефакты
   components:
     - type: Paper
       contentSize: 10000
@@ -515,7 +515,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalBank
-  suffix: [Цель - храниище]
+  suffix: Цель храниище
   components:
     - type: Paper
       contentSize: 10000
@@ -524,7 +524,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalZoo
-  suffix: [Цель - зоопарк]
+  suffix: Цель зоопарк
   components:
     - type: Paper
       contentSize: 10000
@@ -533,7 +533,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalTesla
-  suffix: [Цель - тесла]
+  suffix: Цель тесла
   components:
     - type: Paper
       contentSize: 10000
@@ -542,7 +542,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalXeno
-  suffix: [Цель - ксенобио]
+  suffix: Цель ксенобио
   components:
     - type: Paper
       contentSize: 10000
@@ -551,7 +551,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalSavePlanet
-  suffix: [Цель - шаттл с припасами]
+  suffix: Цель шаттл с припасами
   components:
     - type: Paper
       contentSize: 10000
@@ -560,7 +560,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalExpedition
-  suffix: [Цель - экспы]
+  suffix: Цель экспы
   components:
     - type: Paper
       contentSize: 10000
@@ -569,7 +569,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalGuests
-  suffix: [Цель - гости]
+  suffix: Цель гости
   components:
     - type: Paper
       contentSize: 10000
@@ -578,7 +578,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalPneumatictubes
-  suffix: [Цель - пневмотрубы]
+  suffix: Цель пневмотрубы
   components:
     - type: Paper
       contentSize: 10000
@@ -587,7 +587,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalRobotics
-  suffix: [Цель - боргизация]
+  suffix: Цель боргизация
   components:
     - type: Paper
       contentSize: 10000
@@ -596,7 +596,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalHomekeepers
-  suffix: [Цель - обр комплекс]
+  suffix: Цель обр комплекс
   components:
     - type: Paper
       contentSize: 10000
@@ -605,7 +605,7 @@
 - type: entity
   parent: PaperNtFormCc
   id: PaperStationGoalPVO
-  suffix: [Цель - пво]
+  suffix: Цель пво
   components:
     - type: Paper
       contentSize: 10000
