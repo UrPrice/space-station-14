@@ -126,7 +126,7 @@
       spawnerPrototype: SpawnPointNukeopsCommander
       #ss220 ratio-fix bgn
       max: 1
-      playerRatio: 0
+      playerRatio: 1
       #ss220 ratio-fix end
       startingGear: SyndicateCommanderGearFull
       roleLoadout:
@@ -147,7 +147,7 @@
       spawnerPrototype: SpawnPointNukeopsMedic
       #ss220 ratio-fix bgn
       max: 1
-      playerRatio: 0
+      playerRatio: 1
       #ss220 ratio-fix end
       startingGear: SyndicateOperativeMedicFull
       roleLoadout:
