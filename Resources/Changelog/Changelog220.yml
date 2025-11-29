@@ -1,13 +1,4 @@
 ﻿Entries:
-- author: canvaswalker
-  changes:
-  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u0434\u0435\u043B\
-      \u0435\u0439 \u043D\u0430 \u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435\
-      \ \u043A\u0443\u043B\u044C\u0442\u0430 \u0419\u043E\u0433\u0433!"
-    type: Tweak
-  id: 771
-  time: '2025-01-15T04:32:49.0000000+00:00'
-  url: https://github.com/SerbiaStrong-220/space-station-14/pull/2484
 - author: Cortez, cream_bag
   changes:
   - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u043D\u043E\u0432\
@@ -7548,3 +7539,12 @@
   id: 1270
   time: '2025-11-29T19:00:54.0000000+00:00'
   url: https://github.com/SerbiaStrong-220/space-station-14/pull/3361
+- author: Lanc
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043F\u043E\u044E\
+      \u0449\u0430\u044F \u0440\u044B\u0431\u0430 \u0438 \u0440\u0435\u0446\u0435\u043F\
+      \u0442 \u0435\u0451 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F."
+    type: Add
+  id: 1271
+  time: '2025-11-29T19:18:14.0000000+00:00'
+  url: https://github.com/SerbiaStrong-220/space-station-14/pull/3620
