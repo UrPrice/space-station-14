@@ -1,12 +1,4 @@
 ﻿Entries:
-- author: Plagex, Helm
-  changes:
-  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043F\u043B\u044E\u0448\
-      \u0435\u0432\u044B\u0439 \u041C\u0438-\u0413\u043E"
-    type: Add
-  id: 773
-  time: '2025-01-16T08:58:02.0000000+00:00'
-  url: https://github.com/SerbiaStrong-220/space-station-14/pull/2487
 - author: Helm
   changes:
   - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D \u0443\u0440\u043E\
@@ -7552,3 +7544,12 @@
   id: 1272
   time: '2025-12-01T17:13:24.0000000+00:00'
   url: https://github.com/SerbiaStrong-220/space-station-14/pull/3657
+- author: Gnomeev
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0431\u0440\u0438\u0444\
+      \u0438\u043D\u0433 \u0434\u043B\u044F \u0414\u0438\u043D\u0430\u043C\u0438\u0447\
+      \u0435\u0441\u043A\u0438\u0445 \u0410\u0433\u0435\u043D\u0442\u043E\u0432!"
+    type: Add
+  id: 1273
+  time: '2025-12-04T16:26:46.0000000+00:00'
+  url: https://github.com/SerbiaStrong-220/space-station-14/pull/3665
