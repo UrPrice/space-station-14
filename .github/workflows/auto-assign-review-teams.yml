@@ -32,13 +32,13 @@ jobs:
             const prLabels = pullRequest.labels.map(label => label.name);
 
             const labelTeamMap = {
-              'Changes: C#': 'review-code',
-              'Changes: Localization': 'review-code',
-              'Changes: Prototypes': 'review-code',
-              'Changes: Shaders': 'review-code',
-              'Changes: UI': 'review-code',
-              'Changes: Sprites': 'review-sprite',
-              'Changes: Map': 'review-map'
+              'Changes: C#': '[Review] Code',
+              'Changes: Localization': '[Review] Code',
+              'Changes: Prototypes': '[Review] Code',
+              'Changes: Shaders': '[Review] Code',
+              'Changes: UI': '[Review] Code',
+              'Changes: Sprites': '[Review] Sprite',
+              'Changes: Map': '[Review] Map'
             };
 
             const teamsToAdd = new Set();
