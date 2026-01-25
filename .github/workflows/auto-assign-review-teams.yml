@@ -19,6 +19,33 @@ jobs:
         run: sleep 5
 
       - uses: actions/github-script@v6
+        name: check team info
+        with:
+          script: |
+            const { data: teams } = await github.rest.teams.list({
+              org: 'SerbiaStrong-220',
+              per_page: 100
+            });
+
+            const reviewTeams = teams.filter(t => t.name.includes('Review') || t.slug.includes('review'));
+            console.log('Available review teams:');
+            reviewTeams.forEach(t => {
+              console.log(`  - ${t.name} (slug: ${t.slug}, id: ${t.id})`);
+            });
+
+            const { data: repoTeams } = await github.rest.teams.listByRepo({
+              org: 'SerbiaStrong-220',
+              repo: 'space-station-14',
+              per_page: 100
+            });
+
+            console.log('Teams in repository:');
+            repoTeams.forEach(t => {
+              console.log(`  - ${t.name} (slug: ${t.slug}, permission: ${t.permission})`);
+            });
+
+
+      - uses: actions/github-script@v6
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
