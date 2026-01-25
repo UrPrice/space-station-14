@@ -7,9 +7,6 @@ on:
       - synchronize
       - reopened
       - ready_for_review
-  workflow_run:
-    workflows: ["Labels: PR"]
-    types: [completed]
 
 jobs:
   assign_review_teams:
@@ -17,20 +14,14 @@ jobs:
     permissions:
       pull-requests: write
     steps:
+      # затычка, как будет время и желание - переписать скрипт на самостоятельную проверку изменённых файлов, а не на опору в виде Labels: PR
+      - name: Wait for labels to be added
+        run: sleep 5
+
       - uses: actions/github-script@v6
         with:
           script: |
-
-            const runs = await github.rest.actions.listWorkflowRuns({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: context.payload.workflow_run.workflow_id,
-              conclusion: 'success'
-            });
-
-            if (!runs.data.workflow_runs[0]?.pull_requests?.[0]) return;
-
-            const prNumber = runs.data.workflow_runs[0].pull_requests[0].number;
+            const prNumber = context.payload.pull_request.number;
 
             const { data: pullRequest } = await github.rest.pulls.get({
               owner: context.repo.owner,
@@ -65,8 +56,10 @@ jobs:
                   pull_number: prNumber,
                   team_reviewers: Array.from(teamsToAdd)
                 });
-                console.log(`Команды добавлены: ${Array.from(teamsToAdd).join(', ')}`);
+                console.log(`Team add: ${Array.from(teamsToAdd).join(', ')}`);
               } catch (error) {
                 console.log(`${error.message}`);
               }
+            } else {
+              console.log('Labels not found');
             }
