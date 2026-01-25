@@ -22,6 +22,7 @@ jobs:
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
+            console.log('PR Number:', prNumber);
 
             const { data: pullRequest } = await github.rest.pulls.get({
               owner: context.repo.owner,
@@ -30,6 +31,7 @@ jobs:
             });
 
             const prLabels = pullRequest.labels.map(label => label.name);
+            console.log('Found labels:', prLabels);
 
             const labelTeamMap = {
               'Changes: C#': '[Review] Code',
@@ -44,21 +46,31 @@ jobs:
             const teamsToAdd = new Set();
             for (const label of prLabels) {
               if (labelTeamMap[label]) {
+                console.log(`Mapping found: "${label}" → "${labelTeamMap[label]}"`);
                 teamsToAdd.add(labelTeamMap[label]);
+              } else {
+                console.log(`No mapping for label: "${label}"`);
               }
             }
 
+            console.log('Teams to add:', Array.from(teamsToAdd));
+
             if (teamsToAdd.size > 0) {
               try {
-                await github.rest.pulls.requestReviewers({
+                console.log('Sending request with teams:', Array.from(teamsToAdd));
+                const response = await github.rest.pulls.requestReviewers({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   pull_number: prNumber,
                   team_reviewers: Array.from(teamsToAdd)
                 });
-                console.log(`Team add: ${Array.from(teamsToAdd).join(', ')}`);
+                console.log('Team add: ${Array.from(teamsToAdd).join(', ')}');
+                console.log('Response status:', response.status);
               } catch (error) {
-                console.log(`${error.message}`);
+                console.log('Full error:', error);
+                console.log('Error message:', error.message);
+                console.log('Error status:', error.status);
+                console.log('Error data:', error.response?.data);
               }
             } else {
               console.log('Labels not found');
