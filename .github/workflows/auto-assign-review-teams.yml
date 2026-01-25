@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: read
     steps:
       # затычка, как будет время и желание - переписать скрипт на самостоятельную проверку изменённых файлов, а не на опору в виде Labels: PR
       - name: Wait for labels to be added
@@ -93,5 +94,4 @@ jobs:
               }
             } else {
               console.log('Labels not found');
-            }
             }
