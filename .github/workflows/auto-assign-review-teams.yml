@@ -1,4 +1,4 @@
-name: "Auto Review Teams"
+name: "Auto review Teams"
 
 on:
   pull_request_target:
@@ -32,13 +32,13 @@ jobs:
             const prLabels = pullRequest.labels.map(label => label.name);
 
             const labelTeamMap = {
-              'Changes: C#': 'Review-Code',
-              'Changes: Localization': 'Review-Code',
-              'Changes: Prototypes': 'Review-Code',
-              'Changes: Shaders': 'Review-Code',
-              'Changes: UI': 'Review-Code',
-              'Changes: Sprites': 'Review-Sprite',
-              'Changes: Map': 'Review-Map'
+              'Changes: C#': 'review-code',
+              'Changes: Localization': 'review-code',
+              'Changes: Prototypes': 'review-code',
+              'Changes: Shaders': 'review-code',
+              'Changes: UI': 'review-code',
+              'Changes: Sprites': 'review-sprite',
+              'Changes: Map': 'review-map'
             };
 
             const teamsToAdd = new Set();
