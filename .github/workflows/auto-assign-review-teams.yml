@@ -1,0 +1,65 @@
+name: "Auto Review Teams"
+
+on:
+  workflow_run:
+    workflows: ["Labels: PR"]
+    types: [completed]
+
+jobs:
+  assign_review_teams:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+
+            const runs = await github.rest.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: context.payload.workflow_run.workflow_id,
+              conclusion: 'success'
+            });
+
+            if (!runs.data.workflow_runs[0]?.pull_requests?.[0]) return;
+
+            const prNumber = runs.data.workflow_runs[0].pull_requests[0].number;
+
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+
+            const prLabels = pullRequest.labels.map(label => label.name);
+
+            const labelTeamMap = {
+              'Changes: C#': 'Review-Code',
+              'Changes: Localization': 'Review-Code',
+              'Changes: Prototypes': 'Review-Code',
+              'Changes: Shaders': 'Review-Code',
+              'Changes: UI': 'Review-Code',
+              'Changes: Sprites': 'Review-Sprite',
+              'Changes: Map': 'Review-Map'
+            };
+
+            const teamsToAdd = new Set();
+            for (const label of prLabels) {
+              if (labelTeamMap[label]) {
+                teamsToAdd.add(labelTeamMap[label]);
+              }
+            }
+
+            if (teamsToAdd.size > 0) {
+              try {
+                await github.rest.pulls.requestReviewers({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                  team_reviewers: Array.from(teamsToAdd)
+                });
+              } catch (error) {
+                console.log(`${error.message}`);
+              }
+            }
