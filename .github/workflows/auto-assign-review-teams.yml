@@ -1,6 +1,12 @@
 name: "Auto Review Teams"
 
 on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
   workflow_run:
     workflows: ["Labels: PR"]
     types: [completed]
@@ -59,6 +65,7 @@ jobs:
                   pull_number: prNumber,
                   team_reviewers: Array.from(teamsToAdd)
                 });
+                console.log(`Команды добавлены: ${Array.from(teamsToAdd).join(', ')}`);
               } catch (error) {
                 console.log(`${error.message}`);
               }
