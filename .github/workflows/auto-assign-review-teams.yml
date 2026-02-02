@@ -15,15 +15,25 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      # затычка, как будет время и желание - переписать скрипт на самостоятельную проверку изменённых файлов, а не на опору в виде Labels: PR
       - name: Wait for labels to be added
         run: sleep 5
 
       - uses: actions/github-script@v8
         with:
+          github-token: ${{ secrets.URPRICE_REVIEW_BOT }}
           script: |
             const prNumber = context.payload.pull_request.number;
             console.log('PR Number:', prNumber);
+
+            const labelTeamMap = {
+              'Changes: C#': 'review-code',
+              'Changes: Localization': 'review-code',
+              'Changes: Prototypes': 'review-code',
+              'Changes: Shaders': 'review-code',
+              'Changes: UI': 'review-code',
+              'Changes: Sprites': 'review-sprite',
+              'Changes: Map': 'review-map'
+            };
 
             const { data: pullRequest } = await github.rest.pulls.get({
               owner: context.repo.owner,
@@ -34,49 +44,34 @@ jobs:
             const prLabels = pullRequest.labels.map(label => label.name);
             console.log('Found labels:', prLabels);
 
-            const labelTeamMap = {
-              'Changes: C#': '[Review] Code',
-              'Changes: Localization': '[Review] Code',
-              'Changes: Prototypes': '[Review] Code',
-              'Changes: Shaders': '[Review] Code',
-              'Changes: UI': '[Review] Code',
-              'Changes: Sprites': '[Review] Sprite',
-              'Changes: Map': '[Review] Map'
-            };
-
             const teamsToAdd = new Set();
             for (const label of prLabels) {
               if (labelTeamMap[label]) {
-                console.log(`Mapping found: "${label}" → "${labelTeamMap[label]}"`);
-                teamsToAdd.add(labelTeamMap[label]);
-              } else {
-                console.log(`No mapping for label: "${label}"`);
+                const teamSlug = labelTeamMap[label];
+                console.log(`Mapping found: "${label}" → "${teamSlug}"`);
+                teamsToAdd.add(teamSlug);
               }
             }
 
-            console.log('Teams to add:', Array.from(teamsToAdd));
+            const reviewersList = Array.from(teamsToAdd);
+            console.log('Teams to add (slugs):', reviewersList);
 
-            if (teamsToAdd.size > 0) {
+            if (reviewersList.length > 0) {
               try {
-                console.log('Adding teams:', Array.from(teamsToAdd));
                 const response = await github.rest.pulls.requestReviewers({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   pull_number: prNumber,
-                  team_reviewers: Array.from(teamsToAdd)
+                  team_reviewers: reviewersList
                 });
-                console.log(`Successfully added teams: ${Array.from(teamsToAdd).join(', ')}`);
-                console.log('Response status:', response.status);
+                console.log(`Successfully requested review from teams.`);
               } catch (error) {
-                if (error.status === 422) {
-                  console.log('HTTP 422 - One or more teams could not be added');
-                  console.log('Error details:', error.message);
-                } else {
-                  console.error('Unexpected error:', error.message);
-                  console.error('Status:', error.status);
-                  console.error('Data:', error.response?.data);
+                console.error('API Error:', error.message);
+                console.error('Status:', error.status);
+                if (error.response) {
+                   console.error('Response data:', JSON.stringify(error.response.data, null, 2));
                 }
               }
             } else {
-              console.log('No labels found');
+              console.log('No matching team labels found.');
             }
