@@ -1,5 +1,5 @@
-fold-tie-verb = завязать
-fold-untie-verb = развязать
+fold-tie-verb = Завязать
+fold-untie-verb = Развязать
 
 ent-ClothingUniformJumpsuitCentcomOfficerTurtleneck = водолазка Центком
     .desc = Повседневная, но элегантная водолазка тёмного цвета, используемая офицерами Центком. От неё веет черникой.
