@@ -970,3 +970,8 @@ LockerBlueshieldOperativeFilled: LockerSRTOperativeFilled
 AirlockGlassCentcommLockedBlueShieldOperative: AirlockGlassCentcommLockedSRTOperative
 BlasterPowerCellPulse: PowerCellBlasterHighCapacity
 # SS220 Blueshield end
+
+# 2026-03-23 - SS220 new cqc
+cqc_nonlethal: CQCManual
+cqc_lethal: CQCManual
+# SS220 new cqc end

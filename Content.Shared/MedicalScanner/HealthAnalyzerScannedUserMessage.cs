@@ -25,6 +25,7 @@ public struct HealthAnalyzerUiState
     public readonly NetEntity? TargetEntity;
     public float Temperature;
     public float BloodLevel;
+    public bool CanPrint; // SS220-health-analyzer-report
     public bool? ScanMode;
     public bool? Bleeding;
     public bool? Unrevivable;
@@ -32,11 +33,12 @@ public struct HealthAnalyzerUiState
 
     public HealthAnalyzerUiState() {}
 
-    public HealthAnalyzerUiState(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, int? counterDeath /* SS220 LimitationRevive */)
+    public HealthAnalyzerUiState(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, int? counterDeath /* SS220 LimitationRevive */, bool canPrint /*  SS220-health-analyzer-report */)
     {
         TargetEntity = targetEntity;
         Temperature = temperature;
         BloodLevel = bloodLevel;
+        CanPrint = canPrint; // SS220-health-analyzer-report
         ScanMode = scanMode;
         Bleeding = bleeding;
         Unrevivable = unrevivable;

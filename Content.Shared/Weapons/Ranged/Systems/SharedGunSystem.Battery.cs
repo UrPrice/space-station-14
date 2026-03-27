@@ -1,6 +1,7 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
 using Content.Shared.Examine;
+using Content.Shared.PowerCell.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Power;
 using Content.Shared.PowerCell;

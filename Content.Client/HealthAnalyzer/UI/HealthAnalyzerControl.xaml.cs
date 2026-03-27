@@ -53,6 +53,9 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
 
     public void Populate(HealthAnalyzerUiState state)
     {
+        PrintButton.Visible = state.CanPrint; // SS220-health-analyzer-report
+        PrintButton.Disabled = true; // SS220-health-analyzer-report
+
         ReagentsContainer.DisposeAllChildren(); // ss220 add reagents to health
 
         var target = _entityManager.GetEntity(state.TargetEntity);
@@ -63,6 +66,8 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
             NoPatientDataText.Visible = true;
             return;
         }
+
+        PrintButton.Disabled = !msg.CanPrint; // SS220-health-analyzer-report
 
         // ss220 add reagents to health analyzer start
         if (_entityManager.TryGetComponent<SolutionContainerManagerComponent>(target, out var solComp))

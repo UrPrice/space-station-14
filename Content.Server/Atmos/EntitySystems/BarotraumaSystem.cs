@@ -9,6 +9,7 @@ using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.SS220.Atmos;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Atmos.EntitySystems
@@ -220,6 +221,14 @@ namespace Content.Server.Atmos.EntitySystems
                 }
                 if (totalDamage >= barotrauma.MaxDamage)
                     continue;
+
+                // SS220 spider queen update BGN
+                var ev = new BarotraumaDamageAttemptEvent();
+                RaiseLocalEvent(uid, ref ev);
+
+                if (ev.Cancelled)
+                    continue;
+                // SS220 spider queen update END
 
                 var pressure = 1f;
 

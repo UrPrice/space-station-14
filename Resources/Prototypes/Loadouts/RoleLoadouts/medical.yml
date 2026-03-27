@@ -23,6 +23,7 @@
   - GroupSpeciesBreathToolMedical
   - SponsorNeck
   #SS220-TwoOne-Floppa-Iteration end
+  - SeniorStaffCash #SS220-Cash-personal
 
 - type: roleLoadout
   id: JobMedicalDoctor
@@ -47,6 +48,7 @@
   - GroupSpeciesBreathToolMedical
   - SponsorNeck
   #SS220-TwoOne-Floppa-Iteration end
+  - WorkerCash #SS220-Cash-personal
 
 - type: roleLoadout
   id: JobMedicalIntern
@@ -60,6 +62,7 @@
   - Trinkets
 #  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
+  - CivilianCash #SS220-Cash-personal
 
 - type: roleLoadout
   id: JobChemist
@@ -78,6 +81,7 @@
 #  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SponsorNeck #SS220-TwoOne-Floppa-Iteration
+  - WorkerCash #SS220-Cash-personal
 
 - type: roleLoadout
   id: JobParamedic
@@ -98,3 +102,4 @@
 #  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
   - SponsorNeck #SS220-TwoOne-Floppa-Iteration
+  - WorkerCash #SS220-Cash-personal

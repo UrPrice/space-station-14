@@ -51,6 +51,7 @@
   - OffsetCaneMime
   - OffsetCaneNT
   - Cane
+  #- ExpensiveCane #SS220 TODO NanoTraisen Representative
   - TowelColorWhite
   # SS220 Hand/FootWraps begin
   - ClothingHandWraps
@@ -795,6 +796,7 @@
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
+  - EveningDress #SS220 musician dresses
   - BardUniform #SS220 bard loadout
 
 - type: loadoutGroup
