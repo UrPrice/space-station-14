@@ -6,10 +6,18 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 10h # SS220-RoleTime 2
-    - !type:SpeciesRequirement #SS220-jobbans begin
+    # SS220-RoleTime begin
+    # - !type:DepartmentTimeRequirement
+    #   department: Security
+    #   time: 10h
+    #   inverted: true # stop playing intern if you're good at security!
+    # SS220-RoleTime end
+    #SS220-jobbans begin
+    - !type:SpeciesRequirement
       inverted: true
       species:
-      - Felinid #SS220-jobbans end
+      - Felinid
+    #SS220-jobbans end
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
@@ -18,7 +26,6 @@
   - Security
   - Brig
   - Maintenance
-  - Service
   - External
   - Cryogenics
   special:

@@ -60,6 +60,8 @@ public sealed partial class IdCardConsoleComponent : Component
         "Clown", //SS220 New_accesses_and_some_tweaks
         "Engineering",
         "External",
+        "GenpopEnter",
+        "GenpopLeave",
         "HeadOfPersonnel",
         "HeadOfSecurity",
         "Hydroponics",

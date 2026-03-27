@@ -111,6 +111,11 @@ namespace Content.Client.Sandbox
             RaiseNetworkEvent(new MsgSandboxSuicide());
         }
 
+        public void ToggleThermalVision()
+        {
+            RaiseNetworkEvent(new MsgSandboxThermalVision());
+        }
+
         public bool Copy(ICommonSession? session, EntityCoordinates coords, EntityUid uid)
         {
             if (!SandboxAllowed)

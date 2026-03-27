@@ -1,4 +1,3 @@
-
 using Content.Server.Administration.Managers;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -127,14 +126,29 @@ public sealed class RoleBanCommand : IConsoleCommand
         var targetUid = located.UserId;
         var targetHWid = located.LastHWId;
 
+        var banInfo = new CreateRoleBanInfo(reason);
+        if (minutes > 0)
+            banInfo.WithMinutes(minutes);
+        banInfo.AddUser(targetUid, located.Username);
+        banInfo.WithBanningAdmin(shell.Player?.UserId);
+        banInfo.AddHWId(targetHWid);
+        banInfo.WithSeverity(severity);
+
         if (_proto.HasIndex<JobPrototype>(role))
-            _bans.CreateRoleBan<JobPrototype>(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, role, minutes, severity, reason, DateTimeOffset.UtcNow, postBanInfo);
+        {
+            banInfo.AddJob(new ProtoId<JobPrototype>(role));
+        }
         else if (_proto.HasIndex<AntagPrototype>(role))
-            _bans.CreateRoleBan<AntagPrototype>(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, role, minutes, severity, reason, DateTimeOffset.UtcNow, postBanInfo);
-        else if (_proto.HasIndex<SpeciesPrototype>(role))
-            _bans.CreateSpeciesBan(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, role, minutes, severity, reason, DateTimeOffset.UtcNow, postBanInfo);
+        {
+            banInfo.AddAntag(new ProtoId<AntagPrototype>(role));
+        }
         else
+        {
             shell.WriteError(Loc.GetString("cmd-roleban-job-parse", ("job", role)));
+            return;
+        }
+
+        _bans.CreateRoleBan(banInfo);
     }
 
     public CompletionResult GetCompletion(IConsoleShell shell, string[] args)

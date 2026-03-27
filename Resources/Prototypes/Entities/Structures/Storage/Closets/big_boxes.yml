@@ -89,9 +89,9 @@
       hadOutline: true
       # SS220 Changes invis so that box is less visible at all times.
     - type: StealthOnMove
-      passiveVisibilityRate: -1
-      movementVisibilityRate: 0
-# Corvax-HiddenDesc-Start
+      passiveVisibilityRate: -1 # very useful for going around the station concealed, if you start jitterstrafing you get seen
+      movementVisibilityRate: 0.20
+    # Corvax-HiddenDesc-Start
     - type: HiddenDescription
       entries:
       - label: corvax-hidden-desc-StealthBox-syndicate
@@ -104,7 +104,7 @@
           - ResearchDirector
           - Scientist
           - Borg
-# Corvax-HiddenDesc-End
+    # Corvax-HiddenDesc-End
 
 - type: entity
   id: BigBox

@@ -9,6 +9,9 @@
   - FloorTileItemDarkHerringbone
   - FloorTileItemDarkMini
   - FloorTileItemDarkMono
+  - FloorTileItemDarkSlatsContinuous
+  - FloorTileItemDarkVerticalSlatsBordered
+  - FloorTileItemDarkHorizontalSlatsBordered
   - FloorTileItemDarkPavement
   - FloorTileItemDarkPavementVertical
   - FloorTileItemDarkOffset
@@ -22,6 +25,9 @@
   - FloorTileItemSteelDiagonal
   - FloorTileItemSteelHerringbone
   - FloorTileItemSteelMini
+  - FloorTileItemSteelSlatsContinuous
+  - FloorTileItemSteelVerticalSlatsBordered
+  - FloorTileItemSteelHorizontalSlatsBordered
   - FloorTileItemSteelMono
   - FloorTileItemSteelPavement
   - FloorTileItemSteelPavementVertical
@@ -38,6 +44,9 @@
   - FloorTileItemWhiteHerringbone
   - FloorTileItemWhiteMini
   - FloorTileItemWhiteMono
+  - FloorTileItemWhiteSlatsContinuous
+  - FloorTileItemWhiteVerticalSlatsBordered
+  - FloorTileItemWhiteHorizontalSlatsBordered
   - FloorTileItemWhitePavement
   - FloorTileItemWhitePavementVertical
 
@@ -69,12 +78,12 @@
   - FloorTileItemOldConcreteMono
   - FloorTileItemOldConcreteSmooth
 
-# - type: latheRecipePack
-#   id: CircuitFloorsStatic
-#   recipes:
-#   - FloorGreenCircuit
-#   - FloorBlueCircuit
-#   - FloorRedCircuit
+- type: latheRecipePack
+  id: CircuitFloorsStatic
+  recipes:
+  - FloorGreenCircuit
+  - FloorBlueCircuit
+  - FloorRedCircuit
 
 - type: latheRecipePack
   id: FloorMarbleTilesStatic
@@ -97,3 +106,5 @@
   - FauxTileAstroAsteroidSand
   - FauxTileDesertAstroSand
   - FauxTileAstroSand #SS220-beachCraftng
+  - FauxTileAstroIronsand
+  - FauxTileAstroIronsandBorderless

@@ -7,12 +7,7 @@ namespace Content.Shared.Administration.BanList;
 [Serializable, NetSerializable]
 public sealed class BanListEuiState : EuiStateBase
 {
-    public BanListEuiState(
-        string banListPlayerName,
-        List<SharedServerBan> bans,
-        List<SharedServerRoleBan> roleBans,
-        List<SharedServerSpeciesBan> speciesBans // SS220 Species bans
-        )
+    public BanListEuiState(string banListPlayerName, List<SharedBan> bans, List<SharedBan> roleBans, List<SharedServerSpeciesBan> speciesBans /* UPSTREAM_TODO */)
     {
         BanListPlayerName = banListPlayerName;
         Bans = bans;
@@ -21,7 +16,7 @@ public sealed class BanListEuiState : EuiStateBase
     }
 
     public string BanListPlayerName { get; }
-    public List<SharedServerBan> Bans { get; }
-    public List<SharedServerRoleBan> RoleBans { get; }
-    public List<SharedServerSpeciesBan> SpeciesBans { get; } // SS220 Species bans
+    public List<SharedBan> Bans { get; }
+    public List<SharedBan> RoleBans { get; }
+    public List<SharedServerSpeciesBan> SpeciesBans { get; } // SS220 Species bans // UPSTREAM_TODO
 }
