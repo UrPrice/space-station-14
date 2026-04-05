@@ -36,12 +36,12 @@
             </BoxContainer>
             <Control HorizontalExpand="True"/>
             <BoxContainer>
-                <!-- SS220-ID console extended access button-Begin -->
+                <!-- SS220-ID console extended access button-bgn -->
                 <!-- <Button Name="SelectAllButton" Text="{Loc 'id-card-console-window-select-all-button'}" /> -->
                 <Button Name="FullAccessButton" Text="{Loc 'id-card-console-window-full-access-button'}" StyleClasses="OpenRight"  />
-                <Button Name="ExtendedAccessButton" Text="{Loc 'id-card-console-window-extended-access-button'}" StyleClasses="OpenBoth"/>
+                <Button Name="ExtendedAccessButton" Text="{Loc 'id-card-console-window-extended-access-button'}" StyleClasses="OpenBoth" />
                 <Button Name="DeselectAllButton" Text="{Loc 'id-card-console-window-deselect-all-button'}"  StyleClasses="OpenLeft" />
-                <!-- SS220-ID console extended access button-End -->
+                <!-- SS220-ID console extended access button-end -->
             </BoxContainer>
         </BoxContainer>
         <!-- Individual access buttons -->
