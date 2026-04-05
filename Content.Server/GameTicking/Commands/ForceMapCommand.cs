@@ -12,8 +12,8 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.GameTicking.Commands
 {
-    [AdminCommand(AdminFlags.Host)] // SS220-map-force-admin-flag-change
-    public sealed class ForceMapCommand : LocalizedCommands
+    [AdminCommand(AdminFlags.Round)]
+    sealed class ForceMapCommand : IConsoleCommand
     {
         [Dependency] private readonly IConfigurationManager _configurationManager = default!;
         [Dependency] private readonly IGameMapManager _gameMapManager = default!;
