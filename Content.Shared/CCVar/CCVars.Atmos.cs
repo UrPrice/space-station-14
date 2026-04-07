@@ -8,7 +8,7 @@ public sealed partial class CCVars
     ///     Whether gas differences will move entities.
     /// </summary>
     public static readonly CVarDef<bool> SpaceWind =
-        CVarDef.Create("atmos.space_wind", false, CVar.SERVERONLY);
+        CVarDef.Create("atmos.space_wind", true, CVar.SERVERONLY); //ss220 space wind enable
 
     /// <summary>
     ///     Divisor from maxForce (pressureDifference * 2.25f) to force applied on objects.
@@ -34,7 +34,7 @@ public sealed partial class CCVars
     ///     A "throwing" atmospheric pressure difference ignores this limit, but not the max. velocity limit.
     /// </summary>
     public static readonly CVarDef<float> SpaceWindMaxPushForce =
-        CVarDef.Create("atmos.space_wind_max_push_force", 20f, CVar.SERVERONLY);
+        CVarDef.Create("atmos.space_wind_max_push_force", 25f, CVar.SERVERONLY); //ss220 space wind enable
 
     /// <summary>
     ///     Whether monstermos tile equalization is enabled.
