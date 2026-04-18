@@ -166,6 +166,7 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
             expiryTime,
             null,
             null, // SS220 Species bans
+            null, // SS220 chat bans
             null,
             null,
             null,
@@ -182,7 +183,7 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
             NoteType.Watchlist => (await _db.GetAdminWatchlist(id))?.ToShared(),
             NoteType.Message => (await _db.GetAdminMessage(id))?.ToShared(),
             NoteType.ServerBan or NoteType.RoleBan => (await _db.GetBanAsNoteAsync(id))?.ToShared(),
-            TODO NoteType.SpeciesBan => (await _db.GetServerSpeciesBanAsNoteAsync(id))?.ToShared(), // SS220 Species bans
+            NoteType.SpeciesBan or NoteType.ChatBan => (await _db.GetBanAsNoteAsync(id))?.ToShared(), // SS220 Species bans
             _ => throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown note type")
         };
     }
@@ -213,8 +214,8 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
                 await _db.HideBanFromNotes(noteId, deletedBy.UserId, deletedAt);
                 break;
             // SS220 Species bans begin
-            case NoteType.SpeciesBan:
-                await _db.HideServerSpeciesBanFromNotes(noteId, deletedBy.UserId, deletedAt);
+            case NoteType.SpeciesBan or NoteType.ChatBan:
+                await _db.HideBanFromNotes(noteId, deletedBy.UserId, deletedAt);
                 break;
             // SS220 Species bans end
             default:
@@ -297,10 +298,10 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
                 await _db.EditBan(noteId, message, severity.Value, expiryTime, editedBy.UserId, editedAt);
                 break;
             // SS220 Species bans begin
-            case NoteType.SpeciesBan:
+            case NoteType.SpeciesBan or NoteType.ChatBan:
                 if (severity is null)
                     throw new ArgumentException("Severity cannot be null for a species ban", nameof(severity));
-                await _db.EditServerSpeciesBan(noteId, message, severity.Value, expiryTime, editedBy.UserId, editedAt);
+                await _db.EditBan(noteId, message, severity.Value, expiryTime, editedBy.UserId, editedAt);
                 break;
             // SS220 Species bans end
             default:

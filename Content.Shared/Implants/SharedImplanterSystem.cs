@@ -326,8 +326,6 @@ public abstract class SharedImplanterSystem : EntitySystem
 
         else if (component.CurrentMode == ImplanterToggleMode.Inject && component.ImplantOnly)
         {
-            if (!TryComp<MetaDataComponent>(uid, out var metadata))
-                return;
             _metaData.SetEntityName(uid, Loc.GetString("ent-BaseImplanter")); // ������ �� ����������� ���
             _metaData.SetEntityDescription(uid, Loc.GetString("ent-BaseImplanter.desc")); // ������ �� ����������� ��������
             _appearance.SetData(uid, ImplanterVisuals.Full, implantFound, appearance); // ������ ������ ������� ����������

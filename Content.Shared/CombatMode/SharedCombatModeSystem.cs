@@ -100,9 +100,6 @@ public abstract class SharedCombatModeSystem : EntitySystem
     //     }
     // }
     // SS220-grabs-move-rotator-to-system-end
-
-    // todo: When we stop making fucking garbage abstract shared components, remove this shit too.
-    protected abstract bool IsNpc(EntityUid uid);
 }
 
 public sealed partial class ToggleCombatActionEvent : InstantActionEvent

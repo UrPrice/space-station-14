@@ -1,4 +1,5 @@
-﻿using Content.Client.UserInterface.RichText;
+﻿using Content.Client.SS220.Language;
+using Content.Client.UserInterface.RichText;
 using Robust.Client.UserInterface.RichText;
 
 namespace Content.Client.RichText;
@@ -21,6 +22,11 @@ public static class UserFormattableTags
         typeof(HeadingTag),
         typeof(ItalicTag),
         typeof(MonoTag),
+        //ss220 add allowed tags start
+        typeof(ScrambleTag),
+        typeof(FontTag),
+        typeof(LanguageMessageTag),
+        //ss220 add allowed tags end
     ];
 
     /// <summary>

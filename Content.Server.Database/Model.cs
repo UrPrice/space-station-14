@@ -36,6 +36,8 @@ namespace Content.Server.Database
         public DbSet<BanAddress> BanAddress { get; set; } = default!;
         public DbSet<BanHwid> BanHwid { get; set; } = default!;
         public DbSet<BanRole> BanRole { get; set; } = default!;
+        public DbSet<BanSpecie> BanSpecie { get; set; } = default!; // SS220-specie-ban
+        public DbSet<BanChat> BanChat { get; set; } = default!; // SS220-chat-ban
         public DbSet<Unban> Unban { get; set; } = default!;
         public DbSet<ServerBanExemption> BanExemption { get; set; } = default!;
         public DbSet<ConnectionLog> ConnectionLog { get; set; } = default!;
@@ -345,6 +347,7 @@ namespace Content.Server.Database
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
         public string? SignatureData { get; set; } // ss220 add signature
+        public bool TeleportAfkToCryoStorage { get; set; } = true; // SS220-teleport-to-cryo-storage
 
         public List<ProfileRoleLoadout> Loadouts { get; } = new();
 

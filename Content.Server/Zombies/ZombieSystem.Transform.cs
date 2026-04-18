@@ -37,8 +37,6 @@ using Content.Shared.Cuffs.Components;
 using Content.Shared.Prying.Components;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
-using Content.Server.Administration.Managers;
-using Content.Shared.Humanoid.Markings;
 using Robust.Server.Player;
 using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.Humanoid.Markings;
@@ -240,13 +238,6 @@ public sealed partial class ZombieSystem
 
             _visualBody.ApplyMarkings(target, newMarkings);
         }
-
-            //ss220 - start edit
-            SetMarkingColors(MarkingCategories.Tail, zombiecomp.SkinColor, huApComp);
-            SetMarkingColors(MarkingCategories.HeadSide, zombiecomp.SkinColor, huApComp);
-            SetMarkingColors(MarkingCategories.HeadTop, zombiecomp.SkinColor, huApComp);
-            SetMarkingColors(MarkingCategories.Snout, zombiecomp.SkinColor, huApComp);
-            //ss220 - end edit
 
         //We have specific stuff for humanoid zombies because they matter more
         if (HasComp<HumanoidProfileComponent>(target))

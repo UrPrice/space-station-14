@@ -225,7 +225,7 @@
         children:
         - id: WeaponRevolverInspector
         # SS220 Bring-Rubber-Back begin
-        - id: SpeedLoaderMagnumRubber
+        - id: SpeedLoaderMagnum
           amount: 2
         # SS220 Bring-Rubber-Back end
 

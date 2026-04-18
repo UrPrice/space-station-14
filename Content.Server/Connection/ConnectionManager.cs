@@ -60,7 +60,6 @@ namespace Content.Server.Connection
         [Dependency] private readonly IServerNetManager _netMgr = default!;
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly SponsorsManager _sponsorsManager = default!; // Corvax-Sponsors
         [Dependency] private readonly IPlayerLocator _playerLocator = default!; // SS220-ad-login-into-ban-screen
         [Dependency] private readonly ILocalizationManager _loc = default!;
         [Dependency] private readonly ServerDbEntryManager _serverDbEntry = default!;
@@ -241,7 +240,7 @@ namespace Content.Server.Connection
             if (bans.Count > 0)
             {
                 var firstBan = bans[0];
-                var name = firstBan.UserId.HasValue ? await _playerLocator.LookupIdAsync(firstBan.UserId.Value) : null; // SS220-ad-login-into-ban-screen
+                var name = firstBan.UserIds.Length > 0 ? await _playerLocator.LookupIdAsync(firstBan.UserIds[0]) : null; // SS220-ad-login-into-ban-screen
                 var message = firstBan.FormatBanMessage(_cfg, _loc, name?.Username); // SS220-ad-login-into-ban-screen
                 return (ConnectionDenyReason.Ban, message, bans);
             }

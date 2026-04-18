@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Server.Administration.Logs;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.Database;
@@ -11,7 +12,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Shared.DeviceNetwork.Components;
-using System.Numerics;
 
 namespace Content.Server.SurveillanceCamera;
 
@@ -22,7 +22,7 @@ public sealed class SurveillanceCameraSystem : SharedSurveillanceCameraSystem
     [Dependency] private readonly DeviceNetworkSystem _deviceNetworkSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
+    //[Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly SurveillanceCameraMapSystem _cameraMapSystem = default!;
 
@@ -82,23 +82,23 @@ public sealed class SurveillanceCameraSystem : SharedSurveillanceCameraSystem
 
         if (args.Data.TryGetValue(DeviceNetworkConstants.Command, out string? command))
         {
-            //SS220 Camera-Map begin
-            Vector2 position;
-            if (_container.TryGetContainingContainer(uid, out var container))
-                // If camera is withing container, report the position of the container instead.
-                // Required for proper work of hidden/bodycams with map mode of surveillance monitor.
-                position = Transform(container.Owner).Coordinates.Position;
-            else
-                position = Transform(uid).Coordinates.Position;
-            //SS220 Camera-Map end
+            // //SS220 Camera-Map begin // TODO SS220 UPSTREAM_TODO: Need to be tested
+            // Vector2 position;
+            // if (_container.TryGetContainingContainer(uid, out var container))
+            //     // If camera is withing container, report the position of the container instead.
+            //     // Required for proper work of hidden/bodycams with map mode of surveillance monitor.
+            //     position = Transform(container.Owner).Coordinates.Position;
+            // else
+            //     position = Transform(uid).Coordinates.Position;
+            // //SS220 Camera-Map end
 
             var payload = new NetworkPayload()
             {
                 { DeviceNetworkConstants.Command, string.Empty },
                 { CameraAddressData, deviceNet.Address },
                 { CameraNameData, component.UseEntityNameAsCameraId ? MetaData(uid).EntityName : component.CameraId },
-                { CameraSubnetData, string.Empty }
-                { CameraPositionData, position } //SS220 Camera-Map
+                { CameraSubnetData, string.Empty },
+                //{ CameraPositionData, position }, //SS220 Camera-Map
             };
 
             var dest = string.Empty;

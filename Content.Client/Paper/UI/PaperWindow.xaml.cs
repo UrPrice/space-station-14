@@ -18,7 +18,6 @@ using Content.Client.SS220.UserInterface.Controls;
 using Content.Client.Stylesheets;
 using Content.Shared.SS220.Signature;
 using Robust.Client.Player;
-using Content.Client.SS220.RichText;
 
 namespace Content.Client.Paper.UI
 {
@@ -328,7 +327,7 @@ namespace Content.Client.Paper.UI
 
             _languageSystem.FindAndRequestNodeInfoForMarkups(msg.ToMarkup()); // SS220 languages
             WrittenTextLabel.RemoveAllChildren(); // SS220 Markups control on paper fix
-            WrittenTextLabel.SetMessage(msg, _allowedTags, DefaultTextColor);
+            WrittenTextLabel.SetMessage(msg, UserFormattableTags.BaseAllowedTags, DefaultTextColor);
 
             WrittenTextLabel.Visible = !isEditing && state.Text.Length > 0;
             BlankPaperIndicator.Visible = !isEditing && state.Text.Length == 0;
@@ -425,7 +424,7 @@ namespace Content.Client.Paper.UI
             msg.AddMarkupPermissive(text);
 
             WrittenTextLabel.RemoveAllChildren();
-            WrittenTextLabel.SetMessage(msg, RichTextHelper.SafeMarkupTags, DefaultTextColor);
+            WrittenTextLabel.SetMessage(msg, UserFormattableTags.BaseAllowedTags, DefaultTextColor);
         }
         // SS220 languages end
 

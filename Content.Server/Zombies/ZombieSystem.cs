@@ -30,7 +30,6 @@ using Content.Shared.Zombies;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Roles;
 
 namespace Content.Server.Zombies
 {
@@ -288,24 +287,10 @@ namespace Content.Server.Zombies
                     ZombifyEntity(uid);
                     args.Handled = true;
 
-                    _damageable.TryChangeDamage(uid, component.HealingOnBite, true, false);
+                    _damageable.TryChangeDamage(entity.Owner, entity.Comp.HealingOnBite, true, false);
                 }
             }
         }
-
-        // ss220 - zombie - edit start
-        private void SetMarkingColors(MarkingCategories category, Color color, HumanoidAppearanceComponent huApComp)
-        {
-            if (!huApComp.MarkingSet.TryGetCategory(category, out var markings))
-                return;
-
-            var index = markings.Count - 1;
-            for (var i = 0; i < markings[index].MarkingColors.Count; i++)
-            {
-                markings[index].SetColor(i, color);
-            }
-        }
-        // ss220 - zombie - edit end
 
         /// <summary>
         ///     This is the function to call if you want to unzombify an entity.

@@ -331,7 +331,7 @@ namespace Content.Server.Stack
                             if (amountInt <= 0)
                                 return;
 
-                            UserSplit(stackEntity.Owner, user, amountInt, stackEntity.Comp);
+                            UserSplit(stackEntity, user, amountInt);
                         },
                         () =>
                         {

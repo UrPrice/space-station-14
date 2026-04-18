@@ -109,6 +109,10 @@
       Kidneys: OrganReptilianKidneys
   - type: HumanoidProfile
     species: Reptilian
+  # SS220-change-races-height begin
+  - type: ScaleVisuals
+    scale: 1.1, 1.1
+  # SS220-change-races-height end
 
 - type: entity
   parent:
@@ -117,6 +121,27 @@
   id: MobReptilian
   name: Urist McScales
   components:
+  # SS220-change-races-height begin
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.375
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  # SS220-change-races-height end
+  # SS220-Add-Languages begin
+  - type: Language
+    selectedLanguage: Galactic
+    availableLanguages:
+    - id: Galactic
+    - id: Sintaunathi
+  # SS220-Add-Languages end
   - type: Puller
     needsHands: false
   - type: Butcherable
@@ -128,7 +153,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: ['Thump']
+    allowedEmotes: ['Thump', 'Hiss', 'Growl'] # 220 emotesMenuFix
   - type: TypingIndicator
     proto: lizard
   - type: Vocal
@@ -297,6 +322,7 @@
       - Pill
       - Crayon
       - Paper
+      - Omnivorous #SS220 CultYoggs
 
 - type: entity
   parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganReptilianInternal, OrganReptilianMetabolizer ]

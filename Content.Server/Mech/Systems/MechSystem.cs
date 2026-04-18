@@ -24,7 +24,6 @@ using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
-using Content.Shared.Whitelist;
 using Content.Shared.SS220.MechRobot; //SS220-AddMechToClothing
 using Robust.Shared.Prototypes;
 using System.Linq;

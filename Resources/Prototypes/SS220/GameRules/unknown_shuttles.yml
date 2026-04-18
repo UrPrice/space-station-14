@@ -1,20 +1,65 @@
+- type: entityTable
+  id: UnknownShuttlesFriendlyTable
+  table: !type:AllSelector
+    children:
+    - id: UnknownShuttleCargoLost
+    - id: UnknownShuttleTravelingCuisine
+    - id: UnknownShuttleDisasterEvacPod
+    - id: UnknownShuttleHonki
+    - id: UnknownShuttleCivil
+    - id: UnknownShuttleMimesLost
+
+- type: entity
+  parent: BaseUnknownShuttleRule
+  id: UnknownShuttleCargoLost
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-unknown-shuttle-incoming
+    maxOccurrences: 1
+    weight: 8
+  - type: LoadMapRule
+    gridPath: /Maps/SS220/Shuttles/lostSoul/civil.yml
+
+- type: entity
+  parent: BaseUnknownShuttleRule
+  id: UnknownShuttleTravelingCuisine
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-unknown-shuttle-incoming
+    maxOccurrences: 1
+    weight: 6
+  - type: LoadMapRule
+    gridPath: /Maps/SS220/Shuttles/lostSoul/traveling_china_cuisine.yml
+
+- type: entity
+  parent: BaseUnknownShuttleRule
+  id: UnknownShuttleDisasterEvacPod
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-unknown-shuttle-incoming
+    maxOccurrences: 2
+    weight: 4
+  - type: LoadMapRule
+    gridPath: /Maps/SS220/Shuttles/lostSoul/disaster_evacpod.yml
+
 - type: entity
   parent: BaseUnknownShuttleRule
   id: UnknownShuttleCivil
   components:
   - type: StationEvent
-    startAnnouncement: station-event-unknown-shuttle-incoming #!!
+    startAnnouncement: station-event-unknown-shuttle-incoming
     weight: 2
   - type: LoadMapRule
-    preloadedGrid: Civil
+    gridPath: /Maps/SS220/Shuttles/lostSoul/civil.yml
 
 - type: entity
   parent: BaseUnknownShuttleRule
   id: UnknownShuttleMimesLost
   components:
   - type: StationEvent
+    startAnnouncement: station-event-unknown-shuttle-incoming
     maxOccurrences: 1
     weight: 4
   - type: LoadMapRule
-    preloadedGrid: ShuttleMimesLost
-    
+    gridPath: /Maps/SS220/Shuttles/lostSoul/lost_mimes.yml
+

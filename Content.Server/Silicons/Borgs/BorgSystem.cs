@@ -1,7 +1,6 @@
 using Content.Server.Administration.Managers;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Hands.Systems;
-using Content.Server.PowerCell;
 using Content.Server.SS220.Events;
 using Content.Shared.Alert;
 using Content.Shared.Body.Events;
@@ -21,6 +20,7 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs;
+using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Trigger.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;

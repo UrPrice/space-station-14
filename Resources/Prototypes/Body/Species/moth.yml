@@ -131,6 +131,10 @@
       Kidneys: OrganMothKidneys
   - type: HumanoidProfile
     species: Moth
+  # SS220-change-races-height begin
+  - type: ScaleVisuals
+    scale: 0.9, 0.9
+  # SS220-change-races-height end
 
 - type: entity
   parent:
@@ -139,6 +143,20 @@
   id: MobMoth
   name: Urist McFluff
   components:
+# SS220-change-races-height begin
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.325
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+# SS220-change-races-height end
   - type: Damageable
     damageModifierSet: Moth
   - type: ZombieAccentOverride
@@ -193,6 +211,21 @@
       289: 0.9
       275: 0.8
       250: 0.7
+  #SS220-TweakDamageSpecies-Begin
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5 #По лору на апрель 2024 года, у Ниан "когти"
+  - type: Language
+    selectedLanguage: Galactic
+    availableLanguages:
+    - id: Galactic
+    - id: Tkachi
+  #SS220-TweakDamageSpecies-End
 
 - type: entity
   parent: OrganBase
@@ -316,6 +349,7 @@
       - ClothMade
       - Paper
       - Pill
+      - Omnivorous #SS220 CultYoggs
 
 - type: entity
   parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganMothInternal, OrganAnimalMetabolizer ]

@@ -33,9 +33,6 @@ namespace Content.Client.Chemistry.UI
         public event Action<BaseButton.ButtonEventArgs, ReagentButton>? OnReagentButtonPressed;
         public readonly Button[] PillTypeButtons;
 
-        private ChemMasterBoundUserInterfaceState? _chemState; //ss220 tweak sort chem
-        private bool _isSortingEnabled; //ss220 tweak sort chem
-
         private const string PillsRsiPath = "/Textures/Objects/Specific/Chemistry/pills.rsi";
 
         /// <summary>
@@ -156,8 +153,6 @@ namespace Content.Client.Chemistry.UI
 
             if (castState.UpdateLabel)
                 LabelLine = GenerateLabel(castState);
-
-            _chemState = castState; //ss220 tweak sort chem
 
             // Ensure the Panel Info is updated, including UI elements for Buffer Volume, Output Container and so on
             UpdatePanelInfo(castState);

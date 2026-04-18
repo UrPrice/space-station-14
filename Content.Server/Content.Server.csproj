@@ -11,10 +11,13 @@
   <Import Project="../MSBuild/Content.props" />
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" /> <!-- SS220 add recyclable memory stream -->
     <PackageReference Include="prometheus-net" />
     <PackageReference Include="Microsoft.Extensions.ObjectPool" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" /> <!-- SS220-new-prime-list -->
     <PackageReference Include="FFMpegCore" /> <!--SS220-add-?-->
+    <PackageReference Include="NetCord" /> <!-- SS220 add netcord -->
+    <PackageReference Include="Serilog" /> <!-- ss220 add serilog -->
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Content.Packaging\Content.Packaging.csproj" />

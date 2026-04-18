@@ -59,7 +59,7 @@ public sealed class DevourSystem : EntitySystem
     private void OnDevourAction(Entity<DevourerComponent> ent, ref DevourActionEvent args)
     {
         if (args.Handled || _whitelistSystem.IsWhitelistFailOrNull(ent.Comp.Whitelist, args.Target) ||
-            _whitelistSystem.IsBlacklistPass(ent.Comp.Blacklist, args.Target)) // SS220 dragon devour fix)
+            _whitelistSystem.IsWhitelistPass(ent.Comp.Blacklist, args.Target)) // SS220 dragon devour fix)
             return;
 
         args.Handled = true;

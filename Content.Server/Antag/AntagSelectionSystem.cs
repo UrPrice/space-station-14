@@ -30,7 +30,6 @@ using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
-using Content.Server.Administration.Managers;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -206,7 +205,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             DebugTools.AssertNotEqual(antag.SelectionTime, AntagSelectionTime.PrePlayerSpawn);
 
             // do not count players in the lobby for the antag ratio
-            var players = PlayerManager.Sessions.Count(session => session.Status is not SessionStatus.Disconnected or SessionStatus.Zombie); // SS220-make-antag-selection-based-on-all-players
+            var players = PlayerManager.Sessions.Count(session => session.Status is not (SessionStatus.Disconnected or SessionStatus.Zombie)); // SS220-make-antag-selection-based-on-all-players
 
             if (!TryGetNextAvailableDefinition((uid, antag), out var def, players))
                 continue;
@@ -291,7 +290,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     {
         var playerPool = GetPlayerPool(ent, pool, def);
         var existingAntagCount = ent.Comp.PreSelectedSessions.TryGetValue(def, out var existingAntags) ?  existingAntags.Count : 0;
-        var allPlayerCount = PlayerManager.Sessions.Count(session => session.Status is not SessionStatus.Disconnected or SessionStatus.Zombie); // SS220-make-antag-selection-based-on-all-players
+        var allPlayerCount = PlayerManager.Sessions.Count(session => session.Status is not (SessionStatus.Disconnected or SessionStatus.Zombie)); // SS220-make-antag-selection-based-on-all-players
         var count = GetTargetAntagCount(ent, allPlayerCount, def) - existingAntagCount; // SS220 GetTotalPlayerCount(pool) -> allPlayerCount
 
         // if there is both a spawner and players getting picked, let it fall back to a spawner.
@@ -554,11 +553,11 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             return false;
 
         // SS220 Antag ban fix begin
-        if (_ban.GetRoleBans(session.UserId) is { } roleBans)
+        if (_ban.GetAntagBans(session.UserId) is { } antagBans)
         {
             foreach (var role in def.PrefRoles)
             {
-                if (roleBans.Contains(role))
+                if (antagBans.Contains(role))
                     return false;
             }
         }

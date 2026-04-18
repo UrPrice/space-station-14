@@ -19,7 +19,6 @@ namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
 public sealed partial class PickNearbyInjectableOperator : HTNOperator
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!; //ss220 fix medibot
 
     private MedibotSystem _medibot = default!;
     private PathfindingSystem _pathfinding = default!;

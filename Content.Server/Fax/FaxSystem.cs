@@ -32,9 +32,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
-using Content.Shared.NameModifier.Components;
 using Content.Shared.Popups;
-using Content.Shared.DeviceNetwork.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -601,7 +599,7 @@ public sealed class FaxSystem : EntitySystem
             { FaxConstants.FaxPaperContentData, content },
             { FaxConstants.FaxPaperLockedData, paper.EditingDisabled },
             { FaxConstants.FaxPaperDataToCopy, dataToCopy }, // SS220 Photocopy
-            { FaxConstants.FaxPaperMetaData, metaData } // SS220 Photocopy
+            { FaxConstants.FaxPaperMetaData, metaData }, // SS220 Photocopy
             { FaxConstants.FaxPaperSenderFaxNameData, component.FaxName ?? Loc.GetString("fax-machine-popup-source-unknown") }
         };
 
@@ -687,7 +685,7 @@ public sealed class FaxSystem : EntitySystem
         else
         {
             var entityToSpawn = printout.PrototypeId.Length == 0 ? component.PrintPaperId.ToString() : printout.PrototypeId;
-            printed = EntityManager.SpawnEntity(entityToSpawn, Transform(uid).Coordinates);
+            printed = Spawn(entityToSpawn, Transform(uid).Coordinates);
 
             if (TryComp<PaperComponent>(printed, out var paper))
             {

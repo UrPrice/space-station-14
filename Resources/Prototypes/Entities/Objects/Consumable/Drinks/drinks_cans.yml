@@ -316,7 +316,7 @@
       drink:
         maxVol: 30
         reagents:
-        - ReagentId: KiraSpecial
+        - ReagentId: KiraSpecial #ss220 kira special return
           Quantity: 8
         - ReagentId: RootBeerFloat
           Quantity: 8

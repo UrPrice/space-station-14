@@ -43,7 +43,7 @@ public partial class ListingData : IEquatable<ListingData>
         other.RestockTime,
         other.DiscountDownTo,
         other.DisableRefund,
-        other.ApplyToMo,
+        other.ApplyToMob,
         other.DynamicsPrices) // SS220 TraitorDynamics
     {
 

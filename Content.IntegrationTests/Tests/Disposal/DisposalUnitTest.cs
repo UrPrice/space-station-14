@@ -77,7 +77,6 @@ namespace Content.IntegrationTests.Tests.Disposal
   id: HumanDisposalDummy
   components:
   - type: Body
-    prototype: Human
   - type: MobState
   - type: MobThresholds
     thresholds:

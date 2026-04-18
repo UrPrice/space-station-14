@@ -15,7 +15,6 @@ using static Content.Shared.Paper.PaperComponent;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.SS220.Paper;
-using Content.Shared.SS220.Language.Systems;
 using Content.Shared.SS220.OrigamiBook;
 using Content.Shared.Verbs;
 using Robust.Shared.Network;
@@ -35,7 +34,6 @@ public sealed class PaperSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedDocumentHelperSystem _documentHelper = default!;
-    [Dependency] private readonly SharedLanguageSystem _languageSystem = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!; //ss220 add origami arts
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; //ss220 add origami arts
     [Dependency] private readonly INetManager _net = default!; //ss220 add origami arts

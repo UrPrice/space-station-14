@@ -18,8 +18,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Robust.Shared.Containers;
-using Content.Shared.SS220.Weapons.Ranged.Events;
-using Content.Server.SS220.Shuttles.UI;
 using Robust.Shared.Random;
 
 namespace Content.Server.Weapons.Ranged.Systems;
@@ -28,7 +26,6 @@ public sealed partial class GunSystem : SharedGunSystem
 {
     [Dependency] private readonly PricingSystem _pricing = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly ShuttleNavInfoSystem _shuttleNavInfo = default!; // SS220 Add projectiles & hitscan on shuttle nav
 
     private const float DamagePitchVariation = 0.05f;
 

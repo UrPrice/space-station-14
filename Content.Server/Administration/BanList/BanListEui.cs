@@ -8,7 +8,6 @@ using Content.Shared.Administration;
 using Content.Shared.Administration.BanList;
 using Content.Shared.Database;
 using Content.Shared.Eui;
-using Content.Shared.SS220.Administration.BanList;
 using Robust.Shared.Network;
 
 namespace Content.Server.Administration.BanList;
@@ -28,7 +27,8 @@ public sealed class BanListEui : BaseEui
     private string BanListPlayerName { get; set; } = string.Empty;
     private List<SharedBan> Bans { get; } = new();
     private List<SharedBan> RoleBans { get; } = new();
-    private List<SharedServerSpeciesBan> SpeciesBans { get; } = []; // SS220 Species bans
+    private List<SharedBan> SpeciesBans { get; } = []; // SS220 Species bans
+    private List<SharedBan> ChatBans { get; } = []; // SS220 chats bans
 
     public override void Opened()
     {
@@ -46,7 +46,7 @@ public sealed class BanListEui : BaseEui
 
     public override EuiStateBase GetNewState()
     {
-        return new BanListEuiState(BanListPlayerName, Bans, RoleBans, /* SS220 Species bans */ SpeciesBans);
+        return new BanListEuiState(BanListPlayerName, Bans, RoleBans,/* SS220-bans-begin */ SpeciesBans, ChatBans /* SS220-ban-end */);
     }
 
     private void OnPermsChanged(AdminPermsChangedEventArgs args)
@@ -61,6 +61,8 @@ public sealed class BanListEui : BaseEui
     {
         await LoadBansCore(userId, BanType.Server, Bans);
         await LoadBansCore(userId, BanType.Role, RoleBans);
+        await LoadBansCore(userId, BanType.Species, SpeciesBans);
+        await LoadBansCore(userId, BanType.Chat, ChatBans);
     }
 
     private async Task LoadBansCore(NetUserId userId, BanType banType, List<SharedBan> list)
@@ -103,62 +105,18 @@ public sealed class BanListEui : BaseEui
         }
     }
 
-    // SS220 Species bans begin
-    private async Task LoadSpeciesBans(NetUserId userId)
-    {
-        foreach (var ban in await _db.GetServerSpeciesBansAsync(null, userId, null, null))
-        {
-            SharedServerUnban? unban = null;
-            if (ban.Unban is { } unbanDef)
-            {
-                var unbanningAdmin = unbanDef.UnbanningAdmin == null
-                    ? null
-                    : (await _playerLocator.LookupIdAsync(unbanDef.UnbanningAdmin.Value))?.Username;
-                unban = new SharedServerUnban(unbanningAdmin, ban.Unban.UnbanTime.UtcDateTime);
-            }
-
-            (string, int cidrMask)? ip = ("*Hidden*", 0);
-            var hwid = "*Hidden*";
-
-            if (_admins.HasAdminFlag(Player, AdminFlags.Pii))
-            {
-                ip = ban.Address is { } address
-                    ? (address.address.ToString(), address.cidrMask)
-                    : null;
-
-                hwid = ban.HWId?.ToString();
-            }
-
-            SpeciesBans.Add(new SharedServerSpeciesBan(
-                ban.Id,
-                ban.UserId,
-                ip,
-                hwid,
-                ban.BanTime.UtcDateTime,
-                ban.ExpirationTime?.UtcDateTime,
-                ban.Reason,
-                ban.BanningAdmin == null
-                    ? null
-                    : (await _playerLocator.LookupIdAsync(ban.BanningAdmin.Value))?.Username,
-                unban,
-                ban.SpeciesId
-            ));
-        }
-    }
-    // SS220 Species bans end
-
     private async Task LoadFromDb()
     {
         Bans.Clear();
         RoleBans.Clear();
         SpeciesBans.Clear(); // SS220 Species bans
+        ChatBans.Clear(); // SS220 chat bans
 
         var userId = new NetUserId(BanListPlayer);
         BanListPlayerName = (await _playerLocator.LookupIdAsync(userId))?.Username ??
                             string.Empty;
 
         await LoadBans(userId);
-        await LoadSpeciesBans(userId); // SS220 Species bans
 
         StateDirty();
     }

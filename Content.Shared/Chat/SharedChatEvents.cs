@@ -1,6 +1,8 @@
+using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
+using Content.Shared.SS220.Language.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Chat;
@@ -59,19 +61,28 @@ public sealed class EntitySpokeEvent : EntityEventArgs
 {
     public readonly EntityUid Source;
     public readonly string Message;
+    public readonly string OriginalMessage;
+    public readonly LanguageMessage? LanguageMessage; // SS220 languages
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
+    public readonly bool IsRadio; // radio message is always a whisper
+
+    public FixedPoint2? Frequency;// SS220-frequency-radio
 
     /// <summary>
-    /// If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
-    /// message gets sent on this channel, this should be set to null to prevent duplicate messages.
+    ///     If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
+    ///     message gets sent on this channel, this should be set to null to prevent duplicate messages.
     /// </summary>
     public RadioChannelPrototype? Channel;
 
-    public EntitySpokeEvent(EntityUid source, string message, RadioChannelPrototype? channel, string? obfuscatedMessage)
+    public EntitySpokeEvent(EntityUid source, string message, string originalMessage, RadioChannelPrototype? channel, string? obfuscatedMessage, LanguageMessage? languageMessage = null /* SS220 languages */, FixedPoint2? frequency = null /* SS220-frequency-radio */)
     {
         Source = source;
         Message = message;
+        OriginalMessage = originalMessage; // Corvax-TTS: Spec symbol sanitize
+        LanguageMessage = languageMessage; // SS220 languages
         Channel = channel;
         ObfuscatedMessage = obfuscatedMessage;
+        IsRadio = channel != null;
+        Frequency = frequency;
     }
 }

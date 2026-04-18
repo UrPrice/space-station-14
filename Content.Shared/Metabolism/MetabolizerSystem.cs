@@ -15,6 +15,7 @@ using Content.Shared.EntityEffects.Effects.Solution;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Random.Helpers;
+using Content.Shared.SS220.Narcotics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -33,6 +34,10 @@ public sealed class MetabolizerSystem : EntitySystem
 
     private EntityQuery<OrganComponent> _organQuery;
     private EntityQuery<SolutionContainerManagerComponent> _solutionQuery;
+
+    // ss220 add narcotic test start
+    private const string NarcoticsGroup = "Narcotics";
+    // ss220 add narcotic test end
 
     public override void Initialize()
     {
@@ -166,6 +171,15 @@ public sealed class MetabolizerSystem : EntitySystem
             // Skip blood reagents
             if (ev.Reagents.Contains(reagent))
                 continue;
+
+            // ss220 add narcotics test start
+            if (proto.Group == NarcoticsGroup &&
+                ent.Comp2?.Body is { } body)
+            {
+                var narcoticEvent = new MetabolizeNarcoticEvent(body, proto.ID);
+                RaiseLocalEvent(body, ref narcoticEvent, true);
+            }
+            // ss220 add narcotics test end
 
             if (proto.Metabolisms is null || !proto.Metabolisms.Metabolisms.TryGetValue(stage, out var entry))
             {

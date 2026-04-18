@@ -100,7 +100,7 @@ public sealed class DamageContactsSystem : EntitySystem
             return;
 
         if (_whitelistSystem.IsWhitelistPass(component.IgnoreWhitelist, otherUid) ||
-            _whitelistSystem.IsBlacklistFail(component.IgnoreBlacklist, otherUid)) //SS220 Add ignore blacklist
+            _whitelistSystem.IsWhitelistFail(component.IgnoreBlacklist, otherUid)) //SS220 Add ignore blacklist
             return;
 
         var damagedByContact = EnsureComp<DamagedByContactComponent>(otherUid);

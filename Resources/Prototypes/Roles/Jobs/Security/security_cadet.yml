@@ -41,13 +41,13 @@
     ears: ClothingHeadsetSecurity
     head: ClothingHeadHelmetBasic
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal # SS220 Bring-Rubber-Back
+    pocket1: WeaponPistolMk58
     pocket2: BookSecurity
   storage:
     back:
     - Flash
-    - MagazinePistolRubber #SS220-DeleteSecurityLetal-Begin
-    - MagazinePistolRubber
+    - MagazinePistol
+    - MagazinePistol
     - FlashlightSeclite
     - DrinkRelaxingPeachCan #SS220-DeleteSecurityLetal-End
 

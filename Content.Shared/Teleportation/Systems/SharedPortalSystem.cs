@@ -16,7 +16,6 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared.Anomaly;
 using Content.Shared.Anomaly.Components;
 
 namespace Content.Shared.Teleportation.Systems;
@@ -36,8 +35,6 @@ public abstract class SharedPortalSystem : EntitySystem
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedJointSystem _joints = default!;
-
-    [Dependency] private readonly SharedAnomalySystem _anomalySystem = default!;
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";

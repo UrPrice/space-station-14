@@ -17,6 +17,7 @@ using Content.Shared.SS220.Containers; //SS220-cryo-mobs-fix
 using Content.Server.Polymorph.Systems; //SS220-cryo-mobs-fix
 using Content.Shared.Body.Systems; //SS220-cryo-mobs-fix
 using Content.Server.SS220.MindExtension;
+using Content.Shared.Body;
 
 namespace Content.Server.Mind;
 
@@ -92,7 +93,7 @@ public sealed class MindSystem : SharedMindSystem
     private void OnPolymorphed(Entity<MindContainerComponent> ent, ref BeforePolymorpedEvent args)
     {
         if (args.PolymorphConfiguration.EffectProto == PolymorphSystem.EffectDesynchronizer)
-            _containerSystemExtensions.RemoveEntitiesFromAllContainers<MindContainerComponent>(ent.Owner, [SharedBodySystem.BodyRootContainerId]);
+            _containerSystemExtensions.RemoveEntitiesFromAllContainers<MindContainerComponent>(ent.Owner, [BodyComponent.ContainerID]);
     }
     //SS220-cryo-mobs-fix end
 

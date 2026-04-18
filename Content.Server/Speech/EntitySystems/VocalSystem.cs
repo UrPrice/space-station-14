@@ -161,7 +161,7 @@ public sealed class VocalSystem : EntitySystem
         if (component.SpecialEmoteSounds == null)
             component.SpecialEmoteSounds = new();
 
-        sex ??= CompOrNull<HumanoidAppearanceComponent>(uid)?.Sex ?? Sex.Unsexed;
+        sex ??= CompOrNull<HumanoidProfileComponent>(uid)?.Sex ?? Sex.Unsexed;
 
         if (!itemComponent.Sounds.TryGetValue(sex.Value, out var protoId))
             return;

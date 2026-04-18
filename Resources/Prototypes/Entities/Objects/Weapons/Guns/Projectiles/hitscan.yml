@@ -156,7 +156,7 @@
     damage:
       types:
         Heat: 50 #ss220lowTTKUpdate
-      Structural: 20 #ss220lowTTKUpdate
+        Structural: 20 #ss220lowTTKUpdate
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

@@ -274,7 +274,7 @@
     amount: -5
   # SS220 Cigarettes rework begin
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:

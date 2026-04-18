@@ -77,6 +77,12 @@
   parent: Dresser
   suffix: Filled, Head Of Security
   components:
+  #SS220 bigger dresser start
+  - type: Storage
+    grid:
+    - 0,0,7,8
+    maxItemSize: Large
+  #SS220 bigger dresser end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -135,6 +141,12 @@
   parent: Dresser
   suffix: Filled, Warden
   components:
+  #SS220 bigger dresser start
+  - type: Storage
+    grid:
+    - 0,0,7,8
+    maxItemSize: Large
+  #SS220 bigger dresser end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector

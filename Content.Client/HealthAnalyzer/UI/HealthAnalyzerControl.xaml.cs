@@ -67,7 +67,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
             return;
         }
 
-        PrintButton.Disabled = !msg.CanPrint; // SS220-health-analyzer-report
+        PrintButton.Disabled = !state.CanPrint; // SS220-health-analyzer-report
 
         // ss220 add reagents to health analyzer start
         if (_entityManager.TryGetComponent<SolutionContainerManagerComponent>(target, out var solComp))

@@ -158,7 +158,7 @@ public sealed class ItemToggleSystem : EntitySystem
             return true;
 
         //SS220 double_esword-fix start
-        if (user != null && EntityManager.TryGetComponent<WieldableComponent>(uid, out var wiledable) && !_wieldable.CanWield(uid, wiledable, (EntityUid) user))
+        if (user != null && TryComp<WieldableComponent>(uid, out var wiledable) && !_wieldable.CanWield(uid, wiledable, (EntityUid) user))
             return false;
         //SS220 double_esword-fix end
 

@@ -14,7 +14,6 @@ using Content.Shared.SS220.Radio;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
 using Robust.Shared.Prototypes;
-using Content.Shared.Radio.EntitySystems;
 using Robust.Server.GameObjects;
 using Content.Shared.UserInterface;
 using Content.Shared.SS220.Radio.Components;

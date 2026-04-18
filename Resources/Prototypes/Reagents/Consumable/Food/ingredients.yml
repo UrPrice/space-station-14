@@ -134,7 +134,7 @@
             reagent: Vinegar
             min: 6
 # SS220 acid damage vinegar begin
-    Poison:
+    Bloodstream:
       effects:
         - !type:HealthChange
           conditions:

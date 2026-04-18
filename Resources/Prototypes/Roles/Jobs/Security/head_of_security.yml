@@ -61,13 +61,13 @@
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
 #    belt: ClothingBeltSecurityFilled #SS220-FreedomHoSCap
-    pocket1: WeaponPistolMk58Nonlethal #SS220-DeleteSecurityLetal-Begin
+    pocket1: WeaponPistolMk58
 #    pocket2: MagazinePistol #SS220-DeleteSecurityLetal-End
   storage:
     back:
     - Flash
-    - MagazinePistolRubber #SS220-DeleteSecurityLetal-Begin
-    - MagazinePistolRubber
+    - MagazinePistol
+    - MagazinePistol
     - FlashlightSeclite
     - DrinkRelaxingPeachCan #SS220-DeleteSecurityLetal-End
 

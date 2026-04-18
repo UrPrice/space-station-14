@@ -44,7 +44,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] protected readonly SharedAppearanceSystem AppearanceSystem = default!;
     [Dependency] private readonly OccluderSystem _occluder = default!;
     [Dependency] private readonly AccessReaderSystem _accessReaderSystem = default!;
-    [Dependency] private readonly DirectionalAccessSystem _directionalAccessSystem = default!;
+    [Dependency] private readonly DirectionalAccessSystem _directionalAccessSystem = default!; // SS220-directional-access
     [Dependency] private readonly PryingSystem _pryingSystem = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
@@ -670,10 +670,12 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (!Resolve(uid, ref access, false))
             return true;
 
+        // SS220-directional-access-begin
         // Open the door if it has directional access option
         if (TryComp<DirectionalAccessComponent>(uid, out var directionalAccess) &&
             _directionalAccessSystem.IsDirectionAllowed(uid, user.Value, directionalAccess))
             return true;
+        // SS220-directional-access-end
 
         var isExternal = access.AccessLists.Any(list => list.Contains("External"));
 
@@ -856,11 +858,11 @@ public abstract partial class SharedDoorSystem : EntitySystem
     /// </summary>
     private bool TryUseLubricant(EntityUid uid)
     {
-        if (!EntityManager.TryGetComponent<DoorLubedComponent>(uid, out var lubComp))
-           return false;
+        if (!TryComp<DoorLubedComponent>(uid, out var lubComp))
+            return false;
 
         if (lubComp.SilentUsesLeft <= 0)
-           return false;
+            return false;
 
         lubComp.SilentUsesLeft--;
         Dirty(uid, lubComp);

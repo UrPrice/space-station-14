@@ -5,7 +5,7 @@
   components:
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/SS220/Effects/Drop/laser.ogg ##new sound_drop effect, add MIXnikita
+      path: /Audio/SS220/Effects/Drop/laser.ogg #new sound_drop effect, add MIXnikita
       params:
         volume: 2
   - type: Sprite
@@ -184,7 +184,7 @@
     steps: 5
     zeroVisible: true
  # SS220 EDIT START - Add HitscanBatteryAmmoProvider moved from base class
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: RedLightLaser
     fireCost: 50
   # SS220 EDIT END
@@ -799,7 +799,7 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: RedMediumLaser
     #ss220 add stun mode begin
   - type: BatteryWeaponFireModes
@@ -824,7 +824,6 @@
     #ss220 add stun mode end
     zeroVisible: true
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 40
   - type: Appearance
   - type: StaticPrice

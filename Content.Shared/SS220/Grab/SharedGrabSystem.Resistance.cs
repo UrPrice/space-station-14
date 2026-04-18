@@ -87,7 +87,7 @@ public partial class SharedGrabSystem
             return;
 
         // TODO: Once we have predicted randomness delete this for something sane...
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(grabbable.Owner).Id });
+        var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(grabbable.Owner).Id);
         var rand = new System.Random(seed);
 
         if (chance >= 1 || rand.Prob(chance))

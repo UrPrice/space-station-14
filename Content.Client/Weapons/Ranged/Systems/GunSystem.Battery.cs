@@ -27,12 +27,14 @@ public sealed partial class GunSystem
     }
 
     //SS220 Add Multifaze gun begin
-    private void OnHitscanAppearanceChange(Entity<HitscanBatteryAmmoProviderComponent> ent, ref AppearanceChangeEvent args)
+    // TODO UPSTREAM FIX ME
+    private void OnHitscanAppearanceChange(Entity<BatteryAmmoProviderComponent> ent, ref AppearanceChangeEvent args)
     {
         UpdateAmmoCount(ent);
     }
 
-    private void OnProjectileAppearanceChange(Entity<ProjectileBatteryAmmoProviderComponent> ent, ref AppearanceChangeEvent args)
+    // TODO UPSTREAM FIX ME
+    private void OnProjectileAppearanceChange(Entity<BatteryAmmoProviderComponent> ent, ref AppearanceChangeEvent args)
     {
         UpdateAmmoCount(ent);
     }

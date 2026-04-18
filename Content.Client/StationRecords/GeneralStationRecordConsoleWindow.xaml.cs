@@ -30,8 +30,6 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow, I
 
     private StationRecordFilterType _currentFilterType;
 
-    private EntityUid _previewDummy;
-
     public GeneralStationRecordConsoleWindow()
     {
         RobustXamlLoader.Load(this);

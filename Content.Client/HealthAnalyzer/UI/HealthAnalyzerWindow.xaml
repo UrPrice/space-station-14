@@ -10,6 +10,6 @@
         VerticalExpand="True">
 
         <ui:HealthAnalyzerControl
-            Name="HealthAnalyzer"/>
+            Name="HealthAnalyzer" Access="Public"/> <!-- SS220-health-analyzer-report -->
     </ScrollContainer>
 </controls:FancyWindow>

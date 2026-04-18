@@ -27,7 +27,6 @@ namespace Content.Server.GameTicking.Rules;
 /// </summary>
 public sealed class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRuleComponent>
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly OutfitSystem _outfitSystem = default!;
@@ -39,7 +38,6 @@ public sealed class DeathMatchRuleSystem : GameRuleSystem<DeathMatchRuleComponen
     [Dependency] private readonly UplinkSystem _uplink = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
-    private ISawmill _sawmill = default!;
     int _deathMatchStartingBalance;
 
     public override void Initialize()

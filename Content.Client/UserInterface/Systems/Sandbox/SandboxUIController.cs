@@ -142,22 +142,6 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
         _window.ToggleThermalVisionButton.OnToggled += _ => _sandbox.ToggleThermalVision();
     }
 
-    private void UpdateFovButtomState()
-    {
-        if (_window != null)
-        {
-            _window.ToggleFovButton.Pressed = !_eye.CurrentEye.DrawFov;
-        }
-    }
-
-    private void UpdateLightButtomState()
-    {
-        if (_window != null)
-        {
-            _window.ToggleLightButton.Pressed = !_light.Enabled;
-        }
-    }
-
     private void CheckSandboxVisibility()
     {
         if (SandboxButton == null)
@@ -182,26 +166,6 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
         system.SandboxDisabled += CloseAll;
         system.SandboxEnabled += CheckSandboxVisibility;
         system.SandboxDisabled += CheckSandboxVisibility;
-
-        system.PlayerAttached += System_PlayerAttached;
-        system.FovToggled += System_FovToggled;
-        system.LightingToggled += System_LightingToggled;
-    }
-
-    private void System_LightingToggled()
-    {
-        UpdateLightButtomState();
-    }
-
-    private void System_FovToggled()
-    {
-        UpdateFovButtomState();
-    }
-
-    private void System_PlayerAttached()
-    {
-        UpdateFovButtomState();
-        UpdateLightButtomState();
     }
 
     public void OnSystemUnloaded(SandboxSystem system)
@@ -209,10 +173,6 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
         system.SandboxDisabled -= CloseAll;
         system.SandboxEnabled -= CheckSandboxVisibility;
         system.SandboxDisabled -= CheckSandboxVisibility;
-
-        system.PlayerAttached -= System_PlayerAttached;
-        system.FovToggled -= System_FovToggled;
-        system.LightingToggled -= System_LightingToggled;
     }
 
     private void SandboxButtonPressed(ButtonEventArgs args)

@@ -34,7 +34,6 @@ namespace Content.IntegrationTests.Tests
   - type: Hands
   - type: ComplexInteraction
   - type: Body
-    prototype: Human
 
 - type: entity
   parent: FoodSnackBase

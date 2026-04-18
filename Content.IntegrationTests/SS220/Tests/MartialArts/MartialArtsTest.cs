@@ -88,9 +88,13 @@ public sealed class MartialArtsTest
         layer:
         - MobLayer
   - type: Hands
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: LeftHand
+        - id: RightHand
   - type: Body
-    prototype: Human
-    requiredLegs: 2
   - type: ComplexInteraction
   - type: CombatMode
     canDisarm: true
@@ -121,13 +125,9 @@ public sealed class MartialArtsTest
         });
 
         var server = pair.Server;
-        var client = pair.Client;
-
-        var protoMng = server.ResolveDependency<IPrototypeManager>();
 
         var defMan = server.ResolveDependency<ITileDefinitionManager>();
         var mapSys = server.EntMan.System<MapSystem>();
-        var atmosphereSys = server.EntMan.System<AtmosphereSystem>();
 
         // Create a 3x3 box with walls on the border
         const string tileId = "FloorSteel";

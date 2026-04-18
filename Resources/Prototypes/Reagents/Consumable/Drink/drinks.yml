@@ -554,15 +554,15 @@
   metamorphicChangeColor: false
 
 - type: reagent
-  id: OrangeLimeSoda
-  name: reagent-name-orange-lime-soda
+  id: KiraSpecial #ss220 kira special return
+  name: reagent-name-kira-special #ss220 kira special return
   parent: BaseDrink
-  desc: reagent-desc-orange-lime-soda
+  desc: reagent-desc-kira-special #ss220 kira special return
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: sweet
   color: "#CCCC99"
   metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/orangelime_soda.rsi
+    sprite: Objects/Consumable/Drinks/kiraspecial.rsi #ss220 kira special return
     state: icon_empty
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-

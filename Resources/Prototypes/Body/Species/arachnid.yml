@@ -65,6 +65,10 @@
       Kidneys: OrganArachnidKidneys
   - type: HumanoidProfile
     species: Arachnid
+  # SS220-change-races-height begin
+  - type: ScaleVisuals
+    scale: 1.1, 1.1
+  # SS220-change-races-height end
 
 - type: entity
   parent:
@@ -73,6 +77,20 @@
   id: MobArachnid
   name: Urist McWebs
   components:
+  # SS220-change-races-height begin
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.375
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  # SS220-change-races-height end
   - type: Respirator
     damage:
       types:
@@ -118,7 +136,8 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Piercing: 5
+        Piercing: 4 #SS220-TweakDamageSpecies
+        Poison: 0.9 #SS220-TweakDamageSpecies
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:
@@ -129,7 +148,7 @@
   - type: Speech
     speechVerb: Arachnid
     speechSounds: Arachnid
-    allowedEmotes: ['Click', 'Chitter']
+    allowedEmotes: ['Click', 'Chitter', 'Hiss'] #ss-220-emote-fix
   - type: Vocal
     sounds:
       Male: UnisexArachnid
@@ -137,6 +156,15 @@
       Unsexed: UnisexArachnid
   - type: TypingIndicator
     proto: spider
+  # SS220-Add-Languages begin
+  - type: Language
+    selectedLanguage: Galactic
+    availableLanguages:
+    - id: Galactic
+    - id: Arati
+    - id: SpiderTongue
+      canSpeak: false
+  # SS220-Add-Languages end
 
 - type: entity
   parent: OrganBase

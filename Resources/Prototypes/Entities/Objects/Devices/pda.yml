@@ -2598,37 +2598,23 @@
     sprite: SS220/Objects/Devices/pda.rsi #SS220 Resprite Senior Courier PDA
     state: pda-seniorcourier #SS220 Resprite Senior Courier PDA
 
-- type: entity
-  parent: [ BaseHighlyIllegalContraband, BasePDA ]
-  id: NinjaPDA
-  name: ninja PDA
-  description: You stealthy bastard, you!
-  components:
-  - type: Pda
-    id: NinjaIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-ninja
-  - type: Icon
-    state: pda-ninja
-
-- type: entity
-  parent: [ BaseHighlyIllegalContraband, BasePDA ]
-  id: NinjaPDA
-  name: ninja PDA
-  description: You stealthy bastard, you!
-  components:
-  - type: Pda
-    id: NinjaIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-ninja
-  - type: Icon
-    state: pda-ninja
+# SS220 Remove ninja pda start
+#- type: entity
+#  parent: [ BaseHighlyIllegalContraband, BasePDA ]
+#  id: NinjaPDA
+#  name: ninja PDA
+#  description: You stealthy bastard, you!
+#  components:
+#  - type: Pda
+#    id: NinjaIDCard
+#  - type: Appearance
+#    appearanceDataInit:
+#      enum.PdaVisuals.PdaType:
+#        !type:String
+#        pda-ninja
+#  - type: Icon
+#    state: pda-ninja
+# SS220 Remove ninja pda end
 
 - type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]

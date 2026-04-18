@@ -15,7 +15,9 @@ using Content.Shared.Zombies;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
-using Content.Server.Body.Systems;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Gibbing;
 
 namespace Content.Server.Dragon;
 
@@ -29,7 +31,7 @@ public sealed partial class DragonSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly BodySystem _body = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!; // SS220 Dragon Bodies Fix
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
@@ -124,7 +126,7 @@ public sealed partial class DragonSystem : EntitySystem
             {
                 Roar(uid, comp);
                 // QueueDel(uid);
-                _body.GibBody(uid); //220 Dragon Bodies Fix
+                _gibbing.Gib(uid); // SS220 Dragon Bodies Fix
             }
         }
     }
@@ -286,7 +288,7 @@ public sealed partial class DragonSystem : EntitySystem
         // SS220 Dragon rifts charged buff BGN
         // Full heal dragon when charging each rift
         if (TryComp<DamageableComponent>(uid, out var damageable))
-            _damageable.SetAllDamage(uid, damageable, 0);
+            _damageable.SetAllDamage((uid, damageable), 0);
 
         // Temporary buff until the third charged rift
         if (!comp.RiftSpeedBoostPermanent)

@@ -152,7 +152,6 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
-    - SecurityAmmoRubberStatic #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
     - SS220EmagSecurityAmmoStatic #ss220 more recipies
     - SyndicateAmmoStatic
   - type: BlueprintReceiver
@@ -435,7 +434,6 @@
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic
-    - SecurityAmmoRubberStatic #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
     - SecurityWeaponsStatic
     dynamicPacks:
     - SalvageSecurityBoards
@@ -493,7 +491,6 @@
       unlitRunningState: unlit-building
       staticPacks:
       - SecurityAmmoStatic
-      - SecurityAmmoRubberStatic #SS220-fix Magazine Pistol Rubber Lathe (fix: https://github.com/SerbiaStrong-220/space-station-14/issues/1799)
     - type: EmagLatheRecipes
       emagStaticPacks:
       - SyndicateAmmoStatic

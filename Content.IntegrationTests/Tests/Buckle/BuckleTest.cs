@@ -31,7 +31,6 @@ namespace Content.IntegrationTests.Tests.Buckle
   - type: Physics
     bodyType: KinematicController
   - type: Body
-    prototype: Human
   - type: StandingState
 
 - type: entity

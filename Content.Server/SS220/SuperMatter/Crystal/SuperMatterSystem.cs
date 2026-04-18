@@ -6,6 +6,7 @@ using Content.Server.SS220.SuperMatter.Crystal.SuperMatterInterior;
 using Content.Server.Tesla.Components;
 using Content.Shared.Administration;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Radiation.Components;
 using Content.Shared.SS220.SuperMatter.Functions;
 using Robust.Shared.Timing;
