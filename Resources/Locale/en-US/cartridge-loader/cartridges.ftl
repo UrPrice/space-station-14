@@ -8,6 +8,7 @@ messenger-program-name = Messenger
 
 crew-manifest-program-name = Crew manifest
 crew-manifest-cartridge-loading = Loading ...
+crew-manifest-cartridge-loading-failed = Failed to load crew manifest!
 
 net-probe-program-name = NetProbe
 net-probe-scan = Scanned {$device}!

@@ -392,12 +392,12 @@ public sealed class StoreDiscountSystem : EntitySystem
         }
     }
     // ss220 nukeops discount start
-    public void TryAddDiscounts(EntityUid uid, StoreComponent comp)
+    public void TryAddDiscounts(Entity<StoreComponent> store)
     {
-        if (!comp.UseDiscounts) return;
+        if (!store.Comp.UseDiscounts) return;
 
-        var discountComponent = EnsureComp<StoreDiscountComponent>(uid);
-        var listings = comp.FullListingsCatalog.ToArray();
+        var discountComponent = EnsureComp<StoreDiscountComponent>(store.Owner);
+        var listings = store.Comp.FullListingsCatalog.ToArray();
         var discounts = InitializeDiscounts(listings);
         ApplyDiscounts(listings, discounts);
         discountComponent.Discounts = discounts;

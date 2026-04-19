@@ -278,7 +278,7 @@ namespace Content.Client.Access.UI
                 fullNameSafe, //ss220 format name fix
                 jobTitleSafe, //ss220 format name fix
                 _accessButtons.ButtonsList.Where(x => x.Value.Pressed).Select(x => x.Key).ToList(),
-                jobProtoDirty ? _jobPrototypeIds[JobPresetOptionButton.SelectedId] : string.Empty);
+                jobProtoDirty ? _jobPrototypeIds[JobPresetOptionButton.SelectedId] : null);
         }
     }
 }

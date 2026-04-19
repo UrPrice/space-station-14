@@ -52,7 +52,7 @@ jobs:
       shell: pwsh
       run: |
         $env:DOTNET_gcServer=1
-        dotnet test --filter 'Name=EntityTest' --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"        
+        dotnet test --filter 'Name=EntityTest' --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
     # SS220-separate-tests-end
 
     - name: Run Content.IntegrationTests
@@ -60,7 +60,7 @@ jobs:
       run: |
         $env:DOTNET_gcServer=1
         dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results" NUnit.Where="test !~ 'PostMapInitTest' and test !~ 'StationPowerTests' and test !~ 'ShuttlesLoadableTest' and test !~ 'NoSavedPostMapInitTest' and test !~ 'NonGameMapsLoadableTest' and test !~ 'EntityTest'"
-    
+
     # SS220-separate-tests-begin
     - name: Run Content.IntegrationTests maps test
       shell: pwsh
@@ -68,7 +68,7 @@ jobs:
         $env:DOTNET_gcServer=1
         dotnet test --filter 'Name=PostMapInitTest|Name=StationPowerTests|Name=ShuttlesLoadableTest|Name=NoSavedPostMapInitTest|Name=NonGameMapsLoadableTest' --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
     # SS220-separate-tests-end
-    
+
     - name: Archive NUnit3 test results.
       if: always()
       uses: actions/upload-artifact@v4

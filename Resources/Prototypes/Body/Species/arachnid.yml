@@ -36,6 +36,7 @@
 - type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceArachnid
+  categories: [ HideSpawnMenu ]
   name: arachnid appearance
   components:
   - type: Inventory
@@ -165,6 +166,10 @@
     - id: SpiderTongue
       canSpeak: false
   # SS220-Add-Languages end
+  - type: CreamPied
+    sprite:
+      sprite: Effects/creampie.rsi
+      state: creampie_arachnid
 
 - type: entity
   parent: OrganBase

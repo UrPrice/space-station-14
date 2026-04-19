@@ -374,7 +374,7 @@
   components:
   - type: StationEvent
     weight: 0.1 # SS 220 0.1 weight wiz spawn midround
-    duration: 1
+    duration: null
     earliestStart: 30
     reoccurrenceDelay: 60
     minimumPlayers: 30

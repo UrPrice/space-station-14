@@ -24,7 +24,7 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TagSystem _tag = default!; // SS220-some-tag...
 
-    private readonly ProtoId<TagPrototype> ThermalImplantTag = "ThermalImplant";
+    private static readonly ProtoId<TagPrototype> ThermalImplantTag = "ThermalImplant";
 
     public override void Initialize()
     {

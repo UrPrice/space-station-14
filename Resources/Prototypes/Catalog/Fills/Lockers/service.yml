@@ -92,6 +92,7 @@
     - id: LightReplacer
     - id: BoxLightMixed
     - id: Holoprojector
+    - id: WireBrush
     - !type:AllSelector
       rolls: 2
       children:
@@ -101,7 +102,6 @@
       - id: SoapNT
       - id: FlashlightLantern
       - id: Plunger
-        amount: 2
       - id: BearTrap #SS220 TrapSystem
         amount: 2 #SS220 TrapSystem
       - id: WireBrush

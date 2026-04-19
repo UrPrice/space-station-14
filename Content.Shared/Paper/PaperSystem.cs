@@ -38,14 +38,14 @@ public sealed class PaperSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; //ss220 add origami arts
     [Dependency] private readonly INetManager _net = default!; //ss220 add origami arts
 
+    [Dependency] private readonly EntityQuery<PaperComponent> _paperQuery = default!;
+
     private static readonly ProtoId<TagPrototype> WriteIgnoreStampsTag = "WriteIgnoreStamps";
     private static readonly ProtoId<TagPrototype> WriteTag = "Write";
 
     //ss220 add origami arts start
     private const string PrototypeAirPlane = "PaperAirplane";
     //ss220 add origami arts end
-
-    private EntityQuery<PaperComponent> _paperQuery;
 
     public override void Initialize()
     {
@@ -66,8 +66,6 @@ public sealed class PaperSystem : EntitySystem
         SubscribeLocalEvent<PaperComponent, GetVerbsEvent<AlternativeVerb>>(OnVerb);
         SubscribeLocalEvent<PaperComponent, TransformPaperToAirplaneDoAfter>(OnTransformPaper);
         //ss220 add origami arts end
-
-        _paperQuery = GetEntityQuery<PaperComponent>();
     }
 
     private void OnMapInit(Entity<PaperComponent> entity, ref MapInitEvent args)
