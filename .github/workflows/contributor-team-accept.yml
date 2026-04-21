@@ -23,7 +23,7 @@ jobs:
         with:
           github-token: ${{ steps.app-token.outputs.token }}
           script: |
-            if (context.payload.comment.user.logn !== context.payload.issue.user.login) {
+            if (context.payload.comment.user.login !== context.payload.issue.user.login) {
               return;
             }
             try {
@@ -31,7 +31,7 @@ jobs:
                 org: 'SerbiaStrong-220',
                 team_slug: 'read-only-contributor',
                 username: context.payload.comment.user.login,
-                role: 'member';
+                role: 'member'
               });
               await github.rest.issues.createComment({
                 issue_number: context.issue.number,
