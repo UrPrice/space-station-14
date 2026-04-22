@@ -40,7 +40,7 @@
   showInVote: false
   rules:
     - Nukeops
-    - Dynamic # ss220 traitor to dynamic
+    - Traitor
     # - Revolutionary
     - Zombie
     - Wizard
@@ -63,7 +63,7 @@
   showInVote: false #Please god dont do this
   rules:
     - Nukeops
-    - Dynamic # ss220 traitor to dynamic
+    - Traitor
     - Revolutionary
     - Zombie
     - Wizard
