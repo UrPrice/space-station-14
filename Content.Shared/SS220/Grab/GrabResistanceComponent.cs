@@ -21,10 +21,10 @@ public sealed partial class GrabResistanceComponent : Component
     public Dictionary<GrabStage, float> CurrentStageBreakoutChance = new();
 
     [DataField, AutoNetworkedField]
-    public TimeSpan FirstBreakoutAttemptDelay = TimeSpan.FromSeconds(3);
+    public TimeSpan FirstBreakoutAttemptDelay = TimeSpan.FromSeconds(0);
 
     [DataField, AutoNetworkedField]
-    public TimeSpan BreakoutAttemptCooldown = TimeSpan.FromSeconds(30);
+    public TimeSpan BreakoutAttemptCooldown = TimeSpan.FromSeconds(0.5);
 
     [DataField, AutoNetworkedField]
     public TimeSpan LastBreakoutAttemptAt = TimeSpan.Zero;
