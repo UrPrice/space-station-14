@@ -115,6 +115,6 @@
     minimumTimeUntilFirstEvent: 1200 # 20 mins
     minMaxEventTiming:
       min: 600 # 10 mins
-      max: 1800 # 15 mins
+      max: 1800 # 30 mins
     scheduledGameRules: !type:NestedSelector
       tableId: UnknownShuttlesNeutralTable
