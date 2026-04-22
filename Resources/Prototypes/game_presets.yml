@@ -10,7 +10,7 @@
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
     # - SpaceTrafficControlEventScheduler # SS220-NoUnknownShuttles
-    - SpaceTrafficControlFriendlyEventScheduler
+    - SpaceTrafficControlNeutralEventScheduler # SS220-LostSouls
     - BasicRoundstartVariation
     - EmergencyShuttleAutoVote # SS220-evac-vote
 
@@ -27,7 +27,7 @@
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     # - SpaceTrafficControlEventScheduler # SS220-NoUnknownShuttles
-    - SpaceTrafficControlFriendlyEventScheduler # SS220-LostSouls
+    - SpaceTrafficControlNeutralEventScheduler # SS220-LostSouls
     - BasicRoundstartVariation
     - EmergencyShuttleAutoVote # SS220-evac-vote
 
@@ -40,14 +40,14 @@
   showInVote: false
   rules:
     - Nukeops
-    - Traitor
+    - Dynamic # ss220 traitor to dynamic
     # - Revolutionary
     - Zombie
     - Wizard
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     # - SpaceTrafficControlEventScheduler # SS220-NoUnknownShuttles
-    - SpaceTrafficControlFriendlyEventScheduler # SS220-LostSouls
+    - SpaceTrafficControlNeutralEventScheduler # SS220-LostSouls
     - BasicRoundstartVariation
     - EmergencyShuttleAutoVote # SS220-evac-vote
 
@@ -63,7 +63,7 @@
   showInVote: false #Please god dont do this
   rules:
     - Nukeops
-    - Traitor
+    - Dynamic # ss220 traitor to dynamic
     - Revolutionary
     - Zombie
     - Wizard
@@ -73,7 +73,7 @@
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
     # - SpaceTrafficControlEventScheduler # SS220-NoUnknownShuttles
-    - SpaceTrafficControlFriendlyEventScheduler
+    - SpaceTrafficControlNeutralEventScheduler # SS220-LostSouls
     - BasicRoundstartVariation
     - EmergencyShuttleAutoVote # SS220-evac-vote
 
