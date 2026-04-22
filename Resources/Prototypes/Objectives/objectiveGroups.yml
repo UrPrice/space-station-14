@@ -47,8 +47,10 @@
   id: TraitorObjectiveGroupSocial
   weights:
 #    RandomTraitorAliveObjective: 1 - Removed because the objective was boring and didn't progress the round.
-    RandomTraitorProgressObjective: 1
-    TraitorIntimidateTargetGroup: 1
+    RandomTraitorProgressObjective: 4
+    TraitorIntimidateBruteTargetObjective: 5 # easiest
+    TraitorIntimidateBurnTargetObjective: 3
+    TraitorIntimidateToxinTargetObjective: 1 # hardest
 
 #Thief groups
 - type: weightedRandom
