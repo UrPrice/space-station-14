@@ -23,6 +23,7 @@
     onState: icon-on
     offState: icon
     range: 1
+    reference: 0.1
   - type: PowerCellSlot
     cellSlotId: cell_slot
   - type: ContainerContainer

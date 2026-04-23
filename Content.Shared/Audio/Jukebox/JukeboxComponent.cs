@@ -44,6 +44,9 @@ public sealed partial class JukeboxComponent : Component
 
     [DataField, AutoNetworkedField]
     public float Range = 10;
+
+    [DataField, AutoNetworkedField]
+    public float Reference = 0.35f;
     //ss220-jukebox-tweak-end
 }
 
@@ -78,6 +81,11 @@ public sealed class JukeboxSetGainMessage(float gain) : BoundUserInterfaceMessag
 public sealed class JukeboxSetRangeMessage(float range)
 {
     public float Range { get; } = range;
+}
+[Serializable, NetSerializable]
+public sealed class JukeboxSetReferenceMessage(float reference)
+{
+    public float Reference { get; } = reference;
 }
 //ss220-jukebox-tweak-end
 

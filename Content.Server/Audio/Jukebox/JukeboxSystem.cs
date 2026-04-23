@@ -64,7 +64,7 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
                 AudioParams.Default
                     .WithVolume(SharedAudioSystem.GainToVolume(component.Gain))
                     .WithMaxDistance(component.Range)
-                    .WithReferenceDistance(MathF.Max(1f, component.Range*0.35f))
+                    .WithReferenceDistance(component.Range*MathF.Min(1f, component.Reference))
                     .WithRolloffFactor(1f))
             ?.Entity; // ss220-jukebox-tweak
             Dirty(uid, component);
