@@ -9,17 +9,32 @@
     layers:
     - state: icon
       map: [ "enum.ToggleableVisuals.Layer" ]
+    - state: icon
+      map: [ "enum.JukeboxVisualLayers.Base" ]
   # ss220-jukebox-tweak bgn
   - type: ActivatableUI
     key: enum.JukeboxUiKey.Key
+  - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
         enum.JukeboxUiKey.Key:
           type: JukeboxBoundUserInterface
   - type: Jukebox
-    onState: on
-    offState: off
+    onState: icon-on
+    offState: icon
     range: 1
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+  - type: ToggleCellDraw
+  - type: PowerCellDraw
   # ss220-jukebox-tweak end
   - type: Clothing
     equippedPrefix: off
@@ -38,12 +53,12 @@
       neck:
       - state: on-equipped-NECK
   - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.ToggleableVisuals.Enabled:
-        enum.ToggleableVisuals.Layer:
-          True: {state: icon-on}
-          False: {state: icon}
+  # - type: GenericVisualizer
+  #   visuals:
+  #     enum.ToggleableVisuals.Enabled:
+  #       enum.ToggleableVisuals.Layer:
+  #         True: {state: icon-on}
+  #         False: {state: icon}
   - type: ItemToggle
     predictable: false
     soundActivate:
