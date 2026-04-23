@@ -41,6 +41,9 @@ public sealed partial class JukeboxComponent : Component
     //ss220-jukebox-tweak-begin
     [DataField, AutoNetworkedField]
     public float Gain = 1;
+
+    [DataField, AutoNetworkedField]
+    public float Range = 10;
     //ss220-jukebox-tweak-end
 }
 
@@ -70,6 +73,11 @@ public sealed class JukeboxSetTimeMessage(float songTime) : BoundUserInterfaceMe
 public sealed class JukeboxSetGainMessage(float gain) : BoundUserInterfaceMessage
 {
     public float Gain { get; } = gain;
+}
+[Serializable, NetSerializable]
+public sealed class JukeboxSetRangeMessage(float range)
+{
+    public float Range { get; } = range;
 }
 //ss220-jukebox-tweak-end
 

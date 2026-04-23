@@ -9,6 +9,17 @@
     layers:
     - state: icon
       map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: ActivatableUI
+    key: enum.JukeboxUiKey.Key
+  - type: UserInterface
+    interfaces:
+        enum.JukeboxUiKey.Key:
+          type: JukeboxBoundUserInterface
+  - type: Jukebox
+    onState: on
+    offState: off
+    range: 1
+#    selectState: on
   - type: Clothing
     equippedPrefix: off
     sprite: SS220/Clothing/Neck/Misc/headphones.rsi #SS220HeadphonesResprite
