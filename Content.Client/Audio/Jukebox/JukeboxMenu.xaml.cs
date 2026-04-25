@@ -99,7 +99,7 @@ public sealed partial class JukeboxMenu : FancyWindow
     private void VolumeSliderKeyUp(Slider args)
     {
         SetGain?.Invoke(VolumeSlider.Value);
-        _volumeLockTimer = 0.5f; // SS220-jukebox-tweak
+        _volumeLockTimer = 0.5f;
     }
     //SS220-jukebox-tweak-end
 

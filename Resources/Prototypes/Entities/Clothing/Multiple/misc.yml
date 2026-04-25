@@ -14,7 +14,7 @@
   # ss220-jukebox-tweak bgn
   - type: ActivatableUI
     key: enum.JukeboxUiKey.Key
-  - type: ActivatableUIRequiresPower
+  - type: ActivatableUIRequiresPowerCell
   - type: UserInterface
     interfaces:
         enum.JukeboxUiKey.Key:
@@ -22,8 +22,10 @@
   - type: Jukebox
     onState: icon-on
     offState: icon
-    range: 1
-    reference: 0.1
+    range: 3
+    reference: 0.5
+  - type: Headphones
+    volumeModificator: 0.2
   - type: PowerCellSlot
     cellSlotId: cell_slot
   - type: ContainerContainer
