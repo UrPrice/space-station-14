@@ -1,18 +1,6 @@
 ﻿Entries:
 - author: ReeZer2
   changes:
-  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u0432\u043E\u0437\
-      \u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C \u043F\u0435\u0440\u0435\u0440\
-      \u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0442\u044C \u043F\u0438\u0441\u044C\
-      \u043C\u0430 \u0438 \u043F\u043E\u0441\u044B\u043B\u043A\u0438 \u0432 \u043F\
-      \u0435\u0440\u0435\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0435 \u043C\
-      \u0443\u0441\u043E\u0440\u0430"
-    type: Add
-  id: 1004
-  time: '2025-05-24T17:12:00.0000000+00:00'
-  url: https://github.com/SerbiaStrong-220/space-station-14/pull/2963
-- author: ReeZer2
-  changes:
   - message: "\u0422\u0435\u043F\u0435\u0440\u044C \u043F\u0440\u0438 \u0438\u0437\
       \u0432\u043B\u0435\u0447\u0435\u043D\u0438\u0438 \u043A\u0443\u0432\u0448\u0438\
       \u043D\u0430 \u0438\u0437 \u0440\u0430\u0437\u0434\u0430\u0442\u0447\u0438\u043A\
@@ -8120,3 +8108,22 @@
   id: 1503
   time: '2026-04-26T06:55:01.0000000+00:00'
   url: https://github.com/SerbiaStrong-220/space-station-14/pull/4048
+- author: Xenoksys
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043A\u0430\u043B\u044C\
+      \u044F\u043D!"
+    type: Add
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u044F\u0449\u0438\u043A\
+      \ \u0441 \u0447\u0430\u0441\u0442\u044F\u043C\u0438 \u043A\u0430\u043B\u044C\
+      \u044F\u043D\u0430 \u0432 \u043A\u0430\u0440\u0433\u043E (5000$)"
+    type: Add
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0443\u0433\u043E\u043B\
+      \u044C \u0434\u043B\u044F \u043A\u0430\u043B\u044C\u044F\u043D\u0430 \u0432\
+      \ \u043A\u0430\u0440\u0433\u043E (1500$)"
+    type: Add
+  - message: "\u0428\u0443\u0442\u043A\u0430 \u043F\u0440\u043E \u043A\u0430\u043B\
+      \u044C\u044F\u043D"
+    type: Remove
+  id: 1504
+  time: '2026-04-26T06:58:17.0000000+00:00'
+  url: https://github.com/SerbiaStrong-220/space-station-14/pull/4129
