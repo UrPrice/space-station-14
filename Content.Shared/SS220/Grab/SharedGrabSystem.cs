@@ -3,6 +3,7 @@
 using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Alert;
+using Content.Shared.Buckle.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
@@ -18,8 +19,10 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
+using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
@@ -48,6 +51,7 @@ public abstract partial class SharedGrabSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedJointSystem _joints = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
 
     protected EntityQuery<GrabbableComponent> _grabbableQuery;
     private EntityQuery<GrabberComponent> _grabberQuery;
@@ -79,6 +83,12 @@ public abstract partial class SharedGrabSystem : EntitySystem
         SubscribeLocalEvent<GrabbableComponent, PickupAttemptEvent>(OnGrabbablePickupAttempt);
 
         SubscribeLocalEvent<GrabberComponent, VirtualItemDeletedEvent>(OnVirtualItemDeleted);
+
+        SubscribeLocalEvent<GrabberComponent, EntGotInsertedIntoContainerMessage>(OnGrabberContainerInsert);
+        SubscribeLocalEvent<GrabbableComponent, EntGotInsertedIntoContainerMessage>(OnGrabbableContainerInsert);
+
+        SubscribeLocalEvent<GrabberComponent, BuckledEvent>(OnGrabberBuckled);
+        SubscribeLocalEvent<GrabbableComponent, BuckledEvent>(OnGrabbableBuckled);
 
         InitializeResistance();
 
@@ -236,6 +246,36 @@ public abstract partial class SharedGrabSystem : EntitySystem
         ClearJoints((grabber, grabber.Comp), (grabbable, grabbableComp));
     }
 
+    private void OnGrabberContainerInsert(Entity<GrabberComponent> grabber, ref EntGotInsertedIntoContainerMessage args)
+    {
+        if (grabber.Comp.Grabbing is not { } grabbable)
+            return;
+
+        if (!_grabbableQuery.TryComp(grabbable, out var grabbableComp))
+            return;
+
+        BreakGrab((grabbable, grabbableComp));
+    }
+
+    private void OnGrabbableContainerInsert(Entity<GrabbableComponent> grabbable, ref EntGotInsertedIntoContainerMessage args)
+    {
+        BreakGrab((grabbable, grabbable.Comp));
+    }
+
+    private void OnGrabberBuckled(Entity<GrabberComponent> grabber, ref BuckledEvent args)
+    {
+        if (grabber.Comp.Grabbing is not { } grabbable)
+            return;
+        if (!_grabbableQuery.TryComp(grabbable, out var grabbableComp))
+            return;
+        BreakGrab((grabbable, grabbableComp));
+    }
+
+    private void OnGrabbableBuckled(Entity<GrabbableComponent> grabbable, ref BuckledEvent args)
+    {
+        BreakGrab((grabbable, grabbable.Comp));
+    }
+
     #endregion
 
     #region Public API
@@ -292,6 +332,9 @@ public abstract partial class SharedGrabSystem : EntitySystem
             return false;
 
         if (_grabbableQuery.TryComp(grabber, out var grabberGrabbable) && grabberGrabbable.GrabbedBy != null)
+            return false;
+
+        if (_grabberQuery.TryComp(grabbable, out var grabbableAsGrabber) && grabbableAsGrabber.Grabbing != null)
             return false;
 
         if (!_interaction.InRangeAndAccessible(grabber.Owner, grabbable.Owner, grabber.Comp.Range))
@@ -372,7 +415,8 @@ public abstract partial class SharedGrabSystem : EntitySystem
         }
 
         // grab confirmed
-
+        RemComp<KnockedDownComponent>(grabbable);
+        _standing.Stand(grabbable, force: true);
         for (var i = 0; i < grabber.Comp.NeededHands; i++)
         {
             _virtualItem.TrySpawnVirtualItemInHand(grabbable, grabber, out _);
@@ -380,12 +424,10 @@ public abstract partial class SharedGrabSystem : EntitySystem
             if (_virtualItem.TrySpawnVirtualItemInHand(grabber, grabbable, out var virtualItem))
                 EnsureComp<UnremoveableComponent>(virtualItem.Value);
         }
-
         grabber.Comp.Grabbing = grabbable;
         grabbable.Comp.GrabbedBy = grabber;
 
         PlaceGrabbable(grabber, grabbable);
-
         // Create the joint
         var jointId = $"grab_joint_{GetNetEntity(grabbable)}";
         grabber.Comp.GrabJointId = jointId;
