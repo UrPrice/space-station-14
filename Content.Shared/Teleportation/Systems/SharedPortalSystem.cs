@@ -6,6 +6,7 @@ using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Teleportation.Components;
 using Content.Shared.Verbs;
+using Content.Shared.SS220.Grab;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -136,6 +137,7 @@ public abstract class SharedPortalSystem : EntitySystem
             }
 
             TeleportEntity(ent, subject, Transform(target).Coordinates, target);
+            TeleportGrabPartner(ent, subject, Transform(target).Coordinates, target); // ss220 grab teleport fix
             return;
         }
 
@@ -261,6 +263,33 @@ public abstract class SharedPortalSystem : EntitySystem
         _audio.PlayPredicted(departureSound, ent, subject);
         _audio.PlayPredicted(arrivalSound, subject, subject);
     }
+
+    // ss220 grab teleport fix begin
+    private void TeleportGrabPartner(Entity<PortalComponent> portal, EntityUid subject,
+        EntityCoordinates target, EntityUid? targetEntity)
+    {
+        EntityUid? partner = null;
+        if (TryComp<GrabberComponent>(subject, out var grabberComp) && grabberComp.Grabbing is {} grabbing)
+            partner = grabbing;
+        else if (TryComp<GrabbableComponent>(subject, out var grabbableComp) && grabbableComp.GrabbedBy is {} grabbedBy)
+            partner = grabbedBy;
+
+        if (partner == null)
+            return;
+
+        if (HasComp<PortalTimeoutComponent>(partner.Value))
+            return;
+
+        if (HasComp<PortalComponent>(targetEntity))
+        {
+            var timeout = EnsureComp<PortalTimeoutComponent>(partner.Value);
+            timeout.EnteredPortal = portal;
+            Dirty(partner.Value, timeout);
+        }
+
+        TeleportEntity(portal, partner.Value, target, targetEntity, playSound: false);
+    }
+    // ss220 grab teleport fix end
 
     /// <summary>
     /// Finds a random coordinate within the portal's radius and teleports the subject there.
