@@ -2,11 +2,12 @@
 
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Random;
-
+using Robust.Shared.Network;
 namespace Content.Shared.SS220.Grab;
 
 public partial class SharedGrabSystem
 {
+    [Dependency] private readonly INetManager _netManager = default!;
     private void InitializeResistance()
     {
         SubscribeLocalEvent<GrabResistanceComponent, GrabBreakoutAttemptAlertEvent>(OnBreakoutAttemptAlert);
@@ -91,6 +92,10 @@ public partial class SharedGrabSystem
             return;
 
         // TODO: Once we have predicted randomness delete this for something sane...
+
+        if (_netManager.IsClient)
+            return;
+
         var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(grabbable.Owner).Id });
         var rand = new System.Random(seed);
 

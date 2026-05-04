@@ -123,8 +123,7 @@ public abstract partial class SharedGrabSystem : EntitySystem
 
     private void OnMove(Entity<GrabbableComponent> grabbable, ref MoveInputEvent ev)
     {
-        if (grabbable.Comp.GrabStage == GrabStage.Passive)
-            TryBreakGrab((grabbable, grabbable.Comp));
+        TryBreakGrab((grabbable, grabbable.Comp));
     }
 
     private void OnThrown(Entity<GrabbableComponent> ent, ref ThrownEvent args)
