@@ -1,6 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Shared.Alert;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -8,7 +7,10 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Events;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Shared.Mobs.Systems;
 
@@ -533,7 +535,7 @@ public struct RefreshMobThresholdsModifiersEvent(Entity<MobThresholdsComponent> 
 
     public void ApplyModifier(MobState state, MobThresholdsModifier modifier)
     {
-        if (_modifiers.TryGetValue(state, out var exist))
+        if (_modifiers.TryGetValue(state, out var exist) && modifier.Compatible) // SS220 add damage threshold modification compatibility
             modifier += exist;
 
         _modifiers[state] = modifier;
@@ -614,6 +616,21 @@ public partial struct MobThresholdsModifier()
 
     [DataField]
     public FixedPoint2 Multiplier = 1f;
+
+    [DataField] // SS220 add damage threshold modification compatibility
+    public bool Compatible = false;// SS220 add damage threshold modification compatibility
+
+    // SS220 add damage threshold modification depending on the adaptation begin
+
+    [DataField]
+    public bool DependsOnAdaptation = false;
+
+    [DataField]
+    public float DecayFlat = 1;
+
+    [DataField]
+    public ProtoId<ReagentPrototype>? Reagent = null;
+    // SS220 add damage threshold modification depending on the adaptation end
 
     public MobThresholdsModifier(FixedPoint2 flat, FixedPoint2 multiplier) : this()
     {

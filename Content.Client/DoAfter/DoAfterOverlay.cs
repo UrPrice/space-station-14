@@ -133,7 +133,7 @@ public sealed class DoAfterOverlay : Overlay
                     yOffset / scale + offset / EyeManager.PixelsPerMeter * scale);
 
                 // Draw the underlying bar texture
-                handle.DrawTexture(_barTexture, position);
+                handle.DrawTexture(_barTexture, position, doAfter.BarColorOverride); // SS220-changeable-doafter-bar-color
 
                 Color color;
                 float elapsedRatio;

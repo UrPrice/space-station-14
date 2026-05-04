@@ -20,6 +20,15 @@
   - RandomPrice
   - TemperatureDamage
   - TemperatureSpeed
+  # SS220-experience-start-begin
+  - Experience
+  - AntagFreeSublevelPointsAdd
+  - RoleExperienceAdd
+  - AdminForcedExperienceAdd
+  - JobBackgroundSublevelAdd
+  - MentorRole
+  - AntagAddKnowledge
+  # SS220-experience-start-end
   # traits
   - BlackAndWhiteOverlay
   - Clumsy

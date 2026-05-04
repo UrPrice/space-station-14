@@ -8,6 +8,7 @@
     department: Medical
     time: 72000
   startingGear: BrigmedicGear
+  experienceDefinition: BrigmedicRoleExperience
   icon: "JobIconBrigmedic"
   supervisors: job-supervisors-cmo
   access:
@@ -18,10 +19,6 @@
   - External
   extendedAccess:
   - Chemistry
-  special:
-  - !type:AddComponentSpecial
-    components:
-    - type: DefibrillatorSkill
 
 - type: startingGear
   id: BrigmedicGear

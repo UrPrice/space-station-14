@@ -108,6 +108,7 @@
     rootTask:
       task: WatermelonDogCompound
   - type: NPCImprintingOnSpawnBehaviour
+    spawnFriendsSearchRadius: 5
     whitelist:
       components:
       - HumanoidProfile
@@ -121,10 +122,9 @@
       - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: alive
   - type: Bloodstream
-    bloodReferenceSolution:
-      reagents:
-      - ReagentId: JuiceWatermelon
-        Quantity: 90
+    bloodReagent: JuiceWatermelon
+    bloodMaxVolume: 50
+    chemicalMaxVolume: 30
   - type: Destructible
     thresholds:
     - trigger:
@@ -134,8 +134,8 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           FoodWatermelonSlice:
-            min: 4
-            max: 5
+            min: 3
+            max: 4
       - !type:PlaySoundBehavior
         sound:
           collection: gib
@@ -178,7 +178,7 @@
       - Fruit
   - type: Extractable
     grindableSolutionName: bloodstream
-  - type: PotencyVisuals
+  # - type: PotencyVisuals
   - type: Appearance
   - type: Produce
     seedId: watermelondog

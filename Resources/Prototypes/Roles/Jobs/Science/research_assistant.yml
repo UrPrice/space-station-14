@@ -13,6 +13,7 @@
     #   inverted: true # stop playing intern if you're good at science!
     # SS220-RoleTime end
   startingGear: ResearchAssistantGear
+  experienceDefinition: ResearchAssistantRoleExperience # SS220-experience
   icon: "JobIconResearchAssistant"
   supervisors: job-supervisors-science
   canBeAntag: true

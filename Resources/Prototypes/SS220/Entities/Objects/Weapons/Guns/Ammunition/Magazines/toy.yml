@@ -3,21 +3,18 @@
   id: BaseMagazineToy
   abstract: true
   components:
-  - type: BallisticAmmoProvider
-    whitelist:
-      tags:
-      - CartridgeCap #oh yeah multi caliber guns fr fr
-      - BulletFoam
-  - type: HiddenDescription
-    entries:
-    - label: hidden-desc-toy-weapons-magazine-syndicate
-      whitelistMindRoles:
-      - TraitorRole
-      - NukeOperative
-    - label: hidden-desc-toy-weapons-magazine-clown
-      jobRequired:
-      - Clown
-      - Mime
+    - type: BallisticAmmoProvider
+      whitelist:
+        tags:
+          - CartridgeCap #oh yeah multi caliber guns fr fr
+          - BulletFoam
+    - type: HiddenDescription
+      entries:
+        SyndicateAgentKnowledge: [ hidden-desc-toy-weapons-magazine-syndicate ]
+        ServiceActorKnowledge: [ hidden-desc-toy-weapons-magazine-clown ]
+      nameEntries:
+      - [SyndicateAgentKnowledge, null]
+      - [ServiceActorKnowledge, null]
 
 #pistol
 - type: entity

@@ -4,6 +4,11 @@
   name: reagent grinder
   description: From BlenderTech. Will It Blend? Let's find out!
   components:
+  # SS220 reagent-grinder-update begin
+  - type: Tag
+    tags:
+    - ReagentGrinder
+  # SS220 reagent-grinder-update end
   - type: ReagentGrinder
   - type: ActivatableUI
     key: enum.ReagentGrinderUiKey.Key

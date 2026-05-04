@@ -4,9 +4,26 @@
   id: UnknownShuttlesHostileTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-    - id: LoneOpsSpawn
-    - id: UnknownShuttleManOWar
-    - id: UnknownShuttleInstigator
+    - id: UnknownShuttleCargoLost
+    - id: UnknownShuttleTravelingCuisine
+    - id: UnknownShuttleDisasterEvacPod
+    - id: UnknownShuttleHonki
+    - id: UnknownShuttleCivil # SS220-Mimes-Lost-Shuttle
+    - id: UnknownShuttleMimesLost # SS220-Mimes-Lost-Shuttle
+    - id: UnknownShuttleRedwings # SS220-Redwings-Shuttle
+#SS220-NoUnknownShuttles begin
+#    - id: UnknownShuttleNTQuark
+#    - id: UnknownShuttleCruiser
+#    - id: UnknownShuttleCryptid
+#    - id: UnknownShuttleEternal
+#    - id: UnknownShuttleFlatline
+#    - id: UnknownShuttleGym
+#    - id: UnknownShuttleNTIncorporation
+#    - id: UnknownShuttleJoe
+#    - id: UnknownShuttleLambordeere
+#    - id: UnknownShuttleMeatZone
+#    - id: UnknownShuttleMicroshuttle
+#    - id: UnknownShuttleSpacebus
 
 # Shuttle Game Rules
 

@@ -387,3 +387,9 @@
 
 - type: Tag
   id: CatWalk
+
+- type: Tag
+  id: PressureProtectionSuit
+
+- type: Tag
+  id: HookahCoal

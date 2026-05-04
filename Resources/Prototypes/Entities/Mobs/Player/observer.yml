@@ -149,6 +149,7 @@
   - type: Tag
     tags: # BAD: Intentional removal of inherited tag
     - AllowGhostShownByEvent
+    - NoConsoleSound # ss220 prevent ui sound from ghost
 
 - type: entity
   parent: BaseMentalAction

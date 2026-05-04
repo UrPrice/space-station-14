@@ -52,6 +52,7 @@
             CaptainsPaper: { state: captains_paper }
             Invoice: { state: invoice }
     - type: ActivatableUI
+      blockSpectators: true # ss220 fix spam sounds from ghost while activate canister
       key: enum.GasCanisterUiKey.Key
     - type: UIRequiresLock
       userInterfaceKeys:

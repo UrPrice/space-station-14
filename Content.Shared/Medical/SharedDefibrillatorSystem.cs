@@ -4,7 +4,9 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Electrocution;
+using Content.Shared.Ghost;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -12,10 +14,15 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
+using Content.Shared.Random.Helpers;
+using Content.Shared.SS220.Experience.Skill.Components;
+using Content.Shared.SS220.LimitationRevive;
 using Content.Shared.Timing;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Medical;
 
@@ -39,6 +46,11 @@ public abstract class SharedDefibrillatorSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!; // SS220-new-defib-update
+    [Dependency] private readonly IGameTiming _gameTiming = default!; // SS220-defib-chance-prob
+
+    private static readonly LocId DefibWithOuterClothes = "loc-defib-outer-popup";
+    private static readonly string OuterSlotId = "outerClothing";
 
     private readonly HashSet<EntityUid> _interacters = new();
 
@@ -66,6 +78,14 @@ public abstract class SharedDefibrillatorSystem : EntitySystem
 
         if (!CanZap(ent.AsNullable(), target, args.User))
             return;
+
+        // SS220 NewDefib begin
+        if (_inventory.TryGetSlotEntity(target, OuterSlotId, out var item) && item != null)
+        {
+            _popup.PopupEntity(Loc.GetString(DefibWithOuterClothes), target, args.User);
+            return;
+        }
+        // SS220 NewDefib end
 
         args.Handled = true;
         Zap(ent.AsNullable(), target, args.User);
@@ -192,6 +212,26 @@ public abstract class SharedDefibrillatorSystem : EntitySystem
             _useDelay.TryResetDelay((ent.Owner, useDelay), id: ent.Comp.DelayId);
         }
 
+        //SS220 LimitationRevive - start
+        var defibChancesEvent = new GetDefibrillatorUseChances();
+
+        RaiseLocalEvent(user, ref defibChancesEvent);
+
+        var predictedRandom = SharedRandomExtensions.PredictedRandom(_gameTiming, GetNetEntity(target), GetNetEntity(user));
+
+        var successZap = !predictedRandom.Prob(defibChancesEvent.FailureChance);
+        var selfDamage = predictedRandom.Prob(defibChancesEvent.SelfDamageChance);
+
+        if (HasComp<GhostComponent>(user)) //for admins with aghost
+        {
+            successZap = true;
+            selfDamage = false;
+        }
+
+        if (selfDamage)
+            _electrocution.TryDoElectrocution(user, null, ent.Comp.ZapDamage * ent.Comp.ZapCoeffDamage, ent.Comp.WritheDuration, true, ignoreInsulation: true);
+        //SS220 LimitationRevive - end
+
         var failedRevive = true;
         if (_rotting.IsRotten(target))
         {
@@ -203,6 +243,22 @@ public abstract class SharedDefibrillatorSystem : EntitySystem
             _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString(unrevivable.ReasonMessage),
                 InGameICChatType.Speak, true);
         }
+        //SS220 LimitationRevive - start
+        else if (TryComp<LimitationReviveComponent>(target, out var limitRevive) &&
+                 limitRevive.DeathCounter > limitRevive.ReviveLimit)
+        {
+            _chat.TrySendInGameICMessage(target, Loc.GetString("defibrillator-death-no-exceeded"),
+                InGameICChatType.Speak, true);
+        }
+        else if (!successZap)
+        {
+            _chat.TrySendInGameICMessage(target, Loc.GetString("defibrillator-unsuccessful-zap"),
+                InGameICChatType.Speak, true);
+
+            var debuffEv = new AddReviveDebuffsEvent();
+            RaiseLocalEvent(target, ref debuffEv);
+        }
+        //SS220 LimitationRevive - end
         else
         {
             if (_mobState.IsDead(target, targetMobState))

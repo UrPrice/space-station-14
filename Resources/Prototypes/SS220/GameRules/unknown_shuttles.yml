@@ -1,46 +1,21 @@
 - type: entityTable
-  id: UnknownShuttlesFriendlyTable
-  table: !type:AllSelector
+  id: UnknownShuttlesNeutralTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
     - id: UnknownShuttleCargoLost
+      weight: 1
     - id: UnknownShuttleTravelingCuisine
+      weight: 1
     - id: UnknownShuttleDisasterEvacPod
+      weight: 2
     - id: UnknownShuttleHonki
-    - id: UnknownShuttleCivil
-    - id: UnknownShuttleMimesLost
-
-- type: entity
-  parent: BaseUnknownShuttleRule
-  id: UnknownShuttleCargoLost
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-unknown-shuttle-incoming
-    maxOccurrences: 1
-    weight: 8
-  - type: LoadMapRule
-    gridPath: /Maps/SS220/Shuttles/lostSoul/civil.yml
-
-- type: entity
-  parent: BaseUnknownShuttleRule
-  id: UnknownShuttleTravelingCuisine
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-unknown-shuttle-incoming
-    maxOccurrences: 1
-    weight: 6
-  - type: LoadMapRule
-    gridPath: /Maps/SS220/Shuttles/lostSoul/traveling_china_cuisine.yml
-
-- type: entity
-  parent: BaseUnknownShuttleRule
-  id: UnknownShuttleDisasterEvacPod
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-unknown-shuttle-incoming
-    maxOccurrences: 2
-    weight: 4
-  - type: LoadMapRule
-    gridPath: /Maps/SS220/Shuttles/lostSoul/disaster_evacpod.yml
+      weight: 2
+    - id: UnknownShuttleCivil # SS220-Mimes-Lost-Shuttle
+      weight: 1
+    - id: UnknownShuttleMimesLost # SS220-Mimes-Lost-Shuttle
+      weight: 2
+    - id: UnknownShuttleRedwings # SS220-Redwings-Shuttle
+      weight: 5
 
 - type: entity
   parent: BaseUnknownShuttleRule
@@ -61,5 +36,14 @@
     maxOccurrences: 1
     weight: 4
   - type: LoadMapRule
-    gridPath: /Maps/SS220/Shuttles/lostSoul/lost_mimes.yml
+    preloadedGrid: ShuttleMimesLost
 
+- type: entity
+  parent: BaseUnknownShuttleRule
+  id: UnknownShuttleRedwings
+  components:
+  - type: StationEvent
+    maxOccurrences: 1
+    weight: 1
+  - type: LoadMapRule
+    preloadedGrid: Redwings

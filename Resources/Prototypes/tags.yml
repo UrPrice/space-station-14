@@ -1193,6 +1193,11 @@
 - type: Tag
   id: RawMaterial # MaterialStorage whitelist for many machines and lathes. Storage whitelist: MaterialBag
 
+# SS220 reagent-grinder-update begin
+- type: Tag
+  id: ReagentGrinder
+# SS220 reagent-grinder-update end
+
 # Give this to something that doesn't need any special recycler behavior and just needs deleting.
 - type: Tag
   id: Recyclable

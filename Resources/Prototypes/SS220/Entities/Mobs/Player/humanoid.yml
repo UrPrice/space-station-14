@@ -226,7 +226,6 @@
   parent: EventHumanoidMindShielded
   randomizeName: false
   components:
-    - type: DefibrillatorSkill
     - type: GhostRole
       name: ghost-role-information-ert-leader-name
       description: ghost-role-information-ert-leader-description
@@ -266,6 +265,7 @@
 
 - type: startingGear
   id: ERTLeaderGammaGear
+  experienceDefinition: ERTLeaderRoleExperience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeaderGammaFilled
@@ -328,6 +328,7 @@
 
 - type: startingGear
   id: ERTSecurityGammaGear
+  experienceDefinition: ERTSecurityRoleExperience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurityGammaFilled
@@ -391,6 +392,7 @@
 
 - type: startingGear
   id: ERTMedicalGammaGear
+  experienceDefinition: ERTMedicalRoleExperience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedicalGammaFilled

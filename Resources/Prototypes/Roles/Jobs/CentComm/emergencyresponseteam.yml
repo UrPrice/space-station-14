@@ -7,6 +7,7 @@
   setPreference: false
   startingGear: ERTLeaderGearEVA
   icon: "JobIconERTLeader"
+  experienceDefinition: ERTLeaderRoleExperience # SS220-experience
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -19,11 +20,6 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
-  #SS220 LimitationRevive - start
-  - !type:AddComponentSpecial
-    components:
-    - type: DefibrillatorSkill
-  #SS220 LimitationRevive - end
   #SS220 ghostrole-times-begin
   requirements:
     - !type:DepartmentTimeRequirement
@@ -37,6 +33,7 @@
 - type: startingGear
   parent: ERTLeaderGearEVA
   id: ERTLeaderGear
+  experienceDefinition: ERTLeaderRoleExperience # SS220-experience-update
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTLeader
@@ -45,6 +42,7 @@
 
 - type: startingGear
   id: ERTLeaderGearEVA
+  experienceDefinition: ERTLeaderRoleExperience # SS220-experience-update
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
@@ -82,6 +80,7 @@
 - type: startingGear
   parent: ERTLeaderGearEVA
   id: ERTLeaderGearArmed
+  experienceDefinition: ERTLeaderRoleExperience # SS220-experience-update
   equipment:
     pocket2: WeaponDisabler
     suitstorage: WeaponRifleLecterXL8
@@ -122,6 +121,7 @@
   playTimeTracker: JobERTChaplain
   setPreference: false
   startingGear: ERTChaplainGear
+  experienceDefinition: ERTChaplainRoleExperience # SS220-experience
   icon: "JobIconERTChaplain"
   supervisors: job-supervisors-centcom
   canBeAntag: false
@@ -134,7 +134,6 @@
   - !type:AddComponentSpecial
     components:
     - type: BibleUser #Lets them heal with bibles
-    - type: DefibrillatorSkill #SS220 LimitationRevive
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
   departmentsToIgnoreInTitles: # SS220 Round End Titles
@@ -149,6 +148,7 @@
 - type: startingGear
   parent: ERTChaplainGearEVA
   id: ERTChaplainGear
+  experienceDefinition: ERTChaplainRoleExperience # SS220-experience
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHatFez
@@ -158,6 +158,7 @@
 
 - type: startingGear
   id: ERTChaplainGearEVA
+  experienceDefinition: ERTChaplainRoleExperience # SS220-experience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTChaplain
     back: ClothingBackpackERTChaplain
@@ -210,6 +211,7 @@
   setPreference: false
   startingGear: ERTEngineerGearEVA
   icon: "JobIconERTEngineer"
+  experienceDefinition: ERTEngineerRoleExperience # SS220-experience
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -222,11 +224,6 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
-  #SS220 LimitationRevive - start
-  - !type:AddComponentSpecial
-    components:
-    - type: DefibrillatorSkill
-  #SS220 LimitationRevive - end
   #SS220 ghostrole-times start
   requirements:
     - !type:DepartmentTimeRequirement
@@ -240,6 +237,7 @@
 - type: startingGear
   parent: ERTEngineerGearEVA
   id: ERTEngineerGear
+  experienceDefinition: ERTEngineerRoleExperience # SS220-experience
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTEngineer
@@ -248,6 +246,7 @@
 
 - type: startingGear
   id: ERTEngineerGearEVA
+  experienceDefinition: ERTEngineerRoleExperience # SS220-experience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
@@ -321,6 +320,7 @@
   setPreference: false
   startingGear: ERTSecurityGearEVA
   icon: "JobIconERTSecurity"
+  experienceDefinition: ERTSecurityRoleExperience # SS220-experience
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -333,11 +333,6 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
-  #SS220 LimitationRevive - start
-  - !type:AddComponentSpecial
-    components:
-    - type: DefibrillatorSkill
-  #SS220 LimitationRevive - end
   #SS220 ghostrole-times start
   requirements:
     - !type:DepartmentTimeRequirement
@@ -348,6 +343,7 @@
 - type: startingGear
   parent: ERTSecurityGearEVA
   id: ERTSecurityGear
+  experienceDefinition: ERTSecurityRoleExperience # SS220-experience
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTSecurity
@@ -356,6 +352,7 @@
 
 - type: startingGear
   id: ERTSecurityGearEVA
+  experienceDefinition: ERTSecurityRoleExperience # SS220-experience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
@@ -392,6 +389,7 @@
 
 - type: startingGear
   id: ERTSecurityGearArmedRifle
+  experienceDefinition: ERTSecurityRoleExperience # SS220-experience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     shoes: ClothingShoesBootsMagERT
@@ -522,6 +520,7 @@
   setPreference: false
   startingGear: ERTMedicalGearEVA
   icon: "JobIconERTMedic"
+  experienceDefinition: ERTMedicalRoleExperience # SS220-experience
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -534,11 +533,6 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
-  #SS220 LimitationRevive - start
-  - !type:AddComponentSpecial
-    components:
-    - type: DefibrillatorSkill
-  #SS220 LimitationRevive - end
   #SS220 ghostrole-times start
   requirements:
     - !type:DepartmentTimeRequirement
@@ -552,6 +546,7 @@
 - type: startingGear
   parent: ERTMedicalGearEVA
   id: ERTMedicalGear
+  experienceDefinition: ERTMedicalRoleExperience # SS220-experience
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTMedic
@@ -560,6 +555,7 @@
 
 - type: startingGear
   id: ERTMedicalGearEVA
+  experienceDefinition: ERTMedicalRoleExperience # SS220-experience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedical
@@ -639,6 +635,7 @@
   setPreference: false
   startingGear: ERTJanitorGearEVA
   icon: "JobIconERTJanitor"
+  experienceDefinition: ERTJanitorRoleExperience # SS220-experience
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -651,11 +648,6 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
-  #SS220 LimitationRevive - start
-  - !type:AddComponentSpecial
-    components:
-    - type: DefibrillatorSkill
-  #SS220 LimitationRevive - end
   #SS220 ghostrole-times start
   requirements:
     - !type:DepartmentTimeRequirement
@@ -666,6 +658,7 @@
 - type: startingGear
   parent: ERTJanitorGearEVA
   id: ERTJanitorGear
+  experienceDefinition: ERTJanitorRoleExperience # SS220-experience
   equipment:
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHelmetERTJanitor
@@ -674,6 +667,7 @@
 
 - type: startingGear
   id: ERTJanitorGearEVA
+  experienceDefinition: ERTJanitorRoleExperience # SS220-experience
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTJanitor
     back: ClothingBackpackERTJanitor
