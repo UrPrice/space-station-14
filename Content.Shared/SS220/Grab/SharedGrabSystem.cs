@@ -123,6 +123,9 @@ public abstract partial class SharedGrabSystem : EntitySystem
 
     private void OnMove(Entity<GrabbableComponent> grabbable, ref MoveInputEvent ev)
     {
+        if (!grabbable.Comp.Grabbed)
+            return;
+
         TryBreakGrab((grabbable, grabbable.Comp));
     }
 
@@ -364,6 +367,9 @@ public abstract partial class SharedGrabSystem : EntitySystem
 
     public void BreakGrab(Entity<GrabbableComponent?> grabbable)
     {
+        if (_timing.ApplyingState)
+            return;
+
         if (!_grabbableQuery.Resolve(grabbable, ref grabbable.Comp))
             return;
 

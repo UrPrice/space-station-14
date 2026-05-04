@@ -128,6 +128,9 @@ public abstract class SharedPortalSystem : EntitySystem
             // pick a target and teleport there
             var target = _random.Pick(link.LinkedEntities);
 
+            if (!TryTeleportGrabPartner(ent, subject, Transform(target).Coordinates, target)) // ss220 grab teleport fix
+                return; // ss220 grab teleport fix
+
             if (HasComp<PortalComponent>(target))
             {
                 // if target is a portal, signal that they shouldn't be immediately teleported back
@@ -137,7 +140,6 @@ public abstract class SharedPortalSystem : EntitySystem
             }
 
             TeleportEntity(ent, subject, Transform(target).Coordinates, target);
-            TeleportGrabPartner(ent, subject, Transform(target).Coordinates, target); // ss220 grab teleport fix
             return;
         }
 
@@ -265,20 +267,20 @@ public abstract class SharedPortalSystem : EntitySystem
     }
 
     // ss220 grab teleport fix begin
-    private void TeleportGrabPartner(Entity<PortalComponent> portal, EntityUid subject,
+    private bool TryTeleportGrabPartner(Entity<PortalComponent> portal, EntityUid subject,
         EntityCoordinates target, EntityUid? targetEntity)
     {
         EntityUid? partner = null;
-        if (TryComp<GrabberComponent>(subject, out var grabberComp) && grabberComp.Grabbing is {} grabbing)
+        if (TryComp<GrabberComponent>(subject, out var grabberComp) && grabberComp.Grabbing is { } grabbing)
             partner = grabbing;
-        else if (TryComp<GrabbableComponent>(subject, out var grabbableComp) && grabbableComp.GrabbedBy is {} grabbedBy)
+        else if (TryComp<GrabbableComponent>(subject, out var grabbableComp) && grabbableComp.GrabbedBy is { } grabbedBy)
             partner = grabbedBy;
 
         if (partner == null)
-            return;
+            return true;
 
         if (HasComp<PortalTimeoutComponent>(partner.Value))
-            return;
+            return false;
 
         if (HasComp<PortalComponent>(targetEntity))
         {
@@ -288,6 +290,7 @@ public abstract class SharedPortalSystem : EntitySystem
         }
 
         TeleportEntity(portal, partner.Value, target, targetEntity, playSound: false);
+        return true;
     }
     // ss220 grab teleport fix end
 
