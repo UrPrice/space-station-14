@@ -341,7 +341,7 @@ public abstract partial class SharedGrabSystem : EntitySystem
             return false;
 
         if (checkCanPull)
-            return _pulling.CanPull(grabber, grabbable, ignoreHands: true, ignoreCooldown: true);
+            return _pulling.CanPull(grabber, grabbable, ignoreHands: true);
 
         return true;
     }

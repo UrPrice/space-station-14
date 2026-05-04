@@ -455,7 +455,7 @@ public sealed class PullingSystem : EntitySystem
         TryStopPull(pullerComp.Pulling.Value, pullableComp, user: player);
     }
 
-    public bool CanPull(EntityUid puller, EntityUid pullableUid, PullerComponent? pullerComp = null, bool ignoreHands = false, bool ignoreCooldown = false) // SS220-Grabs | Add ignoreHands arg
+    public bool CanPull(EntityUid puller, EntityUid pullableUid, PullerComponent? pullerComp = null, bool ignoreHands = false) // SS220-Grabs | Add ignoreHands arg
     {
         if (!Resolve(puller, ref pullerComp, false))
         {
@@ -493,11 +493,6 @@ public sealed class PullingSystem : EntitySystem
         {
             return false;
         }
-
-        // SS220-PullingCooldown-Start
-        if (_timing.CurTime < pullerComp.LastPullAt + pullerComp.PullCooldown && !ignoreCooldown)
-            return false;
-        // SS220-PullingCooldown-End
 
         var getPulled = new BeingPulledAttemptEvent(puller, pullableUid);
         RaiseLocalEvent(pullableUid, getPulled, true);
@@ -573,8 +568,6 @@ public sealed class PullingSystem : EntitySystem
             return false;
 
         // Pulling confirmed
-
-        pullerComp.LastPullAt = _timing.CurTime; // SS220-PullingCooldown
 
         _interaction.DoContactInteraction(pullableUid, pullerUid);
 
