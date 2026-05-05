@@ -17,6 +17,14 @@ internal static class ModelBan
 {
     public static void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // SS220-add-abstract-bans-begin
+        modelBuilder.Entity<IBanRole>()
+            .HasDiscriminator<string>("discriminator")
+            .HasValue<BanRole>("BanRole")
+            .HasValue<BanChat>("BanChat")
+            .HasValue<BanSpecie>("BanSpecie");
+        // SS220-add-abstract-bans-end
+
         modelBuilder.Entity<Ban>()
             .HasOne(b => b.CreatedBy)
             .WithMany(pl => pl.AdminServerBansCreated)

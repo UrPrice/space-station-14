@@ -85,7 +85,7 @@ namespace Content.Server.Database.Migrations.Postgres
                 type: "character varying(13)",
                 maxLength: 13,
                 nullable: false,
-                defaultValue: "");
+                defaultValue: "BanRole");
 
             migrationBuilder.AddColumn<string>(
                 name: "specie_id",

@@ -85,7 +85,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                 type: "TEXT",
                 maxLength: 13,
                 nullable: false,
-                defaultValue: "");
+                defaultValue: "BanRole");
 
             migrationBuilder.AddColumn<string>(
                 name: "specie_id",
