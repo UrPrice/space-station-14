@@ -1,3 +1,5 @@
+## SS220 LobbyScreens
+
 lobby-state-background-deepinspiders-title = Deep in Spiders
 
 lobby-state-background-tiredshift-title = Tired shift
@@ -57,3 +59,68 @@ lobby-state-background-mousekiller-artist = honk_mother
 
 lobby-state-background-watermelonapocalypse-title = Watermelon Apocalypse
 lobby-state-background-watermelonapocalypse-artist = Gabka
+
+## Corvax LobbyScreens
+
+lobby-state-background-barlife-title = Bar Life
+lobby-state-background-barlife-artist = Арт
+
+lobby-state-background-deadinspace-title = Dead in space
+lobby-state-background-deadinspace-artist = milk
+
+lobby-state-background-deadsquad-title = Dead Squad
+lobby-state-background-deadsquad-artist = Medic TF2
+
+lobby-state-background-detective-title = Detective
+lobby-state-background-detective-artist = Kukurudznik
+
+lobby-state-background-engineerschill-title = Engineers Chill
+lobby-state-background-engineerschill-artist = Gasper_horned
+
+lobby-state-background-greytide-title = Greytide
+lobby-state-background-greytide-artist = Giliof
+
+lobby-state-background-hydroponics-title = Hydroponics
+lobby-state-background-hydroponics-artist = Nyan cat
+
+lobby-state-background-intospace-title = Into Space
+lobby-state-background-intospace-artist = Мефедрон
+
+lobby-state-background-jailbreak-title = Jail Break
+lobby-state-background-jailbreak-artist = Much
+
+lobby-state-background-kosmologistika-title = Kosmologistika
+lobby-state-background-kosmologistika-artist = Drodn
+
+lobby-state-background-lizardbar-title = Lizard Bar
+lobby-state-background-lizardbar-artist = Vetochka
+
+lobby-state-background-lofi-title = Lo-Fi
+lobby-state-background-lofi-artist = Buryatus
+
+lobby-state-background-maintenanceclown-title = Maintenance Clown
+lobby-state-background-maintenanceclown-artist = Nijn
+
+lobby-state-background-meddepart-title = Med. Depart.
+lobby-state-background-meddepart-artist = Vetochka
+
+lobby-state-background-nukieshere-title = Nukies Here
+lobby-state-background-nukieshere-artist = bib
+
+lobby-state-background-regularshift-title = Regular Shift
+lobby-state-background-regularshift-artist = Gasper_horned
+
+lobby-state-background-russellmart-title = Russell Mart
+lobby-state-background-russellmart-artist = Russell
+
+lobby-state-background-sidor-title = Sidor
+lobby-state-background-sidor-artist = Kukurudznik
+
+lobby-state-background-singulord-title = Singulord
+lobby-state-background-singulord-artist = Ast
+
+lobby-state-background-spacemudaki-title = Space Mudaki
+lobby-state-background-spacemudaki-artist = Ivan_Gochin
+
+lobby-state-background-traitor-title = Traitor
+lobby-state-background-traitor-artist = НезьныйКусь
