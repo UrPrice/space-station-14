@@ -11,7 +11,7 @@
   #   time: 18000  # 5 hrs
   - !type:OverallPlaytimeRequirement
     time: 20h
-  playTimeTracker: playTimeTracker
+  playTimeTracker: AntagXenoborgMothershipCore
   antagColor: Blue
   # ss220 - post upstream tweaks - xenoborgs req hours tweak & play tracker - end
   guides: [ Xenoborgs ]
@@ -29,7 +29,7 @@
   #   time: 18000  # 5 hrs
   - !type:OverallPlaytimeRequirement
     time: 20h
-  playTimeTracker: playTimeTracker
+  playTimeTracker: AntagXenoborg
   antagColor: Blue
   # ss220 - post upstream tweaks - xenoborgs req hours tweak & play tracker - end
   guides: [ Xenoborgs ]
