@@ -42,6 +42,7 @@
   <Project Path="Content.WeaponAnalyzer/Content.WeaponAnalyzer.csproj" />
   <Project Path="Content.YAMLLinter/Content.YAMLLinter.csproj" />
   <Project Path="Pow3r/Pow3r.csproj" />
+  <Folder Name="/RobustToolbox/.github/" />
   <Folder Name="/RobustToolbox/.github/workflows/">
     <File Path="RobustToolbox/.github/workflows/benchmarks.yml" />
     <File Path="RobustToolbox/.github/workflows/build-all-configurations.yml" />
@@ -166,4 +167,8 @@
     </Project>
     <File Path="RobustToolbox/RobustToolbox.slnx" />
   </Folder>
+  <Project Path="Resources/Prototypes.csproj">
+    <BuildType Solution="DebugOpt|*" Project="Debug" />
+    <BuildType Solution="Tools|*" Project="Debug" />
+  </Project>
 </Solution>
