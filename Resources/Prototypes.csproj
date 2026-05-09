@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -9,7 +9,10 @@
   <ItemGroup Label="SS14 Prototypes">
     <None Include="Resources\Prototypes\**\*.yml" />
     <None Include="Resources\Locale\**\*.ftl" />
-    <None Include="Resources\Maps\**\*.yml" />
+    <None Include="Resources\ServerInfo\**\*.xml" />
+    <None Include="Resources\ServerInfo\**\*.txt" />
+    <None Include="Resources\*.yml" />
+    <None Include="Resources\*.txt" />
   </ItemGroup>
 
 </Project>
