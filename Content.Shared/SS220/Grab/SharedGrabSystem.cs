@@ -389,7 +389,7 @@ public abstract partial class SharedGrabSystem : EntitySystem
         grabbable.Comp.GrabbedBy = null;
         Dirty(grabbable);
 
-        if(_mobState.IsDead(grabbable) || _mobState.IsCritical(grabbable))
+        if (_mobState.IsIncapacitated(grabbable))
             _standing.Down(grabbable);
 
         ClearJoints((grabber, grabberComp), grabbable);
