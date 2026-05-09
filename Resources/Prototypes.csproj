@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup Label="SS14 Prototypes">
-    <None Include="Resources\Prototypes\**\*.yml" />
-    <None Include="Resources\Locale\**\*.ftl" />
-    <None Include="Resources\ServerInfo\**\*.xml" />
-    <None Include="Resources\ServerInfo\**\*.txt" />
-    <None Include="Resources\*.yml" />
-    <None Include="Resources\*.txt" />
+    <None Include="Prototypes/**/*.yml" />
+    <None Include="Locale/**/*.ftl" />
+    <None Include="ServerInfo/**/*.xml" />
+    <None Include="ServerInfo/**/*.txt" />
+    <None Include="*.yml" />
+    <None Include="*.txt" />
   </ItemGroup>
 
 </Project>
