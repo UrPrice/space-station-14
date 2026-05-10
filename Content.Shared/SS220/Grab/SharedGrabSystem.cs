@@ -389,6 +389,7 @@ public abstract partial class SharedGrabSystem : EntitySystem
         grabbable.Comp.GrabbedBy = null;
         Dirty(grabbable);
 
+        // TODO SS220 This shouldn't be handled here
         if (_mobState.IsIncapacitated(grabbable))
             _standing.Down(grabbable);
 
