@@ -382,9 +382,9 @@
   productEntity: BriefcaseWeaponBulldogFilled
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 10
+    Telecrystal: 12 # ss220 - post upstream - uplink tweaks
   cost:
-    Telecrystal: 14
+    Telecrystal: 20 # ss220 - post upstream - uplink tweaks
   categories:
   - UplinkWeaponry
   conditions:
@@ -392,6 +392,15 @@
     blacklist:
       tags:
       - NukeOpsUplink
+  #ss220 dynamic-price bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 22
+    MediumDynamic:
+      Telecrystal: 16
+    HardDynamic:
+      Telecrystal: 10
+  #ss220 dynamic-price end
 
 - type: listing
   id: UplinkBulldogBundle
@@ -401,9 +410,9 @@
   productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 12
+    Telecrystal: 10 # ss220 - post upstream - uplink tweaks
   cost:
-    Telecrystal: 20
+    Telecrystal: 14 # ss220 - post upstream - uplink tweaks
   categories:
   - UplinkWeaponry
   conditions:
