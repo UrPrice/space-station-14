@@ -440,21 +440,23 @@
       tags:
       - NukeOpsUplink
 
-- type: listing
-  id: UplinkGrenadeLauncher
-  name: uplink-grenade-launcher-name
-  description: uplink-grenade-launcher-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Launchers/china_lake.rsi, state: icon }
-  productEntity: BriefcaseWeaponChinaLakeFilled
-  cost:
-    Telecrystal: 20
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+# ss220 - post upstream - uplink tweaks - bgn 
+# - type: listing
+#   id: UplinkGrenadeLauncher
+#   name: uplink-grenade-launcher-name
+#   description: uplink-grenade-launcher-desc
+#   icon: { sprite: /Textures/Objects/Weapons/Guns/Launchers/china_lake.rsi, state: icon }
+#   productEntity: BriefcaseWeaponChinaLakeFilled
+#   cost:
+#     Telecrystal: 20
+#   categories:
+#   - UplinkWeaponry
+#   conditions:
+#   - !type:StoreWhitelistCondition
+#     blacklist:
+#       tags:
+#       - NukeOpsUplink
+# ss220 - post upstream - uplink tweaks - end 
 
 - type: listing
   id: UplinkGrenadeLauncherBundle
@@ -515,6 +517,15 @@
     whitelist:
       tags:
       - NukeOpsUplink
+  #ss220 dynamic-price bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 7
+    MediumDynamic:
+      Telecrystal: 5
+    HardDynamic:
+      Telecrystal: 2
+  #ss220 dynamic-price end
 
 - type: listing
   id: UplinkSmokeGrenade
@@ -778,6 +789,15 @@
     Telecrystal: 4
   categories:
   - UplinkExplosives
+  #ss220 dynamic-price bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 4
+    MediumDynamic:
+      Telecrystal: 4
+    HardDynamic:
+      Telecrystal: 2
+  #ss220 dynamic-price end
 
 # Ammo
 
@@ -951,7 +971,7 @@
   productEntity: ChemicalSynthesisKit
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 2
+    Telecrystal: 1 # ss220 - post upstream - uplink tweaks
   cost:
     Telecrystal: 3
   categories:
@@ -959,9 +979,9 @@
 #ss220 dynamic-price bgn
   dynamicsPrices:
     LightDynamic:
-      Telecrystal: 4
+      Telecrystal: 3
     MediumDynamic:
-      Telecrystal: 5
+      Telecrystal: 4
     HardDynamic:
       Telecrystal: 6
 #ss220 dynamic-price end
@@ -1094,7 +1114,7 @@
     MediumDynamic:
       Telecrystal: 10
     HardDynamic:
-      Telecrystal: 10
+      Telecrystal: 5
 #ss220 dynamic-price end
 
 - type: listing
@@ -1209,11 +1229,11 @@
 #ss220 dynamic-price bgn
   dynamicsPrices:
     LightDynamic:
-      Telecrystal: 3
+      Telecrystal: 2
     MediumDynamic:
-      Telecrystal: 5
+      Telecrystal: 3
     HardDynamic:
-      Telecrystal: 8
+      Telecrystal: 5
 #ss220 dynamic-price end
 
 - type: listing
@@ -1342,6 +1362,15 @@
   categories:
   - UplinkDeception
   restockTime: 1800
+  # ss220 - post upstream - uplink tweaks - bgn
+  dynamicsPrices:
+      LightDynamic:
+        Telecrystal: 2
+      MediumDynamic:
+        Telecrystal: 2
+      HardDynamic:
+        Telecrystal: 4
+  # ss220 - post upstream - uplink tweaks - end
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -1462,11 +1491,20 @@
   productEntity: BorgModuleSyndicateWeapon
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 1 # ss220 - post upstream - uplink tweaks
   cost:
-    Telecrystal: 5
+    Telecrystal: 3 # ss220 - post upstream - uplink tweaks
   categories:
   - UplinkDisruption
+  #ss220 dynamic-price bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 3
+    MediumDynamic:
+      Telecrystal: 3
+    HardDynamic:
+      Telecrystal: 3
+  #ss220 dynamic-price end
 
 - type: listing
   id: UplinkDisposableTurret
@@ -1555,11 +1593,11 @@
 #ss220 dynamic-price bgn
   dynamicsPrices:
     LightDynamic:
-      Telecrystal: 3
+      Telecrystal: 1
     MediumDynamic:
-      Telecrystal: 3
+      Telecrystal: 1
     HardDynamic:
-      Telecrystal: 3
+      Telecrystal: 1
 #ss220 dynamic-price end
 
 - type: listing
@@ -1615,6 +1653,15 @@
     Telecrystal: 1
   categories:
   - UplinkDeception
+  # ss220 - post upstream - uplink tweaks - bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 1
+    MediumDynamic:
+      Telecrystal: 1
+    HardDynamic:
+      Telecrystal: 2
+  # ss220 - post upstream - uplink tweaks - end
 
 # Note: Removed for the time being until surgery/newmed is added. Considered bloat until then.
 # - type: listing
@@ -1661,6 +1708,15 @@
      blacklist:
        tags:
        - NukeOpsUplink
+  #ss220 dynamic-price bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 8
+    MediumDynamic:
+      Telecrystal: 8
+    HardDynamic:
+      Telecrystal: 10
+  #ss220 dynamic-price end
 
 - type: listing
   id: UplinkAntimovCircuitBoard
@@ -1669,9 +1725,9 @@
   productEntity: AntimovCircuitBoard
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 36 # 20 default | SS220 Antimov Laws hide changes
+    Telecrystal: 20
   cost:
-    Telecrystal: 40 # 24 default | SS220 Antimov Laws hide changes
+    Telecrystal: 24
   categories:
   - UplinkDisruption
   conditions:
@@ -1748,7 +1804,7 @@
   discountDownTo:
     Telecrystal: 1
   cost:
-    Telecrystal: 2
+    Telecrystal: 1 # ss220 - post upstream - uplink tweaks
   categories:
   - UplinkDisruption
 #ss220 dynamic-price bgn
@@ -1773,7 +1829,7 @@
   discountDownTo:
     Telecrystal: 11 #ss220-uplink-discounts
   cost:
-    Telecrystal: 12
+    Telecrystal: 18 # ss220 - post upstream - uplink tweaks
   categories:
   - UplinkAllies
   conditions:
@@ -2003,9 +2059,9 @@
   productEntity: ScramImplanter
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 4 # ss220 - post upstream - uplink tweaks
   cost:
-    Telecrystal: 2 # it's a gamble that may kill you easily so 1 TC per use.
+    Telecrystal: 6 # ss220 - post upstream - uplink tweaks
   categories:
     - UplinkImplants
 #ss220 dynamic-price bgn
@@ -2192,19 +2248,19 @@
   icon: { sprite: Interface/Actions/actions_fakemindshield.rsi, state: icon-on }
   productEntity: FakeMindShieldImplanter
   discountDownTo:
-    Telecrystal: 2
+    Telecrystal: 1
   cost:
-    Telecrystal: 4
+    Telecrystal: 2
   categories:
   - UplinkImplants
 #ss220 dynamic-price bgn
   dynamicsPrices:
     LightDynamic:
-      Telecrystal: 3
+      Telecrystal: 1
     MediumDynamic:
-      Telecrystal: 6
+      Telecrystal: 2
     HardDynamic:
-      Telecrystal: 8
+      Telecrystal: 4
 #ss220 dynamic-price end
 
 - type: listing
@@ -2220,6 +2276,15 @@
     Telecrystal: 2
   categories:
   - UplinkImplants
+  #ss220 dynamic-price bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 1
+    MediumDynamic:
+      Telecrystal: 2
+    HardDynamic:
+      Telecrystal: 3
+  #ss220 dynamic-price end
 
 # Wearables
 
@@ -2239,7 +2304,7 @@
     MediumDynamic:
       Telecrystal: 1
     HardDynamic:
-      Telecrystal: 1
+      Telecrystal: 2
 #ss220 dynamic-price end
 
 - type: listing
@@ -2325,7 +2390,7 @@
     MediumDynamic:
       Telecrystal: 4
     HardDynamic:
-      Telecrystal: 2
+      Telecrystal: 3
 #ss220 dynamic-price end
 
 - type: listing
@@ -2335,19 +2400,19 @@
   productEntity: ClothingOuterVestWebElite
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 6 # ss220 - post upstream - uplink tweaks
   cost:
-    Telecrystal: 5
+    Telecrystal: 8 # ss220 - post upstream - uplink tweaks
   categories:
   - UplinkWearables
 #ss220 dynamic-price bgn
   dynamicsPrices:
     LightDynamic:
-      Telecrystal: 8
+      Telecrystal: 10
     MediumDynamic:
-      Telecrystal: 5
+      Telecrystal: 8
     HardDynamic:
-      Telecrystal: 3
+      Telecrystal: 6
 #ss220 dynamic-price end
 
 - type: listing
@@ -2425,7 +2490,7 @@
   discountDownTo:
     Telecrystal: 6 #ss220-uplink-discounts
   cost:
-    Telecrystal: 7
+    Telecrystal: 12 # ss220 - post upstream - uplink tweaks
   categories:
   - UplinkWearables
   conditions:
@@ -2768,10 +2833,27 @@
   description: uplink-decoy-kit-desc
   icon: { sprite: /Textures/Objects/Tools/Decoys/operative_decoy.rsi, state: folded }
   productEntity: ClothingBackpackDuffelSyndicateDecoyKitFilled
+  # ss220 - post upstream - uplink tweaks - bgn
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 0
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  # ss220 - post upstream - uplink tweaks - end
   cost:
     Telecrystal: 1
   categories:
   - UplinkPointless
+  #ss220 dynamic-price bgn
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 1
+    MediumDynamic:
+      Telecrystal: 1
+    HardDynamic:
+      Telecrystal: 2
+  #ss220 dynamic-price end
 
 # Job Specific
 
@@ -2857,7 +2939,7 @@
     LightDynamic:
       Telecrystal: 6
     MediumDynamic:
-      Telecrystal: 4
+      Telecrystal: 3
     HardDynamic:
       Telecrystal: 3
 #ss220 dynamic-price end
@@ -3120,6 +3202,15 @@
   - !type:BuyerJobCondition
     whitelist:
     - Lawyer
+  # ss220 - post upstream - uplink tweaks - bgn 
+  dynamicsPrices:
+    LightDynamic:
+      Telecrystal: 15
+    MediumDynamic:
+      Telecrystal: 11
+    HardDynamic:
+      Telecrystal: 6
+  # ss220 - post upstream - uplink tweaks - end
 
 #Objective items
 
