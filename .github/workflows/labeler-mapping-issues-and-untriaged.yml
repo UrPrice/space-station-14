@@ -5,7 +5,7 @@ on:
     types: [opened]
 
 jobs:
-  link-parent:
+  add-labels-and-link:
     runs-on: ubuntu-latest
     steps:
       - name: Generate token
@@ -25,7 +25,7 @@ jobs:
             const issueBody = context.payload.issue.body || '';
 
             if (!issueLabels.includes('Mapping Issues')) {
-              console.log('Not a mapping issue. Skip action;');
+              console.log('Not mapping issue. Skip action.');
               return;
             }
 
