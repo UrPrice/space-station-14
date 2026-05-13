@@ -57,8 +57,8 @@
       - Magistrate #SS220 TODO NanoTraisen Representative
       - Mime #SS220 New_accesses_and_some_tweaks
       - Musician #SS220 New_accesses_and_some_tweaks
-      - Wizard # ss220 - post upstream tweaks - fix admin pda access
-      - Xenoborg # ss220 - post upstream tweaks - fix admin pda access
+      - Wizard
+      - Xenoborg
       #New centcomm accesses begin
       - CentralCommand
       - CentralCommandCBURN
