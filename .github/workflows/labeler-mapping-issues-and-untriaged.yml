@@ -30,14 +30,14 @@ jobs:
             }
 
             const options = {
-              'Frankenstein': { parentIssue: 123 },
-              'Axioma': { parentIssue: 123 },
-              'Donuts': { parentIssue: 123 },
-              'Eclipse': { parentIssue: 123 },
-              'Astro': { parentIssue: 123 },
-              'Nightshift': { parentIssue: 123 },
-              'Tox': { parentIssue: 123 },
-              'Другое': { parentIssue: 123 }
+              'Frankenstein': { parentIssue: 789 },
+              'Axioma': { parentIssue: 790 },
+              'Donuts': { parentIssue: 793 },
+              'Eclipse': { parentIssue: 791 },
+              'Astro': { parentIssue: 792 },
+              'Nightshift': { parentIssue: 794 },
+              'Tox': { parentIssue: 795 },
+              'Другое': { parentIssue: 788 }
             };
 
             let selectedOption = null;
