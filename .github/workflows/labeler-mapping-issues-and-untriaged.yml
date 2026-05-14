@@ -49,31 +49,28 @@ jobs:
             }
 
             if (selectedOption && selectedOption.parentIssue) {
-              const sourceOwner = context.repo.owner;
-              const sourceRepo = context.repo.repo;
               const targetOwner = 'SerbiaStrong-220';
               const targetRepo = 'DevTeam220';
 
+              const subIssueId = context.payload.issue.id;
+
               try {
-                const parent = await github.rest.issues.get({
-                  owner: targetOwner,
-                  repo: targetRepo,
-                  issue_number: selectedOption.parentIssue
-                });
-
-                const crossRepoLink = `- [ ] ${sourceOwner}/${sourceRepo}#${context.issue.number}`;
-                const parentBody = parent.data.body || '';
-                const newParentBody = parentBody + '\n' + crossRepoLink;
-
-                await github.rest.issues.update({
+                await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues', {
                   owner: targetOwner,
                   repo: targetRepo,
                   issue_number: selectedOption.parentIssue,
-                  body: newParentBody
+                  sub_issue_id: subIssueId,
+                  headers: {
+                    'X-GitHub-Api-Version': '2026-03-10',
+                    'accept': 'application/vnd.github+json'
+                  }
                 });
                 console.log(`Linked #${context.issue.number} to ${targetOwner}/${targetRepo}#${selectedOption.parentIssue}`);
               } catch (error) {
                 console.error(`Failed to link #${selectedOption.parentIssue}`, error);
+                if (error.response) {
+                  console.error('API:', error.response.data);
+                }
               }
             } else {
               console.log('No options');
