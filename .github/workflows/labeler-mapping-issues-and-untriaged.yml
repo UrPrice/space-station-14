@@ -30,7 +30,7 @@ jobs:
             }
 
             const options = {
-              'Frankenstein': { parentIssue: 789 },
+              'Frankenstein': { parentIssue: 796 },
               'Axioma': { parentIssue: 790 },
               'Donuts': { parentIssue: 793 },
               'Eclipse': { parentIssue: 791 },
